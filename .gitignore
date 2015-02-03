@@ -1,0 +1,9 @@
+*~
+*.swp
+
+*.aux
+*.bbl
+*.blg
+*.log
+
+/legacy-850um-paper.pdf
