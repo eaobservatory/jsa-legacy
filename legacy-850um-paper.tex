@@ -1,8 +1,11 @@
-\documentclass{mn2e}
+\documentclass[usenatbib]{mn2e}
 
 \usepackage{graphicx}
 \usepackage{marginnote}
 \usepackage{xcolor}
+
+\newcommand{\apj}{Astrophysical Journal}
+\newcommand{\mnras}{Monthly Notices of the RAS}
 
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 \title{The JCMT Science Archive: 850\micron Legacy Release}
@@ -52,6 +55,9 @@ that the pixels do not have the same size in RA and Dec.
 \footnote{To re-grid a HEALPix tile onto a standard RA-Dec projection,
 the starlink software command 'XXXXXX' can be used.}
 
+\citep{2005ApJ...622..759G}
+
+\citep{2007MNRAS.381..865C}
 
 \section{Grouping, reducing and coadding observations}
 Describe the basic flow chart (and illustrate) for JSA advanced data
@@ -136,5 +142,8 @@ A brief summary of how to access the data, catalogues, any cool tools
 we've found/developed before the release etc.
 
 \section{Conclusions}
+
+\bibliography{legacy-850um-paper}
+\bibliographystyle{mn2e}
 
 \end{document}
