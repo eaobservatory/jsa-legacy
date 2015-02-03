@@ -1,0 +1,140 @@
+\documentclass{mn2e}
+
+\usepackage{graphicx}
+\usepackage{marginnote}
+\usepackage{xcolor}
+
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+\title{The JCMT Science Archive: 850\micron Legacy Release}
+\author{JAC and Others.}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+  The JCMT Science archive allows access to raw and reduced data for
+  all publicly available JCMT observations. To aid users of JCMT
+  products, we have produced a standardised reduction of public JCMT
+  SCUBA-2 850\micron SCUBA-2 observations. These reductions provide
+  uniformly reduced coadds of of all data that was public as of August
+  1st 2014, and catalogues to identify the regions where emission was
+  detected. The data have been gridded in the HEALPix HPX scheme.
+\end{abstract}
+
+\section{Introduction}
+\begin{itemize}
+\item Description of the JSA
+\item Very brief description of heterodyne and SCUBA-2 instruments, cite instrument papers.
+\item Outline of the advanced data products.
+\item Historical perspective.
+\item ongoing plans -- dynamic archive, continually updated etc.
+\end{itemize}
+
+
+
+\section{HEALPix grid }
+Require a fixed tiling and grid to reduce our data onto, as we want to be able to
+incorporate all data current and future into this method. The chosen
+grid is that of the HEALPix method (Hierarchical Equal Area
+isoLatitude pixelation), commonly used in cosmological fields. This
+has the advantage that all pixels have the same area. The trade off is
+that the pixels do not have the same size in RA and Dec.
+
+\todo{Insert Brief Description of healpix, advantages and
+  disadvantages}
+
+\todo{Create plots illustrating healpix}.
+
+\todo{list parameters we have used}.
+
+\footnote{To re-grid a HEALPix tile onto a standard RA-Dec projection,
+the starlink software command 'XXXXXX' can be used.}
+
+
+\section{Grouping, reducing and coadding observations}
+Describe the basic flow chart (and illustrate) for JSA advanced data
+products (obs product reductions, grouping, coadd, cataloges, and
+similar but with some co-reductions and frequency regridding for
+HARP).
+
+Full description of how the observations are grouped into
+associations.
+
+
+
+\subsection{SCUBA-2 reduction configuration}
+\begin{itemize}
+\item Brief description of how SCUBA-2 data reduction works.
+\item mapmaker paper: (2013MNRAS.430.2545C)
+\item Details of our chosen configuration and why we chose it. (detailed).
+\item Examples of some reduced maps.
+\end{itemize}
+
+
+\subsection{QA}
+Description of process. Examples of observations we threw out.
+
+
+\subsection{Co-adding}
+Brief?
+\begin{itemize}
+\item Do we include anything to cope with hot pixels etc.
+\end{itemize}
+
+
+
+\section{Calibration}
+\begin{itemize}
+\item Calibration paper (2013MNRAS.430.2534D)
+\item show images the standard calibrators.
+\item comparison with 'standard' calibrator reductions
+\item effect of pixel size on fluxes.
+\item effect of pointing errors on fluxes.
+\item Our uncertainty in the final flux.
+\end{itemize}
+
+
+We calibrated our data into units of mJy per arc-second squared.
+As the effective beam size is increased during the co-add procedure
+(due to errors in the pointing between different maps), and the choice
+of pixel size can also affect the beam, we have chosen not to try and
+calibrate into units of the beam.
+
+
+\section{Bowling}
+Examples of the bowling in our maps.
+
+\section{Noise}
+\begin{itemize}
+\item Analysis of the noise maps, how believable they are.
+\item High noise towards bright sources.
+\end{itemize}
+
+
+
+\section{Catalogues}
+\begin{itemize}
+\item Fellwalker!
+\item Island and peak paradigm overview.
+\item Details of our chosen parameters
+\item Cross referencing between neighbouring tiles.
+\end{itemize}
+
+\subsection{Source recovery with makemap}
+cf Steve Mairs paper.
+
+\subsection{Comparison including fake sources?}
+
+\subsection{Size Scales}
+
+\section{Comparison with legacy surveys}
+
+\section{Accessing the Legacy Release}
+A brief summary of how to access the data, catalogues, any cool tools
+we've found/developed before the release etc.
+
+\section{Conclusions}
+
+\end{document}
