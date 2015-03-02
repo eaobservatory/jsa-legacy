@@ -109,7 +109,42 @@ associations.
 
 
 \subsection{QA}
-Description of process. Examples of observations we threw out.
+
+\subsubsection{Standard JCMT QA States}
+All observations taken by the JCMT are classified as 'GOOD' (the
+default), 'BAD', 'QUESTIONABLE', 'JUNK' or 'REJECTED'. We included
+GOOD, QUESTIONABLE and REJECTED data in our co-adds. The QUESTIONABLE
+state was originally designed to be a transient state that would be
+resolved into either BAD or GOOD after analysis, but in practical
+terms there was not a work flow to ensure this, so some observations
+have this flag in the archive.
+
+Usually (in the standard nightly reduction pipelines) QUESTIONABLE
+data is treated as if it is BAD for the purposes of co-adds. However,
+due to our second QA stage for this release, we chose to include it as
+long as it passed our special legacy QA
+
+\subsubsection{Legacy Release QA}
+%Description of process. Examples of observations we threw out.
+
+Every reduced file included in this has been marked as GOOD by a
+member of the JAC team. This quick 'by-eye' assessment was simply done
+on a image of the reduced map. This QA process was designed to avoid:
+a) `blooms' or `blobs' of fake emission that can sometimes be produced
+at the edges of the map by the mapmaker.  b) identify the most
+problematic observations that had missed being flagged under the
+telescope standard QA process.
+
+This sort of process is of course subjective, and some of the
+observations that we excluded might turn out fine on further
+examination. However, as with all of this process, the focus for this
+release has been to pursue ensure a high quality, even at the expense
+of completeness. All of the HEALPix-gridded legacy-reduced
+observations are available to the community in the JSA, regardless of
+our QA analysis of them.
+
+
+
 
 
 \subsection{Co-adding}
