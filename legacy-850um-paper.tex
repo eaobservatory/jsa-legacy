@@ -183,11 +183,12 @@ Brief?
 \end{itemize}
 
 
-We calibrated our data into units of mJy per arc-second squared.
-As the effective beam size is increased during the co-add procedure
-(due to errors in the pointing between different maps), and the choice
-of pixel size can also affect the beam, we have chosen not to try and
-calibrate into units of the beam.
+We calibrated our data into units of mJy per arc-second squared, using
+the standard FCF values from \citet{2013MNRAS.430.2534D}.  As the
+effective beam size is increased during the co-add procedure (due to
+errors in the pointing between different maps), and the choice of
+pixel size will also affect the effective beam size of the final map,
+we have chosen not to try and calibrate into units of the beam.
 
 
 \section{Bowling}
@@ -209,10 +210,13 @@ Examples of the bowling in our maps.
 \item Cross referencing between neighbouring tiles.
 \end{itemize}
 
-\subsection{Source recovery with makemap}
-cf Steve Mairs paper. \citep{2014ApJ...783...60M} ?
 
-\subsection{Comparison including fake sources?}
+\section{Robustness of products}
+% NB improve this section title.
+
+\subsection{Source Recovery: Comparison including fake sources?}
+cf Steve Mairs GBS paper (in prep)
+\note{ probably merge this and previous subsection}
 
 \subsection{Size Scales}
 
