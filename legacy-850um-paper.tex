@@ -1,14 +1,28 @@
 \documentclass[usenatbib]{mn2e}
+\usepackage{mathpazo}
 
 \usepackage{graphicx}
 \usepackage{marginnote}
-\usepackage{xcolor}
+\usepackage{microtype}
 
 \newcommand{\aspconf}{ASP Conf. Ser.}
+% bold micron (for titles etc.
+\newcommand{\bmicron}{\boldmath\ensuremath{\micron}}
+% alternate micron command
+\newcommand{\um}{\micron}
+
+
+% commands and packages that shouldn't be needed in final version
+\usepackage{xcolor, soul}
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
-\title{The JCMT Science Archive: 850\micron Legacy Release}
+\newcommand{\note}[1]{\textcolor{red}{Note: #1}}
+
+\title[SCUBA-2 850\um\ Legacy Release]%
+{The JCMT Legacy Release: SCUBA-2 850\bmicron\ observations}
+
 \author[S.~F.~Graves et~al.]
 {Sarah~F.~Graves,$^{1,2}$
+Graham~S.~Bell,$^{1,2}$
 JAC
 and
 Others.\\
@@ -28,7 +42,7 @@ $^2$East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA
 \label{firstpage}
 
 \begin{abstract}
-
+  % Re write this properly once the rest of the paper is written.
   The JCMT Science archive allows access to raw and reduced data for
   all publicly available JCMT observations. To aid users of JCMT
   products, we have produced a standardised reduction of public JCMT
