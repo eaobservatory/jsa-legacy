@@ -11,6 +11,8 @@
 % alternate micron command
 \newcommand{\um}{\micron}
 
+% referenceing commands
+\newcommand{\sref}[1]{Sec.~\ref{#1}}
 
 % commands and packages that shouldn't be needed in final version
 \usepackage{xcolor, soul}
@@ -54,28 +56,73 @@ $^2$East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA
 \end{abstract}
 
 \section{Introduction}
-\begin{itemize}
-\item Description of the JSA \citep{2015Economou}
-\item Very brief description of heterodyne and SCUBA-2 instruments, cite instrument papers. \citep{2013MNRAS.430.2513H} \citep{2009MNRAS.399.1026B}
-\item Outline of the advanced data products. \citep{2014SPIE.9152E..2JB}
-\item Historical perspective. \citep{2011ASPC..442..203E}
-\item ongoing plans -- dynamic archive, continually updated etc.
-\end{itemize}
+%\begin{itemize}
+%\item Description of the JSA \citep{2015Economou}
+%\item Very brief description of heterodyne and SCUBA-2 instruments, cite instrument papers. \citep{2013MNRAS.430.2513H} \citep{2009MNRAS.399.1026B}
+%\item Outline of the advanced data products. \citep{2014SPIE.9152E..2JB}
+%\item Historical perspective. \citep{2011ASPC..442..203E}
+%\item ongoing plans -- dynamic archive, continually updated etc.
+%\end{itemize}
 
+% JCMT & SCUBA-2
+The JCMT is a 15\,m submillimetre telescope located at an altitude of
+4092\,m on Mauna Kea, where it has been operating since
+1987. Its current instrument suite include SCUBA-2, a 10,000
+pixel continuum camera that observes simultaneously at 450\,\um\ and
+850\,\um wavelengths\citep{2013MNRAS.430.2513H}.
+
+% Whats in the Archive -- reductions using PI-chosen configurations
+The JCMT Science Archive \citep{2015Economou}, hosted by the Canadian
+Astronomy Data Centre (CADC) contains both raw, instrumental-format
+data and pipeline-reduced FITS-format data. All science observations
+from the observatory are reduced each night using the PI's chosen
+configuration.  These reduced observations and co-adds are then
+automatically made available in the archive (initially just to the PI
+and coIs, but then publicly once the observations are no longer
+proprietary). Although these project-specific configurations are vital
+to ensure PI's can access the most scientifically useful reductions of
+their data, it means that the reduced archival data is considerably
+more heterogenous than some astronomical users may suspect, and
+reduced observations of the same region of sky from different projects
+cannot be naively co-added together. Despite this,
+\citet{2014SPIE.9152E..2JB} found that more than fifty percent of
+papers using JCMT data made use of archive data.
+
+To maximise the scientific return on the many years of archival data,
+and to make it as easy as possible for non-submm-experts to use the
+JCMT data, the Joint Astronomy Centre, then-operators of the JCMT,
+decided to produce 'legacy' reductions of all public data from the
+current instrumentation. These legacy reductions were envisioned as
+providing a uniform, standardised reduction, co-adding and source
+detection of all publicly available observations from all
+observations. The aim was to be produce uniformly reduced high quality
+coadds that required as little checking as possible by hand, and would
+allow astronomers to easily see at a glance what had been observed and
+detected on any given region of the sky. This paper presents the first
+release in this project: the 850\um\ SCUBA-2 continuum
+observations. Planned future releases are the 450\um\ SCUBA-2
+observations and the HARP spectral observations in the most
+common molecular transitions.
+
+
+
+\subsection{Observations included in this release}
 % What data are included.
-This release includes publicly-released 850\um\ observations observed
+
+This release includes publicly-released 850\um\ science observations observed
 between 2011 February 2 and
 2013 August 1. Observations from earlier than this were not included, as
 these were taken in \emph{shared risk} mode while instrument
 commissioning was still being conducted, and the data from that era
-have more problems \citep{SC19,2010SPIE.7741E..1XD}.  Observations by the JCMT Cosmology Legacy Survey
+are more problematic \citep{SC19,2010SPIE.7741E..1XD}.  Observations by the JCMT Cosmology Legacy Survey
 \citep{2013MNRAS.432...53G} are not included as they are still
-proprietary. Pointing observations and observations from within the
+proprietary until 2016 March 1. Pointing observations, and observations from within the
 appropriate time period that were judged to be of a low or
-potentially-low quality \emph{were} reduced using this standardised
-configuration\footnote{and are available for interested parties to
-  download from the JSA}, but have not been included in the co-added
-products.
+potentially-low quality, \emph{were} still reduced using this
+standardised configuration\footnote{and are available for interested
+  parties to download from the JSA}, but have not been included in the
+co-added products (see \sref{sec:QA} for more detail on what were
+considered low quality).
 
 \subsection{Overview of Release}
 % Number of observations included.
@@ -114,7 +161,27 @@ Also see: ``Mapping on the HEALPix grid'' is \citep{2007MNRAS.381..865C}
 
 
 
-\subsection{SCUBA-2 reduction configuration}
+\section{SCUBA-2 data reduction}
+Although all the JCMT observations were already being run through an
+automated pipeline (\hl{ORAC-DR cite}), these relied on the PI for a
+project selecting the correct reduction 'recipe'.
+
+These recipes could produce very poor results when used on an
+inappropriate observation -- for example, the standard SCUBA-2 recipe
+used for calibrator observations was tuned to expect a bright, compact
+source at the centre of the map, and if used by mistake on a blank
+field this recipe could easily find \emph{fake emission} in the form
+of large bloom-like structures. Avoiding this sort of erroneous result
+was the paramount consideration of the development of the
+configuration parameters.
+
+
+Given the nature of SCUBA-2 data reduction algorithms, the main focus
+in developing a configuration was placed on maximising the trust that
+could be placed in detection of emission (based on simple SNR cuts),
+at the expense of not attempting to recover large scale
+structures. While the most common data reduction `recipes' in use for
+JCMT data can produce very
 
 \todo{What version of the Starlink software was used to make this data
 release?}
@@ -129,8 +196,8 @@ release?}
 \end{itemize}
 
 
-\subsection{QA}
-
+\section{QA}
+\label{sec:qa}
 \subsubsection{Standard JCMT QA States}
 All observations taken by the JCMT are classified as 'GOOD' (the
 default), 'BAD', 'QUESTIONABLE', 'JUNK' or 'REJECTED'. We included
@@ -148,7 +215,7 @@ data is treated as if it is BAD for the purposes of co-adds. However,
 due to our second QA stage for this release, we chose to include it as
 long as it passed our special legacy QA
 
-\subsubsection{Legacy Release QA}
+\subsection{Legacy Release QA}
 %Description of process. Examples of observations we threw out.
 
 Every reduced file included in this has been marked as GOOD by a
@@ -166,7 +233,6 @@ release has been to pursue ensure a high quality, even at the expense
 of completeness. All of the HEALPix-gridded legacy-reduced
 observations are available to the community in the JSA, regardless of
 our QA analysis of them.
-
 
 
 
@@ -190,7 +256,7 @@ Brief?
 \item Calibration paper \citep{2013MNRAS.430.2534D}
 \item show images the standard calibrators.
 \item comparison with 'standard' calibrator reductions
-\item effect of pixel size on fluxes.
+\item effect of pixel size on fluxes. Per, Jess\&Daniel may have something.
 \item effect of pointing errors on fluxes.
 \item Our uncertainty in the final flux.
 \end{itemize}
