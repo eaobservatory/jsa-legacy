@@ -92,36 +92,35 @@ and to make it as easy as possible for non-submm-experts to use the
 JCMT data, the Joint Astronomy Centre, then-operators of the JCMT,
 decided to produce 'legacy' reductions of all public data from the
 current instrumentation. These legacy reductions were envisioned as
-providing a uniform, standardised reduction, co-adding and source
-detection of all publicly available observations from all
-observations. The aim was to be produce uniformly reduced high quality
-coadds that required as little checking as possible by hand, and would
-allow astronomers to easily see at a glance what had been observed and
-detected on any given region of the sky. This paper presents the first
-release in this project: the 850\um\ SCUBA-2 continuum
-observations. Planned future releases are the 450\um\ SCUBA-2
-observations and the HARP spectral observations in the most
-common molecular transitions.
+providing a uniform, standardised reduction, co-addition and source
+detection of all publicly available observations. The aim was to
+produce uniformly reduced high quality co-added maps that required as
+little checking as possible by hand, and would allow astronomers to
+easily see at a glance what had been observed and detected on any
+given region of the sky. This paper presents the first release in this
+project: the 850\um\ SCUBA-2 continuum observations. Planned future
+releases are the 450\um\ SCUBA-2 observations and the HARP spectral
+observations in the most common molecular transitions.
 
 
 
 \subsection{Observations included in this release}
 % What data are included.
 
-This release includes publicly-released 850\um\ science observations observed
-between 2011 February 2 and
-2013 August 1. Observations from earlier than this were not included, as
-these were taken in \emph{shared risk} mode while instrument
-commissioning was still being conducted, and the data from that era
-are more problematic \citep{SC19,Dempsey2010}.  Observations by the JCMT Cosmology Legacy Survey
-\citep{Geach2013} are not included as they are still
-proprietary until 2016 March 1. Pointing observations, and observations from within the
-appropriate time period that were judged to be of a low or
-potentially-low quality, \emph{were} still reduced using this
-standardised configuration\footnote{and are available for interested
-  parties to download from the JSA}, but have not been included in the
-co-added products (see \sref{sec:qa} for more detail on what were
-considered low quality).
+This release includes publicly-released 850\um\ science observations
+observed between 2011 February 2 and 2013 August 1. Observations from
+earlier than this were not included, as these were taken in
+\emph{shared risk} mode while instrument commissioning was still being
+conducted, and the data from that era are more problematic
+\citep{SC19,Dempsey2010}.  Observations by the JCMT Cosmology Legacy
+Survey \citep{Geach2013} are not included as they are still
+proprietary until 2016 March 1. Pointing observations, and
+observations from within the appropriate time period that were judged
+to be of a low or potentially-low quality, \emph{were} still reduced
+using this standardised configuration\footnote{and are available for
+  interested parties to download from the JSA}, but have not been
+included in the co-added products (see \sref{sec:QA} for more detail
+on what were considered low quality).
 
 \note{This section should also give a hint as to what is included as
   it is not obvious at the moment how much of the JLS is present. The
@@ -177,16 +176,15 @@ used for calibrator observations was tuned to expect a bright, compact
 source at the centre of the map, and if used by mistake on a blank
 field this recipe could easily find \emph{fake emission} in the form
 of large bloom-like structures. Avoiding this sort of erroneous result
-was the paramount consideration of the development of the
-configuration parameters.
-
+was the paramount consideration when selecting the configuration
+parameters.
 
 Given the nature of SCUBA-2 data reduction algorithms, the main focus
 in developing a configuration was placed on maximising the trust that
 could be placed in detection of emission (based on simple SNR cuts),
 at the expense of not attempting to recover large scale
-structures. While the most common data reduction `recipes' in use for
-JCMT data can produce very
+structures.
+
 
 \todo{What version of the Starlink software was used to make this data
 release?}
@@ -236,8 +234,6 @@ release has been to pursue ensure a high quality, even at the expense
 of completeness. All of the HEALPix-gridded legacy-reduced
 observations are available to the community in the JSA, regardless of
 our QA analysis of them.
-
-
 
 
 \subsection{Co-adding}
