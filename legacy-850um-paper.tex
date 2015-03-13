@@ -241,10 +241,14 @@ our QA analysis of them.
 
 
 \subsection{Co-adding}
-Brief?
-\begin{itemize}
-\item Do we include anything to cope with hot pixels etc.
-\end{itemize}
+All observations towards a given tile that passed QA were coadded,
+using the \texttt{makemos} applications from Starlink's
+\texttt{ccdpack}. This coadding was carried out as a variance-weighted
+mean. No despiking was performed. The variance map for the coadded
+tile is also produced.
+
+\todo{Picture of a coadded tile? Both data and noise.}
+
 
 \todo{Each observation is gridded into pre-defined tiles. Are they
   extinction corrected at that point? Unlike HARP processing
