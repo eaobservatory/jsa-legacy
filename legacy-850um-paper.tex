@@ -18,6 +18,7 @@
 \usepackage{xcolor, soul}
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 \newcommand{\note}[1]{\textcolor{red}{Note: #1}}
+\newcommand{\ascl}[1]{\href{http://www.ascl.net/#1}{ascl:#1}}
 
 \title[SCUBA-2 850\um\ Legacy Release]%
 {The JCMT Legacy Release: SCUBA-2 850\bmicron\ observations}
@@ -158,7 +159,7 @@ trade off is that the pixels do not have the same size in RA and Dec.
 
 \footnote{To re-grid a HEALPix tile onto a standard RA-Dec projection,
   the Starlink \textsc{smurf} command \texttt{jsajoin} can be used
-  \citep{SUN258}.}
+  \citep[][\ascl{1310.007}]{SUN258}.}
 
 The Main HEALPix reference is \citep{Gorski2005}
 
@@ -205,7 +206,7 @@ so with the 2015A release. \todo{CHECK THIS WORKS?}
 \subsection{Co-adding of tiles}
 All observations towards a given tile that passed QA were coadded,
 using the \texttt{makemos} applications from Starlink's
-\texttt{ccdpack} \citep{SUN139}. This coadding was carried out as a variance-weighted
+\texttt{ccdpack} \citep[][\ascl{1403.021}]{SUN139}. This coadding was carried out as a variance-weighted
 mean. No despiking was performed. The variance map for the coadded
 tile is also produced.
 
