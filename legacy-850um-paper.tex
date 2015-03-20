@@ -129,6 +129,63 @@ standardised configuration\footnote{and are available for interested
   parties to download from the JSA}, but have not been included in the
 co-added products (see \sref{sec:QA} for more detail on this).
 
+10686 observations were reduced, of which 5165 are non pointing
+observations included in these coadds, and 5521 were pointing
+observations that were reduced but not coadded.
+
+Of these 'science' observations, 49 observations were marked as 'bad'
+and excluded from the coadds by our manual QA process.\footnote{A
+  further 390 were marked as `Questionable'. This population were then
+  examined further, and it was felt that these were all of high enough
+  quality to include.}
+
+
+\begin{table}
+  \caption{Number and length of observations from various different
+    categories of projects included in the coadded tiles in this
+    release. \label{tab:obsnum}}
+{\centering
+\begin{tabular}{l r r r r}
+  \hline
+  Project Type &
+  \multicolumn{1}{p{0.7cm}}{Num. obs.} &
+  \multicolumn{1}{p{0.7cm}}{Obs. Time \newline(hrs)} &
+  \multicolumn{1}{p{2.0cm}}{%
+Percent of total obs.\ time\textsuperscript{*}}\\
+
+  \hline
+
+  All                      & 5115 & 2261 & 37\%   \\\\
+  Calibrations             & 1103 &   81 & 52\%   \\\\
+  Legacy Surveys (total)   & 1497 &  894 & 24\%   \\\\
+
+  \hspace{0.5cm} CLS       & 0    &    0 &  0\%   \\
+  \hspace{0.5cm} DDS/SONS  & 446  &  235 & 75\%   \\
+  \hspace{0.5cm} GBS       & 342  &  236 & 57\%   \\
+  \hspace{0.5cm} JPS       & 228  &  150 & 32\%   \\
+  \hspace{0.5cm} NGS       & 169  &   68 & 38\%   \\\\
+
+  Other projects  (total)  & 2459 & 1292 & 54\%   \\\\
+
+  \hspace{0.5cm} Univ.~Hawaii   & 592 & 322 &  47\% \\
+  \hspace{0.5cm} UK             & 956 & 524 &  58\% \\
+  \hspace{0.5cm} Netherlands    & 161 &  45 & 100\%\\
+  \hspace{0.5cm} Canada         & 497 & 359 &  75\%\\
+  \hspace{0.5cm} International\textsuperscript{**}
+                                 &35  &  19 &   9\%\\
+  \hspace{0.5cm} Service        &   8 &   5 &  20\%\\
+  \hspace{0.5cm} Directors      &  61 &  36 & 62\% \\
+  \hspace{0.5cm} Staff Time     &  71 &  29 & 100\%\\
+  \hline
+\end{tabular}\\}
+{\noindent\scriptsize \textsuperscript{*} The percentage of all SCUBA-2 time (from that type of project) which is included in the coadds. The calculation of total time for a given type of project does not include observations of moving targets, engineering observations, pointings or any non-science observations; it also does not filter out any observing time that is flagged as JUNK or BAD. }
+
+{\noindent\scriptsize \textsuperscript{**} Includes shared risk observations.}
+\end{table}
+
+\todo{ 1 more observation (JCMTCAL twoards CRL618) that won't reduce
+  at the moment and should really be fixed, and coadd
+  updated.. JobNumber 5804}
 
 \note{What fraction of those JLS projects are
   included? Maybe a table? Are UH data included?}
