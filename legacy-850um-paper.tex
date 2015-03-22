@@ -19,6 +19,7 @@
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 \newcommand{\note}[1]{\textcolor{red}{Note: #1}}
 \newcommand{\ascl}[1]{\href{http://www.ascl.net/#1}{ascl:#1}}
+\newcommand{\status}[1]{\textsf{#1}}
 
 \title[SCUBA-2 850\um\ Legacy Release]%
 {The JCMT Legacy Release: SCUBA-2 850\bmicron\ observations}
@@ -178,7 +179,13 @@ Percent of total obs.\ time\textsuperscript{*}}\\
   \hspace{0.5cm} Staff Time     &  71 &  29 & 100\%\\
   \hline
 \end{tabular}\\}
-{\noindent\scriptsize \textsuperscript{*} The percentage of all SCUBA-2 time (from that type of project) which is included in the coadds. The calculation of total time for a given type of project does not include observations of moving targets, engineering observations, pointings or any non-science observations; it also does not filter out any observing time that is flagged as JUNK or BAD. }
+{\noindent\scriptsize \textsuperscript{*} The percentage of all
+  SCUBA-2 time (from that type of project) which is included in the
+  coadds. The calculation of total time for a given type of project
+  does not include observations of moving targets, engineering
+  observations, pointings or any non-science observations; it also
+  does not filter out any observing time that is flagged as
+  \status{JUNK} or \status{BAD} (these statuses are defined in \S\ref{sec:QA}). }
 
 {\noindent\scriptsize \textsuperscript{**} Includes shared risk observations.}
 \end{table}
@@ -297,26 +304,26 @@ tile is also produced.
 \section{QA}
 \label{sec:QA}
 \subsubsection{Standard JCMT QA States}
-All observations taken by the JCMT are classified as 'GOOD' (the
-default), 'BAD', 'QUESTIONABLE', 'JUNK' or 'REJECTED'. We included
-GOOD, QUESTIONABLE and REJECTED data in our co-adds. The REJECTED
+All observations taken by the JCMT are classified as \status{GOOD} (the
+default), \status{BAD}, \status{QUESTIONABLE}, \status{JUNK} or \status{REJECTED}. We included
+\status{GOOD}, \status{QUESTIONABLE} and \status{REJECTED} data in our co-adds. The \status{REJECTED}
 state is used by the JLS teams to indicate that a particular
 observation did not meet their particular QA criterion but the data
-are otherwise usable. The QUESTIONABLE
+are otherwise usable. The \status{QUESTIONABLE}
 state was originally designed to be a transient state that would be
-resolved into either BAD or GOOD after analysis, but in practical
+resolved into either \status{BAD} or \status{GOOD} after analysis, but in practical
 terms there was not a work flow to ensure this, so some observations
 have this flag in the archive.
 
-Usually (in the standard nightly reduction pipelines) QUESTIONABLE
-data is treated as if it is BAD for the purposes of co-adds. However,
+Usually (in the standard nightly reduction pipelines) \status{QUESTIONABLE}
+data is treated as if it is \status{BAD} for the purposes of co-adds. However,
 due to our second QA stage for this release, we chose to include it as
 long as it passed our special legacy QA.
 
 \subsection{Legacy Release QA}
 %Description of process. Examples of observations we threw out.
 
-Every reduced file included in this has been marked as GOOD by a
+Every reduced file included in this has been marked as \status{GOOD} by a
 member of the JAC team. This quick 'by-eye' assessment was simply done
 on a image of the reduced map. This QA process was designed to avoid:
 a) `blooms' or `blobs' of fake emission that can sometimes be produced
