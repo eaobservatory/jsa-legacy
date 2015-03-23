@@ -1,0 +1,90 @@
+# Script to identify numbers of observations and amounts of time on
+# sky for the SCUBA-2 850um Legacy Release r1, categorised by their
+# original project types.
+
+# This runs against the jsa_proc database, so will definitely find
+# only things we are including in the release.
+
+# Command to run it is:
+# cat ~/get_legacyrelease_times.sh | mysql -B -h kamaka jsa_proc -u <username with read access to jsa_proc> -p > legacy_release_times.txt
+
+#If this ever needs to be used again it should really be tidied up.
+
+# SF Graves March 2015.
+
+select 'ALL' as `TYPE`, count(*) as `NumObs`, sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z')
+
+UNION ALL
+
+# Note that EC05 is included in calibrations
+select 'CALIB', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project='JCMTCAL' or obs.project='CAL' or obs.project like 'M%EC05')
+
+UNION ALL
+
+select 'All JLS', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project like 'MJLS%')
+
+UNION ALL
+
+select 'DDS', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project like 'MJLSD%')
+
+UNION ALL
+
+select 'GBS', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project like 'MJLSG%')
+
+UNION ALL
+
+select 'JPS', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project like 'MJLSJ%')
+
+UNION ALL
+
+select 'NGS', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project like 'MJLSN%')
+
+UNION ALL
+
+select 'SASSY', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project like 'MJLSY%')
+
+UNION ALL
+
+
+select 'OTHER', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL')
+
+UNION ALL
+
+# note that UH queue has letters at end of project code, so explicitly
+# exclude UH projects from other queries (should only affect Canada and DDT in
+# practice).
+select 'Can.', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%C%' and obs.project not like 'M%H%'
+
+UNION ALL
+
+select 'DDT', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%D%' and obs.project not like 'M%H%'
+
+
+
+UNION ALL
+
+select 'GT', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%GT%' and obs.project not like 'M%H%'
+
+UNION ALL
+
+select 'Int', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%I%' and obs.project not like 'M%H%'
+
+UNION ALL
+
+select 'NL', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%N%' and obs.project not like 'M%H%'
+
+UNION ALL
+
+select 'SERVICE', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'S%' and obs.project not like 'M%H%'
+
+UNION ALL
+
+select 'Staff', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%J%' and obs.project not like 'M%H%'
+
+UNION ALL
+
+select 'UH', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%H%'
+
+UNION ALL
+
+select 'UK', count(*), sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z') and (obs.project not like 'MJLS%' and obs.project not like 'M%EC05' and obs.project != 'CAL' and obs.project != 'JCMTCAL') and obs.project like 'M%U%' and obs.project not like 'M%H%';

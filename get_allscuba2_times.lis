@@ -1,0 +1,169 @@
+# Commands to get time spent in SCUBA-2 Science Observations towards
+# non-moving targets, since the start of post-S2SRO observing with 4
+# subarrays per waveband.
+
+
+# There is presumably some way to get SYBASE to process this file
+# without copying and pasting into emsql, but isql doesn't appear to
+# be working for me and I don't want to bother writing a Perl script
+# for a run-once script.
+
+# I run when SCUBA-2 observations have restarted after the march 2015
+#  shutdown this will require a utdate <=20150301 to replicate these
+#  results.
+
+# requires:
+#  use JCMT;
+
+select 'ALL' as TYPE, sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0) as TIME_HRS_
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+
+UNION
+
+select 'CAL', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and (project='JCMTCAL' or project='CAL' or project like 'M%EC05')
+
+UNION
+
+select 'JLS_ALL', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLS%'
+
+UNION
+
+select 'CLS', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLSC%'
+
+UNION
+
+select 'DDS', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLSD%'
+
+UNION
+
+select 'GBS', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLSG%'
+
+UNION
+
+select 'JPS', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLSJ%'
+
+UNION
+
+select 'NGS', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLSN%'
+
+UNION
+
+select 'SASSY', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project LIKE 'MJLSY%'
+
+
+UNION
+
+select 'PI_ALL', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202 and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    AND project NOT LIKE 'MJLS%' AND project != 'CAL' AND project != 'JCMTCAL' AND project not like 'M%EC05'
+
+UNION
+
+SELECT 'Canada', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%C%'
+
+
+UNION
+
+SELECT 'DDT', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%D%'
+
+UNION
+
+SELECT 'GT', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%GT%'
+
+UNION
+
+SELECT 'Int.', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%I%'
+
+UNION
+
+SELECT 'NL', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%N%'
+
+UNION
+
+SELECT 'Service', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'S%'
+
+UNION
+
+SELECT 'Staff', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%J%'
+
+UNION
+
+SELECT 'UH', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project like 'M%H%'
+
+UNION
+
+SELECT 'UK', sum(DATEDIFF(SECOND,date_obs, date_end))/(60.0*60.0)
+  from COMMON
+  where instrume='SCUBA-2' and obs_type='science' and utdate >= 20110202
+    and moving_target=0 and (project not like 'M%EC%' or project like 'M%EC05')
+    and project != 'JCMTCAL' and project not like 'MJLS%' and project != 'CAL' and project not like 'M%EC05'
+    and project not like 'M%H%' and project like 'M%U%'
+
+
+;

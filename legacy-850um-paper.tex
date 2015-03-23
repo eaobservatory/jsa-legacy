@@ -145,49 +145,58 @@ and excluded from the coadds by our manual QA process.\footnote{A
   \caption{Number and length of observations from various different
     categories of projects included in the coadded tiles in this
     release. \label{tab:obsnum}}
-{\centering
-\begin{tabular}{l r r r r}
-  \hline
-  Project Type &
-  \multicolumn{1}{p{0.7cm}}{Num. obs.} &
-  \multicolumn{1}{p{0.7cm}}{Obs. Time \newline(hrs)} &
-  \multicolumn{1}{p{2.0cm}}{%
-Percent of total obs.\ time\textsuperscript{*}}\\
+  {\centering
+    \begin{tabular}{l r r r r}
+      \hline
+      Project Type &
+      \multicolumn{1}{p{0.7cm}}{Num. obs.} &
+      \multicolumn{1}{p{0.7cm}}{Obs. Time \newline(hrs)} &
+      \multicolumn{1}{p{2.0cm}}{%
+      Percent of total obs.\ time\textsuperscript{*}}\\
 
-  \hline
+      \hline
 
-  All                      & 5115 & 2261 & 37\%   \\\\
-  Calibrations             & 1103 &   81 & 52\%   \\\\
-  Legacy Surveys (total)   & 1497 &  894 & 24\%   \\\\
+      All                      & 5059 & 2261 & 38\%   \\\\
+      Calibrations             & 1153 &   81 & 54\%   \\\\
+      Legacy Surveys (total)   & 1477 &  894 & 24\%   \\\\
 
-  \hspace{0.5cm} CLS       & 0    &    0 &  0\%   \\
-  \hspace{0.5cm} DDS/SONS  & 446  &  235 & 75\%   \\
-  \hspace{0.5cm} GBS       & 342  &  236 & 57\%   \\
-  \hspace{0.5cm} JPS       & 228  &  150 & 32\%   \\
-  \hspace{0.5cm} NGS       & 169  &   68 & 38\%   \\\\
+      \hspace{0.5cm} CLS       &   0  &    0 &  0\%   \\
+      \hspace{0.5cm} DDS/SONS  & 444  &  235 & 75\%   \\
+      \hspace{0.5cm} GBS       & 338  &  236 & 57\%   \\
+      \hspace{0.5cm} JPS       & 223  &  150 & 32\%   \\
+      \hspace{0.5cm} NGS       & 168  &   68 & 38\%   \\
+      \hspace{0.5cm} SASSY     & 304  &  205 & 34\%   \\\\
 
-  Other projects  (total)  & 2459 & 1292 & 54\%   \\\\
+      Other projects  (total)  & 2429 & 1285 & 60\%   \\\\
 
-  \hspace{0.5cm} Univ.~Hawaii   & 592 & 322 &  47\% \\
-  \hspace{0.5cm} UK             & 956 & 524 &  58\% \\
-  \hspace{0.5cm} Netherlands    & 161 &  45 & 100\%\\
-  \hspace{0.5cm} Canada         & 497 & 359 &  75\%\\
-  \hspace{0.5cm} International\textsuperscript{**}
-                                 &35  &  19 &   9\%\\
-  \hspace{0.5cm} Service        &   8 &   5 &  20\%\\
-  \hspace{0.5cm} Directors      &  61 &  36 & 62\% \\
-  \hspace{0.5cm} Staff Time     &  71 &  29 & 100\%\\
-  \hline
-\end{tabular}\\}
-{\noindent\scriptsize \textsuperscript{*} The percentage of all
-  SCUBA-2 time (from that type of project) which is included in the
-  coadds. The calculation of total time for a given type of project
-  does not include observations of moving targets, engineering
-  observations, pointings or any non-science observations; it also
-  does not filter out any observing time that is flagged as
-  \status{JUNK} or \status{BAD} (these statuses are defined in \S\ref{sec:QA}). }
+      \hspace{0.5cm} Canada         & 490 & 253 &  75\% \\
+      \hspace{0.5cm} Directors      &  57 &  57 &  60\% \\
+      \hspace{0.5cm} Guaranteed Time&  79 &  54 &  96\% \\
+      \hspace{0.5cm} International  &  35 &  19 &  57\% \\
+      \hspace{0.5cm} Netherlands    & 161 &  45 & 100\% \\
+      \hspace{0.5cm} Service        &   8 &   5 &  19\% \\
+      \hspace{0.5cm} Staff Time     &  71 &  29 & 100\% \\
+      \hspace{0.5cm} Univ.~Hawaii   & 586 & 322 &  48\% \\
+      \hspace{0.5cm} UK             & 942 & 524 &  58\% \\
 
-{\noindent\scriptsize \textsuperscript{**} Includes shared risk observations.}
+      \hline
+
+    \end{tabular}\\
+  }
+  {\noindent\scriptsize \textsuperscript{*} The percentage of all
+    SCUBA-2 time (from that type of project) which is included in the
+    coadds. The calculation of total time for a given type of project
+    does not include observations of moving targets, engineering
+    observations, pointings or any non-science observations; it also
+    does not filter out any observing time that is flagged as
+    \status{JUNK} or \status{BAD} (these statuses are defined in
+    \S\ref{sec:QA}). Observations from the period of shared risk
+    observing (when there was only one sub array per waveband instead
+    of four) were excluded from the comparison. The comparison
+    includes all other data taken before the handover of operations to
+    East Asian Observatories on 1 March 2015. This includes all data
+    taken for the JCMT Legacy Surveys. }
+
 \end{table}
 
 \todo{ 1 more observation (JCMTCAL twoards CRL618) that won't reduce
