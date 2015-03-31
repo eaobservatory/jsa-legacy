@@ -229,29 +229,57 @@ and excluded from the coadds by our manual QA process.\footnote{A
 
 
 \section{HEALPix grid }
-Require a fixed tiling and grid to reduce our data onto, as we want to
-be able to incorporate all data current and future into this
-method. The chosen grid is that of the HEALPix method (Hierarchical
-Equal Area isoLatitude pixelation), commonly used in cosmological
-fields. This has the advantage that all pixels have the same area. The
-trade off is that the pixels do not have the same size in RA and Dec.
 
-\todo{GSB: Insert Brief Description of healpix, advantages and
-  disadvantages and why it was chosen }
+One aspect of the goal of producing a uniform reduction of all public
+data is the requirement for a suitable scheme for dividing the
+sky into tiles to act as the basis by which the data products
+are distributed.
+The scheme needed to be well defined in advance, without
+reference to the position of existing observations,
+for consistency and in order to be able to easily incorporate
+further data as they become public.
+The tiling scheme which was chosen is that offered by
+HEALPix \citep[Hierarchical Equal Area isoLatitude Pixelization,][]{Gorski2005},
+commonly used in cosmological fields.
+The HEALPix system starts by dividing the sky into 12 facets,
+and then recursively divides these cells in four at
+each higher resolution level.
+There are two standard numbering schemes used with HEALPix,
+of which the ``nested'' scheme has been used to label tiles in this release,
+for convenince with the HPX projection
+and compatability with Virtual Observatory systems such as
+MOC \citep[Multi-Order Coverage,][]{2013ASPC..475..135F}.
+
+Pixels within the individual tiles also use the HEALPix grid,
+which ensures that the pixelization is continous between
+each tile and the adjacent tiles.
+This has the advantage that the tiles can be joined simply
+by abutting them.
+This is done via the HPX projection \citep{Calabretta2007}
+which allows the the HEALPix grid to be used
+for conventional 2D FITS images.
+
+While HEALPix has the advantage that all pixels have the same area,
+the trade off is that the pixels are not all square:
+they can vary in width and height while maintaining the constant area.
+There are also discontinuities in the angle of the grid lines at
+some facet boundaries.
+This is largely a display problem, since while image viewers
+with a modern WCS implementation should be able to handle
+files in the HPX projection, the grid lines,
+and therefore astronomical sources also,
+bend at these positions.
 
 \todo{Create plots illustrating healpix}.
 
-\todo{list parameters we have used}.
+\todo{list parameters we have used}. \\
+Tile size: $\sim$ 1\degr \\
+Pixels per tile: 1024 $\times$ 1024 \\
+Pixel size: $\sim$ 3.22\arcsec
 
 \footnote{To re-grid a HEALPix tile onto a standard RA-Dec projection,
   the Starlink \textsc{smurf} command \texttt{jsajoin} can be used
   \citep[][\ascl{1310.007}]{SUN258}.}
-
-The Main HEALPix reference is \citep{Gorski2005}
-
-Also see: ``Mapping on the HEALPix grid'' is \citep{Calabretta2007}
-
-
 
 \section{SCUBA-2 data reduction}
 Although all the JCMT observations were already being run through an
