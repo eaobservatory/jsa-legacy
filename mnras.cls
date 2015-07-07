@@ -1,15 +1,18 @@
-% MNRAS journal document class file
-% v2.3beta for LaTeX 2e
+% mnras.cls
 %
-% Copyright (C) Royal Astronomical Society 2013, Blackwell Science 2001,
+% MNRAS journal document class file
+% v3.0beta for LaTeX 2e
+%
+% Copyright (C) Royal Astronomical Society 2015, Blackwell Science 2001,
 % Cambridge University Press 1994
 %
 % Authors:
 % David Rhead, Springer Verlag, M. Reed, Sue Brooks, Alison Woollatt,
-% Mark Reed, Nadine Thompson, John Thompson, David Evans, Keith Smith,
+% Mark Reed, Nadine Thompson, John Thompson, David Evans, Keith T. Smith,
 % Norman Gray
 %
 % For a full change log see the end of this file.
+% See mnras_guide for a user guide
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -29,11 +32,11 @@
 
 % Preamble to this style file
 
-\def\@version{2.3beta}
-\def\@releasedate{2013/09/06}
+\def\@version{3.0beta}
+\def\@releasedate{2015/05/14}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mn2e}[\@releasedate\ v\@version\ LaTeX2e MNRAS document class]
+\ProvidesClass{mnras}[\@releasedate\ v\@version\ LaTeX2e MNRAS document class]
 
 \typeout{MNRAS document style v\@version, released \@releasedate}
 
@@ -102,10 +105,10 @@
 
 % Throw warning if the user tries to use US Letter paper
 \newif\if@letterpaper
-\def\ds@letterpaper{\PackageWarning{mn2e}{MNRAS uses A4 paper, option 'letterpaper' is ignored}}
+\def\ds@letterpaper{\PackageWarning{mnras}{MNRAS uses A4 paper, option 'letterpaper' is ignored}}
 
 % Error message for unknown options
-\DeclareOption*{\PackageWarning{mn2e}{Unknown option `\CurrentOption'}}
+\DeclareOption*{\PackageWarning{mnras}{Unknown option `\CurrentOption'}}
 
 \ProcessOptions\relax
 
@@ -454,10 +457,7 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 \else{\ooalign{\hfil/\hfil\crcr\mathhexbox20D}}%
 \fi}}
 
-\newcommand\sq{\ifmmode\squareforqed\else{\unskip\nobreak\hfil
-\penalty50\hskip1em\null\nobreak\hfil\squareforqed
-\parfillskip=0pt\finalhyphendemerits=0\endgraf}\fi}
-\newcommand\squareforqed{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\newcommand\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
 
 \newcommand{\romn}[1] {{\mathrm #1}}
 
@@ -472,8 +472,8 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 \newcommand\arcmin{\hbox{$^\prime$}}
 \newcommand\arcsec{\hbox{$^{\prime\prime}$}}
 
-\def\micron{\hbox{$\umu$m}}
-\def\ion#1#2{\text{#1\,\textsc{\lowercase{#2}}}}	% ionization states
+\newcommand\micron{\hbox{$\umu$m}}
+\newcommand\ion[2]{\text{#1\,\textsc{\lowercase{#2}}}}	% ionization states
 
 % Standard journal abbreviations
 % Mostly as used by ADS, with a few additions for journals where MNRAS does not
@@ -498,6 +498,8 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 %\newcommand\apspr{Astrophys.~Space~Phys.~Res.} % Astrophysics Space Physics Research
 \newcommand\apss{Ap\&SS}             % Astrophysics and Space Science
 \newcommand\araa{ARA\&A}             % Annual Review of Astronomy and Astrophysics
+\newcommand\arep{Astron. Rep.}       % Astronomy Reports
+\newcommand\aspc{ASP Conf. Ser.}     % ASP Conference Series
 \newcommand\azh{Azh}                 % Astronomicheskii Zhurnal
 \newcommand\baas{BAAS}               % Bulletin of the American Astronomical Society
 \newcommand\bac{Bull. Astron. Inst. Czechoslovakia} % Bulletin of the Astronomical Institutes of Czechoslovakia 
@@ -529,7 +531,7 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 \newcommand\prd{Phys. Rev.~D}        % Physical Review D
 \newcommand\pre{Phys. Rev.~E}        % Physical Review E
 \newcommand\prl{Phys. Rev.~Lett.}    % Physical Review Letters
-\newcommand\pasa{PASA}               % Publications of the Astronomical Society of Australia
+\newcommand\pasa{Publ. Astron. Soc. Australia}  % Publications of the Astronomical Society of Australia
 \newcommand\pasp{PASP}               % Publications of the Astronomical Society of the Pacific
 \newcommand\pasj{PASJ}               % Publications of the Astronomical Society of Japan
 \newcommand\physrep{Phys.~Rep.}      % Physics Reports
@@ -546,7 +548,7 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 \newcommand\zap{Z.~Astrophys.}       % Zeitschrift fuer Astrophysik
 
 %%%Command to produce a box around selected text
-%%%NB This is for use in the file mnguide only -- it is NOT
+%%%NB This is for use in the file mnras_guide only -- it is NOT
 %%%    to be used in the journal
 \newcommand{\boxit}[1]{%
  \noindent\fbox{%
@@ -662,14 +664,7 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 % Sometimes people want to number equations by section, rather than
 % sequentially through the whole paper.
 
-\newcommand\eqsecnum{
-    \@newctr{equation}[section]
-   \def\theequation{\normalsize\mbox{\arabic{section}.\arabic{equation}}}}
-
-\newcommand\eqsubsecnum{
-    \@newctr{equation}[subsection]
-    \def\theequation{\normalsize%
-    \mbox{\arabic{section}.\arabic{subsection}.\arabic{equation}}}}
+% Removed - \numberwithin{equation}{section} already does this!
 
 %  ****************************************
 %  *                PARTS                 *
@@ -822,6 +817,7 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
  \renewcommand\theequation{\thesection\arabic{equation}}
   \renewcommand\thefigure{\thesection\@arabic\c@figure}
   \renewcommand\thetable{\thesection\@arabic\c@table}
+  \renewcommand{\theHsection}{A\arabic{section}} % for hyperref links
 }
 
 %  ****************************************
@@ -1214,35 +1210,33 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 \def\ps@headings{\let\@mkboth\markboth
  \def\@oddhead{\Large\hfill{\it\@shorttitle}\hspace{1.5em}%
    \rm\@ddell\thepage}
- \def\@oddfoot{\small\copyright\ \@pubyear\ RAS, MNRAS {\bf \@volume}, \@pagerange\hfil}
+ \def\@oddfoot{\small MNRAS {\bf \@volume}, \@pagerange\ (\@pubyear)\hfil}
  \def\@evenhead{\Large\@ddell\thepage\hspace{1.5em}\it\@shortauthor\hfill}
- \def\@evenfoot{\hfil\small\copyright\ \@pubyear\ RAS, MNRAS {\bf \@volume}, \@pagerange}
+ \def\@evenfoot{\hfil\small MNRAS {\bf \@volume}, \@pagerange\ (\@pubyear)}
  \def\sectionmark##1{\markboth{##1}{}}
  \def\subsectionmark##1{\markright{##1}}}
 
 \def\ps@myheadings{\let\@mkboth\@gobbletwo
  \def\@oddhead{\Large\hfill\it\rightmark\hspace{1.5em}\rm\@ddell\thepage}
- \def\@oddfoot{\small\copyright\ \@pubyear\ RAS, MNRAS {\bf \@volume}, \@pagerange\hfil}
+ \def\@oddfoot{\small MNRAS {\bf \@volume}, \@pagerange\ (\@pubyear)\hfil}
  \def\@evenhead{\Large\@ddell\thepage\hspace{1.5em}\it\leftmark\hfill}
- \def\@evenfoot{\hfil\small\copyright\ \@pubyear\ RAS, MNRAS {\bf \@volume}, \@pagerange}
+ \def\@evenfoot{\hfil\small MNRAS {\bf \@volume}, \@pagerange\ (\@pubyear)}
  \def\sectionmark##1{}
  \def\subsectionmark##1{}}
 
 \def\ps@titlepage{\let\@mkboth\@gobbletwo
  \def\@oddhead{\footnotesize\@journal}
- \def\@oddfoot{\small\copyright\ \@pubyear\ RAS\hfil}
+ \def\@oddfoot{\small\copyright\ \@pubyear\ The Authors\hfil}
  \def\@evenhead{\footnotesize\@journal\hfill}
- \def\@evenfoot{\hfil\small\copyright\ \@pubyear\ RAS}
+ \def\@evenfoot{\hfil\small\copyright\ \@pubyear\ The Authors}
  \def\sectionmark##1{}
  \def\subsectionmark##1{}}
 
 \def\ps@plate{\let\@mkboth\@gobbletwo
   \def\@oddhead{\footnotesize\pl@te\hfill}
-  \def\@oddfoot{\small\copyright\ \@pubyear\ RAS, MNRAS {\bf \@volume},
-    \@pagerange\hfil}
+  \def\@oddfoot{\small MNRAS {\bf \@volume}, \@pagerange\ (\@pubyear)\hfil}
   \def\@evenhead{\footnotesize\pl@te\hfill}
-  \def\@evenfoot{\hfil\small\copyright\ \@pubyear\ RAS, MNRAS {\bf \@volume},
-    \@pagerange}
+  \def\@evenfoot{\hfil\small MNRAS {\bf \@volume}, \@pagerange\ (\@pubyear)}
 }
 
 %  ****************************************
@@ -1348,16 +1342,21 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
  \newcolumntype{,}{D{,}{,}{2}}
 \fi
 
+
+%  ****************************************
+%  *    COMMANDS FOR USE WITH MNRAS.BST    *
+%  ****************************************
+%
 % The following three macros provide auxiliary support for the BibTeX
-% wranglings in mn2e.bst.  They provide support for functionality
+% wranglings in mnras.bst.  They provide support for functionality
 % which it is impossible, or at least unmaintainably arcane, to
 % provide within BibTeX Style Language.
 %
 % These definitions can be loaded as a package or, probably better,
-% should be incorporated into a mn2e.cls file.
+% should be incorporated into a mnras.cls file.
 %
 % These depend on the presence of a \href{URL}{text} macro, as
-% provided by the hyperref package.  The mn2e.bst style depends
+% provided by the hyperref package.  The mnras.bst style depends
 % additionally on the \url{URL} macro, which hyperref also provides.
 %
 % If the hyperref package is not included, then suitable defaults are
@@ -1370,11 +1369,6 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 % _instead_ of loading the hyperref package (it'll probably be OK to
 % let the hyperref package redefine these, but that is to tempt fate).
 
-
-%  ****************************************
-%  *    COMMANDS FOR USE WITH MN2E.BST    *
-%  ****************************************
-%
 
 % \@urlcharsother
 %
@@ -1461,12 +1455,12 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 
 % \mniiiauthor
 %
-% The following implements the three-author-hack described in mn2e.bst.
+% The following implements the three-author-hack described in mnras.bst.
 %
 % This consumes a command for each such author.  It's surely possible
 % to avoid this (with some constructions involving {\\#1}; see
 % Appendix D cleverness), but that would verge on the unmaintanably
-% arcane, and not be really worth it.
+% arcane, and not really be worth it.
 \def\mniiiauthor#1#2#3{%
   \@ifundefined{mniiiauth@#1}
     {\global\expandafter\let\csname mniiiauth@#1\endcsname\null #2}
@@ -1520,6 +1514,7 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 %  *         FIGURES AND TABLES           *
 %  ****************************************
 %
+% Settings for how much of the page can be used for floats
 \setcounter{topnumber}{4}
 \def\topfraction{0.9}
 \setcounter{bottomnumber}{2}
@@ -1609,6 +1604,8 @@ $\reset@font\displaystyle##$\hfil\cr>\cr\approx\cr}}}
 %  *           CUP specials               *
 %  ****************************************
 %
+% KTS: I'm not convinced that any of these are still used, but will avoid
+% deleting them just in case.
 %
 %  The following code is taken from authordate.sty, by David Rhead, of
 %  the Cripps Computing Centre (February 1990), with some modifications
@@ -1788,8 +1785,9 @@ has been typeset from a \TeX/\LaTeX\ file prepared by the author.}
 %           NHT 1999 Dec 23. \la and \ga symbols fixed. Bug in displaying
 %           author names and addresses fixed. Problem in producing footnotes
 %           in minipages fixed.
-% v2.3     Keith Smith (Royal Astronomical Society)
+% v2.3b    Keith T. Smith (Royal Astronomical Society)
 %          September 2013
+%          Beta testing only - never publicly released
 %          First update in over a decade
 %          Now requires the 'geometry' package to enforce A4 paper
 %          Now requires the 'fixltx2e' package to fix float ordering
@@ -1798,8 +1796,14 @@ has been typeset from a \TeX/\LaTeX\ file prepared by the author.}
 %          Removed the fleqn code in this file, which didn't do anything
 %          Added definitions for journal abbreviations used by ADS
 %          Define a \ion command for ionization states
-%          Added commands used by the new version of the .bst file (code by Norman Gray)
+%          Added commands used by the new version 
+%            of the .bst file (code by Norman Gray)
 %          Now licensed under LPPL, comments updated accordingly
 %          Various minor tweaks and updates
+% v3.0  Keith T. Smith (Royal Astronomical Society)
+%         May 2015
+%         Package renamed from 'mn2e' to 'mnras' after
+%           discussion with the TeX Users Group
+%         Numerous small tweaks and improvements following testing
 
-% end of mn2e.cls
+% end of mnras.cls
