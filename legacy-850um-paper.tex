@@ -385,27 +385,81 @@ version tagged as '2015A-legacy' release.\footnote{(See
 
 
 \subsection{Details of our chosen configuration file}
-HARRIET AND DAVID to WRITE THIS PROPERLY aND CHECK I HAVEN't MADE ANY MISTAKES!
 
-See appendix \ref{app:config} for the full configuration file. Some of
-the most important details are described below:
+\note{Harriet suggests we might want an additional appendix, and the
+  following sentence in this paragraph ``An expanded explanation of
+  the SCUBA-2 mapmaker and its advances since Chapin et al. 2013 can
+  be found in appendix B." with additional information in an
+  appendix'').}
 
-Our mapmaker configuration first of all performs 5 iterations without
-creating an astronomical model of the source. \note{Harriet\&DSB: do
-  we have a short explanation of do we do this again?}. It will then
-perform up to 20 further iterations with all the models, but will exit
-before that point if the 'maptol' parameter has reached a mean value
-of 0.01.
 
-In order to decrease the production of fake 'blooms' of emission in
-the final map, we produce a separate COMMON mode model for each
-subarray (\texttt{com.perarray=1}). While this produces more reliable
-output (appropriate for this project which has comparatively minimal
-by eye checking of data), it has the effect of removing structure
-scales that are larger than the subarray size.
 
-\note{zero snr and zero snrlo: need a proper explanation for these}
-We also set the 'AST' and 'FLT' zero\_snr and zero\_snrlo values.
+For the exact configuration file used in the legacy reduction see
+appendix A. In this particular reduction, after the initial
+per-processing stage, the SCUBA-2 mapmaker recipe performs 5
+iterations of the reduction software in which the astronomical signal
+is retained rather than being removed (as in a normal iteration) prior
+to starting the next iteration (specified using \texttt{ast.skip=5}). These
+initial iterations allow the reduction process to focus on creating a
+mask that identifies any unusually bright region. This is useful since
+such regions may cause ringing in subsequent estimates of the low
+frequency noise in each bolometer. During these iterations "bright"
+pixels are taken to be those with a signal to noise ratio greater than
+5.0 (plus any other pixels that are attached contiguously to such
+pixels down the an snr of 3 (specified by using \texttt{flt.zero\_snr=5} and
+\texttt{flt.zero\_snrlo=3}).
+
+During all iterations an atmospheric correction is applied and data
+are filtered to remove any features on scales larger than 200". In
+addition to this a separate common mode model is produced for each
+subarray (specified with \texttt{com.perarray=1}). Having a separate common
+mode prevents artificial flux (also known as "fake blooms") being
+introduced into the map where the common modes vary significantly and
+are not well represented by a single common mode. The disadvantage
+with having a separate common mode for each subarray is that the
+reduction is limited to recovering emission structures that are on the
+same scale or less than the subarray size (approximately 200").
+
+After the initial five iterations the recipe then performs up to 20
+further iterations with all the models (specified by
+\texttt{numiter=-25}; the initial 5 iterations plus this additional 20
+iterations containing all models). Each of these remaining iterations
+removes the astronomical signal from the residuals prior to starting
+the next iteration. However, to prevent instabilities in the iterative
+process, this subtraction only occurs within regions corresponding to
+bright sources.  The mask identifying such sources is creating in the
+same way as the mask used by the low frequency noise filter ("FLT"
+model): source pixels are taken to be those with a signal to noise
+ratio greater than 5.0 (plus any other pixels that are attached
+contiguously to such pixels down the an snr of 3 (specified by using
+\texttt{ast.zero\_snr=5} and \texttt{ast.zero\_snrlo=3}).
+
+The map maker exits before the 20th iteration if the \texttt{maptol}
+parameter - the change between maps - has reached a mean value of 1\%
+of the noise level (specified by \texttt{maptol=0.01}).
+
+% HARRIET AND
+% DAVID to WRITE THIS PROPERLY aND CHECK I HAVEN't MADE ANY MISTAKES!
+
+% See appendix \ref{app:config} for the full configuration file. Some of
+% the most important details are described below:
+
+% Our mapmaker configuration first of all performs 5 iterations without
+% creating an astronomical model of the source. \note{Harriet\&DSB: do
+%   we have a short explanation of do we do this again?}. It will then
+% perform up to 20 further iterations with all the models, but will exit
+% before that point if the 'maptol' parameter has reached a mean value
+% of 0.01.
+
+% In order to decrease the production of fake 'blooms' of emission in
+% the final map, we produce a separate COMMON mode model for each
+% subarray (\texttt{com.perarray=1}). While this produces more reliable
+% output (appropriate for this project which has comparatively minimal
+% by eye checking of data), it has the effect of removing structure
+% scales that are larger than the subarray size.
+
+% \note{zero snr and zero snrlo: need a proper explanation for these}
+% We also set the 'AST' and 'FLT' zero\_snr and zero\_snrlo values.
 
 Figure \ref{fig:crl618-example} shows a reduction of a single
 observation towards a standard calibrator, reduced using both the
