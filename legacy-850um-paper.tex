@@ -22,12 +22,12 @@
 \newcommand{\status}[1]{\textsf{#1}}
 
 \title[SCUBA-2 850\um\ Legacy Release]%
-{The JCMT Legacy Release: SCUBA-2 850\bmicron\ observations}
+{The JCMT Legacy Release 1: SCUBA-2 850\bmicron\ observations}
 
 \author[S.~F.~Graves et~al.]
 {Sarah~F.~Graves,$^{1,2}$
 Graham~S.~Bell,$^{1,2}$
-JAC
+JAC/EAO
 and
 Others.\\
 $^1$Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA\\
@@ -51,9 +51,10 @@ $^2$East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA
   all publicly available JCMT observations. To aid users of JCMT
   products, we have produced a standardised reduction of public JCMT
   SCUBA-2 850\,\um\ SCUBA-2 observations. These reductions provide
-  uniformly reduced co-additions of of all data that was public as of 2014 August
-  1, and catalogues to identify the regions where emission was
-  detected. The data have been gridded in the HEALPix HPX scheme.
+  uniformly reduced co-additions of of all standard, public data
+  observed before 2013 August 1st, as well as catalogues to identify
+  the regions where emission was detected. The data have been gridded
+  in the HEALPix HPX scheme.
 \end{abstract}
 
 \section{Introduction}
@@ -111,7 +112,7 @@ common molecular transitions.
 \subsection{Observations included in this release}
 % What data are included.
 
-This release includes publicly-released 850\,\um\ science observations
+This first release includes publicly-released 850\,\um\ science observations
 observed between 2011 February 2 and 2013 August 1. Observations from
 earlier than this were not included, as these were taken in
 \emph{shared risk} mode while instrument commissioning was still being
@@ -133,12 +134,12 @@ standardised configuration\footnote{and are available for interested
   parties to download from the JSA}, but have not been included in the
 co-added products (see \sref{sec:QA} for more detail on this).
 
-10686 observations were reduced, of which 5161 are non pointing
-observations included in these co-additions and classified as \emph{science}
-observations, and 5521 were pointing observations that were reduced
-but not coadded.  Of these \emph{science} observations, 49
-observations were marked as \status{BAD} and excluded from the co-additions
-by our manual QA process.\footnote{A further 390 were marked as
+In total, 10686 observations were reduced, of which 5161 are
+\emph{science} observations, and 5521 were \emph{pointing}
+observations (which were reduced but not coadded).  Of these
+\emph{science} observations, 49 observations were marked as
+\status{BAD} and excluded from the co-additions by our manual QA
+process.\footnote{A further 390 were marked as
   \status{QUESTIONABLE}. This population were then examined further,
   and it was felt that these were all of high enough quality to
   include.}
@@ -219,9 +220,9 @@ by our manual QA process.\footnote{A further 390 were marked as
   \label{fig:noise-aitoff}
 \end{figure*}
 
-5161 `science' observations were successfully reduced onto 2930
-distinct  tiles, and 5519 `pointing' observations were reduced
-individually onto 263 distinct HEALPix tiles.
+These 5161 \emph{science} observations were successfully reduced onto
+2930 distinct tiles, and 5519 \emph{pointing} observations were
+reduced individually onto 263 distinct HEALPix tiles.
 
 After excluding observations marked with a QA state of \status{BAD},
 co-addition of the remaining 5059 science observations produced 2849
@@ -237,6 +238,7 @@ detected emission in 2.91E-4 steradians (0.96 square degrees, or 0.12
 per cent of the observed area) of the co-adds.
 
 \subsection{Noise statistics}
+\todo{Recalculate with final released maps, and check for errors}
 
 Because the observations used here are from a wide variety of projects
 aiming for a variety of noise levels, our noise maps are extremely
@@ -342,15 +344,16 @@ astronomical sources also, bend at these positions.\footnote{If you
 
 \section{SCUBA-2 data reduction}
 SCUBA-2 observations are reduced using the Starlink SMURF programme
-'makemap'. In brief, this is an iterative process that divides the
-data set into various instrumental and astronomical signals. There are
-an extremely large number of user-adjustable parameters that can
+\texttt{makemap}. In brief, this is an iterative process that divides
+the data set into various instrumental and astronomical signals. There
+are an extremely large number of user-adjustable parameters that can
 affect the final map, depending on the science goals of the users and
 the structure of the astronomical emission observed. For example, a
 cosmologist interested in detecting only faint point sources in a
 primarily blank map would use a distinctly different set of parameters
-compared to a galactic astronomer looking at bright, extended and
-structurally complex emission from e.g. a molecular cloud. For full details on the SCUBA-2 map maker, please see \citet{Chapin2013}.
+from a galactic astronomer looking at bright, extended and
+structurally complex emission. For full details on the SCUBA-2 map
+maker, please see \citet{Chapin2013}.
 
 To guide astronomical users, the JCMT-supported Starlink software
 comes with a series of standard configuration files for a variety of
@@ -362,11 +365,10 @@ common science cases.
 These standard configs can produce very poor results when used on an
 inappropriate observation -- for example, the standard SCUBA-2 config
 used for calibrator observations is tuned to expect a bright, compact
-source at the centre of the map. If used by mistake on a blank
-field this recipe could easily create \emph{fake emission} in the form
-of large bloom-like structures. Avoiding this sort of erroneous result
-was the paramount consideration when selecting the configuration
-parameters.
+source at the centre of the map. If used by mistake on a blank field
+this recipe could easily create \emph{fake emission} in the form of
+large bloom-like structures. Avoiding this sort of error was the
+paramount consideration when selecting the configuration parameters.
 
 Given the nature of SCUBA-2 data reduction algorithms, the main focus
 in developing this \emph{legacy} configuration was on maximising the
@@ -375,13 +377,13 @@ expense of not attempting to recover large scale structures.
 
 % What version of the Starlink software was used to make this data
 % release?
-These observations were reduced using Starlink, starjava and ORAC-DR
+These observations were reduced using Starlink, Starjava and ORAC-DR
 software developed between versions 2014A and 2015A. Interested
-parties seeking to replicate these results can do so by using the STAR
-version tagged as '2015A-legacy' release.\footnote{(See
+parties seeking to replicate these results can do so by checking out the
+version of the code tagged as '2015A-legacy' release in the Starlink code repositories\footnote{(See
   https://github.com/Starlink/starlink,
   https://github.com/Starlink/starjava and
-  https://github.com/Starlink/ORAC-DR).}
+  https://github.com/Starlink/ORAC-DR).}.
 
 
 \subsection{Details of our chosen configuration file}
@@ -488,7 +490,7 @@ on the tangent plane projection.
 
 Figure \ref{fig:omc1-example} shows a reduction of a single
 observation towards the complex, bright and extended OMC-1
-region. This\todo{ Should this have a comparison with e.g. a GBS
+region. \todo{ Should this have a comparison with e.g. a GBS
   reduction of this region, to show the difference in size scales? Or leave that for later}.
 
 \begin{figure}
@@ -785,7 +787,9 @@ local maxima within a complex molecular cloud. The 'clump outlines'
 produced by software such as CUPID always reflect the arbitrarily
 chosen boundaries of dips and minimum heights, and should not be
 assumed to represent physical objects without considerable further
-modelling (\todo{SFG:Cite and further discuss the various papers highlighting the problems in clump numerology -- list is on laptop}.)
+modelling (\todo{SFG:Cite and further discuss the various papers
+  highlighting the problems in clump numerology -- list is on
+  laptop}.)
 
 
 
