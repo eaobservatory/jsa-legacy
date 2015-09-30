@@ -578,13 +578,109 @@ available data themselves.
   calibrators?.
 \end{itemize}
 
+The calibration of these data follows the approach used in the
+standard SCUBA-2 calibration paper \citep{Dempsey2013}. In brief, a
+Flux Conversion Factor (FCF) is derived from observations of standard
+calibrators of known brightnesses, which is then used to convert from
+the instrumental units of pW into astronomical units. For the
+JCMT-LR1, an average FCF was derived for the standard calibration
+observations taken in our time period and reduced with the legacy
+configuration described above.  The reductions of each observation
+were left in the instrumental pW units, and the FCF correction was
+applied to the coadded tiles to produce units of
+mJy\,arcsec$^{-2}$. For more information about FCFs and their
+derivation, please see \citet{Dempsey2013}.
 
-We calibrated our data into units of mJy arcsec$^{-2}$, using
-the standard FCF values from \citet{Dempsey2013}.  As the effective
-beam size is increased during the co-add procedure (due to errors in
-the pointing between different maps), and the choice of pixel size
-will also affect the effective beam size of the final map, we have
-chosen not to try and calibrate into units of the beam.
+Three commonly used SCUBA-2 calibrators have been analysed to derive
+an appropriate arcsecond FCF for this data set. These are Uranus,
+CRL\,618 and CRL\,2688. Note that the Uranus calibration observations
+are not part of the standard legacy release themselves, as
+observations of moving targets were not included in this release.
+
+An arcsecond FCF was derived for the JCMT-LR1 850\,\micron\ reduction
+of each calibration observation towards these three
+sources.\footnote{Observations that had been marked as poor quality
+  during QA were not included in the following analysis.}  The Uranus
+observations from the time period covered by this release had been
+separately reduced using the same SCUBA-2 configuration and pixel
+size, but not onto a HEALPix grid due to being a moving target. The
+PICARD\footnote{\url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun65.htx/sun265.html?xref_}}
+recipe SCUBA2\_CHECK\_CAL\footnote{see
+  \url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun265.htx/sun265.html?xref_SCUBA2_CHECK_CAL}}
+was used to derive this arcsecond FCF.
+
+The mean and standard deviation of the derived FCFs were calculated,
+using a 5-sigma clipped mean to remove extreme outliers. This removed
+observations with an FCF higher than 3.17 and lower than 1.78 (see
+Fig.~\ref{fig:calibhist}). The final average value is:
+
+\begin{equation}
+\mathrm{FCF}_{\mathrm{arcsec},850} = 2.47 \pm 0.14\ \mathrm{Jy}\ \mathrm{pW}^{-1}\  \mathrm{arcsec}^{-2}.
+\end{equation}
+
+The coadds in this release were calibrated using this mean FCF.  This
+standard deviation represents a 1-$\sigma$ uncertainty of
+approximately 6 percent. All coadds were calibrated using the same
+FCF. If it is wished to undo the calibration and redo with a different
+value, please simply divide the data set by this FCF, and then
+recalibrate using the FCF of your choice. Similarly, this can be done
+with any flux values quoted in the catalogues derived from the
+coadds. A PICARD recipe (SCUBA2\_UNCALIBRATE\_DATA\footnote{see
+  \url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun265.htx/sun265.html?xref_SCUBA2_UNCALIBRATE_DATA}})
+is also provided as a convenience -- this will set the appropriate
+units within the dataset.
+
+For comparison, the usual `canonical' 850\,\micron\ arcsecond FCF used
+in the JCMT's nightly reductions is
+$2.34 \pm 0.08 \mathrm{Jy}\ \mathrm{pW}^{-1}\ \mathrm{arcsec}^{-2}$
+\citep{Dempsey2013}. This is approximately 5 percent lower than the
+value used here, and was derived using the `bright compact' SCUBA-2
+configuration on 1 arcsecond pixels (in comparison with the
+3.22$\times$3.22 arcsecond pixels in this release).
+
+To show the variation seen in the individual FCFs, we provide for
+reference plots of the histogram of the FCFS
+(Fig.~\ref{fig:calibhist}), the variation in FCF with Tau
+(Fig.~\ref{fig:calibvstau}) and the variation in FCF with date
+(Fig.~\ref{fig:calibvstime}). No correction to the FCF for Tau or date
+was made in this release.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{Legacy_calibration_histogram}
+  \caption{Histogram of FCFs, both for all sources (black) and
+    separately for each source. The mean FCF is shown as the vertical line. }
+  \label{fig:calibhist}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{Legacy_calibration_vstau}
+  \caption{Derived FCF values shown against the recorded 225 GHz tau
+    for all observations included here. The black line indicates the
+    mean FCF.}
+  \label{fig:calibvstau}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{Legacy_calibration_vsdate}
+  \caption{Derived FCF values shown against date of observation, for
+    all observations included here. The horizontal line indicates the mean FCF.}
+  \label{fig:calibvstime}
+\end{figure}
+
+\subsection{Uncertainty}
+
+The standard deviation of the sample of derived FCFs represents the
+minimum uncertainty in this calibration. In addition, we should take
+into account the standard error in the sub-mm flux of
+Uranus. \citet{Dempsey2013} quotes this as $\pm$ 5 percent. Taken
+together in quadrature, this gives an overall estimated error of
+$\pm$8 percent.
+
+
 
 \section{Noise}
 \begin{itemize}
