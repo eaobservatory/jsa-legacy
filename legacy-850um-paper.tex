@@ -136,7 +136,7 @@ co-added products (see \sref{sec:QA} for more detail on this).
 
 In total, 10686 observations were reduced, of which 5161 are
 \emph{science} observations, and 5521 were \emph{pointing}
-observations (which were reduced but not coadded).  Of these
+observations (which were reduced but not co-added).  Of these
 \emph{science} observations, 49 observations were marked as
 \status{BAD} and excluded from the co-additions by our manual QA
 process.\footnote{A further 390 were marked as
@@ -147,7 +147,7 @@ process.\footnote{A further 390 were marked as
 
 \begin{table}
   \caption{Number and length of observations from various different
-    categories of projects included in the coadded tiles in this
+    categories of projects included in the co-added tiles in this
     release. \label{tab:obsnum}}
   {\centering
     \begin{tabular}{l r r r}
@@ -189,7 +189,7 @@ process.\footnote{A further 390 were marked as
   }
   {\noindent\scriptsize \textsuperscript{*} The percentage of all
     SCUBA-2 time (from that type of project) which is included in the
-    coadds. The calculation of total time for a given type of project
+    co-adds. The calculation of total time for a given type of project
     does not include observations of moving targets, engineering
     observations, pointings or any non-science observations; it
     does not however filter out any observing time that is flagged as
@@ -244,7 +244,7 @@ Because the observations used here are from a wide variety of projects
 aiming for a variety of noise levels, our noise maps are extremely
 heterogenous. Figure~\ref{fig:noise-aitoff} shows the all-sky
 distribution of our noise maps. Table~\ref{tab:noises} shows the area
-of our coadds which has a noise level below various common
+of our co-adds which has a noise level below various common
 values. This is calculated by summing the number of
 pixels which have a noise value less than or equal to a given limit.
 
@@ -506,11 +506,11 @@ region. \todo{ Should this have a comparison with e.g. a GBS
 
 
 \subsection{Co-adding of tiles}
-All observations towards a given tile that passed QA were coadded,
+All observations towards a given tile that passed QA were co-added,
 using the \texttt{makemos} applications from Starlink's
-\texttt{ccdpack} \citep[][\ascl{1403.021}]{SUN139}. This coadding was
+\texttt{ccdpack} \citep[][\ascl{1403.021}]{SUN139}. This co-adding was
 carried out as a variance-weighted mean. No despiking was
-performed. The variance map for the coadded tile is also produced.
+performed. The variance map for the co-added tile is also produced.
 
 \todo{Picture of a coadded tile? Both data and noise. Pick something with Daisy and pongs in it, as a comparison.}
 
@@ -590,7 +590,7 @@ JCMT-LR1, an average FCF was derived for the standard calibration
 observations taken in our time period and reduced with the legacy
 configuration described above.  The reductions of each observation
 were left in the instrumental pW units, and the FCF correction was
-applied to the coadded tiles to produce units of
+applied to the co-added tiles to produce units of
 mJy\,arcsec$^{-2}$. For more information about FCFs and their
 derivation, please see \citet{Dempsey2013}.
 
@@ -621,14 +621,14 @@ Fig.~\ref{fig:calibhist}). The final average value is:
 \mathrm{FCF}_{\mathrm{arcsec},850} = 2.47 \pm 0.14\ \mathrm{Jy}\ \mathrm{pW}^{-1}\  \mathrm{arcsec}^{-2}.
 \end{equation}
 
-The coadds in this release were calibrated using this mean FCF.  This
+The co-adds in this release were calibrated using this mean FCF.  This
 standard deviation represents a 1-$\sigma$ uncertainty of
-approximately 6 percent. All coadds were calibrated using the same
+approximately 6 percent. All co-adds were calibrated using the same
 FCF. If it is wished to undo the calibration and redo with a different
 value, please simply divide the dataset by this FCF, and then
 recalibrate using the FCF of your choice. Similarly, this can be done
 with any flux values quoted in the catalogues derived from the
-coadds. A PICARD recipe (SCUBA2\_UNCALIBRATE\_DATA\footnote{see
+co-adds. A PICARD recipe (SCUBA2\_UNCALIBRATE\_DATA\footnote{see
   \url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun265.htx/sun265.html?xref_SCUBA2_UNCALIBRATE_DATA}})
 is also provided as a convenience -- this will set the appropriate
 units within the dataset.
@@ -695,7 +695,7 @@ $\pm$8 percent.
 
 \section{Catalogues}
 The JCMT Legacy release includes emission catalogues generated from
-each of the coadded maps. As we have an extremely diverse set of
+each of the co-added maps. As we have an extremely diverse set of
 astronomical regions (including blank fields, point sources and large,
 complex extended structures), we did not feel it would be possible to
 perform astronomical source finding and classification. Instead, this
@@ -735,7 +735,7 @@ The reduced observations, produced by SMURF's makemap routine, all
 contain a variance array giving the noise towards each pixel, based on
 the scatter of input data points to that pixel. Pixels with too small
 a number of inputs to calculate a variance point are not included in
-the individual maps. Our coadding procedure uses this variance to
+the individual maps. Our co-adding procedure uses this variance to
 weight the input observations. We do see anomalously high noise
 towards bright sources (see Fig.~\ref{fig:noise-bright-source} for an
 example of this), however this is not at a level to prevent a signal
