@@ -381,7 +381,7 @@ expense of not attempting to recover large scale structures.
 These observations were reduced using Starlink, Starjava and ORAC-DR
 software developed between versions 2014A and 2015A. Interested
 parties seeking to replicate these results can do so by checking out the
-version of the code tagged as '2015A-legacy' release in the Starlink code repositories\footnote{(See
+version of the code tagged as `2015A-legacy' release in the Starlink code repositories\footnote{(See
   https://github.com/Starlink/starlink,
   https://github.com/Starlink/starjava and
   https://github.com/Starlink/ORAC-DR).}.
@@ -406,7 +406,7 @@ to starting the next iteration (specified using \texttt{ast.skip=5}). These
 initial iterations allow the reduction process to focus on creating a
 mask that identifies any unusually bright region. This is useful since
 such regions may cause ringing in subsequent estimates of the low
-frequency noise in each bolometer. During these iterations "bright"
+frequency noise in each bolometer. During these iterations ``bright''
 pixels are taken to be those with a signal to noise ratio greater than
 5.0 (plus any other pixels that are attached contiguously to such
 pixels down the an snr of 3 (specified by using \texttt{flt.zero\_snr=5} and
@@ -416,7 +416,7 @@ During all iterations an atmospheric correction is applied and data
 are filtered to remove any features on scales larger than 200". In
 addition to this a separate common mode model is produced for each
 subarray (specified with \texttt{com.perarray=1}). Having a separate common
-mode prevents artificial flux (also known as "fake blooms") being
+mode prevents artificial flux (also known as ``fake blooms'') being
 introduced into the map where the common modes vary significantly and
 are not well represented by a single common mode. The disadvantage
 with having a separate common mode for each subarray is that the
@@ -431,7 +431,7 @@ removes the astronomical signal from the residuals prior to starting
 the next iteration. However, to prevent instabilities in the iterative
 process, this subtraction only occurs within regions corresponding to
 bright sources.  The mask identifying such sources is creating in the
-same way as the mask used by the low frequency noise filter ("FLT"
+same way as the mask used by the low frequency noise filter (``FLT''
 model): source pixels are taken to be those with a signal to noise
 ratio greater than 5.0 (plus any other pixels that are attached
 contiguously to such pixels down the an snr of 3 (specified by using
@@ -467,7 +467,7 @@ of the noise level (specified by \texttt{maptol=0.01}).
 Figure \ref{fig:crl618-example} shows a reduction of a single
 observation towards a standard calibrator, reduced using both the
 legacy configuration file presented here (in an HPX projection), and
-with the standard calibration reduction configuration 'bright compact'
+with the standard calibration reduction configuration `bright compact'
 on the tangent plane projection.
 
 \begin{figure}
@@ -717,14 +717,14 @@ easy-to-understand, and to produce intelligible results.
 We have identified the regions of contiguous extended emission within
 each tile by looking at the Signal-to-Noise maps of the co-added
 tiles. We determined that we would consider all regions of contiguous
-emission containing flux brighter than 5 sigma to be a single `extent`
+emission containing flux brighter than 5 sigma to be a single `extent'
 for purposes of our reductions, if the region is larger in area than a
 beam. We followed the source down to a noise level of 3 sigma.  Here,
 a simple approximation of the beam was used (all sources larger than 9
 pixels). We considered using a more complex approach, but noise spikes
 in makemap maps do not appear to be found by this side. The main
 source of false detections in our reductions would have been the
-previously discussed problem of 'false blooms of emission'
+previously discussed problem of `false blooms of emission'
 occasionally produced by makemap reductions, if we had not used a
 by-eye approach for flagging the handful of problematic reductions and
 removing them from the output.
@@ -783,7 +783,7 @@ We decided not to include the outlines of all emission counted as
 being within that object or clump, as we felt that would encourage
 users to consider the peaks as being real, physical objects. Although
 they may be in some cases, in many other cases the peak is simply a
-local maxima within a complex molecular cloud. The 'clump outlines'
+local maxima within a complex molecular cloud. The `clump outlines'
 produced by software such as CUPID always reflect the arbitrarily
 chosen boundaries of dips and minimum heights, and should not be
 assumed to represent physical objects without considerable further
