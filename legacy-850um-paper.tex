@@ -124,7 +124,7 @@ Surveys \citep[e.g.,][]{ChrysostomouJLS,GBS,SASSy,SONS,JPS}, as well as PI
 projects from all queues, were included if they
 fell in the given time range.
 
-\note{Has any NGLS SCUBA-2 data been published (NO)? Need proper JPS and
+\note{Has any NGLS SCUBA-2 data been published (NO)? Need need proper
   SASSy refs. (There are none better as far as we know...)}
 
 Pointing observations, and observations from within the
@@ -269,30 +269,23 @@ pixels which have a noise value less than or equal to a given limit.
 
 
 
-
-
-
-
-
 \section{HEALPix grid }
 
-To produce a uniform reduction of all public data, it is necessary to have
-%One aspect of the goal of producing a uniform reduction of all public
-%data is the requirement for
-a suitable scheme for dividing the sky into pre-determined tiles and
-pixels to grid the data onto.  The scheme needed to be well defined in
-advance, without reference to the position of existing observations,
-for consistency and in order to be able to easily incorporate further
-data as they become public.  The tiling scheme which was chosen is
-that offered by HEALPix \citep[Hierarchical Equal Area isoLatitude
-Pixelization,][]{Gorski2005}, commonly used in cosmological fields.
-The HEALPix system starts by dividing the sky into 12 facets, and then
-recursively divides these cells in four at each higher resolution
-level.  There are two standard numbering schemes used with HEALPix, of
-which the ``nested'' scheme has been used to label tiles in this
-release, for convenience with the HPX projection and compatibility with
-Virtual Observatory systems such as MOC \citep[Multi-Order
-Coverage,][]{2013ASPC..475..135F}.
+To produce a uniform reduction of all public data, it is necessary to
+have a suitable scheme for dividing the sky into pre-determined tiles
+and pixels to grid the data onto.  The scheme needed to be well
+defined in advance, without reference to the position of existing
+observations, for consistency and in order to be able to easily
+incorporate further data as they become public.  The tiling scheme
+which was chosen is that offered by HEALPix \citep[Hierarchical Equal
+Area isoLatitude Pixelization,][]{Gorski2005}, commonly used in
+cosmological fields.  The HEALPix system starts by dividing the sky
+into 12 facets, and then recursively divides these cells in four at
+each higher resolution level.  There are two standard numbering
+schemes used with HEALPix, of which the ``nested'' scheme has been
+used to label tiles in this release, for convenience with the HPX
+projection and compatibility with Virtual Observatory systems such as
+MOC \citep[Multi-Order Coverage,][]{2013ASPC..475..135F}.
 
 Pixels within the individual tiles also use the HEALPix grid, which
 ensures that the pixelization is continous between each tile and the
@@ -332,7 +325,7 @@ astronomical sources also, bend at these positions.\footnote{If you
   \label{tab:hpxpar}
 \end{table}
 
-\todo{Create plots illustrating healpix}.
+\todo{Create plots illustrating healpix; also show effect on source}.
 
 %\todo{list parameters we have used}. \\
 %Tile size: $\sim$ 1\degr \\
@@ -607,7 +600,7 @@ sources.\footnote{Observations that had been marked as poor quality
 observations from the time period covered by this release had been
 separately reduced using the same SCUBA-2 configuration and pixel
 size, but not onto a HEALPix grid due to being a moving target. The
-PICARD\footnote{\url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun65.htx/sun265.html?xref_}}
+PICARD (\citealp{SUN265}, part of ORAC-DR, \citealp[][\ascl{1310.001}]{SUN230})
 recipe SCUBA2\_CHECK\_CAL\footnote{see
   \url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun265.htx/sun265.html?xref_SCUBA2_CHECK_CAL}}
 was used to derive this arcsecond FCF.
