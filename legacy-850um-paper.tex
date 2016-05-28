@@ -1,17 +1,11 @@
-\documentclass[usenatbib]{mnras}
-\usepackage{mathpazo}
+\documentclass[twocolumn]{aastex6}
 
-\usepackage{graphicx}
 \usepackage{marginnote}
-\usepackage{microtype}
 
-\newcommand{\aspconf}{ASP Conf. Ser.}
-% bold micron (for titles etc.
-\newcommand{\bmicron}{\boldmath\ensuremath{\micron}}
 % alternate micron command
 \newcommand{\um}{\micron}
 
-% referenceing commands
+% referencing commands
 \newcommand{\sref}[1]{Sec.~\ref{#1}}
 
 % commands and packages that shouldn't be needed in final version
@@ -21,29 +15,34 @@
 \newcommand{\ascl}[1]{\href{http://www.ascl.net/#1}{ascl:#1}}
 \newcommand{\status}[1]{\textsf{#1}}
 
-\title[SCUBA-2 850\um\ Legacy Release]%
-{The JCMT Legacy Release 1: SCUBA-2 850\bmicron\ observations}
 
-\author[S.~F.~Graves et~al.]
-{Sarah~F.~Graves,$^{1,2}$
-Graham~S.~Bell,$^{1,2}$
-JAC/EAO
-and
-Others.\\
-$^1$Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA\\
-$^2$East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA
-}
+
+\shorttitle{JCMT LR1: SCUBA-2 850\micron}
+\shortauthors{SF Graves et al.}
 
 
 \begin{document}
+\title{The JCMT Legacy Release 1: SCUBA-2 850\micron\ observations}
 
-\date{in development}
-
-\pagerange{\pageref{firstpage}--\pageref{lastpage}} \pubyear{2015}
-
-\maketitle
-
-\label{firstpage}
+\author{Sarah F. Graves\altaffilmark{1,2,3},
+     Graham S. Bell\altaffilmark{1,2},
+     David S. Berry\altaffilmark{1,2},
+     Iain M. Coulson\altaffilmark{1,2},
+     Malcolm Currie\altaffilmark{2,4},
+     Jessica T. Dempsey\altaffilmark{1,2},
+     Per Friberg\altaffilmark{1,2},
+     Tim Jenness\altaffilmark{2,4,4},
+     Doug Johnstone\altaffilmark{2,4},
+     Harriet A. L. Parsons\altaffilmark{1,2},
+     Mark G. Rawlings\altaffilmark{1,2},
+     Holly S. Thomas\altaffilmark{2},
+     Craig A. Walther\altaffilmark{1,2}
+    and Jan G. A. Wouterlout\altaffilmark{1,2}
+}
+\altaffiltext{1}{East Asian Observatory,660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
+\altaffiltext{2}{Joint Astronomy Centre,660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
+\altaffiltext{3}{s.graves@eaobservatory.org}
+\altaffiltext{4}{Insert other affiliations}
 
 \begin{abstract}
   % Re write this properly once the rest of the paper is written.
@@ -56,6 +55,8 @@ $^2$East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA
   the regions where emission was detected. The data have been gridded
   in the HEALPix HPX scheme.
 \end{abstract}
+
+\keywords{submillimeter:general; catalogs}
 
 \section{Introduction}
 %\begin{itemize}
@@ -104,30 +105,30 @@ regions have been observed, the noise levels in existing regions, and
 where there are clear detections. This paper presents the first
 release in this project: the 850\,\um\ SCUBA-2 continuum
 observations. Planned future releases are the 450\,\um\ SCUBA-2
-observations and the HARP spectral observations in some of the most
-common molecular transitions.
+observations and HARP spectral cubes.
 
 
 
 \subsection{Observations included in this release}
 % What data are included.
 
-This first release includes publicly-released 850\,\um\ science observations
-observed between 2011 February 2 and 2013 August 1. Observations from
-earlier than this were not included, as these were taken in
-\emph{shared risk} mode while instrument commissioning was still being
-conducted, and the data from that era are more problematic
-\citep{SC19,Dempsey2010}.  Observations by the JCMT Cosmology Legacy
-Survey \citep{Geach2013} are not included as they are still
-proprietary until 2016 March 1. Observations by other SCUBA-2 JCMT Legacy
-Surveys \citep[e.g.,][]{ChrysostomouJLS,GBS,SASSy,SONS,JPS}, as well as PI
-projects from all queues, were included if they
-fell in the given time range.
+This first release includes publicly-released 850\,\um\ science
+observations observed between 2011 February 2 and 2013 August
+1. Observations from earlier than this were not included, as these
+were taken in \emph{shared risk} mode while instrument commissioning
+was still being conducted, and the data from that era are more
+problematic \citep{SC19,Dempsey2010}.  Observations by the JCMT
+Cosmology Legacy Survey \citep{Geach2013} are not included as they are
+still proprietary until 2016 March 1. Observations by other SCUBA-2
+JCMT Legacy Surveys
+\citep[e.g.,][]{ChrysostomouJLS,GBS,SASSy,SONS,JPS}, as well as PI
+projects from all queues, were included if they fell in the given time
+range.
 
 \note{Has any NGLS SCUBA-2 data been published (NO)? Need need proper
   SASSy refs. (There are none better as far as we know...)}
 
-Pointing observations, and observations from within the
+Pointing observations, and science observations from within the
 appropriate time period that were judged to be of a low or
 potentially-low quality, \emph{were} still reduced using this
 standardised configuration\footnote{and are available for interested
@@ -298,20 +299,20 @@ While HEALPix has the advantage that all pixels have the same area,
 the trade off is that the pixels are not all square: they can vary in
 width and height while maintaining the constant area.  There are also
 discontinuities in the angle of the grid lines at some facet
-boundaries.  This is largely a display problem, since while image
-viewers with a modern WCS implementation should be able to handle
-files in the HPX projection, the grid lines, and therefore
-astronomical sources also, bend at these positions.\footnote{If you
-  are concerned by the visual appearance of HEALPix maps in your
-  display and wish to reassure yourself that any apparent distortion
-  is only due to display issues in your image viewer, we would
-  recommend verifying the shape and position by contouring the map
-  over a tangent plane map.}
+boundaries.  This is largely a display problem, as although image
+viewers with a modern WCS implementation can handle files in the HPX
+projection, the grid lines, and therefore astronomical sources also,
+will appear bent at these positions.\footnote{If you are concerned by
+  the visual appearance of HEALPix maps in your display and wish to
+  reassure yourself that any apparent distortion is only due to
+  display issues in your image viewer, we would recommend verifying
+  the shape and position by contouring the map over a tangent plane
+  map.}
 
 
 \begin{table}
   \centering
-  \begin{tabular}{ c c}
+  \begin{tabular}{ r l}
     \multicolumn{2}{c}{HEALPix parameters}\\
     \hline
     Tile size & $\sim$ 1\degr square \\
@@ -839,7 +840,7 @@ A brief summary of how to access the data, catalogues.
 
 \section{Conclusions}
 
-\section*{Acknowledgments}
+\acknowledgments
 
 The James Clerk Maxwell Telescope has historically been operated by
 the Joint Astronomy Centre on behalf of the Science and Technology
@@ -848,11 +849,20 @@ Council of Canada and the Netherlands Organisation for Scientific
 Research. This work was funded by the Science and Technology
 Facilities Council.
 
-\bibliography{legacy-850um-paper}
-\bibliographystyle{mnras}
+[Insert other acknowledgements here.]
+\vspace{5mm}
+\facility{JCMT(SCUBA-2)}
+
+% Include software citations here again?
+% Check if there is more.
+\software{Starlink, SMURF, KAPPA, ORAC-DR}
+
+
+
+
 
 \appendix
-\onecolumn
+
 
 %% Probably more detailed than needed in a paper
 \section{Mapmaker configuration}
@@ -901,8 +911,8 @@ flt.zero_snrlo=3
 \end{verbatim}
 
 
-\label{lastpage}
-\bsp
+\bibliography{legacy-850um-paper}
+\bibstyle{aasjournal.bst}
 
 
 \end{document}
