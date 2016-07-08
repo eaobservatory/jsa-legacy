@@ -15,6 +15,8 @@
 \newcommand{\ascl}[1]{\href{http://www.ascl.net/#1}{ascl:#1}}
 \newcommand{\status}[1]{\textsf{#1}}
 
+\usepackage{hyperref}
+\hypersetup{pdftex,colorlinks=true,allcolors=blue, bookmarks=true}
 
 
 \shorttitle{JCMT LR1: SCUBA-2 850\micron}
@@ -24,25 +26,24 @@
 \begin{document}
 \title{The JCMT Legacy Release 1: SCUBA-2 850\micron\ observations}
 
-\author{Sarah F. Graves\altaffilmark{1,2,3},
-     Graham S. Bell\altaffilmark{1,2},
-     David S. Berry\altaffilmark{1,2},
-     Iain M. Coulson\altaffilmark{1,2},
-     Malcolm Currie\altaffilmark{2,4},
-     Jessica T. Dempsey\altaffilmark{1,2},
-     Per Friberg\altaffilmark{1,2},
-     Tim Jenness\altaffilmark{2,4,4},
-     Doug Johnstone\altaffilmark{2,4},
-     Harriet A. L. Parsons\altaffilmark{1,2},
-     Mark G. Rawlings\altaffilmark{1,2},
-     Holly S. Thomas\altaffilmark{2},
-     Craig A. Walther\altaffilmark{1,2}
-    and Jan G. A. Wouterlout\altaffilmark{1,2}
+\author{Sarah F. Graves\altaffilmark{1,2},
+     Graham S. Bell\altaffilmark{1},
+     David S. Berry\altaffilmark{1},
+     Iain M. Coulson\altaffilmark{1},
+     Malcolm Currie\altaffilmark{1,3},
+     Jessica T. Dempsey\altaffilmark{1},
+     Per Friberg\altaffilmark{1},
+     Tim Jenness\altaffilmark{3},
+     Doug Johnstone\altaffilmark{3},
+     Harriet A. L. Parsons\altaffilmark{1},
+     Mark G. Rawlings\altaffilmark{1},
+     Holly S. Thomas\altaffilmark{4},
+    and Jan G. A. Wouterloot\altaffilmark{1}
 }
-\altaffiltext{1}{East Asian Observatory,660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
-\altaffiltext{2}{Joint Astronomy Centre,660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
-\altaffiltext{3}{s.graves@eaobservatory.org}
-\altaffiltext{4}{Insert other affiliations}
+\altaffiltext{1}{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
+\altaffiltext{2}{s.graves@eaobservatory.org}
+\altaffiltext{3}{Insert other affiliations}
+\altaffiltext{4}{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
 
 \begin{abstract}
   % Re write this properly once the rest of the paper is written.
@@ -59,9 +60,10 @@
 \keywords{submillimeter:general; catalogs}
 
 \section{Introduction}
-%\begin{itemize}
+% \begin{itemize}
 %\item Description of the JSA \citep{2015Economou}
-%\item Very brief description of heterodyne and SCUBA-2 instruments, cite instrument papers. \citep{2013MNRAS.430.2513H} \citep{Buckle2009}
+%\item Very brief description of heterodyne and SCUBA-2 instruments,
+% cite instrument papers. \citep{2013MNRAS.430.2513H} \citep{Buckle2009}
 %\item Outline of the advanced data products. \citep{Bell2014}
 %\item Historical perspective. \citep{Economou2011}
 %\item ongoing plans -- dynamic archive, continually updated etc.
@@ -87,9 +89,9 @@ to ensure PI's can access the most scientifically useful reductions of
 their data, it means that the reduced archival data is considerably
 more heterogenous than some astronomical users may suspect, and
 reduced observations of the same region of sky from different projects
-cannot be naively co-added together. Despite this,
-\citet{Bell2014} found that more than fifty percent of
-papers using JCMT data made use of archive data.
+cannot be naively co-added together. Despite this, \citet{Bell2014}
+found that more than fifty percent of papers using JCMT data made use
+of archive data.
 
 To maximise the scientific return on the many years of archival data,
 % and to make it as easy as possible for non-submm-experts to use the
@@ -109,20 +111,34 @@ observations and HARP spectral cubes.
 
 
 
-\subsection{Observations included in this release}
-% What data are included.
 
+
+
+\subsection{Overview of Release}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=0.9\linewidth]{legacy850-noise-aitoff}
+  \caption{All sky noise map for this SCUBA-2 850\,\um{} legacy
+    release. The large circular regions are 1 and 2 degree pongs,
+    predominately observed near the plane of the galaxy. Small points
+    are daisy observations towards sources scattered across the
+    sky.}
+  \label{fig:noise-aitoff}
+\end{figure*}
+
+\subsubsection{Included Observations}
 This first release includes publicly-released 850\,\um\ science
 observations observed between 2011 February 2 and 2013 August
 1. Observations from earlier than this were not included, as these
 were taken in \emph{shared risk} mode while instrument commissioning
 was still being conducted, and the data from that era are more
 problematic \citep{SC19,Dempsey2010}.  Observations by the JCMT
-Cosmology Legacy Survey \citep{Geach2013} are not included as they are
+Cosmology Legacy Survey \citep{Geach2013} are not included as they were
 still proprietary until 2016 March 1. Observations by other SCUBA-2
 JCMT Legacy Surveys
 \citep[e.g.,][]{ChrysostomouJLS,GBS,SASSy,SONS,JPS}, as well as PI
-projects from all queues, were included if they fell in the given time
+projects, were included if they fell in the given time
 range.
 
 \note{Has any NGLS SCUBA-2 data been published (NO)? Need need proper
@@ -145,82 +161,7 @@ process.\footnote{A further 390 were marked as
   and it was felt that these were all of high enough quality to
   include.}
 
-
-\begin{table}
-  \caption{Number and length of observations from various different
-    categories of projects included in the co-added tiles in this
-    release. \label{tab:obsnum}}
-  {\centering
-    \begin{tabular}{l r r r}
-      \hline
-      Project Type &
-      \multicolumn{1}{p{0.7cm}}{Num. obs.} &
-      \multicolumn{1}{p{0.7cm}}{Obs. Time \newline(hrs)} &
-      \multicolumn{1}{p{2.0cm}}{%
-      Percent of total obs.\ time\textsuperscript{*}}\\
-
-      \hline
-
-      All                      & 5059 & 2261 & 38\%   \\\\
-      Calibrations             & 1153 &   81 & 54\%   \\\\
-      Legacy Surveys (total)   & 1477 &  894 & 24\%   \\\\
-
-      \hspace{0.5cm} CLS       &   0  &    0 &  0\%   \\
-      \hspace{0.5cm} DDS/SONS  & 444  &  235 & 75\%   \\
-      \hspace{0.5cm} GBS       & 338  &  236 & 57\%   \\
-      \hspace{0.5cm} JPS       & 223  &  150 & 32\%   \\
-      \hspace{0.5cm} NGS       & 168  &   68 & 38\%   \\
-      \hspace{0.5cm} SASSY     & 304  &  205 & 34\%   \\\\
-
-      Other projects  (total)  & 2429 & 1285 & 60\%   \\\\
-
-      \hspace{0.5cm} Canada         & 490 & 253 &  75\% \\
-      \hspace{0.5cm} Director's     &  57 &  57 &  60\% \\
-      \hspace{0.5cm} Guaranteed Time&  79 &  54 &  96\% \\
-      \hspace{0.5cm} International  &  35 &  19 &  57\% \\
-      \hspace{0.5cm} Netherlands    & 161 &  45 & 100\% \\
-      \hspace{0.5cm} Service        &   8 &   5 &  19\% \\
-      \hspace{0.5cm} Staff Time     &  71 &  29 & 100\% \\
-      \hspace{0.5cm} University of Hawaii   & 586 & 322 &  48\% \\
-      \hspace{0.5cm} UK             & 942 & 524 &  58\% \\
-
-      \hline
-
-    \end{tabular}\\
-  }
-  {\noindent\scriptsize \textsuperscript{*} The percentage of all
-    SCUBA-2 time (from that type of project) which is included in the
-    co-adds. The calculation of total time for a given type of project
-    does not include observations of moving targets, engineering
-    observations, pointings or any non-science observations; it
-    does not however filter out any observing time that is flagged as
-    \status{JUNK} or \status{BAD} (these statuses are defined in
-    \S\ref{sec:QA}). Observations from the period of shared risk
-    observing (when there was only one sub array per waveband instead
-    of four) were excluded from the comparison. The comparison
-    includes all other data taken before the handover of operations to
-    the East Asian Observatory on 1 March 2015. This includes all data
-    taken for the JCMT Legacy Surveys. }
-
-\end{table}
-
-%\todo{ 1 more observation (JCMTCAL towards CRL618) that won't reduce
-%  at the moment and should really be fixed, and coadd
-%  updated.. JobNumber 5804}
-
-\subsection{Overview of Release}
-
-\begin{figure*}
-  \centering
-  \includegraphics[width=0.9\linewidth]{legacy850-noise-aitoff}
-  \caption{All sky noise map for this SCUBA-2 850\,\um{} legacy
-    release. The large circular regions are 1 and 2 degree pongs,
-    predominately observed near the plane of the galaxy. Small points
-    are daisy observations towards sources scattered across the
-    sky.}
-  \label{fig:noise-aitoff}
-\end{figure*}
-
+\subsubsection{Coadds and catalogs}
 These 5161 \emph{science} observations were successfully reduced onto
 2930 distinct tiles, and 5519 \emph{pointing} observations were
 reduced individually onto 263 distinct HEALPix tiles.
@@ -238,7 +179,31 @@ Source detection was carried out on all of the co-added tiles, and this
 detected emission in 2.91E-4 steradians (0.96 square degrees, or 0.12
 per cent of the observed area) of the co-adds.
 
-\subsection{Noise statistics}
+
+\begin{table}
+  \begin{tabular}{l r r r}
+    \hline
+    Type Obs.
+    &\multicolumn{1}{p{1cm}}{Number Obs.}
+    &\multicolumn{1}{p{1cm}}{Total Time (hrs)}
+    &\multicolumn{1}{p{1.5cm}}{Distinct HPX Tiles}\\
+    \hline
+    All & 10681 & 2650.0 & \\
+    Science & 4057 & 2236.0 & \\
+    Calibration & 1108 &75.7 & \\
+    Pointings & 5516& 338.3&\\[3mm]
+    Coadds\footnote{%
+    Coadds include science and calibration observations which passed
+    manual QA; they do not include any pointing observations.}
+    &5100 &2283.2 &\\
+  \end{tabular}
+  \caption{Types of observation included in this release.
+    \label{tab:typesobs}}
+\end{table}
+ 
+%\end{table}
+
+\subsubsection{Noise statistics}
 \todo{Recalculate with final released maps, and check for errors}
 
 Because the observations used here are from a wide variety of projects
@@ -262,15 +227,19 @@ pixels which have a noise value less than or equal to a given limit.
   0.25  & 57.4& 246.0 & 31\%\\
   0.1 & 22.9& 71.8 & 9.0\%\\
   0.05 & 11.5& 37.0 & 4.7\%\\
-  0.01 &2.3 & 0.5 & $<$0.1\%\\
+%  0.01 &2.3 & 0.5 & $<$0.1\%\\
   \hline
 \end{tabular}
-\caption{Areas of the release which have an RMS noise less than or equal to the given value. \label{tab:noises}}
+\caption{Areas of the release which have an RMS noise less than or
+  equal to the given value. \label{tab:noises} }
 \end{table}
 
+\section{Example regions}
+\subsection{G34.3}
+\subsection{CRL\,618}
 
 
-\section{HEALPix grid }
+\section{HEALPix grid}
 
 To produce a uniform reduction of all public data, it is necessary to
 have a suitable scheme for dividing the sky into pre-determined tiles
@@ -326,12 +295,6 @@ will appear bent at these positions.\footnote{If you are concerned by
   \label{tab:hpxpar}
 \end{table}
 
-\todo{Create plots illustrating healpix; also show effect on source}.
-
-%\todo{list parameters we have used}. \\
-%Tile size: $\sim$ 1\degr \\
-%Pixels per tile: 1024 $\times$ 1024 \\
-%Pixel size: $\sim$ 3.22\arcsec
 
 \footnote{To re-grid one or more HEALPix tiles onto a standard RA-Dec
   projection, the Starlink \textsc{smurf} command \texttt{jsajoin} can
@@ -343,13 +306,15 @@ SCUBA-2 observations are reduced using the Starlink SMURF programme
 the dataset into various instrumental and astronomical signals. There
 are an extremely large number of user-adjustable parameters that can
 affect the final map, depending on the science goals of the users and
-the structure of the astronomical emission observed. For example, a
+the structure of the astronomical emission observed. \note{For example, a
 cosmologist interested in detecting only faint point sources in a
 primarily blank map would use a distinctly different set of parameters
 from a galactic astronomer looking at bright, extended and
-structurally complex emission. For full details on the SCUBA-2 map
+structurally complex emission.} For full details on the SCUBA-2 map
 maker, please see \citet{Chapin2013}.
 
+
+%Redraft this paragraph -- more paper-esque.
 To guide astronomical users, the JCMT-supported Starlink software
 comes with a series of standard configuration files for a variety of
 common science cases.
@@ -357,25 +322,25 @@ common science cases.
 % every night \citep{2011scuba2dr,2015oracdr}, these reductions rely
 % on the PI of the project selecting an appropriate reduction `recipe'
 % for their science goals.
-These standard configuration files can produce very poor results when used on an
-inappropriate observation -- for example, the standard SCUBA-2 configuration file
-used for calibrator observations is tuned to expect a bright, compact
-source at the centre of the map. If used by mistake on a blank field
-this recipe could easily create \emph{fake emission} in the form of
-large bloom-like structures. Avoiding this sort of error was the
-paramount consideration when selecting the configuration parameters.
+These standard configuration files can produce very poor results when
+used on an inappropriate observation -- for example, the standard
+SCUBA-2 configuration file used for calibrator observations is tuned
+to expect a bright, compact source at the centre of the map. If used
+by mistake on a blank field this recipe could easily create \emph{fake
+  emission} in the form of large bloom-like structures. Avoiding this
+sort of error was the paramount consideration when selecting the
+configuration parameters.
 
 Given the nature of SCUBA-2 data reduction algorithms, the main focus
 in developing this \emph{legacy} configuration was on maximising the
 confidence that could be placed in detection of emission, at the
 expense of not attempting to recover large scale structures.
 
-% What version of the Starlink software was used to make this data
-% release?
 These observations were reduced using Starlink, Starjava and ORAC-DR
 software developed between versions 2014A and 2015A. Interested
-parties seeking to replicate these results can do so by checking out the
-version of the code tagged as `2015A-legacy' release in the Starlink code repositories\footnote{(See
+parties seeking to replicate these results can do so by checking out
+the version of the code tagged as `2015A-legacy' release in the
+Starlink code repositories\footnote{(See
   https://github.com/Starlink/starlink,
   https://github.com/Starlink/starjava and
   https://github.com/Starlink/ORAC-DR).}.
@@ -394,28 +359,29 @@ version of the code tagged as `2015A-legacy' release in the Starlink code reposi
 For the exact configuration file used in the legacy reduction see
 appendix A. In this particular reduction, after the initial
 pre-processing stage, the SCUBA-2 mapmaker recipe performs 5
-iterations of the reduction software in which the astronomical signal
-is retained rather than being removed (as in a normal iteration) prior
-to starting the next iteration (specified using \texttt{ast.skip=5}). These
-initial iterations allow the reduction process to focus on creating a
-mask that identifies any unusually bright region. This is useful since
-such regions may cause ringing in subsequent estimates of the low
-frequency noise in each bolometer. During these iterations ``bright''
-pixels are taken to be those with a signal to noise ratio greater than
-5.0 (plus any other pixels that are attached contiguously to such
-pixels down the an SNR of 3 (specified by using \texttt{flt.zero\_snr=5} and
+iterations in which the astronomical signal is retained rather than
+being removed (as in a normal iteration) prior to starting the next
+iteration (specified using \texttt{ast.skip=5}). These initial
+iterations allow the reduction process to focus on creating a mask
+that identifies any unusually bright region. This is useful since such
+regions may cause ringing in subsequent estimates of the low frequency
+noise in each bolometer. During these iterations ``bright'' pixels are
+taken to be those with a signal to noise ratio greater than 5.0, plus
+any other pixels that are attached contiguously to such pixels down
+the an SNR of 3 (specified by using \texttt{flt.zero\_snr=5} and
 \texttt{flt.zero\_snrlo=3}).
 
 During all iterations an atmospheric correction is applied and data
 are filtered to remove any features on scales larger than 200". In
 addition to this a separate common mode model is produced for each
-subarray (specified with \texttt{com.perarray=1}). Having a separate common
-mode prevents artificial flux (also known as ``fake blooms'') being
-introduced into the map where the common modes vary significantly and
-are not well represented by a single common mode. The disadvantage
-with having a separate common mode for each subarray is that the
-reduction is limited to recovering emission structures that are on the
-same scale or less than the subarray size (approximately 200").
+subarray (specified with \texttt{com.perarray=1}). Having a separate
+common mode estimate per sub array prevents artificial flux (also
+known as ``fake blooms'') being introduced into the map where the
+common modes vary significantly and are not well represented by a
+single common mode. The disadvantage with having a separate common
+mode for each subarray is that the reduction is limited to recovering
+emission structures that are on the same scale or less than the
+subarray size (approximately 200").
 
 After the initial five iterations the recipe then performs up to 20
 further iterations with all the models (specified by
@@ -435,8 +401,6 @@ The map maker exits before the 20th iteration if the \texttt{maptol}
 parameter --- the change between maps --- has reached a mean value of 1\%
 of the noise level (specified by \texttt{maptol=0.01}).
 
-% HARRIET AND
-% DAVID to WRITE THIS PROPERLY aND CHECK I HAVEN't MADE ANY MISTAKES!
 
 % See appendix \ref{app:config} for the full configuration file. Some of
 % the most important details are described below:
@@ -486,7 +450,8 @@ on the tangent plane projection.
 Figure \ref{fig:omc1-example} shows a reduction of a single
 observation towards the complex, bright and extended OMC-1
 region. \todo{ Should this have a comparison with e.g. a GBS
-  reduction of this region, to show the difference in size scales? Or leave that for later}.
+  reduction of this region, to show the difference in size scales?
+Or leave that for later}.
 
 \begin{figure}
   \centering
@@ -506,7 +471,8 @@ using the \texttt{makemos} applications from Starlink's
 carried out as a variance-weighted mean. No despiking was
 performed. The variance map for the co-added tile is also produced.
 
-\todo{Picture of a coadded tile? Both data and noise. Pick something with Daisy and pongs in it, as a comparison.}
+\todo{Picture of a coadded tile? Both data and noise. Pick something
+with Daisy and pongs in it, as a comparison.}
 
 
 %\todo{Each observation is gridded into pre-defined tiles. Are they
@@ -518,6 +484,8 @@ performed. The variance map for the co-added tile is also produced.
 
 \section{QA}
 \label{sec:QA}
+\todo{SHORTEN}
+
 \subsection{Standard JCMT QA States}
 All observations taken by the JCMT are classified as \status{GOOD}
 (the default), \status{BAD}, \status{QUESTIONABLE}, \status{JUNK} or
@@ -557,6 +525,10 @@ of completeness. All of the HEALPix-gridded legacy-reduced
 observations are available to the community in the JSA, regardless of
 our QA analysis of them, so interested users can evaluate the full
 available data themselves.
+
+%
+\subsection{Examples of BAD observations}
+- explains why we did it.
 
 
 \section{Calibration}
@@ -650,15 +622,15 @@ was made in this release.
   \label{fig:calibhist}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\linewidth]{Legacy_calibration_vstau}
-  \caption{Derived FCF values shown against the recorded 225 GHz zenith opacity
-    for all observations included here. The black line indicates the
-    mean FCF.
-    \todo{Change ``tau'' to ``opacity'' in the plot.}}
-  \label{fig:calibvstau}
-\end{figure}
+ \begin{figure}
+   \centering
+   \includegraphics[width=0.7\linewidth]{Legacy_calibration_vstau}
+   \caption{Derived FCF values shown against the recorded 225 GHz zenith opacity
+     for all observations included here. The black line indicates the
+     mean FCF.
+     \todo{Change ``tau'' to ``opacity'' in the plot.}}
+   \label{fig:calibvstau}
+ \end{figure}
 
 
 \begin{figure}
@@ -681,11 +653,28 @@ $\pm$8 percent.
 
 
 \section{Noise}
+
 \begin{itemize}
-\item Analysis of the noise maps, how believable they are.
+\item Noise maps: overlaps work fine, show an example? 
+\item Copy COHRS pixel distribution graph?
+\item noise on each pixel, noise vs integration time.
 \item High noise towards bright sources.
 \end{itemize}
 
+\subsection{Histogram of noise in all pixels}
+\subsection{Noise vs integration time}
+\subsection{Anomalous variance array values towards bright sources}
+
+\section{Pointing}
+\begin{itemize}
+\item Histograms of offsets seen in the flux calibrator observations.
+
+The pointing of this falls within the JCMT expected average 2\arcsec{} offset
+from the source. \todo{Get citation for JCMT expected average pointing
+  issue. Probably website or Jenness 2011}
+
+\note{CRL 2688 needs re-reducing due to the issue in position.}
+\end{itemize}
 
 \section{Catalogues}
 The JCMT Legacy release includes emission catalogues generated from
@@ -788,7 +777,6 @@ modelling (\todo{SFG:Cite and further discuss the various papers
   laptop}.)
 
 
-
 \section{Limitations of our reduction}
 
 
@@ -828,15 +816,14 @@ filtering removing scales larger than 200 arcseconds.
 \subsection{Negative Bowling}
 Examples of the bowling in our maps.\todo{Harriet/David: good description of why this happens?}
 
-\section{Comparison with legacy surveys}
+% \section{Comparison with legacy surveys}
 
-\todo{A SCUBA-2 image from each survey alongside a Legacy Release
-  version. Which wavelengths? SASSy only has one published field
-  \citep{MacKenzie2011}. JPS and NGLS may not have any yet. GBS has a
-  few recent papers with \citet{Rumble2015} published for Serpens.}
+% \todo{A SCUBA-2 image from each survey alongside a Legacy Release
+%   version. Which wavelengths? SASSy only has one published field
+%   \citep{MacKenzie2011}. JPS and NGLS may not have any yet. GBS has a
+%   few recent papers with \citet{Rumble2015} published for Serpens.}
 
-\section{Accessing the Legacy Release}
-A brief summary of how to access the data, catalogues.
+
 
 \section{Conclusions}
 
@@ -847,9 +834,13 @@ the Joint Astronomy Centre on behalf of the Science and Technology
 Facilities Council of the United Kingdom, the National Research
 Council of Canada and the Netherlands Organisation for Scientific
 Research. This work was funded by the Science and Technology
-Facilities Council.
+Facilities Council.  Additional funds for the construction of SCUBA-2
+were provided by the Canada Foundation for Innovation.
 
-[Insert other acknowledgements here.]
+The work presented here was initially started by the Joint Astronomy
+Centre, and latterly has been supported by East Asian Observatory.
+
+
 \vspace{5mm}
 \facility{JCMT(SCUBA-2)}
 
@@ -909,6 +900,9 @@ ast.skip=5
 flt.zero_snr=5
 flt.zero_snrlo=3
 \end{verbatim}
+
+\section{Accessing the Legacy Release}
+A brief summary of how to access the data, catalogues.
 
 
 \bibliography{legacy-850um-paper}
