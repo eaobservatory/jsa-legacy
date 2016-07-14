@@ -52,7 +52,7 @@
   products, we have produced a standardised reduction of public JCMT
   SCUBA-2 850\,\um\ observations. These reductions provide
   uniformly reduced co-additions of of all standard, public data
-  observed before 2013 August 1st, as well as catalogues to identify
+  observed before 2015 March 1st, as well as catalogues to identify
   the regions where emission was detected. The data have been gridded
   in the HEALPix HPX scheme.
 \end{abstract}
@@ -60,14 +60,7 @@
 \keywords{submillimeter:general; catalogs}
 
 \section{Introduction}
-% \begin{itemize}
-%\item Description of the JSA \citep{2015Economou}
-%\item Very brief description of heterodyne and SCUBA-2 instruments,
-% cite instrument papers. \citep{2013MNRAS.430.2513H} \citep{Buckle2009}
-%\item Outline of the advanced data products. \citep{Bell2014}
-%\item Historical perspective. \citep{Economou2011}
-%\item ongoing plans -- dynamic archive, continually updated etc.
-%\end{itemize}
+\todo{Shorten this section?}
 
 % JCMT & SCUBA-2
 The JCMT is a 15\,m submillimetre telescope located at an altitude of
@@ -110,6 +103,15 @@ observations. Planned future releases are the 450\,\um\ SCUBA-2
 observations and HARP spectral cubes.
 
 
+% Release of block 1 and this data
+This release includes data taken from 2011 February 2 to 2015 March
+1st, when the JCMT was began to be operated by East Asian Observatory.
+The first block of this data, from 2011 to Augst 1st 2013 was already
+reduced and publicly released in September 2015. This release includes
+these same reduced individual observations, reductions of the newer
+data taken up until March 2015, and new coadds and catalogs produced
+from all the data (and using a slightly different calibration
+constant).
 
 
 
@@ -129,7 +131,7 @@ observations and HARP spectral cubes.
 
 \subsubsection{Included Observations}
 This first release includes publicly-released 850\,\um\ science
-observations observed between 2011 February 2 and 2013 August
+observations observed between 2011 February 2 and 2015 March
 1. Observations from earlier than this were not included, as these
 were taken in \emph{shared risk} mode while instrument commissioning
 was still being conducted, and the data from that era are more
@@ -151,7 +153,7 @@ standardised configuration\footnote{and are available for interested
   parties to download from the JSA}, but have not been included in the
 co-added products (see \sref{sec:QA} for more detail on this).
 
-In total, 10686 observations were reduced, of which 5161 are
+In total, 21456 observations were reduced, of which 5161 are
 \emph{science} observations, and 5521 were \emph{pointing}
 observations (which were reduced but not co-added).  Of these
 \emph{science} observations, 49 observations were marked as
@@ -179,6 +181,18 @@ Source detection was carried out on all of the co-added tiles, and this
 detected emission in 2.91E-4 steradians (0.96 square degrees, or 0.12
 per cent of the observed area) of the co-adds.
 
+\begin{deluxetable*}{lrrrrrr}
+\tablehead{\colhead{Type} & \colhead{Number obs.} & \colhead{Total obs. time} & \colhead{Distinct tiles} & \colhead{Number coadded obs} & \colhead{Total coadd time} & \colhead{Distinct coadd tiles}\\ \colhead{ } & \colhead{ } & \colhead{$\mathrm{h}$} & \colhead{ } & \colhead{ } & \colhead{$\mathrm{h}$} & \colhead{ }}
+\startdata
+All & 21456 & 6414.4 & 4403 & 10256 & 5691.6 & 4143 \\
+Science & 12586 & 5908.9 & 4185 & 10256 & 5691.6 & 4143 \\
+Pointing & 8870 & 505.5 & 292 & 0 & 0.0 & 0 \\
+Cals & 2234 & 138.1 & 22 & 60 & 4.8 & 14 \\
+JLS & 6135 & 3636.7 & 2156 & 6015 & 3569.8 & 2145 \\
+EC30 & 56 & 6.6 & 16 & 56 & 6.6 & 16 \\
+PI & 4217 & 2134.2 & 2329 & 4181 & 2117.0 & 2303
+\enddata
+\end{deluxetable*}
 
 \begin{table}
   \begin{tabular}{l r r r}
