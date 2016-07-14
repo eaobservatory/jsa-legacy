@@ -98,7 +98,7 @@ To maximise the scientific return on the many years of archival data,
 % JCMT data,
 the Joint Astronomy Centre, then-operators of the JCMT, decided to
 produce `legacy' reductions of all public data from the current
-instrumentation. These legacy reductions were envisioned as providing
+instrumentation. This work has been continued.These legacy reductions were envisioned as providing
 a uniform, standardised reduction, co-addition and source detection of
 all publicly available observations. The aim was to produce uniformly
 reduced high quality co-added maps that required as little checking as
@@ -542,6 +542,42 @@ available data themselves.
 
 
 \section{Calibration}
+\begin{figure*}
+\includegraphics{legacyFCF-caldbFCF-histograms.pdf}
+\caption{\todo{Probably remove?}Comparison between the histograms of
+  arcsecond FCFs derived from the legacy reduction and the standard
+  JCMT SCUBA-2 calibrator reduction, for the same observations.
+  These are shown both overall and broken down by source (CRL 618,
+  CRL 2688 and Uranus). Note that the LR Uranus maps were \emph{not}
+  reduced onto a Healpix grid, but did use the same pixel area and
+  \texttt{makemap} dimmconfig as the other LR reductions.\label{fig:lr-caldb-histo}}
+\end{figure*}
+\begin{figure}
+\includegraphics{legacyFCF-caldbFCF-scatter.pdf}
+\caption{Comparison between the FCFs derived from the legacy release
+  reductions, and those derived from the standard JCMT SCUBA-2
+  calibrator reduction. The dashed line indicates a one-to-one
+  relationship, offset by the difference in the derived FCF used for
+  calibrating the legacy release (2.47) and the canonical FCF from
+  \citet[2.34]{Dempsey2013}. \label{fig:lr-caldb-scatter} }
+\end{figure}
+\begin{figure*}
+\includegraphics{legacyFCF-vs-date.pdf}
+\caption{The arcsecond FCFs derived for the legacy reductions of CRL
+  618, CRL 2688 and Uranus, shown against time. Although there is a
+  large scatter and some hints of variation , it can be seen that there is not
+  clear overall dependency with time.\label{fig:fcfdate}}
+\end{figure*}
+\begin{figure}
+\includegraphics{legacyFCF-vs-transmission.pdf}
+\caption{The legacy arcsecond FCFs derived from CRL 618, CRL 2688 and
+  Uranus, shown against the 850\micron\ atmospheric transmission
+  during the observation. Horizontal lines indicate the derived mean
+  and standard deviation of the FCFs. A vertical line indicates the
+  cut off in transmission applied to the coadds in this data
+  set. \label{fig:fcftransmission}}
+\end{figure}
+
 
 \begin{itemize}
 \item Calibration paper \citep{Dempsey2013}
@@ -696,7 +732,7 @@ from the source. \todo{Get citation for JCMT expected average pointing
   issue. Probably website or Jenness 2011}
 
 \note{CRL 2688 needs re-reducing due to the issue in position.}
-\end{itemize}
+%\end{itemize}
 
 \section{Catalogues}
 The JCMT Legacy release includes emission catalogues generated from
