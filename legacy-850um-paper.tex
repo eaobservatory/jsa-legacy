@@ -91,16 +91,17 @@ To maximise the scientific return on the many years of archival data,
 % JCMT data,
 the Joint Astronomy Centre, then-operators of the JCMT, decided to
 produce `legacy' reductions of all public data from the current
-instrumentation. This work has been continued.These legacy reductions were envisioned as providing
-a uniform, standardised reduction, co-addition and source detection of
-all publicly available observations. The aim was to produce uniformly
-reduced high quality co-added maps that required as little checking as
-possible by hand, and would allow astronomers to easily discover which
-regions have been observed, the noise levels in existing regions, and
-where there are clear detections. This paper presents the first
-release in this project: the 850\,\um\ SCUBA-2 continuum
-observations. Planned future releases are the 450\,\um\ SCUBA-2
-observations and HARP spectral cubes.
+instrumentation. This work has been continued.These legacy reductions
+were envisioned as providing a uniform, standardised reduction,
+co-addition and source detection of all publicly available
+observations. The aim was to produce uniformly reduced high quality
+co-added maps that required as little checking as possible by hand,
+and would allow astronomers to easily discover which regions have been
+observed, the noise levels in existing regions, and where there are
+clear detections. This paper presents the first release in this
+project: the 850\,\um\ SCUBA-2 continuum observations. Planned future
+releases are the 450\,\um\ SCUBA-2 observations and HARP spectral
+cubes.
 
 
 % Release of block 1 and this data
@@ -130,7 +131,7 @@ constant).
 \end{figure*}
 
 \subsubsection{Included Observations}
-This first release includes publicly-released 850\,\um\ science
+This release includes publicly-released 850\,\um\ science
 observations observed between 2011 February 2 and 2015 March
 1. Observations from earlier than this were not included, as these
 were taken in \emph{shared risk} mode while instrument commissioning
@@ -181,7 +182,10 @@ Source detection was carried out on all of the co-added tiles, and this
 detected emission in 2.91E-4 steradians (0.96 square degrees, or 0.12
 per cent of the observed area) of the co-adds.
 
+
 \begin{deluxetable*}{lrrrrrr}
+\tablecaption{Types of observation included in this
+  release.\label{tab:typesobs}}
 \tablehead{\colhead{Type} & \colhead{Number obs.} & \colhead{Total obs. time} & \colhead{Distinct tiles} & \colhead{Number coadded obs} & \colhead{Total coadd time} & \colhead{Distinct coadd tiles}\\ \colhead{ } & \colhead{ } & \colhead{$\mathrm{h}$} & \colhead{ } & \colhead{ } & \colhead{$\mathrm{h}$} & \colhead{ }}
 \startdata
 All & 21456 & 6414.4 & 4403 & 10256 & 5691.6 & 4143 \\
@@ -192,30 +196,10 @@ JLS & 6135 & 3636.7 & 2156 & 6015 & 3569.8 & 2145 \\
 EC30 & 56 & 6.6 & 16 & 56 & 6.6 & 16 \\
 PI & 4217 & 2134.2 & 2329 & 4181 & 2117.0 & 2303
 \enddata
+
 \end{deluxetable*}
 
-\begin{table}
-  \begin{tabular}{l r r r}
-    \hline
-    Type Obs.
-    &\multicolumn{1}{p{1cm}}{Number Obs.}
-    &\multicolumn{1}{p{1cm}}{Total Time (hrs)}
-    &\multicolumn{1}{p{1.5cm}}{Distinct HPX Tiles}\\
-    \hline
-    All & 10681 & 2650.0 & \\
-    Science & 4057 & 2236.0 & \\
-    Calibration & 1108 &75.7 & \\
-    Pointings & 5516& 338.3&\\[3mm]
-    Coadds\footnote{%
-    Coadds include science and calibration observations which passed
-    manual QA; they do not include any pointing observations.}
-    &5100 &2283.2 &\\
-  \end{tabular}
-  \caption{Types of observation included in this release.
-    \label{tab:typesobs}}
-\end{table}
- 
-%\end{table}
+
 
 \subsubsection{Noise statistics}
 \todo{Recalculate with final released maps, and check for errors}
