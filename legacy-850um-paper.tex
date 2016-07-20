@@ -556,45 +556,10 @@ available data themselves.
 
 
 \section{Calibration}
-\begin{figure*}
-\includegraphics{legacyFCF-caldbFCF-histograms.pdf}
-\caption{\todo{Probably remove?}Comparison between the histograms of
-  arcsecond FCFs derived from the legacy reduction and the standard
-  JCMT SCUBA-2 calibrator reduction, for the same observations.
-  These are shown both overall and broken down by source (CRL 618,
-  CRL 2688 and Uranus). Note that the LR Uranus maps were \emph{not}
-  reduced onto a Healpix grid, but did use the same pixel area and
-  \texttt{makemap} dimmconfig as the other LR reductions.\label{fig:lr-caldb-histo}}
-\end{figure*}
-\begin{figure}
-\includegraphics{legacyFCF-caldbFCF-scatter.pdf}
-\caption{Comparison between the FCFs derived from the legacy release
-  reductions, and those derived from the standard JCMT SCUBA-2
-  calibrator reduction. The dashed line indicates a one-to-one
-  relationship, offset by the difference in the derived FCF used for
-  calibrating the legacy release (2.47) and the canonical FCF from
-  \citet[2.34]{Dempsey2013}. \label{fig:lr-caldb-scatter} }
-\end{figure}
-\begin{figure*}
-\includegraphics{legacyFCF-vs-date.pdf}
-\caption{The arcsecond FCFs derived for the legacy reductions of CRL
-  618, CRL 2688 and Uranus, shown against time. Although there is a
-  large scatter and some hints of variation , it can be seen that there is not
-  clear overall dependency with time.\label{fig:fcfdate}}
-\end{figure*}
-\begin{figure}
-\includegraphics{legacyFCF-vs-transmission.pdf}
-\caption{The legacy arcsecond FCFs derived from CRL 618, CRL 2688 and
-  Uranus, shown against the 850\micron\ atmospheric transmission
-  during the observation. Horizontal lines indicate the derived mean
-  and standard deviation of the FCFs. A vertical line indicates the
-  cut off in transmission applied to the coadds in this data
-  set. \label{fig:fcftransmission}}
-\end{figure}
+
 
 
 \begin{itemize}
-\item Calibration paper \citep{Dempsey2013}
 \item show images the standard calibrators.
 \item comparison with `standard' calibrator reductions
 \item effect of pixel size on fluxes. Per, Jess \& Daniel may have
@@ -640,12 +605,22 @@ was used to derive this arcsecond FCF.
 
 The mean and standard deviation of the derived FCFs were calculated,
 using a 5-sigma clipped mean to remove extreme outliers. This removed
-observations with an FCF higher than 3.17 and lower than 1.78 (see
+observations with an FCF higher than 3.24 and lower than 1.72 (see
 Fig.~\ref{fig:calibhist}). The final average value is:
 
 \begin{equation}
-\mathrm{FCF}_{\mathrm{arcsec},850} = 2.47 \pm 0.14\ \mathrm{Jy}\ \mathrm{pW}^{-1}\  \mathrm{arcsec}^{-2}.
+\mathrm{FCF}_{\mathrm{arcsec},850} = 2.48 \pm 0.15\ \mathrm{Jy}\ \mathrm{pW}^{-1}\  \mathrm{arcsec}^{-2}.
 \end{equation}
+
+\begin{figure}
+  \centering
+  \includegraphics{lrvalues-histo}
+  \caption{Histogram of FCFs, both for all sources (light gray) and
+    separately for each source. The derived average FCF is shown as
+    the dashed vertical line, with the $\pm$1s.d. shown as the light
+    gray lines to either side.}
+  \label{fig:calibhist}
+\end{figure}
 
 The co-adds in this release were calibrated using this mean FCF.  This
 standard deviation represents a 1-$\sigma$ uncertainty of
@@ -660,46 +635,64 @@ is also provided as a convenience -- this will set the appropriate
 units within the dataset.
 
 For comparison, the usual `canonical' 850\,\micron\ arcsecond FCF used
-in the JCMT's nightly reductions is
-$2.34 \pm 0.08 \mathrm{Jy}\ \mathrm{pW}^{-1}\ \mathrm{arcsec}^{-2}$
-\citep{Dempsey2013}. This is approximately 5 percent lower than the
-value used here, and was derived using the `bright compact' SCUBA-2
-configuration on 1 arcsecond pixels (in comparison with the
-3.22$\times$3.22 arcsecond pixels in this release).
+in the JCMT's nightly reductions is $2.34 \pm 0.08 \mathrm{Jy}\
+\mathrm{pW}^{-1}\ \mathrm{arcsec}^{-2}$ \citep{Dempsey2013}. This is
+approximately 6 percent lower than the value used here, and was
+derived using the `bright compact' SCUBA-2 configuration on 1
+arcsecond pixels (in comparison with the 3.22$\times$3.22 arcsecond
+pixels in this release), on with observations taken from 2011 to
+XX. Fig.\,\ref{fig:lr-caldb-histo} shows the comparison between the
+histograms of bright compact derived FCFs and the legacy release
+derived histogram, for the same
+observations. Fig.\,\ref{fig:lr-caldb-scatter} shows the scatter plot
+of each bright compact FCF vs the legacy release FCF for each
+observation. Broadly speaking, we see a linear relationship between
+the two derivations of FCF.
+\begin{figure*}
+\includegraphics{legacyFCF-caldbFCF-histograms.pdf}
+\caption{\todo{Probably remove?}Comparison between the histograms of
+  arcsecond FCFs derived from the legacy reduction and the standard
+  JCMT SCUBA-2 calibrator reduction, for the same observations.
+  These are shown both overall and broken down by source (CRL 618,
+  CRL 2688 and Uranus). Note that the LR Uranus maps were \emph{not}
+  reduced onto a Healpix grid, but did use the same pixel area and
+  \texttt{makemap} dimmconfig as the other LR reductions.\label{fig:lr-caldb-histo}}
+\end{figure*}
+\begin{figure}
+\includegraphics{legacyFCF-caldbFCF-scatter.pdf}
+\caption{Comparison between the FCFs derived from the legacy release
+  reductions, and those derived from the standard JCMT SCUBA-2
+  calibrator reduction. The dashed line indicates a one-to-one
+  relationship, offset by the difference in the derived FCF used for
+  calibrating the legacy release (2.48) and the canonical FCF from
+  \citet[2.34]{Dempsey2013}. \label{fig:lr-caldb-scatter} }
+\end{figure}
+
 
 To show the variation seen in the individual FCFs, we provide for
 reference plots of the histogram of the FCFs
 (Fig.~\ref{fig:calibhist}), the variation in FCF with opacity
-(Fig.~\ref{fig:calibvstau}) and the variation in FCF with date
+(Fig.~\ref{fig:calibvstrans}) and the variation in FCF with date
 (Fig.~\ref{fig:calibvstime}). No correction to the FCF for sky opacity or date
 was made in this release.
 
+\begin{figure*}
+\includegraphics{legacyFCF-vs-date.pdf}
+\caption{The arcsecond FCFs derived for the legacy reductions of CRL
+  618, CRL 2688 and Uranus, shown against time. Although there is a
+  large scatter and some hints of variation , it can be seen that there is not
+  clear overall dependency with time.\label{fig:calibvstime}}
+\end{figure*}
 \begin{figure}
-  \centering
-  \includegraphics[width=0.7\linewidth]{Legacy_calibration_histogram}
-  \caption{Histogram of FCFs, both for all sources (black) and
-    separately for each source. The mean FCF is shown as the vertical line. }
-  \label{fig:calibhist}
+\includegraphics{legacyFCF-vs-transmission.pdf}
+\caption{The legacy arcsecond FCFs derived from CRL 618, CRL 2688 and
+  Uranus, shown against the 850\micron\ atmospheric transmission
+  during the observation. Horizontal lines indicate the derived mean
+  and standard deviation of the FCFs. A vertical line indicates the
+  cut off in transmission applied to the coadds in this data
+  set. \label{fig:calibvstrans}}
 \end{figure}
 
- \begin{figure}
-   \centering
-   \includegraphics[width=0.7\linewidth]{Legacy_calibration_vstau}
-   \caption{Derived FCF values shown against the recorded 225 GHz zenith opacity
-     for all observations included here. The black line indicates the
-     mean FCF.
-     \todo{Change ``tau'' to ``opacity'' in the plot.}}
-   \label{fig:calibvstau}
- \end{figure}
-
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\linewidth]{Legacy_calibration_vsdate}
-  \caption{Derived FCF values shown against date of observation, for
-    all observations included here. The horizontal line indicates the mean FCF.}
-  \label{fig:calibvstime}
-\end{figure}
 
 \subsection{Uncertainty}
 
