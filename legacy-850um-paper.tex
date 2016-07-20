@@ -715,8 +715,25 @@ $\pm$8 percent.
 \end{itemize}
 
 \subsection{Histogram of noise in all pixels}
+\begin{figure}
+  \centering
+  \includegraphics{coadds-noise-histogram.pdf}
+  \caption{Histogram of the RMS noise on each pixel in the coadds. The
+    main plot is shown with a log y-axis scale, and a linear y-axis
+    scale is shown in the inset. Note that no trimming of observations
+    is done for this, so the noisy edges of the SCUBA-2 observing
+    patterns are included. The noise is taken from the makemap
+    produced variance array, which uses the scatter of input data
+    points to estimate the variance of a given pixel while reducing
+    the raw time series onto a sky map.}
+  \label{fig:histonoise}
+\end{figure}
 \subsection{Noise vs integration time}
+% this is harder to do -- how to do a scatter plot of with billions of
+% points.. 2-d histogram instead? produce in same way as the noise
+% coadds.
 \subsection{Anomalous variance array values towards bright sources}
+% USe OMC-1 and cRL 618 as examples? Also visible in G34.3 shown earlier.
 
 \section{Pointing}
 \begin{figure}
