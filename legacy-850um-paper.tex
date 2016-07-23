@@ -14,6 +14,7 @@
 \newcommand{\note}[1]{\textcolor{red}{Note: #1}}
 \newcommand{\ascl}[1]{\href{http://www.ascl.net/#1}{ascl:#1}}
 \newcommand{\status}[1]{\textsf{#1}}
+\newcommand{\jyas}{Jy\,arcsec\textsuperscript{$-$2}}
 
 \usepackage{hyperref}
 \hypersetup{pdftex,colorlinks=true,allcolors=blue, bookmarks=true}
@@ -202,6 +203,17 @@ PI & 4217 & 2134.2 & 2329 & 4181 & 2117.0 & 2303
 
 \end{deluxetable*}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\linewidth]{flowchart}
+  \caption{Flow chart indicating flow of observations through the
+    system. Here, 8 of the input observations into tile 3311 are
+    shown. Red boxes indicate the part of the observation that fell
+    onto this tile. A red 'X' indicates an observation that was judged
+    as 'BAD' during the QA analysis. Captions indicate the ORAC-DR or
+    PICARD recipe name that produces the output.}
+  \label{fig:flowchart}
+\end{figure}
 
 
 \subsubsection{Noise statistics}
@@ -248,8 +260,41 @@ pixels which have a noise value less than or equal to a given limit.
   \label{fig:g34-3}
 \end{figure*}
 \subsection{CRL\,618}
+\begin{figure*}
+  \centering
+  \includegraphics{crl618-whole-map.pdf}
+  \\[3mm]
+  \includegraphics{crl618-sourceonly.pdf}
+  \caption{Examples of the coadd, noise map, and extents towards the
+    standard calibration source CRL 618, consisting of tiles 1238 and
+    1244. This coadd contains XX900 observations (XXhrs elapsed
+    observing time). The contours on the noise map indicate the 2e-5,
+    3e-5, 4e-5 and 5e-5 \jyas\ noise
+    levels. On the bottom row a zoom in of the central source showing
+    the detected extents around the source is shown (Left), as well as
+    horizontal and vertical cuts through the peak (Right). In these
+    cut throught the ~0.01 Jy bowling around the bright central source
+    can be easily seen. }
+  \label{fig:g34-3}
+\end{figure*}
 
+\subsection{Tile 27258: Deep COSMOS-CANDELS field}
 
+\begin{figure*}
+  \centering
+  \includegraphics{27258-whole-map.pdf}
+  \\[3mm]
+  \includegraphics{27258-zoomin.pdf}
+  \caption{Tile 27258 showing an extrememly deep coadd towards a
+    COSMOS field. This tile pongs and daisy observations taken by JCMT
+    Cosmology Legacy survey and several UH cosmoloy projects. Parts of
+    this data were published in
+    \citet{Casey2013,Chen2013,Chen2013a,Geach2016}. Top Left: emission
+    map of the entire coadded tile. Note the deep daisy seen in the
+    bottom right. Top right: noise map of the entire tile. Contours
+    indicate the 1.75, 2,2.5,5,7.5 and 10 m\jyas\ regions. Bottom left: a zoom in on the deepest region of the map, showing the 850\micron\ data. The contour indicates the < 5m\jyas\ noise region. Bottom right: Comparison of the source catalogues produced here (shown as cyan crosses), as published in \citealt{Casey2013} (red circles) and as found by the JCMT CLS 850um DR1 \citep[blue triangles]{Geach2016}. }
+  \label{fig:g34-3}
+\end{figure*}
 \section{HEALPix grid}
 
 To produce a uniform reduction of all public data, it is necessary to
@@ -439,23 +484,23 @@ legacy configuration file presented here (in an HPX projection), and
 with the standard calibration reduction configuration `bright compact'
 on the tangent plane projection.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.45\linewidth]{crl618_example_legacyred}
-  \includegraphics[width=0.45\linewidth]{crl618_example_bcred}
-  \caption{Left: A legacy 850\,\um{} reduction of a single observation
-    towards the JCMT standard calibration source CRL 618. Note that
-    the pixel axes are at 45 degrees to the RA and Dec axes. As each
-    pixel in the map is truly shaped like a diamond (i.e. a stretched
-    square), the distortion introduced by an image viewer that
-    displays every pixel as a square causes the source to appear
-    ellipsoidal. Right: For comparison, a standard non-HEALPix tangent
-    plane reduction with the Bright Compact configuration is shown for
-    the same source. Here the source appears more circular. Both maps
-    are shown in uncalibrated units of pW on the same scale. These
-    maps cover two tiles.}
-  \label{fig:crl618-example}
-\end{figure}
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.45\linewidth]{crl618_example_legacyred}
+%   \includegraphics[width=0.45\linewidth]{crl618_example_bcred}
+%   \caption{Left: A legacy 850\,\um{} reduction of a single observation
+%     towards the JCMT standard calibration source CRL 618. Note that
+%     the pixel axes are at 45 degrees to the RA and Dec axes. As each
+%     pixel in the map is truly shaped like a diamond (i.e. a stretched
+%     square), the distortion introduced by an image viewer that
+%     displays every pixel as a square causes the source to appear
+%     ellipsoidal. Right: For comparison, a standard non-HEALPix tangent
+%     plane reduction with the Bright Compact configuration is shown for
+%     the same source. Here the source appears more circular. Both maps
+%     are shown in uncalibrated units of pW on the same scale. These
+%     maps cover two tiles.}
+%   \label{fig:crl618-example}
+% \end{figure}
 
 
 Figure \ref{fig:omc1-example} shows a reduction of a single
@@ -464,15 +509,15 @@ region. \todo{ Should this have a comparison with e.g. a GBS
   reduction of this region, to show the difference in size scales?
 Or leave that for later}.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\linewidth]{omc1_example_legacy}
-  \caption{A legacy 850\,\um{} reduction of a single
-    observation(observation 93 from 2012-08-17) towards the OMC-1
-    source. This observation overlapped with 3 tiles: 22805, 21439 and
-    21438. }
-  \label{fig:omc1-example}
-    \end{figure}
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.6\linewidth]{omc1_example_legacy}
+%   \caption{A legacy 850\,\um{} reduction of a single
+%     observation(observation 93 from 2012-08-17) towards the OMC-1
+%     source. This observation overlapped with 3 tiles: 22805, 21439 and
+%     21438. }
+%   \label{fig:omc1-example}
+%     \end{figure}
 
 
 \subsection{Co-adding of tiles}
@@ -635,16 +680,7 @@ observations. Fig.\,\ref{fig:lr-caldb-scatter} shows the scatter plot
 of each bright compact FCF vs the legacy release FCF for each
 observation. Broadly speaking, we see a linear relationship between
 the two derivations of FCF.
-\begin{figure*}
-\includegraphics{legacyFCF-caldbFCF-histograms.pdf}
-\caption{\todo{Probably remove?}Comparison between the histograms of
-  arcsecond FCFs derived from the legacy reduction and the standard
-  JCMT SCUBA-2 calibrator reduction, for the same observations.
-  These are shown both overall and broken down by source (CRL 618,
-  CRL 2688 and Uranus). Note that the LR Uranus maps were \emph{not}
-  reduced onto a Healpix grid, but did use the same pixel area and
-  \texttt{makemap} dimmconfig as the other LR reductions.\label{fig:lr-caldb-histo}}
-\end{figure*}
+
 \begin{figure}
 \includegraphics{legacyFCF-caldbFCF-scatter.pdf}
 \caption{Comparison between the FCFs derived from the legacy release
@@ -694,6 +730,8 @@ $\pm$8 percent.
 
 \section{Noise}
 
+% Coadds contain 1.69 gigapixels of non bad data.
+% 
 \begin{itemize}
 \item Noise maps: overlaps work fine, show an example? 
 \item Copy COHRS pixel distribution graph?
@@ -978,4 +1016,16 @@ A brief summary of how to access the data, catalogues.
 \bibstyle{aasjournal.bst}
 
 
+\section{Extra images}
+These will probably be removed.
+\begin{figure*}
+\includegraphics{legacyFCF-caldbFCF-histograms.pdf}
+\caption{\todo{Probably remove?}Comparison between the histograms of
+  arcsecond FCFs derived from the legacy reduction and the standard
+  JCMT SCUBA-2 calibrator reduction, for the same observations.
+  These are shown both overall and broken down by source (CRL 618,
+  CRL 2688 and Uranus). Note that the LR Uranus maps were \emph{not}
+  reduced onto a Healpix grid, but did use the same pixel area and
+  \texttt{makemap} dimmconfig as the other LR reductions.\label{fig:lr-caldb-histo}}
+\end{figure*}
 \end{document}
