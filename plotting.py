@@ -23,7 +23,8 @@ matplotlib.rcParams['figure.autolayout'] = True
 matplotlib.rcParams['font.size'] = 7
 
 g34plot = None
-crl618plot = None
+crl618plot = True
+cosmosmap = None
 
 s=matplotlib._cm.cubehelix(s=0, r=-0.5, gamma=0.75)
 matplotlib.cm.register_cmap(name='test', data=s, lut=128)
@@ -250,7 +251,7 @@ if crl618plot:
     ax = WCSAxesSubplot(fig, 1,2,1, wcs=wcs2d)
     fig.add_axes(ax)
     data = hdu.data[0,:,:]
-    norm = ImageNormalize(vmin=-0.1, vmax=5, stretch=astropy.visualization.SqrtStretch())
+    norm = ImageNormalize(vmin=-0.1, vmax=4, stretch=astropy.visualization.SqrtStretch())
     ax.imshow(data, cmap=cmap, origin='lower', interpolation='none', norm=norm)
     formataxes(ax)
     add_colorbar(ax)
@@ -261,9 +262,9 @@ if crl618plot:
     ax2 = WCSAxesSubplot(fig, 1,2,2, wcs=wcs2d)
     fig.add_axes(ax2)
     datavar = np.sqrt(hduvar.data[0,:,:])
-    norm = ImageNormalize(vmin=0, vmax=np.sqrt(3), stretch=astropy.visualization.PowerStretch(0.25))
+    norm = ImageNormalize(vmin=3.5e-3, vmax=1, stretch=astropy.visualization.PowerStretch(0.3))
     ax2.imshow(datavar, cmap=cmap_variance, origin='lower', interpolation='none', norm=norm)
-    conts = ax2.contour(datavar, colors='black', levels=[2e-5, 3e-5,4e-5,5e-5])
+    conts = ax2.contour(datavar, colors='black', levels=[5e-3,6e-3,7e-3], linewidths=1.0)
     formataxes(ax2)
     add_colorbar(ax2)
 
@@ -302,10 +303,11 @@ if crl618plot:
     cax = divider.append_axes("right", size="180%", pad=0.1, axes_class=matplotlib.axes.Axes)
     xvals = np.arange(201) -100
     cax.plot(xvals, data[229-100:229+101, 286] - 0.02, color='black', drawstyle='default')
-    cax.plot(xvals, data[229,286-100:286+101]+0.02, color='black', drawstyle='default', linestyle='dotted')
-    cax.plot(xvals, data[229,286-100:286+101]+0.02, color='black', alpha=0.2,drawstyle='default', linestyle='solid')
+    cax.plot(xvals, data[229-100:229+101, 286] - 0.02, color='cyan', drawstyle='default', linestyle='dotted')
+    cax.plot(xvals, data[229,286-100:286+101]+0.02, color='black', drawstyle='default', linestyle='solid')
+    cax.plot(xvals, data[229,286-100:286+101]+0.02, color='red', drawstyle='default', linestyle='dotted')
     cax.set_ylim(-0.06, 0.06)
-    ax.vlines(286, 229-100, 229+100, color='red', linestyle='dotted')
+    ax.vlines(286, 229-100, 229+100, color='cyan', linestyle='dotted')
     ax.hlines(229, 286-100, 286+100, color='red',linestyle='dotted')
     cax.tick_params(labelright=True, labelleft=False)
     cax.hlines(-0.02, cax.get_xlim()[0], cax.get_xlim()[1], color='0.7')
@@ -318,120 +320,121 @@ if crl618plot:
     fig.savefig('crl618-sourceonly.pdf', bbox_inches='tight', pad_inches=0.05)
 
 
-# Deep cosmos region.
-mapfile = 'jcmts850um_healpix027258_pub_000.fits'
+if cosmosmap:
+    # Deep cosmos region.
+    mapfile = 'jcmts850um_healpix027258_pub_000.fits'
 
-hdu = fits.open(mapfile)[0]
-data = hdu.data[0,:,:]
-hduvar = fits.open(mapfile)[1]
-wcs = WCS(hdu.header).dropaxis(2)
-wcsvar = WCS(hduvar.header).dropaxis(2)
-var = np.sqrt(hduvar.data[0,:,:])
-
-
-fig = plt.figure(figsize=(6.5,7))
-ax = WCSAxesSubplot(fig, 1,2,1, wcs=wcs)
-fig.add_axes(ax)
+    hdu = fits.open(mapfile)[0]
+    data = hdu.data[0,:,:]
+    hduvar = fits.open(mapfile)[1]
+    wcs = WCS(hdu.header).dropaxis(2)
+    wcsvar = WCS(hduvar.header).dropaxis(2)
+    var = np.sqrt(hduvar.data[0,:,:])
 
 
-norm = ImageNormalize(vmin=-0.01, vmax=0.0596, stretch=astropy.visualization.LinearStretch())
-ax.imshow(data, cmap=cmap, origin='lower', interpolation='none', norm=norm)
-add_colorbar(ax)
-formataxes(ax)
-ra=ax.coords[0]
-ra.set_ticks(color='white', spacing=0.25*u.deg)
-ra.set_minor_frequency(5)
-dec = ax.coords[1]
-dec.set_ticks(color='white', spacing=0.25*u.deg)
-dec.set_minor_frequency(5)
+    fig = plt.figure(figsize=(6.5,7))
+    ax = WCSAxesSubplot(fig, 1,2,1, wcs=wcs)
+    fig.add_axes(ax)
 
 
-ax2 = WCSAxesSubplot(fig, 1,2,2, wcs=wcsvar)
-fig.add_axes(ax2)
-norm = ImageNormalize(vmin=0.007, vmax=0.017, stretch=astropy.visualization.LinearStretch())
-ax2.imshow(var, cmap=cmap_variance, origin='lower', interpolation='none', norm=norm)
-ax2.contour(var, levels=[1.75e-3, 2e-3, 2.5e-3, 5e-3,7.5e-3,10e-3], colors='0.7')
-
-add_colorbar(ax2)
-formataxes(ax2)
-ra=ax2.coords[0]
-ra.set_ticks(color='0.7', spacing=0.25*u.deg)
-ra.set_minor_frequency(5)
-dec = ax2.coords[1]
-dec.set_ticks(color='0.7', spacing=0.25*u.deg)
-dec.set_minor_frequency(5)
-add_colorbar(ax2)
-dec.set_axislabel_position('r')
-dec.set_ticklabel_position('r')
-fig.tight_layout()
-fig.savefig('27258-whole-map.pdf', bbox_inches='tight', pad_inches=0.05)
+    norm = ImageNormalize(vmin=-0.01, vmax=0.0596, stretch=astropy.visualization.LinearStretch())
+    ax.imshow(data, cmap=cmap, origin='lower', interpolation='none', norm=norm)
+    add_colorbar(ax)
+    formataxes(ax)
+    ra=ax.coords[0]
+    ra.set_ticks(color='white', spacing=0.25*u.deg)
+    ra.set_minor_frequency(5)
+    dec = ax.coords[1]
+    dec.set_ticks(color='white', spacing=0.25*u.deg)
+    dec.set_minor_frequency(5)
 
 
-fig = plt.figure(figsize=(6.5,7))
-ax = WCSAxesSubplot(fig, 1,2,1, wcs=wcs)
-fig.add_axes(ax)
-norm = ImageNormalize(vmin=-0.0097, vmax=0.029, stretch=astropy.visualization.LinearStretch())
-ax.imshow(data, cmap=cmap, origin='lower', interpolation='none', norm=norm)
-conts=ax.contour(var, levels=[5e-3], colors='white')
+    ax2 = WCSAxesSubplot(fig, 1,2,2, wcs=wcsvar)
+    fig.add_axes(ax2)
+    norm = ImageNormalize(vmin=0.007, vmax=0.017, stretch=astropy.visualization.LinearStretch())
+    ax2.imshow(var, cmap=cmap_variance, origin='lower', interpolation='none', norm=norm)
+    ax2.contour(var, levels=[1.75e-3, 2e-3, 2.5e-3, 5e-3,7.5e-3,10e-3], colors='0.7')
+
+    add_colorbar(ax2)
+    formataxes(ax2)
+    ra=ax2.coords[0]
+    ra.set_ticks(color='0.7', spacing=0.25*u.deg)
+    ra.set_minor_frequency(5)
+    dec = ax2.coords[1]
+    dec.set_ticks(color='0.7', spacing=0.25*u.deg)
+    dec.set_minor_frequency(5)
+    add_colorbar(ax2)
+    dec.set_axislabel_position('r')
+    dec.set_ticklabel_position('r')
+    fig.tight_layout()
+    fig.savefig('27258-whole-map.pdf', bbox_inches='tight', pad_inches=0.05)
 
 
-ax.set_xlim(117.38899509591401, 433.24228632982658)
-ax.set_ylim(70.910809319165651, 384.07598743619394)
-
-ax2 = WCSAxesSubplot(fig, 1,2,2, wcs=wcs)
-fig.add_axes(ax2)
-norm = ImageNormalize(vmin=-0.0097, vmax=0.029, stretch=astropy.visualization.LinearStretch())
-ax2.imshow(data, cmap='gist_gray_r', origin='lower', interpolation='none', norm=norm)
-conts=ax2.contour(var, levels=[5e-3], colors='black')
-ax2.set_xlim(117.38899509591401, 433.24228632982658)
-ax2.set_ylim(70.910809319165651, 384.07598743619394)
+    fig = plt.figure(figsize=(6.5,7))
+    ax = WCSAxesSubplot(fig, 1,2,1, wcs=wcs)
+    fig.add_axes(ax)
+    norm = ImageNormalize(vmin=-0.0097, vmax=0.029, stretch=astropy.visualization.LinearStretch())
+    ax.imshow(data, cmap=cmap, origin='lower', interpolation='none', norm=norm)
+    conts=ax.contour(var, levels=[5e-3], colors='white')
 
 
+    ax.set_xlim(117.38899509591401, 433.24228632982658)
+    ax.set_ylim(70.910809319165651, 384.07598743619394)
 
-# Catalogs
-# Casey et al paper: UH observations. J/MNRAS/436/1919/table2
-uhcat = 'vizier_votable.vot'
-
-# CLS DR1 catalogs:
-clscat = 'S2CLS_CATALOGUE_DR1.FITS'
-
-# Our peak catalog
-lrcat = 'jcmts850um_peak-cat027258_pub_000.fits'
-
-uhtab = Table.read(uhcat)
-
-# Get decimal degree ra and dec
-dec=uhtab['DEJ2000']
-dec=[i.decode() for i in dec]
-dec=coord.Angle(dec, unit=u.degree)
-
-ra=uhtab['RAJ2000']
-ra=[i.decode() for i in ra]
-ra=coord.Angle(ra, unit=u.hour)
-ra=ra.to(unit=u.degree)
-ax2.scatter(ra, dec, s=45, transform=ax2.get_transform('fk5'), label='UH', color='red', marker='o', facecolor='none',)
+    ax2 = WCSAxesSubplot(fig, 1,2,2, wcs=wcs)
+    fig.add_axes(ax2)
+    norm = ImageNormalize(vmin=-0.0097, vmax=0.029, stretch=astropy.visualization.LinearStretch())
+    ax2.imshow(data, cmap='gist_gray_r', origin='lower', interpolation='none', norm=norm)
+    conts=ax2.contour(var, levels=[5e-3], colors='black')
+    ax2.set_xlim(117.38899509591401, 433.24228632982658)
+    ax2.set_ylim(70.910809319165651, 384.07598743619394)
 
 
-clstab=Table.read(clscat)
-ra=clstab['RA_DEG']
-dec=clstab['Dec_DEG']
-ax2.scatter(ra, dec, s=45, transform=ax2.get_transform('fk5'), label='LCS', color='blue', marker='^', facecolor='none', zorder=6)
+
+    # Catalogs
+    # Casey et al paper: UH observations. J/MNRAS/436/1919/table2
+    uhcat = 'vizier_votable.vot'
+
+    # CLS DR1 catalogs:
+    clscat = 'S2CLS_CATALOGUE_DR1.FITS'
+
+    # Our peak catalog
+    lrcat = 'jcmts850um_peak-cat027258_pub_000.fits'
+
+    uhtab = Table.read(uhcat)
+
+    # Get decimal degree ra and dec
+    dec=uhtab['DEJ2000']
+    dec=[i.decode() for i in dec]
+    dec=coord.Angle(dec, unit=u.degree)
+
+    ra=uhtab['RAJ2000']
+    ra=[i.decode() for i in ra]
+    ra=coord.Angle(ra, unit=u.hour)
+    ra=ra.to(unit=u.degree)
+    ax2.scatter(ra, dec, s=45, transform=ax2.get_transform('fk5'), label='UH', color='red', marker='o', facecolor='none',)
 
 
-lrtab = Table.read(lrcat)
-ax2.scatter(lrtab['RA'], lrtab['DEC'], s=45, transform=ax2.get_transform('fk5'), color='cyan', marker='x', zorder=7, label='LR')
-fig.subplots_adjust(wspace=0.1)
+    clstab=Table.read(clscat)
+    ra=clstab['RA_DEG']
+    dec=clstab['Dec_DEG']
+    ax2.scatter(ra, dec, s=45, transform=ax2.get_transform('fk5'), label='LCS', color='blue', marker='^', facecolor='none', zorder=6)
 
-formataxes(ax)
-formataxes(ax2)
 
-add_colorbar(ax)
-add_colorbar(ax2)
-fig.axes[-1].remove()
-ax2.coords[1].set_axislabel('')
-ax2.coords[1].set_ticklabel_position('r')
-ax2.coords[1].set_axislabel_position('r')
+    lrtab = Table.read(lrcat)
+    ax2.scatter(lrtab['RA'], lrtab['DEC'], s=45, transform=ax2.get_transform('fk5'), color='cyan', marker='x', zorder=7, label='LR')
+    fig.subplots_adjust(wspace=0.1)
 
-fig.subplots_adjust(wspace=0.05)
+    formataxes(ax)
+    formataxes(ax2)
 
-fig.savefig('27258-zoomin.pdf', bbox_inches='tight', pad_inches=0.05)
+    add_colorbar(ax)
+    add_colorbar(ax2)
+    fig.axes[-1].remove()
+    ax2.coords[1].set_axislabel('')
+    ax2.coords[1].set_ticklabel_position('r')
+    ax2.coords[1].set_axislabel_position('r')
+
+    fig.subplots_adjust(wspace=0.05)
+
+    fig.savefig('27258-zoomin.pdf', bbox_inches='tight', pad_inches=0.05)
