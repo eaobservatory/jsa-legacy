@@ -50,16 +50,21 @@
 \altaffiltext{4}{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place,Hilo, HI 96720, USA}
 
 \begin{abstract}
-  % Re write this properly once the rest of the paper is written.
-  The JCMT Science Archive allows access to raw and reduced data for
-  all publicly available JCMT observations. To aid users of JCMT
-  products, we have produced a standardised reduction of public JCMT
-  SCUBA-2 850\,\um\ observations. These reductions provide uniformly
-  reduced co-additions of of all standard, public data observed before
-  2015 March 1st, as well as catalogues to identify the regions where
-  emission was detected. The data have been gridded in the HEALPix HPX
-  scheme with pixels of area 3.22 arcsec\textsuperscript{2}, and
-  divided into tiles of just under 1 degree a side.
+  We present the first JCMT Legacy Release, consisting of uniform
+  reductions, coadditions and catalogues of detected emission for the
+  850\,\um\ data from all SCUBA-2 observations taken between 2011 and
+  March 1st 2015. The data are gridded on to HEALPix
+  tiles of $~$1 degree a side, using the HPX projection onto pixels of
+  area 3.22 by 3.22 arcseconds. The individually reduced observations
+  include 6420 hours of observing time, and the coadded tiles used
+  5915 hours of this, covering 1356 square degrees of
+  the sky. The coadds have been calibrated into units of m\jyas\ using
+  a self-derived flux conversion factor. Contiguous regions of
+  emission were detected at a better than 5-$\sigma$ level in 740
+  tiles, covering in total 1.4 square degrees, or 0.33 percent of the
+  coadded area. Within this area, 13477 local maxima were
+  detected. Twenty of the coadded tiles contain regions with a noise
+  better than 5E-3 m\jyas\, corresponding roughly to 1\,m\jybm.
 \end{abstract}
 
 \keywords{submillimeter:general; catalogs}
@@ -203,26 +208,22 @@ were still reduced using this standardised configuration\footnote{and
 have not been included in the co-added products (see \sref{sec:QA} for
 more detail on this).
 
+The observations included in this release were each taken in one of
+the two different SCUBA-2 standard scan patterns: CV\_DAISY, a
+fixed-size scan pattern used for covering small areas, and CURVY\_PONG
+patterns at various user chosen sizes. The scanning speed is not the
+same between these scan patterns, and there will be some inconsistency
+in the size scales SCUBA-2 reductions are sensitive based on the
+observing mode that was used. However, as our reduction has been
+extremely conservative and has filtered out structure on scales larger
+than 200\arcsec, we believe this effect should be minimized in our
+coadds.
+
 
 
 
 
 \subsection{Overall statistics}
-
-
-In total, 21464 observations were reduced representing 6420 hours of
-observing time, towards 4403 distinct HEALPix tiles. The coadded
-observations include 12404 observations (5828 hours or 242.8 days)
-towards 4154 tiles. These coadds were made up of 136 hours of science
-calibration observations, 3575 hours of data taken for the JCMT Legacy
-Surveys and 2117 hours of data taken for PI projects. This information
-is summarized in Table \ref{tab:typesobs}. The coadds include 1.69
-gigapixels of valid data, corresponding to ~1356 square
-degrees.\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}.  Source
-detection was carried out on all of the co-added tiles, and this
-detected emission in 1.37 square degrees (4.17e-4 steradians, or
-0.33\% of the area observed.)
-
 \begin{deluxetable}{lrrrrrr}
 \tablecaption{Types of observation included in this
   release.\label{tab:typesobs}}
@@ -240,6 +241,26 @@ JLS & 6143 & 3642.2 & 2156 & 6023 & 3575.3 & 2145 \\
 PI & 4217 & 2134.2 & 2329 & 4181 & 2117.0 & 2303\\
 \enddata
 \end{deluxetable}
+
+In total, 21464 observations were reduced representing 6420 hours of
+observing time, towards 4403 distinct HEALPix tiles. The coadded
+observations include 12404 observations (5828 hours or 242.8 days)
+towards 4154 tiles. These coadds were made up of 136 hours of science
+calibration observations, 3575 hours of data taken for the JCMT Legacy
+Surveys and 2117 hours of data taken for PI projects. This information
+is summarized in Table \ref{tab:typesobs}. The coadds include 1.69
+gigapixels of valid data, corresponding to ~1356 square
+degrees.\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}. For
+comparison, the SCUBA Legacy Catalogue \citep{DiFrancesco2008} covered
+19.6 square degrees in their  `Fundamental Map Data Set,
+and 29.3 square degrees in their fuller `Extended Map Data Set'
+
+  Source
+detection was carried out on all of the co-added tiles, and this
+detected emission in 1.37 square degrees (4.17e-4 steradians, or
+0.33\% of the area observed.)
+
+
 
 Because the observations used here are from a wide variety of projects
 aiming for a variety of noise levels, our noise maps are extremely
@@ -304,6 +325,7 @@ observed by the JCMT Cosmology Legacy Survey and various PI
 projects. For reference, these twenty tiles, along with some
 statistics of their deep regions are listed in
 Table\,\ref{tab:deepmaps}.
+%mention that examination by eye of these tiles shows the noise to be reasonable?
 
 %\floattable
 \begin{deluxetable}{rc r c c p{2cm}}
@@ -372,6 +394,36 @@ Table\,\ref{tab:deepmaps}.
 % \end{table}
 %\subsection{Comparison with the SCUBA Legacy Catalogue}
 \section{Example regions}
+This data release includes emission towards objects covering the full
+diversity of non-solar system structures observed by the JCMT --
+including dusty disks, complex filamentary molecular clouds, nearby
+galaxies, extra galactic point sources and extremely deep surveys of
+standard cosmological fields. Although providing full examples of all
+types of emisison is beyond the scope of this paper, we here present
+some of our coadded tiles covering a range of source types.
+
+\subsection{G034.27+0.15}
+The source G034.27+0.15 is a bright, high mass star forming region
+that has been observed in a wide variety of
+wavelengths. Figure~\ref{fig:g34-3} shows our coadded tile, noise map,
+extent catalogue and peak catalogue towards this source. This coadd
+includes data primarily from JCMT calibration projects of this source,
+but also two observations from a University of Hawaii PI project
+(M13AH07B).\note{Was this published?}. The noise maps for this coadd
+shows the characteristic 'CV\_DAISY' scan pattern towards the central
+source, with two overlapping small PONG observations covering a wider
+extent. This field also illustrates the the artifically high noise we
+see towards bright sources (see Section~\ref{sec:dr}) -- this is seen
+in the higher noise points towards the central source and the bright
+points in the filament extending towards the top left. Examination of
+the extent and peak catalogues, however, (shown below) indicates that
+this problem did not prevent a detection of the emission in these
+regions. Our experience has been that these high noise areas only
+occur towards bright regions, so they are still clearly detected in
+our extent catalogs, with an Signal-to-Noise ratio of $>5$.
+
+
+
 % includes a variety of types of structure three examples shown here
 % to examine the coadds and the catalogs.  Includes: filamentary
 % region (G34.3), bright point source (CRL618, a standard calibrator)
@@ -379,7 +431,7 @@ Table\,\ref{tab:deepmaps}.
 % 'blank field in any single observation, but reveals a multitude of
 % deep submm galaxies when coadded.
 
-\subsection{G034.27+0.15}
+
 \begin{figure*}
   \centering
   \includegraphics{tile30318-g34-coadd-noise.pdf}
@@ -391,6 +443,18 @@ Table\,\ref{tab:deepmaps}.
   \label{fig:g34-3}
 \end{figure*}
 \subsection{CRL\,618}
+CRL 618 is one of the JCMT's standard flux calibration sources for
+SCUBA-2 observing. As such, this coadd includes 923 observations using
+51 hours of observing time across the small CV\_DAISY area, shown in
+Figure~\ref{fig:crl618}. We achieved an extremely high noise due to
+this large number of repeats -- achieving a noise better than
+0.005\,m\jyas\ around the central source. A zoom in on the central
+sources shows clearly a variety of point sources detected in this deep
+coadd. In addition, it can readily be seen by eye that there appear to
+be additional sources that are missed by our cataloging procedure due
+to the negative bowling around the very bright source. Horizontal and
+vertical cut throughs are shown to help visualise this bowling.
+
 \begin{figure*}
   \centering
   \includegraphics{crl618-whole-map.pdf}
@@ -398,21 +462,42 @@ Table\,\ref{tab:deepmaps}.
   \includegraphics{crl618-sourceonly.pdf}
   \caption{Examples of the coadd, noise map, and extents towards the
     standard calibration source CRL 618, consisting of tiles 1238 and
-    1244. This coadd contains data from XX900 observations (XXhrs elapsed
-    observing time). The contours on the noise map indicate the 2e-5,
-    3e-5, 4e-5 and 5e-5 m\jyas\ noise
-    levels. On the bottom row a zoom in of the central source showing
-    the detected extents around the source is shown (Left), as well as
-    horizontal and vertical cuts through the peak (Right). In these
-    cut throught the ~0.01 m\jyas\ bowling around the bright central source
-    can be easily seen. }
+    1244. This coadd contains data from XX900 observations (XXhrs
+    elapsed observing time). The contours on the noise map indicate
+    the 0.005, 0.006 and 0.007 m\jyas\ noise contours. On the bottom
+    row a zoom in of the central source showing the detected extents
+    around the source is shown (Left), as well as horizontal and
+    vertical cuts through the peak (Right). In these cut throughs the
+    ~0.01 m\jyas\ bowling around the bright central source can be
+    easily seen. }
   \label{fig:crl618}
 \end{figure*}
 
 \subsection{Tile 27258: Deep COSMOS-CANDELS field}
+Here we present our deepest map. This includes data both from the JCMT
+Cosmology Legacy Survey \citep[recently published in][]{Geach2016} but
+also from various University of Hawaii deep surveys
+\citep{Casey2013,Chen2013,Chen2013a}. By being able to include
+publicly available data taken by different projects we can achieve a
+deeper map than possible with only one data set. Our coadd includes
+both wide PONG observations, and very deep DAISY
+observations. Figure~\ref{fig:t27258} shows both the entire tile, its
+noise map, and also a zoom in of the deepest region. In the noise map
+it is possible to see the imprint of the various scan patterns. Note
+that we do not appear to have problems with addition of the high noise
+edges, indicating that our variance arrays are reasonably accurate
+even in these higher noise areas.
+
+In this deep map, it can clearly be seen that there are point sources
+spread across the full map. Although for optimal detection of point
+sources a beam matched filter should be used, even without using that
+we detect a large number of these objects. Figure~\ref{fig:27258}
+shows a comparison of our detections, the CLS's detections from their
+first data release \citep{Geach2016} and those of
+\citet{Casey2013}. Although these 3 methods do not detect exactly the
+same objects, there are many correspondances between them.
 
 \begin{figure*}
-  \centering
   \includegraphics{27258-whole-map.pdf}
   \\[3mm]
   \includegraphics{27258-zoomin.pdf}
@@ -614,9 +699,6 @@ m\jyas\ was done by multiplying with an FCF of
 derived from our own data set -- see Section \ref{sec:calib}.
 
 \subsection{Source Recovery}
-%\todo{SFG: write this up properly}
-%\note{From LR1-releasenotes. Needs rewriting.}
-
 Recently, work by \citet{Mairs2015} examined the recovery of sources
 found inside and outside the makemap AST mask, specifically comparing
 the JCMT Gould Belt Survey's reductions with the Legacy Release config
@@ -625,20 +707,19 @@ significant difference between recovery of sources inside and outside
 the AST mask. Sources that are outside the AST-masked regions can have
 their flux considerably underrepresented. The AST masked region can be
 thought of as approximately the region containing detectable emission,
-using `detection' limits setin the specific configuration parameters
+using `detection' limits set in the specific configuration parameters
 chosen. The effect is dependent on the size of the source -- extended
 sources outside of the masked regions are poorly recovered in this
 reduction, where as point sources are recovered well.  This issue does
-in practice affect all reductions, including those using external
-masks defined from previous knowledge of the emission, but is of
-course most problematic for reductions such as these where the AST
-mask is defined based only on detected emission from a single
-observation.
+in theory affect all reductions, including those using external masks
+defined from previous knowledge of the emission, but is of course most
+problematic for reductions such as these where the AST mask is defined
+based only on detected emission from a single observation.
 
 If users of this release are concerned about the recovery of specific
 sources, each individual reduced observation contains a QUALITY array,
-which indicating which areas of the map were included in the AST mask
-(and also the FLT mask).
+which indicating which areas of the map were and were not included in
+the AST mask (and also the FLT mask).
 
 
 \subsection{Size Scales}
@@ -654,8 +735,9 @@ clearly seen around bright sources. Figure~\ref{fig:crl618} shows this
 clearly around the bright calibrator CRL\,618. The cut throughs in the
 vertical and horizontal direction through the source show the bowling
 at ~0.01\,m\jyas. No processing was done to try and ameliorate these
-effects, and there may be significant loss of detected emission in the
-cataloging stage due to these artificial negative regions.
+effects, and there will be significant loss of detected emission and
+missing of entire sources in the emission catalogs, due to these
+artificial negative regions around bright sources.
 
 \todo{Do we need more examples of this? Find a good description of why
   this happens, should be in S2 cookbook somewhere.}
@@ -727,7 +809,7 @@ towards the center of bright sources \note{TODO: explain why!} (see
 Fig.~\ref{fig:g34-3} for an example of this); however this is not at a
 level to prevent a signal to noise 5-$\sigma$ detection.
 
-\todo{Is this needed? Note on varying noise within tiles -- show some examples,
+\todo{Is this needed:? Note on varying noise within tiles -- show some examples,
   explaining why its so necessary to use SNR instead of a
   representative noise when the noise varies across the tile.}
 
@@ -738,14 +820,15 @@ both as a FITS format mask file, as a HEALPix Multi-Order-Coverage
 file (MOC) and as a rough approximation by STC-S polygon. The
 catalogue for each tile indicates the ID of the clump, the RA and Dec
 of the peak pixel, the total flux contained within the entire extent,
-the flux of the peak pixel, and the area of the entire extent. We also
-include the approximation of the outline of the extent as an STC-S
-polygon string. This can be plotted with software such as GAIA.
+the flux of the peak pixel, and the area of the entire extent. The
+catalog also includes the approximation of the outline of the extent
+as an STC-S polygon string. An excerpt from the extent catalog for
+Tile 30318 (containing G34.3) is shown in Table~\ref{tab:extents}.
 
 
 
 
-\todo{Example extent catalog.}
+
 
 
 \subsection{Peaks}
@@ -767,7 +850,8 @@ followed down to a noise level of 3-$\sigma$, and with at least a
 5-$\sigma$ dip between them and neighbouring maxima. Our output
 catalogue contains the ID of the peak, the RA and Dec of the peak
 pixel, the flux in the peak pixel, and the ID of the extent the peak
-was drawn from.
+was drawn from. An excerpt from the peak catalog for Tile 30318 is
+shown in Table~\ref{tab:peaks}.
 
 We decided not to include the outlines of all emission counted as
 being within that object or clump, as we felt that would encourage
@@ -777,7 +861,9 @@ local maxima within a complex molecular cloud. The `clump outlines'
 produced by software such as CUPID always reflect the arbitrarily
 chosen boundaries of dips and minimum heights, and should not be
 assumed to represent physical objects without considerable further
-modelling (\todo{Does this need further discussion? Cite various issue with clumpfind papers maybe?}.)
+modelling.
+
+(\todo{Does this need further discussion? Cite various issue with clumpfind papers maybe?}.)
 
 
 \section{HEALPix grid}
@@ -1091,6 +1177,9 @@ smearing should be included in the resolution.}
 \note{Get citation for JCMT expected average pointing issue. Probably
   website?}
 
+\note{TODO: add in images and cut throughs of CRL618 and CRL2688
+  beams, with Gaussian fits. Similar to Jess's calibration paper, but
+  a little less thorough?}
 
 %\end{itemize}
 
@@ -1098,7 +1187,8 @@ smearing should be included in the resolution.}
 
 
 
-%\section{Conclusions}
+\section{Conclusions}
+\note{do we need a conclusion section?}
 
 \acknowledgments
 The James Clerk Maxwell Telescope has historically been operated by
@@ -1249,7 +1339,13 @@ Coverage MOC & JSA\_CATALOGUE & \texttt{jcmts850um\_tile-moc<TILE>\_pub\_001.fit
   with an obsid of the form \texttt{SCUBA-2-<TILE>}.}
 \end{deluxetable}
 
-\clearpage
+\section{Example Catalogs}
+For guidance, excerpts from the extent and peak catalogs of tile 30318
+are shown here.
+\input{extentcat-t30318}
+\input{peakcat-t30318}
+
+\newpage
 \section{Extra images}
 These will probably be removed.
 \begin{figure*}[h!]
