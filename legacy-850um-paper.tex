@@ -83,7 +83,7 @@ wavelengths \citep{Holland2013}.  JCMT Principal Investigator (PI)
 observations, including
 those taken with SCUBA-2, usually become public a year after the end
 of the semester they are taken in. These public observations are
-available to download as raw and pipeline files from the
+available to download as raw and pipeline-reduced files from the
 JCMT Science Archive (JSA) \citep{2015Economou}, at the Canadian
 Astornomy Data Centre (CADC). However, these products do not include
 full co-adds of all data taken towards a region, and different projects
@@ -108,7 +108,7 @@ there are clear detections. Previously, the SCUBA legacy catalogue
 \citep{DiFrancesco2008} presented uniformly reduced co-adds and
 catalogues of all SCUBA data, and this resource has been very widely
 used, both in scientific publications and as a first step for
-interested users. We hope for this legacy release to act as a similar
+interested users. We hope that this legacy release will act as a similar
 reference for SCUBA-2 observations.
 
 This paper presents the first release in this project: the 850\,\um\
@@ -162,8 +162,8 @@ determine if they met our quality standards (see Section
 \ref{sec:QA}). Co-adds were then made for every HEALPix tile with data
 falling onto it, using the PICARD recipe \texttt{COADD\_JSA\_TILES}
 (see Section \ref{sec:coadd}), producing a co-added tile calibrated in
-units of m\jyas{} (for details on calibration see Section
-\ref{sec:calib}). For every co-added tile, the PICARD recipe
+units of m\jyas{} (for details of the calibration see
+Section~\ref{sec:calib}). For every co-added tile, the PICARD recipe
 \texttt{JSA\_CATALOGUE} was then run to produce (if detected) extent
 and peak catalogues of detected emission (see Section
 \ref{sec:cat}). See Fig.\,\ref{fig:flowchart} for an example of
@@ -215,7 +215,7 @@ more detail on this).
 The observations included in this release were each taken in one of
 the two different SCUBA-2 standard scan patterns: CV\_DAISY, a
 fixed-size scan pattern used for covering small areas, and CURVY\_PONG
-patterns at various user chosen sizes. The scanning speed is not the
+patterns at various user-chosen sizes. The scanning speed is not the
 same between these scan patterns, and there will be some inconsistency
 in the size scales as SCUBA-2 reductions are sensitive to the
 observing mode that was used. However, as our reduction has been
@@ -586,13 +586,13 @@ pre-processing stage, the SCUBA-2 mapmaker recipe performs five
 iterations in which the astronomical signal is retained rather than
 being removed (as in a normal iteration) prior to starting the next
 iteration (specified using \texttt{ast.skip=5}). These initial
-iterations allow the reduction process to focus on creating a mask
+iterations allow the reduction process to focus on creating an AST mask
 that identifies any unusually bright region. This is useful since such
 regions may cause ringing in subsequent estimates of the low-frequency
 noise in each bolometer. During these iterations ``bright'' pixels are
 taken to be those with a signal-to-noise ratio greater than 5.0, plus
 any other pixels that are attached contiguously to such pixels down
-the an SNR of 3 (specified by using \texttt{flt.zero\_snr=5} and
+to an SNR of 3 (specified by using \texttt{flt.zero\_snr=5} and
 \texttt{flt.zero\_snrlo=3}).
 
 During all iterations an atmospheric correction is applied and data
@@ -711,7 +711,7 @@ significant difference between recovery of sources inside and outside
 the AST mask. Sources that are outside the AST-masked regions can have
 their flux considerably under-represented. The AST masked region can be
 thought of as approximately the region containing detectable emission,
-using `detection' limits set in the specific configuration parameters
+using `detection' limits set by the specific configuration parameters
 chosen. The effect is dependent on the size of the source -- extended
 sources outside of the masked regions are poorly recovered in this
 reduction, where as point sources are recovered well.  This issue does
@@ -794,7 +794,7 @@ tiles. We determined that we would consider all regions of contiguous
 emission containing flux brighter than 5-$\sigma$ to be a single `extent'
 for purposes of our reductions, if the region is larger in area than a
 beam.  Here, a simple approximation of the beam was used (all sources
-larger than 9 pixels). We followed the emission down to a noise level
+comprising more than nine pixels). We followed the emission down to a noise level
 of 3-$\sigma$. We considered using a more complex approach, but noise
 spikes in \texttt{makemap} maps did not appear to be commonly falsely detected
 with this approach. The main source of false detections in our
@@ -805,8 +805,8 @@ reductions and removing them from the co-adds.
 
 The reduced observations, produced by SMURF's \texttt{makemap} routine, all
 contain a variance array giving the noise towards each pixel, based on
-the scatter of input data points to that pixel. Pixels with too small
-a number of inputs to calculate a variance point are not included in
+the scatter of input data points to that pixel. Pixels with too few
+inputs to calculate a variance point are not included in
 the individual maps. Our co-adding procedure uses this variance to
 weight the input observations. We do see anomalously high noise
 towards the center of bright sources \note{TODO: explain why!} (see
@@ -966,8 +966,8 @@ the SNR map in the QA page, as it had been found from the first
 experience that this was necessary to resolve the QA state for some
 observations. \status{BAD} observations were excluded from the co-adds,
 as were observations that were flagged as \status{BAD} by the
-observatories normal observation-based QA (usually done during a
-nights observing).\status{QUESTIONABLE} observations were examined
+observatory's normal observation-based QA (usually done during a
+night's observing).\status{QUESTIONABLE} observations were examined
 further, and either included in the co-adds or changed to \status{BAD}.
 
 
@@ -1088,8 +1088,8 @@ relationship between the two derivations of FCF.
   reductions, and those derived from the standard JCMT SCUBA-2
   calibrator reduction. The dashed line indicates a one-to-one
   relationship, offset by the difference in the derived FCF used for
-  calibrating the legacy release (2.48) and the canonical FCF from
-  \citet[2.34]{Dempsey2013}. \label{fig:lr-caldb-scatter} }
+  calibrating the legacy release (2.48) and the canonical FCF (2.34)
+  from \citet{Dempsey2013}. \label{fig:lr-caldb-scatter} }
 \end{figure}
 
 
