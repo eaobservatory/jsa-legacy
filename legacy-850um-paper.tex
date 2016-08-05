@@ -314,7 +314,7 @@ values (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
     main plot is shown with a log y-axis scale, and a linear y-axis
     scale is shown in the inset. Note that no trimming of observations
     is done for this, so the noisy edges of the SCUBA-2 observing
-    patterns are included. The noise is taken from the makemap
+    patterns are included. The noise is taken from the \texttt{makemap}
     produced variance array, which uses the scatter of input data
     points to estimate the variance of a given pixel while reducing
     the raw time series onto a sky map.}
@@ -704,7 +704,7 @@ derived from our own data set -- see Section \ref{sec:calib}.
 
 \subsection{Source Recovery}
 Recently, work by \citet{Mairs2015} examined the recovery of sources
-found inside and outside the makemap AST mask, specifically comparing
+found inside and outside the \texttt{makemap} AST mask, specifically comparing
 the JCMT Gould Belt Survey's reductions with the Legacy Release configuration
 described here. They found that in SCUBA-2 reductions there is a
 significant difference between recovery of sources inside and outside
@@ -796,14 +796,14 @@ for purposes of our reductions, if the region is larger in area than a
 beam.  Here, a simple approximation of the beam was used (all sources
 larger than 9 pixels). We followed the emission down to a noise level
 of 3-$\sigma$. We considered using a more complex approach, but noise
-spikes in makemap maps did not appear to be commonly falsely detected
+spikes in \texttt{makemap} maps did not appear to be commonly falsely detected
 with this approach. The main source of false detections in our
 reductions would have been the previously discussed problem of `false
-blooms of emission' occasionally produced by makemap reductions, if we
+blooms of emission' occasionally produced by \texttt{makemap} reductions, if we
 had not used a by-eye approach for flagging the handful of problematic
 reductions and removing them from the co-adds.
 
-The reduced observations, produced by SMURF's makemap routine, all
+The reduced observations, produced by SMURF's \texttt{makemap} routine, all
 contain a variance array giving the noise towards each pixel, based on
 the scatter of input data points to that pixel. Pixels with too small
 a number of inputs to calculate a variance point are not included in
@@ -1071,7 +1071,7 @@ For comparison, the usual `canonical' 850\,\micron\ arcsecond FCF used
 in the JCMT's nightly reductions is $2.34 \pm 0.08 \mathrm{Jy}\
 \mathrm{pW}^{-1}\ \mathrm{arcsec}^{-2}$ \citep{Dempsey2013}. This is
 approximately 6 percent lower than the value used here, and was
-derived using the `bright compact' makemap configuration on 1
+derived using the `bright compact' \texttt{makemap} configuration on 1
 arcsecond pixels (in comparison with the 3.22$\times$3.22 arcsecond
 pixels in this release), using observations taken from 2011 to
 20XX. Fig.\,\ref{fig:lr-caldb-histo} shows the comparison between the
@@ -1160,7 +1160,7 @@ $\pm$8 percent.
 Our observations of JCMT standard calibrators and pointing sources are
 corrected for normal pointing offsets, as these sources are all at
 known positions. In our data reduction stage, these observations are
-run through makemap twice; first to calculate the difference between
+run through \texttt{makemap} twice; first to calculate the difference between
 the beam position and the known source position, and secondly
 re-reduced using this positional offset to place the observation at
 the correct point. No other observations in this data set were
