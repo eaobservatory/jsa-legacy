@@ -56,7 +56,7 @@
   We present the first JCMT Legacy Release, consisting of uniform
   reductions, co-additions and catalogues of detected emission for the
   850\,\um\ data from all SCUBA-2 observations taken between 2011 and
-  2015 March 1. The data are gridded on to HEALPix
+  2015 March 1. The data are gridded onto HEALPix
   tiles of $~$1 degree a side, using the HPX projection onto pixels of
   area 3.22 by 3.22 arcseconds. The individually reduced observations
   include 6420 hours of observing time, and the co-added tiles used
@@ -116,10 +116,10 @@ SCUBA-2 continuum observations. Planned future releases are the
 450\,\um\ SCUBA-2 observations and HARP spectral cubes.
 
 
-% % Release of block 1 and this data
+% % Release of block 1 and these data
 % This release includes data taken from 2011 February 2 to 2015 March
 % 1st, when the JCMT was began to be operated by East Asian Observatory.
-% The first block of this data, from 2011 to Augst 1st 2013 was already
+% The first block of these data, from 2011 to 2013 August 1 was already
 % reduced and publicly released in September 2015. This release includes
 % these same reduced individual observations, reductions of the newer
 % data taken up until March 2015, and new co-adds and catalogs produced
@@ -132,12 +132,12 @@ SCUBA-2 continuum observations. Planned future releases are the
   \includegraphics{mollweide-average-noise-galacticaxes-crop}
   \caption{All-sky noise map for this SCUBA-2 850\,\um{} legacy
     release. Each pixel represents the average noise across a single
-    HEALPix tile. Tiles with less than 200 valid pixels were not
+    HEALPix tile. Tiles with fewer than 200 valid pixels were not
     included. The map is a cartesian Mollweide projection, with the
     axes of the galactic coordinate system overlain. The large curved
-    stripe shows the extensive mapping of the galactic. Small points
+    stripe shows the extensive mapping of the Galactic Plane. Small points
     away from the plane predominantly represent daisy observations
-    towards extra galactic sources scattered across the sky.}
+    towards extragalactic sources scattered across the sky.}
   \label{fig:noise-mollweide}
 \end{figure*}
 
@@ -149,7 +149,7 @@ of the co-adds in this release, showing the average RMS across all
 valid pixels in a tile as a single square.
 
 All pointing and science observations from our time range were reduced
-using the ORAC-DR recipe \texttt{REDUCE\_SCAN\_JSA\_PUBLIC} on to
+using the ORAC-DR recipe \texttt{REDUCE\_SCAN\_JSA\_PUBLIC} onto
 HEALPix tiles (see Section \ref{sec:healpix}) using the HPX
 projection, which leaves the observations fully reduced maps in units
 of pW (see Section \ref{sec:dr}). The individual maps are available to
@@ -190,11 +190,11 @@ observed between 2011 February 2 and 2015 March 1, including
 observations from calibration projects, PI projects, and the JCMT
 Legacy Surveys (JLS). See \citealt{ChrysostomouJLS} for an overview of the
 JCMT Legacy Survey program, which included: the Gould Belt Survey
-\citep{GBS}, the SCUBA-2 amibitious Sky Survey \citep{SASSy}, the
+\citep{GBS}, the SCUBA-2 ambitious Sky Survey \citep{SASSy}, the
 Cosmology Legacy Survey \citep{Geach2013}, the JCMT Galactic Plane Survey
 \citep{JPS}, the Nearby Galaxy Survey ??, and the Debris Disk Survey
-\citep{SONS}.  The first block of this data, from 2011 to Augst 1st
-2013 was previously reduced and publicly released in September 2015,
+\citep{SONS}.  The first block of these data, from 2011 to 2013 August 1
+was previously reduced and publicly released in September 2015,
 using the same configuration and co-add criteria as described in this
 paper.
 % add note -- available at (URL for download)
@@ -283,7 +283,7 @@ dividing by our derived arcsecond Flux Conversion Factor (FCF)
 derived for this data set, so we do not recommend using this
 calibration when extracting fluxes as a self-derived FCF would
 probably have a systematic offset of a few percent from the `standard'
-values, (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
+values (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
 
 \begin{deluxetable}{lDDD}
   \tablecaption{Areas of the release with an RMS noise less than or
@@ -401,7 +401,7 @@ Table\,\ref{tab:deepmaps}.
 This data release includes emission towards objects covering the full
 diversity of non-solar system structures observed by the JCMT --
 including dusty disks, complex filamentary molecular clouds, nearby
-galaxies, extra galactic point sources and extremely deep surveys of
+galaxies, extragalactic point sources and extremely deep surveys of
 standard cosmological fields. Although providing full examples of all
 types of emisison is beyond the scope of this paper, we here present
 some of our co-added tiles covering a range of source types.
@@ -416,7 +416,7 @@ but also two observations from a University of Hawaii (UH) PI project
 (M13AH07B).\note{Was this published?}. The noise maps for this co-add
 shows the characteristic 'CV\_DAISY' scan pattern towards the central
 source, with two overlapping small PONG observations covering a wider
-extent. This field also illustrates the the artifically high noise we
+extent. This field also illustrates the artificially high noise we
 see towards bright sources (see Section~\ref{sec:dr}) -- this is seen
 in the higher noise points towards the central source and the bright
 points in the filament extending towards the top left. Examination of
@@ -424,7 +424,7 @@ the extent and peak catalogues, however, (shown below) indicates that
 this problem did not prevent a detection of the emission in these
 regions. Our experience has been that these high-noise areas only
 occur towards bright regions, so they are still clearly detected in
-our extent catalogs, with an Signal-to-Noise ratio (SNR) of $>5$.
+our extent catalogs, with an signal-to-noise ratio (SNR) of $>5$.
 
 
 
@@ -508,14 +508,14 @@ same objects, there are many correspondances between them.
   \caption{Tile 27258 showing an extrememly deep co-add towards a
     COSMOS field. This tile pongs and daisy observations taken by JCMT
     Cosmology Legacy survey and several UH cosmoloy projects. Parts of
-    this data were published in
+    these data were published in
     \citet{Casey2013,Chen2013,Chen2013a,Geach2016}. Top Left: emission
     map of the entire co-added tile. Note the deep daisy seen in the
     bottom right. Top right: noise map of the entire tile. Contours
-    indicate the 1.75, 2,2.5,5,7.5 and 10 m\jyas\ regions. Bottom
-    left: a zoom in on the deepest region of the map, showing the
+    indicate the 1.75, 2, 2.5, 5, 7.5, and 10 m\jyas\ regions. Bottom
+    left: an enlargement of the deepest region of the map, showing the
     850\micron\ data. The contour indicates the < 5m\jyas\ noise
-    region. Bottom right: Comparison of the source catalogues produced
+    region. Bottom right: comparison of the source catalogues produced
     here (shown as cyan crosses), as published in \citealt{Casey2013}
     (red circles) and as found by the JCMT CLS 850um DR1 \citep[blue
     triangles]{Geach2016}. }
@@ -525,10 +525,10 @@ same objects, there are many correspondances between them.
 
 \section{SCUBA-2 data reduction}
 \label{sec:dr}
-SCUBA-2 observations are reduced using the Starlink SMURF programme
+SCUBA-2 observations are reduced using the Starlink SMURF program
 \texttt{makemap}. In brief, this is an iterative process that divides
 the data set into various instrumental and astronomical signals. There
-are an extremely large number of user-adjustable parameters that can
+is an extremely large number of user-adjustable parameters that can
 affect the final map, depending on the science goals of the users and
 the structure of the astronomical emission observed. \note{For example, a
 cosmologist interested in detecting only faint point sources in a
@@ -599,7 +599,7 @@ During all iterations an atmospheric correction is applied and data
 are filtered to remove any features on scales larger than 200". In
 addition to this a separate common mode model is produced for each
 subarray (specified with \texttt{com.perarray=1}). Having a separate
-common mode estimate per sub array prevents artificial flux (also
+common mode estimate per subarray prevents artificial flux (also
 known as ``fake blooms'') being introduced into the map where the
 common modes vary significantly and are not well represented by a
 single common mode. The disadvantage with having a separate common
@@ -618,7 +618,7 @@ bright sources.  The mask identifying such sources is creating in the
 same way as the mask used by the low-frequency noise filter (``FLT''
 model): source pixels are taken to be those with a signal-to-noise
 ratio greater than 5.0 (plus any other pixels that are attached
-contiguously to such pixels down the an SNR of 3 (specified by using
+contiguously to such pixels down to an SNR of 3 (specified by using
 \texttt{ast.zero\_snr=5} and \texttt{ast.zero\_snrlo=3}).
 
 The map maker exits before the 20th iteration if the \texttt{maptol}
@@ -705,11 +705,11 @@ derived from our own data set -- see Section \ref{sec:calib}.
 \subsection{Source Recovery}
 Recently, work by \citet{Mairs2015} examined the recovery of sources
 found inside and outside the makemap AST mask, specifically comparing
-the JCMT Gould Belt Survey's reductions with the Legacy Release config
+the JCMT Gould Belt Survey's reductions with the Legacy Release configuration
 described here. They found that in SCUBA-2 reductions there is a
 significant difference between recovery of sources inside and outside
 the AST mask. Sources that are outside the AST-masked regions can have
-their flux considerably underrepresented. The AST masked region can be
+their flux considerably under-represented. The AST masked region can be
 thought of as approximately the region containing detectable emission,
 using `detection' limits set in the specific configuration parameters
 chosen. The effect is dependent on the size of the source -- extended
@@ -727,7 +727,7 @@ the AST mask (and also the FLT mask).
 
 
 \subsection{Size Scales}
-We have excluded sizes scales larger than the sub array size from our
+We have excluded sizes scales larger than the subarray size from our
 reduction. In addition, we have used a fairly aggressive large scale
 filtering removing scales larger than 200 arcseconds.
 
@@ -789,7 +789,7 @@ easy-to-understand, and to produce intelligible results.
 \subsection{Extents}
 \label{sec:extents}
 We have identified the regions of contiguous extended emission within
-each tile by looking at the Signal-to-Noise maps of the co-added
+each tile by looking at the signal-to-noise maps of the co-added
 tiles. We determined that we would consider all regions of contiguous
 emission containing flux brighter than 5-$\sigma$ to be a single `extent'
 for purposes of our reductions, if the region is larger in area than a
