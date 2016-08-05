@@ -75,9 +75,9 @@
 \section{Introduction}
 
 % JCMT & SCUBA-2 & JSA
-The JCMT is a 15\,m submillimetre telescope located at an altitude of
+The JCMT is a 15-m submillimetre telescope located at an altitude of
 4092\,m on Mauna Kea, where it has been operating since 1987. Its
-current instrument suite includes SCUBA-2, a 10,000 pixel continuum
+current instrument suite includes SCUBA-2, a 10,000-pixel continuum
 camera that observes simultaneously at 450\,\um\ and 850\,\um\
 wavelengths \citep{Holland2013}.  JCMT Principal Investigator (PI)
 observations, including
@@ -100,7 +100,7 @@ by East Asian Observatory, the current operators of the JCMT. These
 legacy reductions were envisioned as providing a uniform, standardised
 reduction, co-addition and source detection of all publicly available
 observations, regularly updated as more observations become
-public. The aim has been to produce uniformly reduced high quality
+public. The aim has been to produce uniformly reduced high-quality
 co-added maps that required as little checking as possible by hand,
 and which would allow astronomers to easily discover which regions
 have been observed, the noise levels in existing regions, and where
@@ -130,7 +130,7 @@ SCUBA-2 continuum observations. Planned future releases are the
 \begin{figure*}
   \centering
   \includegraphics{mollweide-average-noise-galacticaxes-crop}
-  \caption{All sky noise map for this SCUBA-2 850\,\um{} legacy
+  \caption{All-sky noise map for this SCUBA-2 850\,\um{} legacy
     release. Each pixel represents the average noise across a single
     HEALPix tile. Tiles with less than 200 valid pixels were not
     included. The map is a cartesian Mollweide projection, with the
@@ -281,7 +281,7 @@ dividing by our derived arcsecond Flux Conversion Factor (FCF)
 (2.48\,\jyas\,pW$^{-2}$) and multiplying by the JCMT `standard' beam FCF
 (537\,Jy\,beam$^{-1}$\,pW$^{-1}$. Please note that a beam FCF has not been
 derived for this dataset, so we do not recommend using this
-calibration when extracting fluxes as a self derived FCF would
+calibration when extracting fluxes as a self-derived FCF would
 probably have a systematic offset of a few percent from the `standard'
 values, (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
 
@@ -407,7 +407,7 @@ types of emisison is beyond the scope of this paper, we here present
 some of our co-added tiles covering a range of source types.
 
 \subsection{G034.27+0.15}
-The source G034.27+0.15 is a bright, high mass star forming region
+The source G034.27+0.15 is a bright, high-mass star-forming region
 that has been observed in a wide variety of
 wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise map,
 extent catalogue and peak catalogue towards this source. This co-add
@@ -422,7 +422,7 @@ in the higher noise points towards the central source and the bright
 points in the filament extending towards the top left. Examination of
 the extent and peak catalogues, however, (shown below) indicates that
 this problem did not prevent a detection of the emission in these
-regions. Our experience has been that these high noise areas only
+regions. Our experience has been that these high-noise areas only
 occur towards bright regions, so they are still clearly detected in
 our extent catalogs, with an Signal-to-Noise ratio (SNR) of $>5$.
 
@@ -442,7 +442,7 @@ our extent catalogs, with an Signal-to-Noise ratio (SNR) of $>5$.
   \\[3mm]
   \includegraphics{tile30318-g34-extent-peak.pdf}
   \caption{Examples of the co-add, noise map, extent catalogue and peak
-    catalogue towards tile 30318 containing the high mass star forming
+    catalogue towards tile 30318 containing the high-mass star-forming
     source G034.27+0.15}
   \label{fig:g34-3}
 \end{figure*}
@@ -588,9 +588,9 @@ being removed (as in a normal iteration) prior to starting the next
 iteration (specified using \texttt{ast.skip=5}). These initial
 iterations allow the reduction process to focus on creating a mask
 that identifies any unusually bright region. This is useful since such
-regions may cause ringing in subsequent estimates of the low frequency
+regions may cause ringing in subsequent estimates of the low-frequency
 noise in each bolometer. During these iterations ``bright'' pixels are
-taken to be those with a signal to noise ratio greater than 5.0, plus
+taken to be those with a signal-to-noise ratio greater than 5.0, plus
 any other pixels that are attached contiguously to such pixels down
 the an SNR of 3 (specified by using \texttt{flt.zero\_snr=5} and
 \texttt{flt.zero\_snrlo=3}).
@@ -615,8 +615,8 @@ removes the astronomical signal from the residuals prior to starting
 the next iteration. However, to prevent instabilities in the iterative
 process, this subtraction only occurs within regions corresponding to
 bright sources.  The mask identifying such sources is creating in the
-same way as the mask used by the low frequency noise filter (``FLT''
-model): source pixels are taken to be those with a signal to noise
+same way as the mask used by the low-frequency noise filter (``FLT''
+model): source pixels are taken to be those with a signal-to-noise
 ratio greater than 5.0 (plus any other pixels that are attached
 contiguously to such pixels down the an SNR of 3 (specified by using
 \texttt{ast.zero\_snr=5} and \texttt{ast.zero\_snrlo=3}).
@@ -811,7 +811,7 @@ the individual maps. Our co-adding procedure uses this variance to
 weight the input observations. We do see anomalously high noise
 towards the center of bright sources \note{TODO: explain why!} (see
 Fig.~\ref{fig:g34-3} for an example of this); however this is not at a
-level to prevent a signal to noise 5-$\sigma$ detection.
+level to prevent a signal-to-noise 5-$\sigma$ detection.
 
 \todo{Is this needed:? Note on varying noise within tiles -- show some examples,
   explaining why its so necessary to use SNR instead of a
@@ -907,7 +907,7 @@ will appear bent at these positions.\footnote{If you are concerned by
   the visual appearance of HEALPix maps in your display and wish to
   reassure yourself that any apparent distortion is only due to
   display issues in your image viewer, we would recommend verifying
-  the shape and position by contouring the map over a tangent plane
+  the shape and position by contouring the map over a tangent-plane
   map.}
 
 
@@ -966,7 +966,7 @@ the SNR map in the QA page, as it had been found from the first
 experience that this was necessary to resolve the QA state for some
 observations. \status{BAD} observations were excluded from the co-adds,
 as were observations that were flagged as \status{BAD} by the
-observatories normal observation based QA (usually done during a
+observatories normal observation-based QA (usually done during a
 nights observing).\status{QUESTIONABLE} observations were examined
 further, and either included in the co-adds or changed to \status{BAD}.
 
@@ -981,7 +981,7 @@ process. \note{Does it need these extra images? Examples of some
 This sort of process is of course subjective, and some of the
 observations that we excluded might be usable on further
 examination. However, as with all of this process, the focus for this
-release has been to ensure a high quality release, even at the expense
+release has been to ensure a high-quality release, even at the expense
 of completeness. All of the HEALPix-gridded legacy-reduced
 observations are available to the community in the JSA, regardless of
 our QA analysis of them, so interested users can evaluate the full
