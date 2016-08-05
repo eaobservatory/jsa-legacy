@@ -28,7 +28,7 @@
 
 
 \begin{document}
-\title{The JCMT Legacy Release 1: SCUBA-2 850\micron\ Coadds and Catalogues}
+\title{The JCMT Legacy Release 1: SCUBA-2 850\micron\ Co-adds and Catalogues}
 
 \author{Sarah F. Graves\altaffilmark{1,2},
      Graham S. Bell\altaffilmark{1},
@@ -54,19 +54,19 @@
 
 \begin{abstract}
   We present the first JCMT Legacy Release, consisting of uniform
-  reductions, coadditions and catalogues of detected emission for the
+  reductions, co-additions and catalogues of detected emission for the
   850\,\um\ data from all SCUBA-2 observations taken between 2011 and
   2015 March 1. The data are gridded on to HEALPix
   tiles of $~$1 degree a side, using the HPX projection onto pixels of
   area 3.22 by 3.22 arcseconds. The individually reduced observations
-  include 6420 hours of observing time, and the coadded tiles used
+  include 6420 hours of observing time, and the co-added tiles used
   5915 hours of this, covering 1356 square degrees of
-  the sky. The coadds have been calibrated into units of m\jyas\ using
-  a self-derived flux conversion factor. Contiguous regions of
+  the sky. The co-adds have been calibrated into units of m\jyas\ using
+  a self-derived flux-conversion factor. Contiguous regions of
   emission were detected at a better than 5-$\sigma$ level in 740
   tiles, covering in total 1.4 square degrees, or 0.33 percent of the
-  coadded area. Within this area, 13477 local maxima were
-  detected. Twenty of the coadded tiles contain regions with a noise
+  co-added area. Within this area, 13477 local maxima were
+  detected. Twenty of the co-added tiles contain regions with a noise
   better than 5E-3 m\jyas\, corresponding roughly to 1\,m\jybm.
 \end{abstract}
 
@@ -85,9 +85,9 @@ of the semester they are taken in. These public observations are
 available to download as raw and pipeline files from the
 JCMT Science Archive \citep{2015Economou}, at the Canadian
 Astornomy Data Centre (CADC). However, these products do not include
-full coadds of all data taken towards a region, and different projects
+full co-adds of all data taken towards a region, and different projects
 may use very different reduction methods and should not be
-naively coadded.
+naively co-added.
 
 % why this release
 To maximise the scientific return of these many years of archival
@@ -104,7 +104,7 @@ co-added maps that required as little checking as possible by hand,
 and which would allow astronomers to easily discover which regions
 have been observed, the noise levels in existing regions, and where
 there are clear detections. Previously, the SCUBA legacy catalogue
-\citep{DiFrancesco2008} presented uniformly reduced coadds and
+\citep{DiFrancesco2008} presented uniformly reduced co-adds and
 catalogues of all SCUBA data, and this resource has been very widely
 used, both in scientific publications and as a first step for
 interested users. We hope for this legacy release to act as a similar
@@ -121,7 +121,7 @@ SCUBA-2 continuum observations. Planned future releases are the
 % The first block of this data, from 2011 to Augst 1st 2013 was already
 % reduced and publicly released in September 2015. This release includes
 % these same reduced individual observations, reductions of the newer
-% data taken up until March 2015, and new coadds and catalogs produced
+% data taken up until March 2015, and new co-adds and catalogs produced
 % from all the data (and using a slightly different calibration
 % constant).
 
@@ -140,11 +140,11 @@ SCUBA-2 continuum observations. Planned future releases are the
   \label{fig:noise-mollweide}
 \end{figure*}
 
-This release includes individual reduced observations, coadds of all
+This release includes individual reduced observations, co-adds of all
 science observations that fell on a given tile, and catalogs of
 extended regions and local peaks detected at
 $>5\sigma$. Fig.\,\ref{fig:noise-mollweide} shows the all sky noise map
-of the coadds in this release, showing the average RMS across all
+of the co-adds in this release, showing the average RMS across all
 valid pixels in a tile as a single square.
 
 All pointing and science observations from our time range were reduced
@@ -158,11 +158,11 @@ used or analysed further in this data set.
 
 All the reduced science observations were individually examined to
 determine if they met our quality standards (see Section
-\ref{sec:QA}). Coadds were then made for every HEALPix tile with data
+\ref{sec:QA}). Co-adds were then made for every HEALPix tile with data
 falling onto it, using the PICARD recipe \texttt{COADD\_JSA\_TILES}
-(see Section \ref{sec:coadd}), producing a coadded tile calibrated in
+(see Section \ref{sec:coadd}), producing a co-added tile calibrated in
 units of m\jyas{} (for details on calibration see Section
-\ref{sec:calib}). For every coadded tile, the PICARD recipe
+\ref{sec:calib}). For every co-added tile, the PICARD recipe
 \texttt{JSA\_CATALOGUE} was then run to produce (if detected) extent
 and peak catalogues of detected emission (see Section
 \ref{sec:cat}). See Fig.\,\ref{fig:flowchart} for an example of
@@ -194,7 +194,7 @@ Cosmology Legacy Survey \citep{Geach2013}, The galactic plane survey
 \citep{JPS}, the Nearby Galaxy Survey ??, and the debris disk survey
 \citep{SONS}.  The first block of this data, from 2011 to Augst 1st
 2013 was previously reduced and publicly released in September 2015,
-using the same configuration and coadd criteria as described in this
+using the same configuration and co-add criteria as described in this
 paper.
 % add note -- available at (URL for download)
 %\note{Has any NGLS SCUBA-2 data been published (NO)? Need need proper
@@ -220,7 +220,7 @@ in the size scales SCUBA-2 reductions are sensitive based on the
 observing mode that was used. However, as our reduction has been
 extremely conservative and has filtered out structure on scales larger
 than 200\arcsec, we believe this effect should be minimized in our
-coadds.
+co-adds.
 
 
 
@@ -246,12 +246,12 @@ PI & 4217 & 2134.2 & 2329 & 4181 & 2117.0 & 2303\\
 \end{deluxetable}
 
 In total, 21464 observations were reduced representing 6420 hours of
-observing time, towards 4403 distinct HEALPix tiles. The coadded
+observing time, towards 4403 distinct HEALPix tiles. The co-added
 observations include 12404 observations (5828 hours or 242.8 days)
-towards 4154 tiles. These coadds were made up of 136 hours of science
+towards 4154 tiles. These co-adds were made up of 136 hours of science
 calibration observations, 3575 hours of data taken for the JCMT Legacy
 Surveys and 2117 hours of data taken for PI projects. This information
-is summarized in Table \ref{tab:typesobs}. The coadds include 1.69
+is summarized in Table \ref{tab:typesobs}. The co-adds include 1.69
 gigapixels of valid data, corresponding to ~1356 square
 degrees.\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}. For
 comparison, the SCUBA Legacy Catalogue \citep{DiFrancesco2008} covered
@@ -309,7 +309,7 @@ values, (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
 \begin{figure}
   \centering
   \includegraphics{coadds-noise-histogram.pdf}
-  \caption{Histogram of the RMS noise on each pixel in the coadds. The
+  \caption{Histogram of the RMS noise on each pixel in the co-adds. The
     main plot is shown with a log y-axis scale, and a linear y-axis
     scale is shown in the inset. Note that no trimming of observations
     is done for this, so the noisy edges of the SCUBA-2 observing
@@ -320,7 +320,7 @@ values, (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
   \label{fig:histonoise}
 \end{figure}
 \subsection{The deepest maps}
-Twenty of our coadded tiles contain pixels with a noise better than
+Twenty of our co-added tiles contain pixels with a noise better than
 0.005\,m\jyas (corresponding to very roughly 1\,m\jybm). These include
 our three most common standard JCMT SCUBA-2 calibrators (CRL 618, CRL
 2688 and Arp 220), and several deep cosmology fields that were
@@ -332,7 +332,7 @@ Table\,\ref{tab:deepmaps}.
 
 %\floattable
 \begin{deluxetable}{rc r c c p{2cm}}
-  \tablecaption{The twenty coadded tiles which contain regions with a
+  \tablecaption{The twenty co-added tiles which contain regions with a
     noise at or better than 0.005\,m\jyas.\label{tab:deepmaps} }
 
 \tabletypesize{\scriptsize}
@@ -403,16 +403,16 @@ including dusty disks, complex filamentary molecular clouds, nearby
 galaxies, extra galactic point sources and extremely deep surveys of
 standard cosmological fields. Although providing full examples of all
 types of emisison is beyond the scope of this paper, we here present
-some of our coadded tiles covering a range of source types.
+some of our co-added tiles covering a range of source types.
 
 \subsection{G034.27+0.15}
 The source G034.27+0.15 is a bright, high mass star forming region
 that has been observed in a wide variety of
-wavelengths. Figure~\ref{fig:g34-3} shows our coadded tile, noise map,
-extent catalogue and peak catalogue towards this source. This coadd
+wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise map,
+extent catalogue and peak catalogue towards this source. This co-add
 includes data primarily from JCMT calibration projects of this source,
 but also two observations from a University of Hawaii PI project
-(M13AH07B).\note{Was this published?}. The noise maps for this coadd
+(M13AH07B).\note{Was this published?}. The noise maps for this co-add
 shows the characteristic 'CV\_DAISY' scan pattern towards the central
 source, with two overlapping small PONG observations covering a wider
 extent. This field also illustrates the the artifically high noise we
@@ -428,11 +428,11 @@ our extent catalogs, with an Signal-to-Noise ratio of $>5$.
 
 
 % includes a variety of types of structure three examples shown here
-% to examine the coadds and the catalogs.  Includes: filamentary
+% to examine the co-adds and the catalogs.  Includes: filamentary
 % region (G34.3), bright point source (CRL618, a standard calibrator)
 % and the deepest map in our data set, a long observation of what is a
 % 'blank field in any single observation, but reveals a multitude of
-% deep submm galaxies when coadded.
+% deep submm galaxies when co-added.
 
 
 \begin{figure*}
@@ -440,20 +440,20 @@ our extent catalogs, with an Signal-to-Noise ratio of $>5$.
   \includegraphics{tile30318-g34-coadd-noise.pdf}
   \\[3mm]
   \includegraphics{tile30318-g34-extent-peak.pdf}
-  \caption{Examples of the coadd, noise map, extent catalogue and peak
+  \caption{Examples of the co-add, noise map, extent catalogue and peak
     catalogue towards tile 30318 containing the high mass star forming
     source G034.27+0.15}
   \label{fig:g34-3}
 \end{figure*}
 \subsection{CRL\,618}
 CRL 618 is one of the JCMT's standard flux calibration sources for
-SCUBA-2 observing. As such, this coadd includes 923 observations using
+SCUBA-2 observing. As such, this co-add includes 923 observations using
 51 hours of observing time across the small CV\_DAISY area, shown in
 Figure~\ref{fig:crl618}. We achieved an extremely high noise due to
 this large number of repeats -- achieving a noise better than
 0.005\,m\jyas\ around the central source. A zoom in on the central
 sources shows clearly a variety of point sources detected in this deep
-coadd. In addition, it can readily be seen by eye that there appear to
+co-add. In addition, it can readily be seen by eye that there appear to
 be additional sources that are missed by our cataloging procedure due
 to the negative bowling around the very bright source. Horizontal and
 vertical cut throughs are shown to help visualise this bowling.
@@ -463,9 +463,9 @@ vertical cut throughs are shown to help visualise this bowling.
   \includegraphics{crl618-whole-map.pdf}
   \\[3mm]
   \includegraphics{crl618-sourceonly.pdf}
-  \caption{Examples of the coadd, noise map, and extents towards the
+  \caption{Examples of the co-add, noise map, and extents towards the
     standard calibration source CRL 618, consisting of tiles 1238 and
-    1244. This coadd contains data from XX900 observations (XXhrs
+    1244. This co-add contains data from XX900 observations (XXhrs
     elapsed observing time). The contours on the noise map indicate
     the 0.005, 0.006 and 0.007 m\jyas\ noise contours. On the bottom
     row a zoom in of the central source showing the detected extents
@@ -482,7 +482,7 @@ Cosmology Legacy Survey \citep[recently published in][]{Geach2016} but
 also from various University of Hawaii deep surveys
 \citep{Casey2013,Chen2013,Chen2013a}. By being able to include
 publicly available data taken by different projects we can achieve a
-deeper map than possible with only one data set. Our coadd includes
+deeper map than possible with only one data set. Our co-add includes
 both wide PONG observations, and very deep DAISY
 observations. Figure~\ref{fig:t27258} shows both the entire tile, its
 noise map, and also a zoom in of the deepest region. In the noise map
@@ -504,12 +504,12 @@ same objects, there are many correspondances between them.
   \includegraphics{27258-whole-map.pdf}
   \\[3mm]
   \includegraphics{27258-zoomin.pdf}
-  \caption{Tile 27258 showing an extrememly deep coadd towards a
+  \caption{Tile 27258 showing an extrememly deep co-add towards a
     COSMOS field. This tile pongs and daisy observations taken by JCMT
     Cosmology Legacy survey and several UH cosmoloy projects. Parts of
     this data were published in
     \citet{Casey2013,Chen2013,Chen2013a,Geach2016}. Top Left: emission
-    map of the entire coadded tile. Note the deep daisy seen in the
+    map of the entire co-added tile. Note the deep daisy seen in the
     bottom right. Top right: noise map of the entire tile. Contours
     indicate the 1.75, 2,2.5,5,7.5 and 10 m\jyas\ regions. Bottom
     left: a zoom in on the deepest region of the map, showing the
@@ -733,7 +733,7 @@ filtering removing scales larger than 200 arcseconds.
 \todo{Do we want some power spectra of this? not sure if they'd be very illuminating.}
 
 \subsection{Negative Bowling}
-Within the coadded maps of this release, negative bowling can be
+Within the co-added maps of this release, negative bowling can be
 clearly seen around bright sources. Figure~\ref{fig:crl618} shows this
 clearly around the bright calibrator CRL\,618. The cut throughs in the
 vertical and horizontal direction through the source show the bowling
@@ -753,7 +753,7 @@ artificial negative regions around bright sources.
 %   few recent papers with \citet{Rumble2015} published for Serpens.}
 
 
-%\todo{Picture of a coadded tile? Both data and noise. Pick something
+%\todo{Picture of a co-added tile? Both data and noise. Pick something
 %with Daisy and pongs in it, as a comparison.}
 
 
@@ -800,7 +800,7 @@ with this approach. The main source of false detections in our
 reductions would have been the previously discussed problem of `false
 blooms of emission' occasionally produced by makemap reductions, if we
 had not used a by-eye approach for flagging the handful of problematic
-reductions and removing them from the coadds.
+reductions and removing them from the co-adds.
 
 The reduced observations, produced by SMURF's makemap routine, all
 contain a variance array giving the noise towards each pixel, based on
@@ -963,11 +963,11 @@ original data set(2011 to 2013, not including CLS). The second batch
 of observations (2013 to 2015, and all of CLS) also showed an image of
 the SNR map in the QA page, as it had been found from the first
 experience that this was necessary to resolve the QA state for some
-observations. \status{BAD} observations were excluded from the coadds,
+observations. \status{BAD} observations were excluded from the co-adds,
 as were observations that were flagged as \status{BAD} by the
 observatories normal observation based QA (usually done during a
 nights observing).\status{QUESTIONABLE} observations were examined
-further, and either included in the coadds or changed to \status{BAD}.
+further, and either included in the co-adds or changed to \status{BAD}.
 
 
 This QA process was designed to avoid: a) `blooms' or `blobs' of fake
@@ -984,7 +984,7 @@ release has been to ensure a high quality release, even at the expense
 of completeness. All of the HEALPix-gridded legacy-reduced
 observations are available to the community in the JSA, regardless of
 our QA analysis of them, so interested users can evaluate the full
-available data themselves if they are unhappy with the coadd towards a
+available data themselves if they are unhappy with the co-add towards a
 tile.
 
 
@@ -999,7 +999,7 @@ tile.
 %  something. Doug J. and GBS did an analysis on this as well.
 \item effect of pointing errors on fluxes.?
 \item PICTURES: calibrators, comparison with bright compact and 1
-  arcsec. Examples of the coadded deep maps of all of our
+  arcsec. Examples of the co-added deep maps of all of our
   calibrators?.
 \item Beam shape?
 \end{itemize}
@@ -1121,7 +1121,7 @@ $\pm$8 percent.
 
 % \section{Noise}
 
-% % Coadds contain 1.69 gigapixels of non bad data.
+% % co-adds contain 1.69 gigapixels of non bad data.
 % %
 % \begin{itemize}
 % \item Noise maps: overlaps work fine, show an example?
@@ -1136,7 +1136,7 @@ $\pm$8 percent.
 %Noise vs integration time
 % this is harder to do -- how to do a scatter plot of with billions of
 % points.. 2-d histogram instead? produce in same way as the noise
-% coadds.
+% co-adds.
 
 % Anomalous variance array values towards bright sources USe OMC-1 and
 % cRL 618 as examples? Also visible in G34.3 shown earlier. Mentioned
@@ -1175,7 +1175,7 @@ radial offset of 2.86\arcsec{}. See Figure~\ref{fig:pointing} for the
 histogram of these sources. We assume that the pointing in our
 non-calibration observations should follow the same distribution. \note{When
 comparing normal observations to the beam shapes of the
-pointing-corrected coadds, a correction factor of 2.9\arcsec\ beam
+pointing-corrected co-adds, a correction factor of 2.9\arcsec\ beam
 smearing should be included in the resolution.}
 \note{Get citation for JCMT expected average pointing issue. Probably
   website?}
@@ -1305,7 +1305,7 @@ Single observation
 \raggedright{\textbullet{} Quality map (mask)}
 & Multiple files per observation, one for each tile the observation fell onto & healpix-850um\\
 %
-Coadded tile &  COADD\_JSA\_TILES  & \texttt{jcmts850um\_healpix<TILE>\_pub\_001.fits} &
+Co-added tile &  COADD\_JSA\_TILES  & \texttt{jcmts850um\_healpix<TILE>\_pub\_001.fits} &
 \raggedright{\textbullet{} Emission map (m\jyas)}\linebreak
 \raggedright{\textbullet{} Variance map (m\jyas)\textsuperscript{2}}
  & One file per tile & healpix-850um\\
