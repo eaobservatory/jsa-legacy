@@ -79,11 +79,12 @@ The JCMT is a 15\,m submillimetre telescope located at an altitude of
 4092\,m on Mauna Kea, where it has been operating since 1987. Its
 current instrument suite includes SCUBA-2, a 10,000 pixel continuum
 camera that observes simultaneously at 450\,\um\ and 850\,\um\
-wavelengths \citep{Holland2013}.  JCMT PI observations, including
+wavelengths \citep{Holland2013}.  JCMT Principal Investigator (PI)
+observations, including
 those taken with SCUBA-2, usually become public a year after the end
 of the semester they are taken in. These public observations are
 available to download as raw and pipeline files from the
-JCMT Science Archive \citep{2015Economou}, at the Canadian
+JCMT Science Archive (JSA) \citep{2015Economou}, at the Canadian
 Astornomy Data Centre (CADC). However, these products do not include
 full co-adds of all data taken towards a region, and different projects
 may use very different reduction methods and should not be
@@ -175,8 +176,8 @@ the flow of data through these recipes.
     system. Here, 8 of the input observations into tile 3311 are
     shown. Red boxes indicate the part of the observation that fell
     onto this tile. A red 'X' indicates an observation that was judged
-    as 'BAD' during the QA analysis. Captions indicate the ORAC-DR or
-    PICARD recipe name that produces the output.}
+    as 'BAD' during the Quality Assurance (QA) analysis. Captions
+    indicate the ORAC-DR or PICARD recipe name that produces the output.}
   \label{fig:flowchart}
 \end{figure}
 
@@ -187,11 +188,11 @@ the flow of data through these recipes.
 This release includes publicly-released 850\,\um\ science observations
 observed between 2011 February 2 and 2015 March 1, including
 observations from calibration projects, PI projects, and the JCMT
-Legacy Surveys. See \citealt{ChrysostomouJLS} for an overview of the
+Legacy Surveys (JLS). See \citealt{ChrysostomouJLS} for an overview of the
 JCMT Legacy Survey program, which included: the Gould Belt Survey
 \citep{GBS}, the SCUBA-2 amibitious Sky Survey \citep{SASSy}, the
-Cosmology Legacy Survey \citep{Geach2013}, The galactic plane survey
-\citep{JPS}, the Nearby Galaxy Survey ??, and the debris disk survey
+Cosmology Legacy Survey \citep{Geach2013}, the JCMT Galactic Plane Survey
+\citep{JPS}, the Nearby Galaxy Survey ??, and the Debris Disk Survey
 \citep{SONS}.  The first block of this data, from 2011 to Augst 1st
 2013 was previously reduced and publicly released in September 2015,
 using the same configuration and co-add criteria as described in this
@@ -269,16 +270,16 @@ Because the observations used here are from a wide variety of projects
 aiming for a variety of noise levels, our noise maps are extremely
 heterogenous. Figure~\ref{fig:noise-mollweide} shows the all-sky
 distribution of the noise maps of our
-coadds. Figure~\ref{fig:histonoise} shows a histogram of the noise in
-each pixel of the coadded tiles. Table~\ref{tab:noises} shows the area
+co-adds. Figure~\ref{fig:histonoise} shows a histogram of the noise in
+each pixel of the co-added tiles. Table~\ref{tab:noises} shows the area
 of our co-adds which has a noise level below various common
 values. This is calculated by finding the number of pixels which have
 a noise value less than or equal to a given limit. For convenience of
 those readers most used to Jy\,beam\textsuperscript{$-1$}, we have
 provided a very approximate equivalent flux density in those units by
-dividing by our derived arcsecond FCF (2.48\,\jyas\,pW$^{-2}$) and
-multiplying by the JCMT `standard' beam FCF (537
-Jy\,beam$^{-1}$\,pW$^{-1}$. Please note that a beam FCF has not been
+dividing by our derived arcsecond Flux Conversion Factor (FCF)
+(2.48\,\jyas\,pW$^{-2}$) and multiplying by the JCMT `standard' beam FCF
+(537\,Jy\,beam$^{-1}$\,pW$^{-1}$. Please note that a beam FCF has not been
 derived for this dataset, so we do not recommend using this
 calibration when extracting fluxes as a self derived FCF would
 probably have a systematic offset of a few percent from the `standard'
@@ -411,7 +412,7 @@ that has been observed in a wide variety of
 wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise map,
 extent catalogue and peak catalogue towards this source. This co-add
 includes data primarily from JCMT calibration projects of this source,
-but also two observations from a University of Hawaii PI project
+but also two observations from a University of Hawaii (UH) PI project
 (M13AH07B).\note{Was this published?}. The noise maps for this co-add
 shows the characteristic 'CV\_DAISY' scan pattern towards the central
 source, with two overlapping small PONG observations covering a wider
@@ -423,7 +424,7 @@ the extent and peak catalogues, however, (shown below) indicates that
 this problem did not prevent a detection of the emission in these
 regions. Our experience has been that these high noise areas only
 occur towards bright regions, so they are still clearly detected in
-our extent catalogs, with an Signal-to-Noise ratio of $>5$.
+our extent catalogs, with an Signal-to-Noise ratio (SNR) of $>5$.
 
 
 
