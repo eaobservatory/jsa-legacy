@@ -173,7 +173,7 @@ the flow of data through these recipes.
   \centering
   \includegraphics[width=1.0\linewidth]{flowchart}
   \caption{Flow chart indicating flow of observations through the
-    system. Here, 8 of the input observations into tile 3311 are
+    system. Here, 8 of the input observations into Tile 3311 are
     shown. Red boxes indicate the part of the observation that fell
     onto this tile. A red 'X' indicates an observation that was judged
     as 'BAD' during the Quality Assurance (QA) analysis. Captions
@@ -311,7 +311,7 @@ values (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
   \centering
   \includegraphics{coadds-noise-histogram.pdf}
   \caption{Histogram of the RMS noise on each pixel in the co-adds. The
-    main plot is shown with a log y-axis scale, and a linear y-axis
+    main plot is shown with a log $y$-axis scale, and a linear $y$-axis
     scale is shown in the inset. Note that no trimming of observations
     is done for this, so the noisy edges of the SCUBA-2 observing
     patterns are included. The noise is taken from the \texttt{makemap}
@@ -442,7 +442,7 @@ our extent catalogs, with an signal-to-noise ratio (SNR) of $>5$.
   \\[3mm]
   \includegraphics{tile30318-g34-extent-peak.pdf}
   \caption{Examples of the co-add, noise map, extent catalogue and peak
-    catalogue towards tile 30318 containing the high-mass star-forming
+    catalogue towards Tile 30318 containing the high-mass star-forming
     source G034.27+0.15}
   \label{fig:g34-3}
 \end{figure*}
@@ -597,7 +597,7 @@ to an SNR of 3 (specified by using \texttt{flt.zero\_snr=5} and
 
 During all iterations an atmospheric correction is applied and data
 are filtered to remove any features on scales larger than 200". In
-addition to this a separate common mode model is produced for each
+addition to this a separate common-mode model is produced for each
 subarray (specified with \texttt{com.perarray=1}). Having a separate
 common mode estimate per subarray prevents artificial flux (also
 known as ``fake blooms'') being introduced into the map where the
