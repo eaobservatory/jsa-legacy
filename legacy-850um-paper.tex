@@ -28,7 +28,7 @@
 
 
 \begin{document}
-\title{The JCMT Legacy Release 1: SCUBA-2 850\micron\ Co-adds and Catalogues}
+\title{The JCMT Legacy Release 1: SCUBA-2 850\micron\ Co-adds and Catalogs}
 
 \author{Sarah F. Graves\altaffilmark{1,2},
      Graham S. Bell\altaffilmark{1},
@@ -54,7 +54,7 @@
 
 \begin{abstract}
   We present the first JCMT Legacy Release, consisting of uniform
-  reductions, co-additions, and catalogues of detected emission for the
+  reductions, co-additions, and catalogs of detected emission for the
   850\,\um\ data from all SCUBA-2 observations taken between 2011 and
   2015 March 1. The data are gridded onto HEALPix
   tiles of $~$1 degree a side, using the HPX projection onto pixels of
@@ -106,7 +106,7 @@ and which would allow astronomers to easily discover which regions
 have been observed, the noise levels in existing regions, and where
 there are clear detections. Previously, the SCUBA legacy catalogue
 \citep{DiFrancesco2008} presented uniformly reduced co-adds and
-catalogues of all SCUBA data, and this resource has been very widely
+catalogs of all SCUBA data, and this resource has been very widely
 used, both in scientific publications and as a first step for
 interested users. We hope that this legacy release will act as a similar
 reference for SCUBA-2 observations.
@@ -165,7 +165,7 @@ falling onto it, using the PICARD recipe \texttt{COADD\_JSA\_TILES}
 units of m\jyas{} (for details of the calibration see
 Section~\ref{sec:calib}). For every co-added tile, the PICARD recipe
 \texttt{JSA\_CATALOGUE} was then run to produce (if detected) extent
-and peak catalogues of detected emission (see Section
+and peak catalogs of detected emission (see Section
 \ref{sec:cat}). See Fig.\,\ref{fig:flowchart} for an example of
 the flow of data through these recipes.
 
@@ -410,7 +410,7 @@ some of our co-added tiles covering a range of source types.
 The source G034.27+0.15 is a bright, high-mass star-forming region
 that has been observed in a wide variety of
 wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise map,
-extent catalogue, and peak catalogue towards this source. This co-add
+extent catalog, and peak catalog towards this source. This co-add
 includes data primarily from JCMT calibration projects of this source,
 but also two observations from a University of Hawaii (UH) PI project
 (M13AH07B).\note{Was this published?}. The noise maps for this co-add
@@ -420,7 +420,7 @@ extent. This field also illustrates the artificially high noise we
 see towards bright sources (see Section~\ref{sec:dr}) -- this is seen
 in the higher noise points towards the central source and the bright
 points in the filament extending towards the top left. Examination of
-the extent and peak catalogues, however, (shown below) indicates that
+the extent and peak catalogs, however, (shown below) indicates that
 this problem did not prevent a detection of the emission in these
 regions. Our experience has been that these high-noise areas only
 occur towards bright regions, so they are still clearly detected in
@@ -515,7 +515,7 @@ same objects, there are many correspondances between them.
     indicate the 1.75, 2, 2.5, 5, 7.5, and 10 m\jyas\ regions. Bottom
     left: an enlargement of the deepest region of the map, showing the
     850\micron\ data. The contour indicates the < 5m\jyas\ noise
-    region. Bottom right: comparison of the source catalogues produced
+    region. Bottom right: comparison of the source catalogs produced
     here (shown as cyan crosses), as published in \citealt{Casey2013}
     (red circles) and as found by the JCMT CLS 850um DR1 \citep[blue
     triangles]{Geach2016}. }
@@ -763,9 +763,9 @@ artificial negative regions around bright sources.
 %  \citep{2015ACSISDR}, observations can be reduced independently and
 %  then co-added. Extinction correction can be applied during co-adding
 %  phase? How well are edge-effects handled by variance weighting?}
-\section{Catalogues}
+\section{Catalogs}
 \label{sec:cat}
-The JCMT Legacy release includes emission catalogues generated from
+The JCMT Legacy release includes emission catalogs generated from
 each of the co-added maps. As we have an extremely diverse set of
 astronomical regions (including blank fields, point sources, and large
 complex extended structures), we did not feel it would be possible to
@@ -822,7 +822,7 @@ to produce contiguous regions of emission and to identify the position
 of the peak pixel within each map, and these outlines are available
 both as a FITS format mask file, as a HEALPix Multi-Order-Coverage
 file (MOC) and as a rough approximation by STC-S polygon. The
-catalogue for each tile indicates the ID of the clump, the RA and Dec
+catalog for each tile indicates the ID of the clump, the RA and Dec
 of the peak pixel, the total flux contained within the entire extent,
 the flux of the peak pixel, and the area of the entire extent. The
 catalog also includes the approximation of the outline of the extent
@@ -852,7 +852,7 @@ FellWalker algorithm with that noise as the RMS value, and identified
 as individual local maxima those which contained a peak of 5-$\sigma$,
 followed down to a noise level of 3-$\sigma$, and with at least a
 5-$\sigma$ dip between them and neighbouring maxima. Our output
-catalogue contains the ID of the peak, the RA and Dec of the peak
+catalog contains the ID of the peak, the RA and Dec of the peak
 pixel, the flux in the peak pixel, and the ID of the extent the peak
 was drawn from. An excerpt from the peak catalog for Tile\,30318 is
 shown in Table~\ref{tab:peaks}.
@@ -1061,7 +1061,7 @@ approximately 6 percent. All co-adds were calibrated using the same
 FCF. If it is wished to undo the calibration and redo with a different
 value, please simply divide the data set by this FCF, and then
 recalibrate using the FCF of your choice. Similarly, this can be done
-with any flux values quoted in the catalogues derived from the
+with any flux values quoted in the catalogs derived from the
 co-adds.%  A PICARD recipe (SCUBA2\_UNCALIBRATE\_DATA\footnote{see
 % \url{http://www.starlink.ac.uk/cgi-bin/htxserver/sun265.htx/sun265.html?xref_SCUBA2_UNCALIBRATE_DATA}})
 % is also provided as a convenience -- this will set the appropriate
