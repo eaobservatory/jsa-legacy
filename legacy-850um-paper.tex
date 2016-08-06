@@ -780,7 +780,7 @@ detected emission.
 
 
 We have chosen to use the FellWalker algorithm \citep{Berry2015}, as
-implemented in the Starlink CUPID \citep{cupid} package for this
+implemented in the Starlink \texttt{cupid} \citep{cupid} package for this
 analysis. Unlike the more commonly used ClumpFind, which simply lays
 discrete contour levels on the map and uses those to identify regions,
 FellWalker follows lines of ascent within the map to identify all
@@ -818,7 +818,7 @@ level to prevent a signal-to-noise 5-$\sigma$ detection.
   explaining why its so necessary to use SNR instead of a
   representative noise when the noise varies across the tile.}
 
-We used the FellWalker algorithm as implemented in CUPID on an SNR map
+We used the FellWalker algorithm as implemented in \texttt{cupid} on an SNR map
 to produce contiguous regions of emission and to identify the position
 of the peak pixel within each map, and these outlines are available
 both as a FITS format mask file, as a HEALPix Multi-Order-Coverage
@@ -842,7 +842,7 @@ In order to provide some information about the nature of emission
 within the extents, this release includes identification of local
 maxima within the extents. \emph{It is important to note that these
   should not in general be considered as point sources.} We identified
-these points by running the FellWalker algorithm (from CUPID) on the
+these points by running the FellWalker algorithm (from \texttt{CUPID}) on the
 extent map. The peak detections were not created from the SNR map, as
 we could assume by only looking within the detected extents that we
 were already looking at detected emission.
@@ -863,7 +863,7 @@ being within that object or clump, as we felt that would encourage
 users to consider the peaks as being real, physical objects. Although
 they may be in some cases, in many other cases the peak is simply a
 local maxima within a complex molecular cloud. The `clump outlines'
-produced by software such as CUPID always reflect the arbitrarily
+produced by software such as \texttt{cupid} always reflect the arbitrarily
 chosen boundaries of dips and minimum heights, and should not be
 assumed to represent physical objects without considerable further
 modelling.
@@ -931,7 +931,7 @@ Pixel $N_\mathrm{side}$ & $2^{16}$ \\
 %  projection, the Starlink \textsc{smurf} command \texttt{jsajoin} can
 %  be used \citep[][\ascl{1310.007}]{SUN258}.}
 
-\section{QA}
+\section{Quality Assurance}
 \label{sec:QA}
 
 % \subsection{Standard JCMT QA States}
