@@ -85,7 +85,7 @@ those taken with SCUBA-2, usually become public a year after the end
 of the semester they are taken in. These public observations are
 available to download as raw and pipeline-reduced files from the
 JCMT Science Archive (JSA) \citep{2015Economou}, at the Canadian
-Astornomy Data Centre (CADC). However, these products do not include
+Astronomy Data Centre (CADC). However, these products do not include
 full co-adds of all data taken towards a region, and different projects
 may use very different reduction methods and should not be
 naively co-added.
@@ -104,7 +104,7 @@ public. The aim has been to produce uniformly reduced high-quality
 co-added maps that required as little checking as possible by hand,
 and which would allow astronomers to easily discover which regions
 have been observed, the noise levels in existing regions, and where
-there are clear detections. Previously, the SCUBA legacy catalogue
+there are clear detections. Previously, the SCUBA Legacy Catalogue
 \citep{DiFrancesco2008} presented uniformly reduced co-adds and
 catalogs of all SCUBA data, and this resource has been very widely
 used, both in scientific publications and as a first step for
@@ -154,7 +154,7 @@ HEALPix tiles (see Section \ref{sec:healpix}) using the HPX
 projection, which leaves the observations fully reduced maps in units
 of pW (see Section \ref{sec:dr}). The individual maps are available to
 download through CADC/the JSA, where they will be listed under their
-original project code and meta data. Pointing observations were not
+original project code and metadata. Pointing observations were not
 used or analysed further in this data set.
 
 All the reduced science observations were individually examined to
@@ -333,7 +333,7 @@ Table\,\ref{tab:deepmaps}.
 
 %\floattable
 \begin{deluxetable}{rc r c c p{2cm}}
-  \tablecaption{The twenty co-added tiles which contain regions with a
+  \tablecaption{The twenty co-added tiles that contain regions with a
     noise at or better than 0.005\,m\jyas.\label{tab:deepmaps} }
 
 \tabletypesize{\scriptsize}
@@ -377,7 +377,7 @@ Table\,\ref{tab:deepmaps}.
   pixels in each tile which have an RMS $\leq$0.05m\jyas: the area, the
   number of pixels, the average exposure time per pixel, and the mean
   noise across these pixels. The deepest tile in this list, 27258, is
-  also shown in Figure \ref{fig:t27258}.}\end{deluxetable}
+  also shown in Figure~\ref{fig:t27258}.}\end{deluxetable}
 % \begin{table}
 % \centering
 % \begin{tabular}{l c r l}
@@ -441,16 +441,16 @@ our extent catalogs, with an signal-to-noise ratio (SNR) of $>5$.
   \includegraphics{tile30318-g34-coadd-noise.pdf}
   \\[3mm]
   \includegraphics{tile30318-g34-extent-peak.pdf}
-  \caption{Examples of the co-add, noise map, extent catalogue, and peak
-    catalogue towards Tile\,30318 containing the high-mass star-forming
+  \caption{Examples of the co-add, noise map, extent catalog, and peak
+    catalog towards Tile\,30318 containing the high-mass star-forming
     source G034.27+0.15}
   \label{fig:g34-3}
 \end{figure*}
 \subsection{CRL\,618}
-CRL 618 is one of the JCMT's standard flux calibration sources for
+CRL\,618 is one of the JCMT's standard flux-calibration sources for
 SCUBA-2 observing. As such, this co-add includes 923 observations using
 51 hours of observing time across the small CV\_DAISY area, shown in
-Figure~\ref{fig:crl618}. We achieved an extremely high noise due to
+Figure~\ref{fig:crl618}. We achieved an extremely low noise due to
 this large number of repeats -- achieving a noise better than
 0.005\,m\jyas\ around the central source. A zoom in on the central
 sources shows clearly a variety of point sources detected in this deep
@@ -495,7 +495,7 @@ even in these higher noise areas.
 In this deep map, it can clearly be seen that there are point sources
 spread across the full map. Although for optimal detection of point
 sources a beam matched filter should be used, even without using that
-we detect a large number of these objects. Figure~\ref{fig:27258}
+we detect a large number of these objects. Figure~\ref{fig:t27258}
 shows a comparison of our detections, the CLS's detections from their
 first data release \citep{Geach2016} and those of
 \citet{Casey2013}. Although these three methods do not detect exactly the
@@ -506,8 +506,9 @@ same objects, there are many correspondances between them.
   \\[3mm]
   \includegraphics{27258-zoomin.pdf}
   \caption{Tile\,27258 showing an extrememly deep co-add towards a
-    COSMOS field. This tile pongs and daisy observations taken by JCMT
-    Cosmology Legacy survey and several UH cosmoloy projects. Parts of
+    COSMOS field. This tile comprises both tile pongs and daisy
+    observations taken by JCMT
+    Cosmology Legacy survey and several UH cosmology projects. Parts of
     these data were published in
     \citet{Casey2013,Chen2013,Chen2013a,Geach2016}. Top Left: emission
     map of the entire co-added tile. Note the deep daisy seen in the
@@ -599,7 +600,7 @@ During all iterations an atmospheric correction is applied and data
 are filtered to remove any features on scales larger than 200". In
 addition to this a separate common-mode model is produced for each
 subarray (specified with \texttt{com.perarray=1}). Having a separate
-common mode estimate per subarray prevents artificial flux (also
+common-mode estimate per subarray prevents artificial flux (also
 known as ``fake blooms'') being introduced into the map where the
 common modes vary significantly and are not well represented by a
 single common mode. The disadvantage with having a separate common
@@ -714,7 +715,7 @@ thought of as approximately the region containing detectable emission,
 using `detection' limits set by the specific configuration parameters
 chosen. The effect is dependent on the size of the source -- extended
 sources outside of the masked regions are poorly recovered in this
-reduction, where as point sources are recovered well.  This issue does
+reduction, whereas point sources are recovered well.  This issue does
 in theory affect all reductions, including those using external masks
 defined from previous knowledge of the emission, but is of course most
 problematic for reductions such as these where the AST mask is defined
@@ -773,14 +774,14 @@ perform specific astronomical source finding and
 classification. Instead, this release focused on identifying first of
 all \emph{regions of contiguous emission}, discussed here as
 \emph{extents}, and secondly on \emph{identifying local maxima within
-  those regions}, described here as \emph{peaks}. The primary goal of
-these catalogues is to provide astronomers with regions of securely
+those regions}, described here as \emph{peaks}. The primary goal of
+these catalogs is to provide astronomers with regions of securely
 detected emission.
 
 
 We have chosen to use the FellWalker algorithm \citep{Berry2015}, as
 implemented in the Starlink CUPID \citep{cupid} package for this
-analysis. Unlike the more commonly used ClumpFind which simply lays
+analysis. Unlike the more commonly used ClumpFind, which simply lays
 discrete contour levels on the map and uses those to identify regions,
 FellWalker follows lines of ascent within the map to identify all
 peaks of emission. We have found it to be robust and
@@ -894,7 +895,7 @@ ensures that the pixelization is continous between each tile and the
 adjacent tiles.  This has the advantage that the tiles can be joined
 simply by abutting them.  This is done via the HPX projection
 \citep{Calabretta2007} which allows the the HEALPix grid to be used
-for conventional 2D FITS images.
+for conventional two-dimensional FITS images.
 
 While HEALPix has the advantage that all pixels have the same area,
 the trade off is that the pixels are not all square: they can vary in
@@ -960,7 +961,7 @@ examined and marked as \status{GOOD}, \status{QUESTIONABLE} or
 \status{BAD} by a member of the Legacy Reduction team. This quick
 `by-eye' assessment was done by examining an image of the reduced map,
 and if necessary following up with more detailed examination. for the
-original data set(2011 to 2013, not including CLS). The second batch
+original data set (2011 to 2013, not including CLS). The second batch
 of observations (2013 to 2015, and all of CLS) also showed an image of
 the SNR map in the QA page, as it had been found from the first
 experience that this was necessary to resolve the QA state for some
@@ -1168,8 +1169,8 @@ corrected for their positions.
 
 
 The JCMT usually quotes a pointing offset of apporixmately 2\arcsec{}
-in x and y, corresponding to an average radial offset of
-2.9\arcsec{}. By examining the offsets in x and y found for the
+in $x$ and $y$, corresponding to an average radial offset of
+2.9\arcsec{}. By examining the offsets in $x$ and $y$ found for the
 calibrator observations, we identified that the average offset for the
 calibrators in this release matches this expected value, with a median
 radial offset of 2.86\arcsec{}. See Figure~\ref{fig:pointing} for the
