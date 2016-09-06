@@ -8,11 +8,10 @@
 # Command to run it is:
 # cat ~/get_legacyrelease_times.sh | mysql -B -h kamaka jsa_proc -u <username with read access to jsa_proc> -p > legacy_release_times.txt
 
-#If this ever needs to be used again it should really be tidied up.
-
 # SF Graves March 2015.
+# Updated July 2016, to include r1 and r2 tasks
 
-select 'ALL' as `TYPE`, count(*) as `NumObs`, sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` from obs join job on obs.job_id = job.id WHERE job.task='hpx-s2-850-r1' and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z')
+SELECT 'ALL' AS `TYPE`, COUNT(*) AS `NumObs`, sum(TIMESTAMPDIFF(SECOND, date_obs,date_end)/(60.0*60.0)) as `TIME(HRS)` FROM obs JOIN job ON obs.job_id = job.id WHERE (job.task='hpx-s2-850-r1' OR job.task='hpx-s2-850-r2') and job.qa_state in ('G', 'Q') and obs.omp_status not in (2,4) and obs.obstype='science' and job.state not in ('E', 'X', 'Z')
 
 UNION ALL
 

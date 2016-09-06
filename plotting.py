@@ -23,8 +23,8 @@ matplotlib.rcParams['figure.autolayout'] = True
 matplotlib.rcParams['font.size'] = 7
 
 g34plot = None
-crl618plot = True
-cosmosmap = None
+crl618plot = None
+cosmosmap = True
 
 s=matplotlib._cm.cubehelix(s=0, r=-0.5, gamma=0.75)
 matplotlib.cm.register_cmap(name='test', data=s, lut=128)
@@ -60,7 +60,7 @@ def add_colorbar(ax):
     divider = make_axes_locatable(ax)
     cax = divider.append_axes("top", size="5%", pad=0, axes_class=matplotlib.axes.Axes)
     cbar = plt.colorbar(mappable=ax.images[0], cax=cax, orientation='horizontal')
-    cbar.set_label(r'mJy/arcsec\textsuperscript{2}')
+    cbar.set_label(r'mJy\,arcsec\textsuperscript{$-$2}')
     cax.xaxis.tick_top()
     cbar.ax.set_xticklabels(cbar.ax.get_xticklabels(),rotation=90)
     cbar.ax.xaxis.set_label_position('top')
@@ -313,7 +313,7 @@ if crl618plot:
     cax.hlines(-0.02, cax.get_xlim()[0], cax.get_xlim()[1], color='0.7')
     cax.hlines(+0.02, cax.get_xlim()[0], cax.get_xlim()[1], color='0.7')
 
-    cax.set_ylabel(r'Jy\,arcsec\textsuperscript{-2}')
+    cax.set_ylabel(r'mJy\,arcsec\textsuperscript{-2}')
     cax.yaxis.set_label_position('right')
     cax.set_xlabel('Pixels (offset from peak)')
     fig.tight_layout()
@@ -339,6 +339,7 @@ if cosmosmap:
 
     norm = ImageNormalize(vmin=-0.01, vmax=0.0596, stretch=astropy.visualization.LinearStretch())
     ax.imshow(data, cmap=cmap, origin='lower', interpolation='none', norm=norm)
+    ax.contour(var, levels=[5e-3], colors='white')
     add_colorbar(ax)
     formataxes(ax)
     ra=ax.coords[0]
