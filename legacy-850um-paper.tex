@@ -259,9 +259,8 @@ comparison, the SCUBA Legacy Catalogue \citep{DiFrancesco2008} covered
 19.6 square degrees in their  `Fundamental Map Data Set,
 and 29.3 square degrees in their fuller `Extended Map Data Set'
 
-  Source
-detection was carried out on all of the co-added tiles, and this
-detected emission in 1.37 square degrees (4.17e-4 steradians, or
+Source detection was carried out on all of the co-added tiles, and
+this detected emission in 1.37 square degrees (4.17e-4 steradians, or
 0.33\% of the area observed.)
 
 
@@ -270,20 +269,22 @@ Because the observations used here are from a wide variety of projects
 aiming for a variety of noise levels, our noise maps are extremely
 heterogenous. Figure~\ref{fig:noise-mollweide} shows the all-sky
 distribution of the noise maps of our
-co-adds. Figure~\ref{fig:histonoise} shows a histogram of the noise in
-each pixel of the co-added tiles. Table~\ref{tab:noises} shows the area
-of our co-adds which has a noise level below various common
-values. This is calculated by finding the number of pixels which have
-a noise value less than or equal to a given limit. For convenience of
-those readers most used to Jy\,beam\textsuperscript{$-1$}, we have
-provided a very approximate equivalent flux density in those units by
-dividing by our derived arcsecond Flux Conversion Factor (FCF)
-(2.48\,\jyas\,pW$^{-2}$) and multiplying by the JCMT `standard' beam FCF
-(537\,Jy\,beam$^{-1}$\,pW$^{-1}$. Please note that a beam FCF has not been
-derived for this data set, so we do not recommend using this
-calibration when extracting fluxes as a self-derived FCF would
-probably have a systematic offset of a few percent from the `standard'
-values (as shown for the arcsecond FCF in Section~\ref{sec:calib}).
+coadds. Figure~\ref{fig:histonoise} shows a histogram of the noise in
+each pixel of the coadded tiles. It can be seen that the most common
+noise is 0.35 m\jyas. Table~\ref{tab:noises} shows the area of our
+co-adds which has a noise level below various common values. This is
+calculated by finding the number of pixels which have a noise value
+less than or equal to a given limit. For convenience of those readers
+most used to Jy\,beam\textsuperscript{$-1$}, we have provided a very
+approximate equivalent flux density in those units by dividing by our
+derived arcsecond FCF (2.48\,\jyas\,pW$^{-2}$) and multiplying by the
+JCMT `standard' beam FCF (537 Jy\,beam$^{-1}$\,pW$^{-1}$. Please note
+that a beam FCF has not been derived for this dataset, so we do not
+recommend using this calibration when extracting fluxes as a self
+derived FCF would probably have a systematic offset of a few percent
+from the `standard' values, (as shown for the arcsecond FCF in
+Section~\ref{sec:calib}).
+
 
 \begin{deluxetable}{lDDD}
   \tablecaption{Areas of the release with an RMS noise less than or
