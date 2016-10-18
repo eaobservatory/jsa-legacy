@@ -55,7 +55,8 @@
 \begin{abstract}
   We present the first JCMT Legacy Release, consisting of uniform
   reductions, co-additions, and catalogs of detected emission for the
-  850\,\um\ data from all SCUBA-2 observations taken between 2011 and
+  850\,\um\ data from all SCUBA-2 observations taken between 2011
+  February 2 and
   2015 March 1. The data are gridded onto HEALPix
   tiles of $~$1 degree a side, using the HPX projection onto pixels of
   area 3.22 by 3.22 arcseconds. The individually reduced observations
@@ -155,7 +156,8 @@ projection, which leaves the observations fully reduced maps in units
 of pW (see Section \ref{sec:dr}). The individual maps are available to
 download through CADC/the JSA, where they will be listed under their
 original project code and metadata. Pointing observations were not
-used or analysed further in this data set.
+used or analysed further in this data set. We also excluded solar
+system objects/moving targets from this release.
 
 All the reduced science observations were individually examined to
 determine if they met our quality standards (see Section
@@ -202,11 +204,12 @@ paper.
 %  SASSy refs. (There are none better as far as we know...)}
 
 
-Observations from earlier than 2011 were not included, as these were
+Observations from earlier than 2011 February 2 were not included, as these were
 taken in \emph{shared risk} mode while instrument commissioning was
 still being conducted, and the data from that era are more problematic
 \citep{SC19,Dempsey2010}. Pointing observations, and science
-observations from within the appropriate time period which failed QA
+observations from within the appropriate time period which failed
+Quality Assurance (QA)
 were still reduced using this standardised configuration\footnote{and
   are available for interested parties to download from the JSA}, but
 have not been included in the co-added products (see \sref{sec:QA} for
@@ -215,10 +218,12 @@ more detail on this).
 The observations included in this release were each taken in one of
 the two different SCUBA-2 standard scan patterns: CV\_DAISY, a
 fixed-size scan pattern used for covering small areas, and CURVY\_PONG
-patterns at various user-chosen sizes. The scanning speed is not the
-same between these scan patterns, and there will be some inconsistency
-in the size scales as SCUBA-2 reductions are sensitive to the
-observing mode that was used. However, as our reduction has been
+scan patterns at various user-chosen sizes, used for covering larger
+areas \citep{Holland2013}.  The scanning speed is not the
+same between these scan patterns; this will cause some inconsistency
+in the scales of emission detected in the reduced maps, as SCUBA-2
+observations are sensitive to different size scales of emission at
+different speeds/scan. However, as our reduction has been
 extremely conservative and has filtered out structure on scales larger
 than 200\arcsec, we believe this effect should be minimized in our
 co-adds.
@@ -228,7 +233,7 @@ co-adds.
 
 
 \subsection{Overall statistics}
-\begin{deluxetable}{lrrrrrr}
+\begin{deluxetable}{lrrr|rrr}
 \tablecaption{Types of observation included in this
   release.\label{tab:typesobs}}
 \tablecolumns{7}
@@ -257,7 +262,7 @@ gigapixels of valid data, corresponding to ~1356 square
 degrees.\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}. For
 comparison, the SCUBA Legacy Catalogue \citep{DiFrancesco2008} covered
 19.6 square degrees in their  `Fundamental Map Data Set,
-and 29.3 square degrees in their fuller `Extended Map Data Set'
+and 29.3 square degrees in their fuller `Extended Map Data Set'.
 
 Source detection was carried out on all of the co-added tiles, and
 this detected emission in 1.37 square degrees (4.17e-4 steradians, or
@@ -334,7 +339,7 @@ Table\,\ref{tab:deepmaps}.
 
 %\floattable
 \begin{deluxetable}{rc r c c p{2cm}}
-  \tablecaption{The twenty co-added tiles that contain regions with a
+  \tablecaption{\todo{Reorder table appropriately!} The twenty co-added tiles that contain regions with a
     noise at or better than 0.005\,m\jyas.\label{tab:deepmaps} }
 
 \tabletypesize{\scriptsize}
@@ -413,8 +418,9 @@ that has been observed in a wide variety of
 wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise map,
 extent catalog, and peak catalog towards this source. This co-add
 includes data primarily from JCMT calibration projects of this source,
-but also two observations from a University of Hawaii (UH) PI project
-(M13AH07B).\note{Was this published?}. The noise maps for this co-add
+but also two observations from a University of Hawai`i (UH) PI project
+(M13AH07B).\note{Was this published?}. The noise maps
+(Figure~\ref{fig:g34-3}, 2nd figure) for this co-add
 shows the characteristic 'CV\_DAISY' scan pattern towards the central
 source, with two overlapping small PONG observations covering a wider
 extent. This field also illustrates the artificially high noise we
@@ -442,9 +448,14 @@ our extent catalogs, with an signal-to-noise ratio (SNR) of $>5$.
   \includegraphics{tile30318-g34-coadd-noise.pdf}
   \\[3mm]
   \includegraphics{tile30318-g34-extent-peak.pdf}
-  \caption{Examples of the co-add, noise map, extent catalog, and peak
-    catalog towards Tile\,30318 containing the high-mass star-forming
-    source G034.27+0.15}
+  \caption{The coadded products towards Tile\,30318, containing the
+    high-mass star-forming source G034.27+0.15. Top left: the co-added
+    emission map. Top right: the coadded noise map, exhibiting the
+    characteristic noise patterns of both the central CV\_DAISY
+    observations in the centre, and the larger PONG observations
+    around them. Bottom Left: the detected extents of emission,
+    outlined on the coadded emission map. Bottom right: The detected
+    peaks within the detected extents.}
   \label{fig:g34-3}
 \end{figure*}
 \subsection{CRL\,618}
@@ -474,14 +485,14 @@ vertical cut throughs are shown to help visualise this bowling.
     around the source is shown (Left), as well as horizontal and
     vertical cuts through the peak (Right). In these cuts through the
     ~0.01 m\jyas\ bowling around the bright central source can be
-    easily seen. }
+    easily seen. \todo{HALP: Should contours in bottom left image be narrower?}}
   \label{fig:crl618}
 \end{figure*}
 
 \subsection{Tile\,27258: Deep COSMOS-CANDELS field}
 Here we present our deepest map. This includes data both from the JCMT
 Cosmology Legacy Survey \citep[recently published in][]{Geach2016} but
-also from various University of Hawaii deep surveys
+also from various University of Hawai`i deep surveys
 \citep{Casey2013,Chen2013,Chen2013a}. By being able to include
 publicly available data taken by different projects we can achieve a
 deeper map than possible with only one data set. Our co-add includes
@@ -520,7 +531,8 @@ same objects, there are many correspondances between them.
     region. Bottom right: comparison of the source catalogs produced
     here (shown as cyan crosses), as published in \citealt{Casey2013}
     (red circles) and as found by the JCMT CLS 850um DR1 \citep[blue
-    triangles]{Geach2016}. }
+    triangles]{Geach2016}. \todo{HALP: Comment on strcuture visible in
+      background of deepest part of coadd?}}
   \label{fig:t27258}
 \end{figure*}
 
@@ -532,7 +544,8 @@ SCUBA-2 observations are reduced using the Starlink SMURF program
 the data set into various instrumental and astronomical signals. There
 is an extremely large number of user-adjustable parameters that can
 affect the final map, depending on the science goals of the users and
-the structure of the astronomical emission observed. \note{For example, a
+the structure of the astronomical emission observed. \todo{Should this
+  be inluded? HALP votes yes. For example, a
 cosmologist interested in detecting only faint point sources in a
 primarily blank map would use a distinctly different set of parameters
 from a galactic astronomer looking at bright, extended and
@@ -625,7 +638,9 @@ contiguously to such pixels down to an SNR of 3 (specified by using
 
 The map maker exits before the 20th iteration if the \texttt{maptol}
 parameter --- the change between maps --- has reached a mean value of 1\%
-of the noise level (specified by \texttt{maptol=0.01}).
+of the noise level (specified by \texttt{maptol=0.01}). For further
+detail on the map maker, see \citet{Chapin2013}. \note{HALP suggests
+  also citing Stever Mairs 2015 here?}.
 
 
 % See Appendix~\ref{app:config} for the full configuration file. Some of
@@ -733,7 +748,8 @@ We have excluded sizes scales larger than the subarray size from our
 reduction. In addition, we have used a fairly aggressive large scale
 filtering removing scales larger than 200 arcseconds.
 
-\todo{Do we want some power spectra of this? not sure if they'd be very illuminating.}
+\todo{Do we want some power spectra of this? not sure if they'd be
+  very illuminating. HALP votes no!}
 
 \subsection{Negative Bowling}
 Within the co-added maps of this release, negative bowling can be
@@ -961,16 +977,19 @@ Every non-pointing reduced file included in this release has been
 examined and marked as \status{GOOD}, \status{QUESTIONABLE} or
 \status{BAD} by a member of the Legacy Reduction team. This quick
 `by-eye' assessment was done by examining an image of the reduced map,
-and if necessary following up with more detailed examination. for the
-original data set (2011 to 2013, not including CLS). The second batch
-of observations (2013 to 2015, and all of CLS) also showed an image of
-the SNR map in the QA page, as it had been found from the first
-experience that this was necessary to resolve the QA state for some
-observations. \status{BAD} observations were excluded from the co-adds,
-as were observations that were flagged as \status{BAD} by the
+and if necessary following up with more detailed examination. For the
+first data release (2011 to 2013, not including theCLS) only used a
+map of the emission, and it was found that a lot of questionable
+observations required either checking of the tile interactively or the
+making of an SNR map. For the second release (observations from 2013
+to 2015, and all of the CLS) the QA process also used an image of the
+SNR map for the by-eye process, for easier resolution of questionable
+observations. \status{BAD} observations were excluded from the
+co-adds, as were observations that were flagged as \status{BAD} by the
 observatory's normal observation-based QA (usually done during a
 night's observing).\status{QUESTIONABLE} observations were examined
-further, and either included in the co-adds or changed to \status{BAD}.
+further, and either included in the co-adds or changed to
+\status{BAD}.
 
 
 This QA process was designed to avoid: a) `blooms' or `blobs' of fake
@@ -978,7 +997,8 @@ emission that can sometimes be produced at the edges of the map by the
 mapmaker; and b) to identify the most problematic observations that
 had missed being flagged under the telescope standard QA
 process. \note{Does it need these extra images? Examples of some
-  observations flagged as BAD can be seen in Figure \ref{fig:badobs}.}
+  observations flagged as BAD can be seen in Figure
+  \ref{fig:badobs}. HALP votes no.}
 
 This sort of process is of course subjective, and some of the
 observations that we excluded might be usable on further
@@ -1193,8 +1213,9 @@ smearing should be included in the resolution.}
 
 
 
-\section{Conclusions}
-\note{do we need a conclusion section?}
+\section{Summary}
+\todo{Summarise the release and why it is amazingly awesome and useful.}
+
 
 \acknowledgments
 The James Clerk Maxwell Telescope has historically been operated by
@@ -1207,7 +1228,7 @@ were provided by the Canada Foundation for Innovation.
 
 The work presented here was initially started by the Joint Astronomy
 Centre, and latterly has been supported by East Asian Observatory (EAO).
-EAO operates the JCMT since 2015 March 1, on behalf of The
+EAO operates the JCMT since 2015 March 1, on behalf of the
 National Astronomical Observatory of Japan, Academia Sinica Institute
 of Astronomy and Astrophysics, the Korea Astronomy and Space Science
 Institute, the National Astronomical Observatories of China and the
@@ -1226,8 +1247,6 @@ support of the Canadian Space Agency.
 % include astropy? It was used for analysis and figures.
 \software{Starlink \citep{starlink?}, SMURF, KAPPA, ORAC-DR}
 
-
-
 \bibliography{legacy-850um-paper}
 \bibstyle{aasjournal.bst}
 
@@ -1238,7 +1257,6 @@ support of the Canadian Space Agency.
 \appendix
 
 
-%% Probably more detailed than needed in a paper
 \section{Mapmaker configuration}
 \label{app:config}
 The mapmaker configuration used for this release (known as a
