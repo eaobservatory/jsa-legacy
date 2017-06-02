@@ -63,7 +63,7 @@
   include 6420 hours of observing time, and the co-added tiles used
   5915 hours of this, covering 1356 square degrees of the sky. The
   co-adds have been calibrated into units of m\jyas\ using a
-  self-derived flux-conversion factor. Contiguous regions of emission
+  self-derived flux conversion factor. Contiguous regions of emission
   were detected at a better than 5-$\sigma$ level in 740 tiles,
   covering in total 1.4 square degrees, or 0.33 percent of the
   co-added area. Within this area, 13477 local maxima were
@@ -77,7 +77,7 @@
 \label{sec:intro}
 % JCMT & SCUBA-2 & JSA
 The JCMT is a 15-m submillimetre telescope located at an altitude of
-4092\,m on Mauna Kea, where it has been operating since 1987. Its
+4092\,m on Maunakea, where it has been operating since 1987. Its
 current instrument suite includes SCUBA-2, a 10,000-pixel continuum
 camera that observes simultaneously at 450\,\um\ and 850\,\um\
 wavelengths \citep{Holland2013}, and has been operating in full
@@ -181,7 +181,7 @@ paper (but calibrated using a slightly different FCF).
 
 For these observations, we have produced individual reduced
 observations, co-adds of all science observations that fell on a given
-HPX tile, and catalogs of extended contiguous regions and local peaks
+HEALPix tile, and catalogs of extended contiguous regions and local peaks
 detected at $>5\sigma$. Fig.\,\ref{fig:noise-mollweide} shows the all
 sky noise map of the co-adds in this release, showing the average RMS
 across all valid pixels in a tile as a single square.
@@ -254,7 +254,7 @@ calibration observations, 3575 hours of data taken for the JCMT Legacy
 Surveys and 2117 hours of data taken for PI projects. This information
 is summarized in Table \ref{tab:typesobs}. The co-adds include 1.69
 gigapixels of valid data, corresponding to ~1356 square
-degrees.%\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}.
+degrees. %\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}.
 For
 comparison, the SCUBA Legacy Catalogue \citep{DiFrancesco2008} covered
 19.6 square degrees in their `Fundamental Map Data Set, and 29.3
@@ -292,7 +292,7 @@ each pixel of the coadded tiles. It can be seen that the most common
 noise is 0.35\,m\jyas\ (81\,m\jybm). Table~\ref{tab:noises} shows the area of
 our co-adds which has a noise level below various common values. This
 is calculated by finding the number of pixels which have a noise value
-less than or equal to a given limit. We have give the noise in \jyas\
+less than or equal to a given limit. We have given the noise in \jyas\
 and Jy\,beam$^{-1}$ using self-derived FCFs (see section
 \ref{sec:calib} for details on this
 process).
@@ -331,7 +331,7 @@ process).
 
 \subsection{The deepest maps}
 Twenty of our co-added tiles contain pixels with a noise better than
-0.005\,m\jyas (corresponding to very roughly 1\,m\jybm). These include
+0.005\,m\jyas{} (corresponding to very roughly 1\,m\jybm). These include
 our three most common standard JCMT SCUBA-2 calibrators (CRL\,618,
 CRL\,2688 and Arp\,220), and several deep cosmology fields that were
 observed separately by both the JCMT Cosmology Legacy Survey and by
@@ -400,7 +400,7 @@ diversity of non-solar system structures observed by the JCMT --
 including dusty disks, complex filamentary molecular clouds, nearby
 galaxies, extragalactic point sources, and extremely deep surveys of
 standard cosmological fields. Although providing full examples of all
-types of emisison is beyond the scope of this paper, we here present
+types of emission is beyond the scope of this paper, we here present
 some of our co-added tiles covering a range of source types.
 
 \subsection{G034.27+0.15}
@@ -412,7 +412,7 @@ includes data primarily from JCMT calibration projects of this source,
 but also two observations from a University of Hawai`i (UH) PI project
 (M13AH07B). The noise maps
 (Figure~\ref{fig:g34-3}, 2nd figure) for this co-add
-shows the characteristic 'CV\_DAISY' scan pattern towards the central
+shows the characteristic `CV\_DAISY' scan pattern towards the central
 source, with two overlapping small PONG observations covering a wider
 extent. This field also illustrates the artificially high noise we
 see towards bright sources (see Section~\ref{sec:dr}) -- this is seen
@@ -422,7 +422,7 @@ the extent and peak catalogs, however, (shown below) indicates that
 this problem did not prevent a detection of the emission in these
 regions. Our experience has been that these high-noise areas only
 occur towards bright regions, so they are still clearly detected in
-our extent catalogs, with an signal-to-noise ratio (SNR) of $>5$.
+our extent catalogs, with a signal-to-noise ratio (SNR) of $>5$.
 
 
 
@@ -439,19 +439,19 @@ our extent catalogs, with an signal-to-noise ratio (SNR) of $>5$.
   \includegraphics{tile30318-g34-coadd-noise.pdf}
   \\[3mm]
   \includegraphics{tile30318-g34-extent-peak.pdf}
-  \caption{The coadded products towards Tile\,30318, containing the
+  \caption{The co-added products towards Tile\,30318, containing the
     high-mass star-forming source G034.27+0.15. Top left: the co-added
-    emission map. Top right: the coadded noise map, exhibiting the
+    emission map. Top right: the co-added noise map, exhibiting the
     characteristic noise patterns of both the central CV\_DAISY
     observations in the centre, and the larger PONG observations
-    around them. Bottom Left: the detected extents of emission,
-    outlined on the coadded emission map. Bottom right: The detected
+    around them. Bottom left: the detected extents of emission,
+    outlined on the co-added emission map. Bottom right: the detected
     peaks within the detected extents.}
   \label{fig:g34-3}
 \end{figure*}
 
 \subsection{CRL\,618}
-CRL\,618 is one of the JCMT's standard flux-calibration sources for
+CRL\,618 is one of the JCMT's standard flux calibration sources for
 SCUBA-2 observing. As such, this co-add includes 923 observations using
 51 hours of observing time across the small CV\_DAISY area, shown in
 Figure~\ref{fig:crl618}. We achieved an extremely low noise due to
@@ -475,7 +475,7 @@ vertical cut throughs are shown to help visualise this bowling.
     the 0.005, 0.006, and 0.007 m\jyas\ noise contours. On the bottom
     row a zoom in of the central source showing the detected extents
     around the source is shown (Left), as well as horizontal and
-    vertical cuts through the peak (Right). In these cuts through the
+    vertical cuts through the peak (Right). In these cuts the
     ~0.01 m\jyas\ bowling around the bright central source can be
     easily seen. }
   \label{fig:crl618}
@@ -503,18 +503,18 @@ we detect a large number of these objects. Figure~\ref{fig:t27258}
 shows a comparison of our detections, the CLS's detections from their
 first data release \citep{Geach2016} and those of
 \citet{Casey2013}. Although these three methods do not detect exactly the
-same objects, there are many correspondances between them.
+same objects, there are many correspondences between them.
 
 \begin{figure*}
   \includegraphics{27258-whole-map.pdf}
   \\[3mm]
   \includegraphics{27258-zoomin.pdf}
-  \caption{Tile\,27258 showing an extrememly deep co-add towards a
-    COSMOS field. This tile comprises both tile pongs and daisy
+  \caption{Tile\,27258 showing an extremely deep co-add towards a
+    COSMOS field. This tile comprises both pong and daisy
     observations taken by JCMT
     Cosmology Legacy survey and several UH cosmology projects. Parts of
     these data were published in
-    \citet{Casey2013,Chen2013,Chen2013a,Geach2016}. Top Left: emission
+    \citet{Casey2013,Chen2013,Chen2013a,Geach2016}. Top left: emission
     map of the entire co-added tile. Note the deep daisy seen in the
     bottom right. Top right: noise map of the entire tile. Contours
     indicate the 1.75, 2, 2.5, 5, 7.5, and 10 m\jyas\ regions. Bottom
@@ -637,7 +637,7 @@ For the exact configuration file used in the legacy reduction see
 Appendix~\ref{app:config}. In this particular reduction, after the
 initial pre-processing stage, the SCUBA-2 mapmaker recipe performs
 five iterations in which the astronomical signal is retained at the
-end rather than being removed as in a normal iteration. This is
+end rather than being removed as in a normal iteration. (This is
 specified using \texttt{ast.skip=5}). These initial iterations allow
 the reduction process to focus on creating an FLT mask that identifies
 any unusually bright region; these regions may cause ringing in
@@ -667,7 +667,7 @@ iterations containing all models). Each of these remaining iterations
 removes the astronomical signal from the residuals prior to starting
 the next iteration. However, to prevent instabilities in the iterative
 process, this subtraction only occurs within regions corresponding to
-bright sources.  The mask identifying such sources is creating in the
+bright sources.  The mask identifying such sources is created in the
 same way as the mask used by the low-frequency noise filter (``FLT''
 model): source pixels are taken to be those with a signal-to-noise
 ratio greater than 5.0 (plus any other pixels that are attached
@@ -773,7 +773,7 @@ examined and marked as \status{GOOD}, \status{QUESTIONABLE} or
 \status{BAD} by a member of the Legacy Reduction team. This quick
 `by-eye' assessment was done by examining an image of the reduced map,
 and if necessary following up with more detailed examination. For the
-first data release (2011 to 2013, not including theCLS) only used a
+first data release (2011 to 2013, not including the CLS) only used a
 map of the emission, and it was found that a lot of questionable
 observations required either checking of the tile interactively or the
 making of an SNR map. For the second release (observations from 2013
@@ -782,7 +782,7 @@ SNR map for the by-eye process, for easier resolution of questionable
 observations. \status{BAD} observations were excluded from the
 co-adds, as were observations that were flagged as \status{BAD} by the
 observatory's normal observation-based QA (usually done during a
-night's observing).\status{QUESTIONABLE} observations were examined
+night's observing). \status{QUESTIONABLE} observations were examined
 further, and either included in the co-adds or changed to
 \status{BAD}.
 
@@ -1346,7 +1346,7 @@ individual observations that went into each mosaiced tile.
 
 \section{Catalogs}
 \label{sec:cat}
-The JCMT Legacy release includes emission catalogs generated from
+The JCMT Legacy Release includes emission catalogs generated from
 each of the co-added maps. As we have an extremely diverse set of
 astronomical regions (including blank fields, point sources, and large
 complex extended structures), we did not feel it would be possible to
@@ -1394,7 +1394,7 @@ We used the FellWalker algorithm as implemented in \texttt{cupid} on
 an SNR map to produce contiguous regions of emission and to identify
 the position of the peak pixel within each map, and these outlines are
 available both as a FITS format mask file, as a HEALPix
-Multi-Order-Coverage file (MOC), and as a rough approximation by STC-S
+Multi-Order Coverage file (MOC), and as a rough approximation by STC-S
 polygon. The catalog for each tile indicates the ID of the clump, the
 RA and Dec of the peak pixel, the total flux contained within the
 entire extent, the flux of the peak pixel, and the area of the entire
@@ -1498,7 +1498,7 @@ The JCMT usually quotes a pointing offset of approximately 2\arcsec{}
 in $x$ and $y$ (\emph{private communication, Dr Iain Coulson}),
 corresponding to an average radial offset of 2.9\arcsec{}. By
 examining the offsets in RA and Dec found for the calibrator and
-pointing observations, we identified that the average pointingoffset
+pointing observations, we identified that the average pointing offset
 for the release matches this expected value, with a median radial
 offset of 2.86\arcsec{}. See Figure~\ref{fig:pointing} for the
 histogram of these offsets. We assume that the pointing in our
@@ -1524,12 +1524,12 @@ the fitted beam shape.
 \begin{figure*}
   \centering
   \includegraphics{beamfit-uranus.pdf}
-  \caption{The SCUBA-2 850\micron\ beam, as found from a deep coadd of Uranus
+  \caption{The SCUBA-2 850\micron\ beam, as found from a deep co-add of Uranus
 observations. On the left is shown an image of the central source. The
 bright ring at ~160" radius is due to misaligned panels on the
 telescope. On the right: cut throughs in RA and Dec of the beam are
 shown with the fitted two-Gaussian beam model overlaid for
-contrast.The yaxis shows the value relative to the full amplitude of
+contrast. The $y$-axis shows the value relative to the full amplitude of
 the beam.}
 \label{fig:beam}
 \end{figure*}
@@ -1647,7 +1647,7 @@ flt.zero_snrlo=3
 \startdata
 Single observation
 & \multicolumn{1}{p{2.5cm}}{REDUCE\_SCAN\_JSA\_PUBLIC}
-& \texttt{jcmts<YYYYMMDD>\_<scan>\_850\_healpix<TILE>_obs_000.fits}&
+& \texttt{jcmts<YYYYMMDD>\_<SCAN>\_850\_healpix<TILE>_obs_000.fits}&
 \raggedright{\textbullet{} Emission map (pW)}\linebreak
 \raggedright{\textbullet{} Variance map (pW\textsuperscript{2})}\linebreak
 \raggedright{\textbullet{} Quality map (mask)}
@@ -1663,18 +1663,18 @@ Extent catalog & JSA\_CATALOGUE&\texttt{jcmts850um\_extent-cat<TILE>\_pub\_001.f
 & Only created if  emission detected at $>5\sigma$. & extent-850um\\
 %
 Extent mask & JSA\_CATALOGUE & \texttt{jcmts850um_extent-mask<TILE>\_pub\_001.fits} &
-\textbullet{}Mask map indicating which pixels fell into which extent
+\textbullet{} Mask map indicating which pixels fell into which extent
 & " & "\\
 %
 Extent MOC & JSA\_CATALOGUE & \texttt{jcmts850um\_extent-moc<TILE>\_pub\_001.fits} &
-\textbullet{}MOC file, indicating which pixels fell into any extent & " & "\\
+\textbullet{} MOC file, indicating which pixels fell into any extent & " & "\\
 Peak catalog & JSA\_CATALOGUE & \texttt{jcmts850um\_peak-cat<TILE>\_pub\_001.fits} &
-\textbullet{}Catalog of peaks (see Sec.\,\ref{sec:peaks})&
+\textbullet{} Catalog of peaks (see Sec.\,\ref{sec:peaks})&
 Only created if extents catalog created. & peak-850um\\
 Peak MOC & JSA\_CATALOGUE & \texttt{jcmts850um\_peak-moc<TILE>\_pub\_001.fits} &
-\textbullet{}MOC file, indicating which pixels were as a identified.& " & "\\
+\textbullet{} MOC file, indicating which pixels were as a identified.& " & "\\
 Coverage MOC & JSA\_CATALOGUE & \texttt{jcmts850um\_tile-moc<TILE>\_pub\_001.fits} &
-\textbullet{}MOC file, identifying all pixels which contain a valid data point (as opposed to blank regions of tile) & Created for all tiles. & extent-850um\\
+\textbullet{} MOC file, identifying all pixels which contain a valid data point (as opposed to blank regions of tile) & Created for all tiles. & extent-850um\\
 \enddata
 \tablecomments{In the filename column, \texttt{<SCAN>} indicates the
   JCMT scan number of that observation, padded with zeros to five-digit
@@ -1684,10 +1684,10 @@ Coverage MOC & JSA\_CATALOGUE & \texttt{jcmts850um\_tile-moc<TILE>\_pub\_001.fit
   in Table\,\ref{tab:hpxpar}.
   \\
   The \emph{single observation} files will be found in the JSA under the
-  original observations metadata, obsid, and project code. All
+  original observation's metadata, observation ID, and project code. All
   remaining files are in the JSA in a tile-centric fashion, and are found under the project
-  code 'JCMT-LR', with metadata appropriate for the specific tile, and
-  with an obsid of the form \texttt{SCUBA-2-<TILE>}.}
+  code `JCMT-LR', with metadata appropriate for the specific tile, and
+  with an observation ID of the form \texttt{SCUBA-2-<TILE>}.}
 \end{deluxetable}
 
 \section{Example Catalogs}
