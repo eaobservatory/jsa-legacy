@@ -1,12 +1,27 @@
 from jsa_proc.config import get_database
 from jsa_proc.admin.directories import get_log_dir
-
+from jsa_proc.db.db import Not
+import datetime
 import os
 import glob
 import matplotlib
 import matplotlib.pyplot as plt
 plt.ion()
 import numpy as np
+from astropy.table import Table
+
+
+matplotlib.rcParams['font.size']=7
+matplotlib.rcParams['lines.linewidth']=1
+matplotlib.rcParams['axes.linewidth']=0.5
+matplotlib.rcParams['xtick.major.width']=0.5
+matplotlib.rcParams['xtick.minor.width']=0.5
+matplotlib.rcParams['ytick.major.width']=0.5
+matplotlib.rcParams['ytick.minor.width']=0.5
+
+sourcecolordict = {'CRL618': 'C0',
+                   'CRL2688': 'C1',
+                   'URANUS': 'C2'}
 
 def get_pointing_offsets(filename):
     f = open(filename, 'r')
@@ -55,19 +70,33 @@ def plot_offset(offset_dict, ax, label, color, marker):
 
 
 db = get_database()
-crl618_jobs = db.find_jobs(task=['hpx-s2-850-r1', 'hpx-s2-850-r2'], state='Y', obsquery={'project':'JCMTCAL', 'obstype':'science', 'sourcename':'CRL618', 'instrument':'SCUBA-2','subsys':'850' })
-crl2688_jobs = db.find_jobs(task=['hpx-s2-850-r1', 'hpx-s2-850-r2'], state='Y', obsquery={'project':'JCMTCAL', 'obstype':'science', 'sourcename':'CRL2688', 'instrument':'SCUBA-2','subsys':'850' })
-arp220_jobs = db.find_jobs(task=['hpx-s2-850-r1', 'hpx-s2-850-r2'], state='Y', obsquery={'project':'JCMTCAL', 'obstype':'science', 'sourcename':'Arp220', 'instrument':'SCUBA-2','subsys':'850' })
-allcal_jobs = db.find_jobs(task=['hpx-s2-850-r1', 'hpx-s2-850-r2'], state='Y', obsquery={'project':'JCMTCAL', 'obstype':'science', 'instrument':'SCUBA-2','subsys':'850' })
 
-print('Finding CRL 618 offsets')
-crl618_offsets = find_offsets(crl618_jobs)
-print('Finding CRL 2688 offsets')
-crl2688_offsets = find_offsets(crl2688_jobs)
-print('Finding Arp 220 offsets')
-arp220_offsets = find_offsets(arp220_jobs)
-print('Finding All Calibration offsets')
+allcal_jobs = db.find_jobs(task=['hpx-s2-850-r1', 'hpx-s2-850-r2'], state='Y', obsquery={'project':'JCMTCAL', 'obstype':'science', 'instrument':'SCUBA-2','subsys':'850' }, qa_state=Not('B'))
+
+allpointing_jobs = db.find_jobs(task=['hpx-s2-850-r1', 'hpx-s2-850-r2'], state='Y', obsquery={'project':'JCMTCAL', 'obstype':'pointing', 'instrument':'SCUBA-2','subsys':'850' })
+
+
 allcal_offsets = find_offsets(allcal_jobs)
+
+allcalpointing_offsets = find_offsets(allpointing_jobs)
+
+offsettable = Table(names=['job_id', 'source', 'offset1', 'offset2', 'obstype', 'date-obs', 'date-end', 'obsnum', 'tau'],
+                    dtype=[int, 'S15', float, float, 'S10', datetime.datetime, datetime.datetime, int, float])
+
+
+
+for job_id, offsets in allcal_offsets.items():
+    obsinfo = db.get_obs_info(job_id)[0]
+    offsettable.add_row([job_id, obsinfo.sourcename, offset[0], offset[1], 'science', obsinfo.date_obs,
+                         obsinfo.date_end,
+                         obsinfo.obsnum, obsinfo.tau])
+for job_id, offset in allcalpointing_offsets.items():
+    offsettable.add_row([job_id, obsinfo.sourcename, offset[0], offset[1], 'pointing', obsinfo.date_obs,
+                         obsinfo.date_end,
+                         obsinfo.obsnum, obsinfo.tau])
+
+offsettable.write('pointing-offsets.csv')
+
 
 
 
@@ -84,12 +113,12 @@ matplotlib.rcParams['text.usetex'] = True
 matplotlib.rcParams['text.latex.preamble'] = r'\usepackage{apjfonts},\usepackage{sfmath}'
 matplotlib.rcParams['figure.autolayout'] = True
 matplotlib.rcParams['font.size'] = 7
-fig = plt.figure(figsize=(3.394, 3.5))
+fig = plt.figure(figsize=(3, 3))
 ax = fig.add_subplot(111)
-values, bins, patches = ax.hist(allcal_mag, bins=25, range=(0,10), histtype='step', color='black', label='All Calibrations')
-ax.hist(crl618_mag, bins=bins, histtype='step', color='red', hatch='\\\\\\\\', label='CRL 618')
-ax.hist(crl2688_mag, bins=bins, histtype='step', color='blue', hatch='////', label='CRL 2688')
-ax.hist(arp220_mag, bins=bins, histtype='step', color='purple', hatch='++', label='Arp 220')
+values, bins, patches = ax.hist(allcal_mag, bins=30, range=(0,10), histtype='step', color='black', label='All Calibrations')
+ax.hist(crl618_mag, bins=bins, histtype='step', hatch='\\\\\\\\', label='CRL 618')
+ax.hist(crl2688_mag, bins=bins, histtype='step', hatch='////', label='CRL 2688')
+ax.hist(arp220_mag, bins=bins, histtype='step', hatch='++', label='Arp 220')
 
 ax.set_xlabel('Radial offset from known position (arcseconds)')
 ax.set_ylabel('Number observations')

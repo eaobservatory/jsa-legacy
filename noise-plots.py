@@ -10,59 +10,58 @@ import matplotlib
 import matplotlib.pyplot as plt
 plt.ion()
 
-matplotlib.rcParams['text.usetex'] = True
-matplotlib.rcParams['text.latex.preamble'] = r'\usepackage{apjfonts},\usepackage{sfmath}'
+#matplotlib.rcParams['text.usetex'] = True
+#matplotlib.rcParams['text.latex.preamble'] = r'\usepackage{apjfonts},\usepackage{sfmath}'
 matplotlib.rcParams['figure.autolayout'] = True
 matplotlib.rcParams['font.size'] = 7
 matplotlib.rcParams['legend.fontsize'] = 'medium'
 matplotlib.rcParams['axes.linewidth'] = '0.5'
 matplotlib.rcParams['axes.formatter.limits'] = [-3,3]
 
-# db = get_database()
-# coadds = db.find_jobs(task='hpx-s2-850-r2-coadd', state=JSAProcState.PROCESSED, outputs='%.fits')
+db = get_database()
+coadds = db.find_jobs(task='hpx-s2-850-r2-coadd', state=JSAProcState.PROCESSED, outputs='%.fits')
 
 
 
-# bins1 = np.linspace(1e-6, 500, num=1e5)
-# bins2 = np.logspace(np.log10(1e-6), np.log10(500), num=1e5)
-# summedcounts1 = np.zeros(len(bins1) -1)
-# summedcounts2 = np.zeros(len(bins2) -1)
+bins1 = np.linspace(1e-6, 500, num=1e5)
+bins2 = np.logspace(np.log10(1e-6), np.log10(500), num=1e5)
+summedcounts1 = np.zeros(len(bins1) -1)
+summedcounts2 = np.zeros(len(bins2) -1)
 
 
-# meanvars = {}
-# for j in coadds:
-#     print(j.id, coadds.index(j))
-#     outputdir = get_output_dir(j.id)
-#     fitsfile = os.path.join(outputdir, j.outputs[0])
-#     var = fits.getdata(fitsfile, ext=1)[0,:,:]
-#     varflat = var[np.isfinite(var)]
+meanvars = {}
+for j in coadds:
+    print(j.id, coadds.index(j))
+    outputdir = get_output_dir(j.id)
+    fitsfile = os.path.join(outputdir, j.outputs[0])
+    var = fits.getdata(fitsfile, ext=1)[0,:,:]
+    varflat = var[np.isfinite(var)]
 
-#     pixelcount = np.isfinite(var).sum()
-#     mean = np.mean(varflat)
-#     meanvars[j.id] = mean, pixelcount
+    pixelcount = np.isfinite(var).sum()
+    mean = np.mean(varflat)
+    meanvars[j.id] = mean, pixelcount
 
-#     counts1, edges = np.histogram(varflat, bins=bins1)
-#     summedcounts1 += counts1
-#     counts2, edges = np.histogram(varflat, bins=bins2)
-#     summedcounts2 += counts2
-#     del(var)
-#     del(varflat)
+    counts1, edges = np.histogram(varflat, bins=bins1)
+    summedcounts1 += counts1
+    counts2, edges = np.histogram(varflat, bins=bins2)
+    summedcounts2 += counts2
+    del(var)
+    del(varflat)
 
+rmsbins2 = np.sqrt(bins2)
+rmsbins1 = np.sqrt(bins1)
 
-# rmsbins2 = np.sqrt(bins2)
-# rmsbins1 = np.sqrt(bins1)
+rmsbins2centres = rmsbins2[:-1] + 0.5*(rmsbins2[1:]  - rmsbins2[:-1])
+rmsbins1centres = rmsbins1[:-1] + 0.5*(rmsbins1[1:] - rmsbins1[:-1])
+histtext = open('histogram_values_logbins', 'w')
+for i,j in zip(rmsbins2centres, summedcounts2):
+    histtext.write('{},{}\n'.format(i,j))
+histtext.close()
 
-# rmsbins2centres = rmsbins2[:-1] + 0.5*(rmsbins2[1:]  - rmsbins2[:-1])
-# rmsbins1centres = rmsbins1[:-1] + 0.5*(rmsbins1[1:] - rmsbins1[:-1])
-# histtext = open('histogram_values_logbins', 'w')
-# for i,j in zip(rmsbins2centres, summedcounts2):
-#     histtext.write('{},{}\n'.format(i,j))
-# histtext.close()
-
-# histtext = open('histogram_values_linbins', 'w')
-# for i,j in zip(rmsbins1centres, summedcounts1):
-#     histtext.write('{},{}\n'.format(i,j))
-# histtext.close()
+histtext = open('histogram_values_linbins', 'w')
+for i,j in zip(rmsbins1centres, summedcounts1):
+    histtext.write('{},{}\n'.format(i,j))
+histtext.close()
 
 histtext = open('histogram_values_logbins','r')
 vals = [i.strip() for i in histtext.readlines()]
