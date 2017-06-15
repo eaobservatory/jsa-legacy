@@ -61,11 +61,11 @@
   of $~$1 degree a side, using the HPX projection with pixels of area
   3.22 by 3.22 arcseconds. The individually reduced observations
   include 6420 hours of observing time, and the co-added tiles used
-  5915 hours of this, covering 1356 square degrees of the sky. The
+  5828 hours of this, covering 1356 square degrees of the sky. The
   co-adds have been calibrated into units of m\jyas\ using a
-  self-derived flux conversion factor. Contiguous regions of emission
+  \hl{self-derived} flux conversion factor. Contiguous regions of emission
   were detected at a better than 5-$\sigma$ level in 740 tiles,
-  covering in total 1.4 square degrees, or 0.33 percent of the
+  covering in total 1.4 square degrees, or 0.10 percent of the
   co-added area. Within this area, 13477 local maxima were
   detected. Sixteen of the co-added tiles contain regions with a noise
   better than 1\,m\jybm.
@@ -76,47 +76,60 @@
 \section{Introduction}
 \label{sec:intro}
 % JCMT & SCUBA-2 & JSA
-The JCMT is a 15-m submillimetre telescope located at an altitude of
-4092\,m on Maunakea, where it has been operating since 1987. Its
-current instrument suite includes SCUBA-2, a 10,000-pixel continuum
-camera that observes simultaneously at 450\,\um\ and 850\,\um\
-wavelengths \citep{Holland2013}, and has been operating in full
-science mode since 2011.  % JCMT Principal Investigator (PI)
-% observations, including
-% those taken with SCUBA-2, usually become public a year after the end
-% of the semester they are taken in. These public observations are already
-% available to download as raw and pipeline-reduced files from the
-% JCMT Science Archive (JSA) \citep{2015Economou}, at the Canadian
-% Astronomy Data Centre (CADC). However, these products do not include
-% full co-adds of all data taken towards a region, and different projects
-% may use very different reduction methods and should not be
-% naively co-added.
+The James Clerk Maxwell Telescope (JCMT) is a 15-m submillimetre
+telescope located at an altitude of 4092\,m on Maunakea, where it has
+been operating since 1987. Its current instrument suite includes
+SCUBA-2 (Submillimetre Common User Bolometer Array 2), a 10,000-pixel
+continuum camera that observes simultaneously at 450\,\um\ and
+850\,\um\ wavelengths \citep{Holland2013}, and has been operating in
+full science mode since \hl{February} 2011.
 
 % why this release
 To maximise the scientific return of these many years of archival
 data, and to make it as easy as possible for non-submm-experts to use
-the JCMT data, the Joint Astronomy Centre, then-operators of the JCMT,
-decided to produce `legacy' reductions of all public data from the
-current instrumentation. This work has been continued since 2015 March
-by East Asian Observatory, the current operators of the JCMT. These
-legacy reductions are envisioned as providing a uniform, standardized
-reduction, co-addition, and emission detection of all publicly
-available observations, regularly updated as more observations become
-public. The aim has been to produce uniformly reduced high-quality
-co-added maps that required as little checking as possible by hand,
-and which would allow astronomers to easily discover which regions
-have been observed, the noise levels in existing regions, and where
-there are clear detections. Previously, the SCUBA Legacy Catalogue
-\citep{DiFrancesco2008} presented uniformly reduced co-adds and
-catalogs of all SCUBA data, and this resource has been very widely
-used, both in scientific publications and as a first step for
-interested users. The first legacy release (LR1) was made public in
-the JCMT Science Archive in 2015, and included 850\micron\ SCUBA-2
-data from 2011 February 2 to 2013 August 1. This paper presents the
-expanded and updated LR2 release including SCUBA-2 850\micron\ data
-from 2011 February 2 to 2015 March 1st. Planned future releases are
-the 450\,\um\ SCUBA-2 observations and HARP spectral cubes, as well as
-regular updates to the 850\,\um\ release.
+the JCMT data, the Joint Astronomy Centre (JAC), then-operators of the
+JCMT, decided to produce `legacy' reductions of all public data from
+the current instrumentation. This work has been continued since 2015
+March by East Asian Observatory (EAO), the current operators of the
+JCMT. These legacy reductions are envisioned as providing a uniform,
+standardized reduction, co-addition, and emission detection of all
+publicly available observations, regularly updated as more
+observations become public. The aim has been to produce uniformly
+reduced high-quality co-added maps that required as little checking as
+possible by hand, and which would allow astronomers to easily discover
+which regions have been observed, the noise levels in existing
+regions, and where there are clear detections. Previously, the SCUBA
+Legacy Catalogue \citep{DiFrancesco2008} presented uniformly reduced
+co-adds and catalogs of all SCUBA data, and this resource has been
+very widely used.
+
+The first product of the legacy release project, the JCMT legacy
+release (LR1) was made public in \hl{September} 2015, and included
+850\micron\ SCUBA-2 data from 2011 February 2 to 2013 August 1. This
+paper presents the expanded and updated LR2 release, including SCUBA-2
+850\micron\ data from 2011 February 2 to 2015 March 1st. This covers
+all observations taken before the handover of the JCMT from JAC to
+EAO. For simplicity, we will refer to the current release as the LR.
+It is expected that the 850um legacy release will be regularly updated
+with new versions in thefuture as more SCUBA-2 data is taken and
+becomes public.
+
+Planned future releases are the 450\,\um\ SCUBA-2 observations and
+HARP spectral cubes, as well as regular updates to the 850\,\um\
+release.
+
+% Added back in -- oculd be shorter, but description and citation of
+% JSA needs to go somwhere.
+This data release is publicly accessible and fully queryable by sky
+position through the JCMT Science Archive \citep[JSA]{2015Economou},
+hosted at the Canadian Astronomy Data Centre (CADC) \hl{Is there a
+  citation for CADC?}. This archive also hosts our proprietary (with
+authentication) and public raw observations and our standard pipeline
+reduced products. Unlike the LR, the normal reductions do not include
+full coadds of data taken on different nights. In addition,
+observations from different projects may have been reduced with
+different configurations and can not be naively coadded.
+
 
 
 % % Release of block 1 and these data
@@ -172,16 +185,17 @@ Survey \citep{SONS}.  Observations from earlier than 2011 February 2
 were not included, as these were taken in \emph{shared risk} mode
 while instrument commissioning was still being conducted, and the data
 from that era are more problematic \citep{SC19,Dempsey2010}. The first
-block of these data, from 2011 to 2013 August 1 (but not including the
-CLS) was previously reduced and publicly released in September 2015,
-using the same configuration and co-add criteria as described in this
-paper, but calibrated using a slightly different flux conversion factor (FCF).
+block of the released data, from 2011 to 2013 August 1 (but not
+including the Cosmology Legacy Survey (CLS) observations) was
+previously reduced and publicly released in September 2015, using the
+same configuration and co-add criteria as described in this paper, but
+calibrated using a slightly different flux conversion factor (FCF).
 
 
 
 For these observations, we have produced individual reduced
 observations, co-adds of all science observations that fell on a given
-HEALPix tile, and catalogs of extended contiguous regions and local peaks
+tile, and catalogs of extended contiguous regions and local peaks
 detected at $>5\sigma$. Fig.\,\ref{fig:noise-mollweide} shows the all
 sky noise map of the co-adds in this release, showing the average RMS
 across all valid pixels in a tile as a single square.
@@ -189,7 +203,7 @@ across all valid pixels in a tile as a single square.
 All pointing and science observations from our time range, excluding
 solar system objects/moving targets, were reduced
 using the ORAC-DR recipe \texttt{REDUCE\_SCAN\_JSA\_PUBLIC} onto
-HEALPix tiles (see Section \ref{sec:healpix}), using the HPX
+our tiles (see Section \ref{sec:healpix}), using the HPX
 projection. These reduced maps are in the instrumental units
 of pW (see Section \ref{sec:dr}). The individual-observation maps are available to
 download through CADC/the JSA, where they will be listed under their
@@ -200,7 +214,7 @@ system objects/moving targets from this release.
 
 All the reduced science observations were individually examined to
 determine if they met our quality standards (see Section
-\ref{sec:QA}). Co-adds were then made for every HEALPix tile with data
+\ref{sec:QA}). Co-adds were then made for every tile with data
 falling onto it, using the PICARD recipe \texttt{COADD\_JSA\_TILES}
 (see Section \ref{sec:coadd}), producing a co-added tile calibrated in
 units of m\jyas{} (for details of the calibration see
@@ -247,13 +261,13 @@ this difference will be minimized in our co-adds.
 \subsection{Overall statistics}
 
 In total, 21464 observations were reduced representing 6420 hours of
-observing time, towards 4403 distinct HEALPix tiles. The co-added
+observing time, towards 4403 distinct tiles. The co-added
 observations include 12404 observations (5828 hours or 242.8 days)
-towards 4154 tiles. These co-adds were made up of 136 hours of science
+towards 4151 tiles. These co-adds were made up of 136 hours of science
 calibration observations, 3575 hours of data taken for the JCMT Legacy
 Surveys and 2117 hours of data taken for PI projects. This information
 is summarized in Table \ref{tab:typesobs}. The co-adds include 1.69
-gigapixels of valid data, corresponding to ~1356 square
+gigapixels of valid data, corresponding to $\approx$ 1356 square
 degrees. %\footnote{\note{1.69e9 * (3.22/(60.0*60.0)**2?}}.
 For
 comparison, the SCUBA Legacy Catalogue \citep{DiFrancesco2008} covered
@@ -279,7 +293,7 @@ PI & 4217 & 2134.2 & 2329 & 4181 & 2117.0 & 2303\\
 
 Source detection was carried out on all of the co-added tiles, and
 this detected emission in 1.37 square degrees (4.17e-4 steradians, or
-0.33\% of the area observed.)
+0.10\% of the area observed.)
 
 
 
@@ -293,7 +307,7 @@ noise is 0.35\,m\jyas\ (81\,m\jybm). Table~\ref{tab:noises} shows the area of
 our co-adds which has a noise level below various common values. This
 is calculated by finding the number of pixels which have a noise value
 less than or equal to a given limit. We have given the noise in \jyas\
-and Jy\,beam$^{-1}$ using self-derived FCFs (see section
+and Jy\,beam$^{-1}$ using \hl{self-derived} FCFs (see section
 \ref{sec:calib} for details on this
 process).
 
@@ -406,23 +420,24 @@ some of our co-added tiles covering a range of source types.
 \subsection{G034.27+0.15}
 The source G034.27+0.15 is a bright, high-mass star-forming region
 that has been observed in a wide variety of
-wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise map,
-extent catalog, and peak catalog towards this source. This co-add
+wavelengths. Figure~\ref{fig:g34-3} shows our co-added tile, noise
+map, extent catalog, and peak catalog towards this source. This co-add
 includes data primarily from JCMT calibration projects of this source,
 but also two observations from a University of Hawai`i (UH) PI project
-(M13AH07B). The noise maps
-(Figure~\ref{fig:g34-3}, 2nd figure) for this co-add
-shows the characteristic `CV\_DAISY' scan pattern towards the central
-source, with two overlapping small PONG observations covering a wider
-extent. This field also illustrates the artificially high noise we
-see towards bright sources (see Section~\ref{sec:dr}) -- this is seen
-in the higher noise points towards the central source and the bright
-points in the filament extending towards the top left. Examination of
-the extent and peak catalogs, however, (shown below) indicates that
-this problem did not prevent a detection of the emission in these
-regions. Our experience has been that these high-noise areas only
-occur towards bright regions, so they are still clearly detected in
-our extent catalogs, with a signal-to-noise ratio (SNR) of $>5$.
+(M13AH07B). The noise maps (Figure~\ref{fig:g34-3}, 2nd figure) for
+this co-add shows the characteristic `CV\_DAISY' scan pattern towards
+the central source, with two overlapping small PONG observations
+covering a wider extent. This field also illustrates the higher noise
+we see towards bright sources -- clearly sen in the towards the
+central source and the bright points in the filament extending towards
+the top left. Examination of the extent and peak catalogs, however,
+(shown below) indicates that this not prevent a detection of the
+emission in these regions. Our experience has been that as
+higher-noise areas only occur towards extremely bright regions, they
+are still clearly detected in our extent catalogs, as they have a
+signal-to-noise ratio (SNR) of $>5$. \hl{Description of why we see
+  higher noise? Or leave for DR? currently not gone into anywhere in
+  the paper.}
 
 
 
@@ -469,15 +484,15 @@ vertical cut throughs are shown to help visualise this bowling.
   \\[3mm]
   \includegraphics{crl618-sourceonly.pdf}
   \caption{Examples of the co-add, noise map, and extents towards the
-    standard calibration source CRL\,618, consisting of Tiles\,1238 and
-    1244. This co-add contains data from XX900 observations (XXhrs
+    standard calibration source CRL\,618, consisting of Tiles\,1238
+    and 1244. This co-add contains data from 923 observations (51\,hrs
     elapsed observing time). The contours on the noise map indicate
     the 0.005, 0.006, and 0.007 m\jyas\ noise levels. On the bottom
     row a zoom in of the central source showing the detected extents
     around the source is shown (Left), as well as horizontal and
     vertical cuts through the peak (Right). In these cuts the
-    ~0.01 m\jyas\ bowling around the bright central source can be
-    easily seen. }
+    $\approx$ 0.01 m\jyas\ bowling around the bright central source
+    can be easily seen. }
   \label{fig:crl618}
 \end{figure*}
 
@@ -491,10 +506,14 @@ deeper map than possible with only one data set. Our co-add includes
 both wide PONG observations, and very deep DAISY
 observations. Figure~\ref{fig:t27258} shows both the entire tile, its
 noise map, and also a zoom in of the deepest region. In the noise map
-it is possible to see the imprint of the various scan patterns. Note
-that we do not appear to have problems with addition of the high noise
-edges, indicating that our variance arrays are reasonably accurate
-even in these higher noise areas.
+it is possible to see the imprint of the original observations scan
+patterns (both PONG and CV\_DAISY observations are included in this
+tile); no attempt to correct for this was made. \hl{ In these deep fields,
+it can also be seen that there is no artifical structure appearing at
+the edges of the different observations; this indicates that our
+variance arrays (used to weight the input data at the coadding stage)
+are accurate even in these high noise areas.}
+
 
 In this deep map, it can clearly be seen that there are point sources
 spread across the full map. Although for optimal detection of point
@@ -531,7 +550,7 @@ same objects, there are many correspondences between them.
 \section{HEALPix grid}
 \label{sec:healpix}
 
-To produce a uniform reduction of all public data, it is necessary to
+To produce this uniform reduction of all public data, it was necessary to
 have a suitable scheme for dividing the sky into pre-determined tiles
 and pixels to grid the data onto.  The scheme needed to be well
 defined in advance, without reference to the position of existing
@@ -556,7 +575,7 @@ for conventional two-dimensional FITS images.
 
 While HEALPix has the advantage that all pixels have the same area,
 the trade off is that the pixels are not all square: they can vary in
-width and height while maintaining the constant area.  There are also
+width and length while maintaining the constant area.  There are also
 discontinuities in the angle of the grid lines at some facet
 boundaries.  This is largely a display problem, as although image
 viewers with a modern WCS implementation can handle files in the HPX
@@ -597,7 +616,11 @@ cosmologist interested in detecting only faint point sources in a
 primarily blank map would use a distinctly different set of parameters
 from a galactic astronomer looking at bright, extended and
 structurally complex emission. For full details on the SCUBA-2 map
-maker, please see \citet{Chapin2013}.
+maker, please see \citet{Chapin2013}. For more practical information
+on using the software and the effect of different configurations in
+practice, the Starlink Cookbook 21 \citet{SC21} should be consulted,
+and for a detailed comparison between the configuration used here and
+the Gould Belt Survey reduction, see \citet{Mairs2015}.
 
 
 %Redraft this paragraph -- more paper-esque.
@@ -639,14 +662,14 @@ initial pre-processing stage, the SCUBA-2 mapmaker recipe performs
 five iterations in which the astronomical signal is retained at the
 end rather than being removed as in a normal iteration. (This is
 specified using \texttt{ast.skip=5}). These initial iterations allow
-the reduction process to focus on creating an FLT mask that identifies
-any unusually bright region; these regions may cause ringing in
-subsequent estimates of the low-frequency noise in each
-bolometer. During these iterations ``bright'' pixels are taken to be
-those with a signal-to-noise ratio greater than 5.0, plus any other
-pixels that are attached contiguously to such pixels down to an SNR of
-3 (specified by using \texttt{flt.zero\_snr=5} and
-\texttt{flt.zero\_snrlo=3}).
+the reduction process to focus on creating a mask for the FLT model
+(which is used to filter the low frequency noise) by identifying any
+unusually bright region; these regions may cause ringing in subsequent
+estimates of the low-frequency noise in each bolometer. During these
+iterations ``bright'' pixels are taken to be those with a
+signal-to-noise ratio greater than 5.0, plus any other pixels that are
+attached contiguously to such pixels down to an SNR of 3 (specified by
+using \texttt{flt.zero\_snr=5} and \texttt{flt.zero\_snrlo=3}).
 
 During all iterations an atmospheric opacity correction is applied and data
 are filtered to remove any features on scales larger than 200\arcsec. In
@@ -662,22 +685,23 @@ subarray size (approximately 200").
 
 After the initial five iterations, the recipe then performs up to 20
 further iterations with all the models (specified by
-\texttt{numiter=-25}; the initial five iterations plus these additional 20
-iterations containing all models). Each of these remaining iterations
-removes the astronomical signal from the residuals prior to starting
-the next iteration. However, to prevent instabilities in the iterative
-process, this subtraction only occurs within regions corresponding to
-bright sources.  The mask identifying such sources is created in the
-same way as the mask used by the low-frequency noise filter (``FLT''
-model): source pixels are taken to be those with a signal-to-noise
+\texttt{numiter=-25}; the initial five iterations plus these
+additional 20 iterations containing all models). Each of these
+remaining iterations removes the astronomical signal from the
+residuals prior to starting the next iteration. However, to prevent
+instabilities in the iterative process, this subtraction only occurs
+within regions corresponding to bright sources.  The mask identifying
+such sources is created in the same way as the mask used by the FLT
+model: source pixels are taken to be those with a signal-to-noise
 ratio greater than 5.0 (plus any other pixels that are attached
 contiguously to such pixels down to an SNR of 3 (specified by using
-\texttt{ast.zero\_snr=5} and \texttt{ast.zero\_snrlo=3}).
-
-The map maker exits before the 20th iteration if the \texttt{maptol}
-parameter -- the change between maps -- has reached a mean value of 1\%
-of the noise level (specified by \texttt{maptol=0.01}). For further
-detail on the map maker, see \citet{Chapin2013}.
+\texttt{ast.zero\_snr=5} and \texttt{ast.zero\_snrlo=3}).  The map
+maker exits before the 20th iteration if the \texttt{maptol} parameter
+-- the change between maps -- has reached a mean value of 1\% of the
+noise level (specified by \texttt{maptol=0.01}) Only 562 of the
+science observations (4.4 percent) did not converge within the 25
+iterations. These were not flagged and were included in the coadded
+tiles.
 
 
 
@@ -773,7 +797,7 @@ examined and marked as \status{GOOD}, \status{QUESTIONABLE} or
 \status{BAD} by a member of the Legacy Reduction team. This quick
 `by-eye' assessment was done by examining an image of the reduced map,
 and if necessary following up with more detailed examination. For the
-first data release (2011 to 2013, not including the CLS) only used a
+first data release (2011 to 2013, not including the CLS) we only used a
 map of the emission, and it was found that a lot of questionable
 observations required either checking of the tile interactively or the
 making of an SNR map. For the second release (observations from 2013
@@ -783,8 +807,7 @@ observations. \status{BAD} observations were excluded from the
 co-adds, as were observations that were flagged as \status{BAD} by the
 observatory's normal observation-based QA (usually done during a
 night's observing). \status{QUESTIONABLE} observations were examined
-further, and either included in the co-adds or changed to
-\status{BAD}.
+further and their state was resolved.
 
 
 This QA process was designed to avoid: a) `blooms' or `blobs' of fake
@@ -798,11 +821,10 @@ This sort of process is of course subjective, and some of the
 observations that we excluded might be usable on further
 examination. However, as with all of this process, the focus for this
 release has been to ensure a high-quality release, even at the expense
-of completeness. All of the HEALPix-gridded legacy-reduced
-observations are available to the community in the JSA, regardless of
-our QA analysis of them, so interested users can evaluate the full
-available data themselves if they are unhappy with the co-add towards a
-tile.
+of completeness. All of these legacy-reduced observations are
+publicly available through the JSA, regardless of our QA analysis
+of them, so interested users can evaluate the full available data
+themselves if they are unhappy with the co-add towards a tile.
 
 
 \subsection{Co-adding of tiles}
@@ -856,12 +878,13 @@ configuration.
 \subsection{Negative Bowling}
 Within the co-added maps of this release, negative bowling can be
 clearly seen around bright sources. Figure~\ref{fig:crl618} shows this
-clearly around the bright calibrator CRL\,618. The cut throughs in the
-vertical and horizontal direction through the source show the bowling
-at ~0.01\,m\jyas. No processing was done to try and ameliorate these
-effects, and there will be significant loss of detected emission and
-omission of entire sources in the emission catalogs, due to these
-artificial negative regions around bright sources.
+around the bright calibrator CRL\,618. The cuts in the vertical and
+horizontal direction through the source show the bowling at
+$\approx$0.01\,m\jyas. No processing was done to try and ameliorate
+these effects, and there will be significant loss of detected emission
+and omission of entire sources in the emission catalogs, due to these
+artificial negative regions around bright sources. \hl{This could in
+  theory be corrected for -- see Doug's note?}
 
 %\todo{Do we need more examples of this? Find a good description of why
 %  this happens, should be in S2 cookbook somewhere.}
