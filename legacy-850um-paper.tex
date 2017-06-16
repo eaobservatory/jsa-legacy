@@ -80,7 +80,7 @@
   better than 1\,m\jybm.
 \end{abstract}
 
-\keywords{submillimeter:general; catalogs}
+\keywords{catalogs; submillimeter:general}
 
 \section{Introduction}
 \label{sec:intro}
@@ -393,7 +393,6 @@ Table\,\ref{tab:deepmaps}.
     &
     Obs.
     }
-
 \startdata
  1238 & 0.0011 & 1369 & 5.94 & 4.04E-03 & 9.38E-01 & CRL\,618 & 923 \\
  1244 & 0.0010 & 1239 & 5.95 & 4.05E-03 & 9.39E-01 & CRL\,618 & 923 \\
@@ -584,7 +583,7 @@ Area isoLatitude Pixelization,][]{Gorski2005}, commonly used by
 cosmologists. The HEALPix system starts by dividing the sky into
 twelve facets, and then recursively divides these cells in four at
 each higher resolution level.  \hl{There are two standard numbering
-  schemes used with HEALPix}\footnote{Remove?}, of which the
+  schemes used with HEALPix}, of which the
 ``nested'' scheme has been used to label tiles in this release.  \hl{
   This scheme allows simpler conversion to and from positions in the
   HPX projection}, as well as compatibility with Virtual Observatory
@@ -1532,7 +1531,7 @@ modeling.
 
 \section{Pointing}
 \label{sec:pointing}
-\begin{figure}
+\begin{figure}[htb!]
   \centering
   \includegraphics{pointing-offset.pdf}
   \caption{Histogram of the total magnitude of the position offsets
@@ -1568,19 +1567,7 @@ correction factor for beam smearing may need to be included.
 
 \section{Beamshape}
 \label{sec:beam}
-
-Using the same deep coadded maps of Uranus as we examined in Section
-\ref{sec:calib}, we fit a two-component beam model to the JCMT
-beamshape, and found the same shape and size as found in
-\citet{Dempsey2013}. We use the KAPPA command \texttt{beamfit} to do
-this, fitting two circular Gaussians with a fixed background level of
-0. We found FWHM of 12.55\arcsec\ and 44\arcsec\, with a relative
-amplitude of 96 percent and 4 percent. Figure \ref{fig:beam} shows the
-image of the deep Uranus co-added maps, as well as a comparison
-between the radial profiles along the horizontal and vertical axes and
-the fitted beam shape.
-
-\begin{figure*}
+\begin{figure*}[htb!]
   \centering
   \includegraphics{beamfit-uranus.pdf}
   \caption{The SCUBA-2 850\micron\ beam, as found from a deep co-add
@@ -1593,6 +1580,19 @@ the fitted beam shape.
 \label{fig:beam}
 \end{figure*}
 
+
+
+
+Using the same deep coadded maps of Uranus as we examined in Section
+\ref{sec:calib}, we fit a two-component beam model to the JCMT
+beamshape, and found the same shape and size as found in
+\citet{Dempsey2013}. We use the KAPPA command \texttt{beamfit} to do
+this, fitting two circular Gaussians with a fixed background level of
+0. We found FWHM of 12.55\arcsec\ and 44\arcsec\, with a relative
+amplitude of 96 percent and 4 percent. Figure \ref{fig:beam} shows the
+image of the deep Uranus co-added maps, as well as a comparison
+between the radial profiles along the horizontal and vertical axes and
+the fitted beam shape.
 
 
 
@@ -1763,7 +1763,10 @@ Coverage MOC & JSA\_CATALOGUE & \texttt{jcmts850um\_tile-moc<TILE>\_pub\_002.fit
 \newpage
 \section{Example Catalogs}
 Excerpts from the extent and peak catalogs of Tile\,30318.
+\movetabledown=2in
+\begin{rotatetable}
 \input{extentcat-t30318}
+\end{rotatetable}
 \input{peakcat-t30318}
 
 %\newpage
