@@ -1,4 +1,4 @@
-\documentclass[twocolumn, times]{aastex61}
+\documentclass[times]{aastex61}
 
 
 \usepackage{underscore}
@@ -72,31 +72,61 @@
 \email{s.graves@eaobservatory.org}
 
 \begin{abstract}
-  We present the JCMT Legacy Release, consisting of uniform
-  reductions, coadds, and catalogs of detected emission for the
+  We present the JCMT 850\,\micron{} Legacy Release, containing
+  uniformly reduced coadds and catalogs of detected emission for the
   850\,\um\ data from all SCUBA-2 observations taken between 2011
-  February 2 and 2015 March 1. The data are gridded onto HEALPix tiles
-  of $\approx$1 degree a side, using the HPX projection with pixels of size
-  $\approx$3.22 arcseoncds. The individually reduced observations
-  include 6420 hours of observing time, and the coadds tiles used 5828
-  hours of this, covering 1356 square degrees of the sky. The coadds
-  have been calibrated into units of m\jyas\ using a single,
-  self-derived flux conversion factor of 2.46 Contiguous regions of
-  emission were detected at a better than 5-$\sigma$ level in 740
-  tiles, covering in total 1.4 square degrees, or 0.10 percent of the
-  coadded area. Within this area, 13477 local maxima were
-  detected. Sixteen of the coadded tiles contain regions with a noise
-  better than 1\,m\jybm. The coadds and catalogues can be found at
-  CADC at:
-  \url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR}
+  February 2 and 2015 March 1.  This release provides the fastest and
+  easiest way to identify uniformly determined 850\,\micron\ detections
+  and calibrated fluxes for any position observed by the
+  JCMT. The coadded observations cover 1356 square degrees of the sky,
+  with detections of contiguous areas of emission at better than
+  5-$\sigma$ covering 1.4 square degrees of area. 13477 individual
+  local maxima were detected within these regions. Sixteen tils
+  contain regions with a noise better than 1\,m\jybm.
 
-WHat its point is \& how you get it.
+  The data are gridded onto HEALPix tiles of $\approx$1 degree a side,
+  using the HPX projection with pixels of size $\approx$3.22
+  arcseconds. The coadded tiles include 5828 hours of observing time,
+  covering 1356 square degrees of the sky. The coadds have been
+  calibrated into units of m\jyas\ using a single, self-derived flux
+  conversion factor of 2.46.
+
+  The coadds and catalogues can be search at CADC at:
+  \url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR}.
+  Combined catalogs of all detected regions and of all local maxima
+  can be downloaded from \url{INSERT\ URL\ HERE}. Masks of the full
+  area included in this release, and the full area of detected
+  emission are also available there.
+
 \end{abstract}
 
-\keywords{catalogs; submillimeter:general}
+\keywords{astronomical databases:miscellaneous, catalogs; submillimeter:general}
 
+
+%Silliness to get two column figure at start...)
 \section{Introduction}
 \label{sec:intro}
+\onecolumngrid
+\begin{figure*}[h!]
+  \centering
+  \includegraphics{mollweide-average-noise-galacticaxes-crop}
+  \caption{All-sky noise map for this SCUBA-2 850\,\um{} legacy
+    release. Each pixel represents the average noise across a single
+    HEALPix tile. Tiles with fewer than 200 valid pixels were not
+    included. The map is a Cartesian Mollweide projection, with the
+    axes of the galactic coordinate system overlaid. The large curved
+    stripe shows the extensive mapping of the Galactic Plane. Small
+    points away from the plane predominantly represent small scanning
+    (DAISY) observations towards extragalactic sources scattered
+    across the sky.}
+  \label{fig:noise-mollweide}
+\end{figure*}
+\twocolumngrid
+
+
+
+
+
 % JCMT & SCUBA-2 & JSA
 The James Clerk Maxwell Telescope (JCMT) is a 15-m submillimetre
 telescope located at an altitude of 4092\,m on Maunakea, where it has
@@ -107,7 +137,7 @@ continuum camera that observes simultaneously at 450\,\um\ and
 full science mode since February 2011.
 
 % why this release
-To maximise the scientific return of these many years of archival
+To maximize the scientific return of these many years of archival
 data, and to make it as easy as possible for non-submm-experts to use
 the JCMT data, the Joint Astronomy Centre (JAC), then-operators of the
 JCMT, decided to produce `legacy' reductions of all public data from
@@ -163,20 +193,7 @@ naively coadded.
 % data taken up until March 2015, and new co-adds and catalogs produced
 % from all the data (and using a slightly different calibration
 % constant).
-\begin{figure}
-  \centering
-  \includegraphics{mollweide-average-noise-galacticaxes-crop}
-  \caption{All-sky noise map for this SCUBA-2 850\,\um{} legacy
-    release. Each pixel represents the average noise across a single
-    HEALPix tile. Tiles with fewer than 200 valid pixels were not
-    included. The map is a Cartesian Mollweide projection, with the
-    axes of the galactic coordinate system overlaid. The large curved
-    stripe shows the extensive mapping of the Galactic Plane. Small
-    points away from the plane predominantly represent small scanning
-    (DAISY) observations towards extragalactic sources scattered
-    across the sky.}
-  \label{fig:noise-mollweide}
-\end{figure}
+
 
 \subsection{Outline of paper}
 
@@ -674,7 +691,7 @@ practical information on using the software and the effect of
 different configurations in practice, see Starlink Cookbook 21
 \citet{SC21}. A detailed comparison between the configuration used
 here and the Gould Belt Survey reduction (tuned to recover larger
-scale emission), see \citet{Mairs2015}.
+scale emission) was shown in \citet{Mairs2015}.
 
 %Redraft this paragraph -- more paper-esque.
 
@@ -685,27 +702,26 @@ and the structure of the astronomical emission observed.%  For example,
 % primarily blank map would use a distinctly different set of parameters
 % from a galactic astronomer looking at bright, extended and
 % structurally complex emission.
-
-
 % reword: previous existing configs weren't appropriate to be used on
 % all types of emission. We developed one that was, with a prime
 % considerationb being avoided 'blooms' or 'blobs' of fake emission
-To guide astronomical users, the JCMT-supported Starlink software
-comes with a series of standard configuration files for a variety of
-common science cases.  Unfortunately, these standard configuration
-files for \texttt{makemap} can produce very poor results when used on
-an inappropriate observation -- for example, the standard SCUBA-2
+To guide users, the JCMT-supported Starlink software comes with a
+series of standard configuration files for a variety of common science
+cases.  Unfortunately, these standard configuration files for
+\texttt{makemap} can produce very poor results when used on an
+inappropriate observation -- for example, the standard SCUBA-2
 configuration file used for calibrator observations is tuned to expect
 a bright, compact source at the centre of the map. If used by mistake
 on a blank field this recipe could easily create \emph{fake emission}
-in the form of large bloom-like structures. Avoiding this sort of
-error was the paramount consideration when selecting the configuration
-parameters for this work.
+in the form of large bloom-like structures. Avoiding this problem was
+the paramount consideration in developing the configuration for this
+release. We found we could minimise the blooms of fake emission by not
+attempting to recover the large scale structures in the map
+($>$200\arcsec{}). When testing this configuration we discovered it
+produced significantly better maps than some of the default values we
+were using at the time, and we now use this configuration as our
+default when projects do not select a more specific option.
 
-The main focus in developing this \emph{legacy} configuration was on
-maximising the confidence that could be placed in detection of
-emission, at the expense of not attempting to recover large scale
-structures ($>$200\arcsec{}).
 
 These observations were reduced using Starlink, Starjava, and ORAC-DR
 software developed between versions 2014A and 2015A. Interested
@@ -722,7 +738,7 @@ its effects. A few specific points we would like to highlight: We
 explicitly filter out any size scales larger than 200\arcsec. We also
 calculate a separate common-mode model for each subarray, and
 therefore are not sensitive to any size scales smaller than a
-subarray. We constrain the model of the astronomical signal (AST
+subarray. We constrain the model of the astronomical signal (the AST
 model) via an auto-generated AST mask, which identifies all regions as
 with a signal-to-noise ratio $>5$ (followed down to 3) as containing
 astronomical signal. We set a convergence limit of either 25
@@ -1062,7 +1078,7 @@ map, and $A$ is the area of a pixel in the map
 ($3.22^2\,\textrm{arcsec}^{2}$). The histograms of the derived FCFs
 are shown in Figure \ref{fig:fcfhist}
 
-\begin{figure}
+\begin{figure*}
   \centering
   \includegraphics{fcf-histogram.pdf}
   \caption{Histograms of the derived beam and arcsecond FCFs
@@ -1073,7 +1089,7 @@ are shown in Figure \ref{fig:fcfhist}
     and the horizontal cross bar indicates the $\pm$ one standard
     deviation.}
   \label{fig:fcfhist}
-\end{figure}
+\end{figure*}
 
 
 \subsection{Effect of AST masking on derived FCF}

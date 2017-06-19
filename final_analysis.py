@@ -11,7 +11,7 @@ import os
 
 from starlink import kappa
 import astropy.coordinates as coord
-plt.ion()
+#plt.ion()
 FCF_arcsec = 2.46
 FCF_beam = 571
 
@@ -137,7 +137,7 @@ print('FCF_beam (CRL sources): {:.2f} +/- {:.2f} (from {:.2F} to {:.2f})'.format
 fcfgroups = fcfres.group_by('source')
 
 
-fig = plt.figure(figsize=(3.5,2.5))
+fig = plt.figure(figsize=(7,4))
 fig2 = plt.figure(figsize=(3.5,3.5))
 axweather = fig2.add_subplot(211)
 axtime = fig2.add_subplot(212)
@@ -213,10 +213,10 @@ axtime.set_ylim(1.8,4.0)
 axweather.legend()
 # make legend entries not have alpha level.
 [i.set_alpha(1.0) for i in axweather.legend_.legendHandles]
-axweather.set_xlabel('850 um transmission')
-axtime.set_ylabel('FCF arcsec')
+axweather.set_xlabel('850 $\mu$m transmission')
+axtime.set_ylabel('FCF aperture')
 axtime.set_xlabel('Date Obs')
-fig2.subplots_adjust(hspace=0.3)
+fig2.subplots_adjust(hspace=0.5)
 #Draw  a horizontal line at the FCF value.
 axweather.axhline(fcf_asec_final, color='black', label='FCF$_{\mathrm{asec}}' + '={:.2F}'.format(fcf_asec_final))
 axweather.axhspan(ymin = fcf_asec_final - clippeda.std(), ymax = fcf_asec_final + clippeda.std(),
@@ -227,10 +227,10 @@ axtime.axhspan(ymin = fcf_asec_final - clippeda.std(), ymax = fcf_asec_final + c
 
 fig2.savefig('fcf-extra.pdf', bbox_inches='tight', pad_inches=0.01)
 fig.axes[0].set_title('Beam FCF')
-fig.axes[1].set_title('Asec FCF')
-fig.subplots_adjust(wspace=0.1)
-fig.axes[4].set_xlabel('FCF (beam)')
-fig.axes[5].set_xlabel('FCF (arcsec)')
+fig.axes[1].set_title('Aperture FCF')
+fig.subplots_adjust(wspace=0.2)
+fig.axes[4].set_xlabel('FCF_${\textrm{beam}}$ Jy pW$^{-1}$ beam$^{-1}$')
+fig.axes[5].set_xlabel('FCF_${\textrm{aperture}}$) Jy pW$^{-1}$ arcsec$^{-2}$')
 fig.savefig('fcf-histogram.pdf', bbox_inches='tight', pad_inches=0.01)
 
 
@@ -277,8 +277,8 @@ files = []
 for p in pathtypes:
     files+=glob.glob(os.path.join(basepath, p))
 
-# Get ast mask in all files.
-output = []
+#Get ast mask in all files.
+# output = []
 # for filename in files:
 #     peakvalue = float(os.path.splitext(filename)[0].split('peak')[1].replace('_', '.'))
 
@@ -292,14 +292,19 @@ output = []
 #     total = kappa.stats(filename).numpix
 #     output += [[peakvalue, total - not_in_astmask_count, total - not_in_fltmask_count]]
 
+
+# asttable_filename = 'astmask_area_vs_fluxscale_simulation.csv'
 # asttable = Table(np.array(output), names=('fluxscale', 'astcount', 'fltcount'))
 # asttable.sort('fluxscale')
-# fig3 = plt.figure(figsize=(3,3))
-# ax3 = fig3.add_subplot(111)
-# ax3.plot(asttable['fluxscale'], 3.22**2 * asttable['astcount'], marker='x', color='black')
-# ax3.set_xlabel('Simulated peak brightness (pW)')
-# ax3.set_ylabel('Area in AST mask (arcsec$^{2}$)')
-# fig3.savefig('astmask-peakbrightness.pdf', bbox_inches='tight', pad_inches=0.01)
+asttable.write(asttable_filename)
+
+asttable = Table.read(asttable_filename)
+fig3 = plt.figure(figsize=(3,3))
+ax3 = fig3.add_subplot(111)
+ax3.plot(asttable['fluxscale'], 3.22**2 * asttable['astcount'], marker='x', color='black')
+ax3.set_xlabel('Simulated peak brightness (pW)')
+ax3.set_ylabel('Area in AST mask (arcsec$^{2}$)')
+fig3.savefig('astmask-peakbrightness.pdf', bbox_inches='tight', pad_inches=0.01)
 
 
 for sr in sourceradii:
@@ -377,6 +382,7 @@ fig = plt.figure(figsize=(3,3))
 ax = fig.add_subplot(111)
 ax.hist(pointtab['radial_offset'], bins=30, range=(0,10), color='black', label=None, histtype='step')
 median = np.median(pointtab['radial_offset'])
+print('median radial pointing offset is: {}'.format(median))
 ax.axvline(median, color='black', linestyle='dotted', label='Median: {:.2F}"'.format(median))
 
 # for s in ['CRL2688', 'CRL618', 'Arp220']:
@@ -417,12 +423,12 @@ for cell in mymoc.flattened(order):
 
 
 maskedmap = healpy.ma(skymap, badval=0)
-fig = plt.figure(figsize=(3.5,3))
+fig = plt.figure(figsize=(7,5))
 
 cmap = matplotlib.cm.gist_heat
 cmap.set_bad('0.7')
 cmap.set_under('white')
-healpy.visufunc.mollview(maskedmap, unit=r'Jy arcsec$^{-2}$',
+healpy.visufunc.mollview(maskedmap, unit=r'mJy arcsec$^{-2}$',
                          nest=True, norm='log', cmap=cmap,
                          min=0.024, max=5, coord=('C'),
                          notext=True, cbar=True, title='', fig=fig.number)
@@ -466,12 +472,12 @@ ax.set_yscale('symlog')
 ax.set_xlabel(r'RMS noise on a pixel (mJy$\,$arcsec$^{-2}$)')
 ax.set_xscale('log')
 
-ax2 = fig.add_axes([0.72, 0.67, 0.2, 0.2])
-ax2.tick_params(labelsize=4, pad=2)
+ax2 = fig.add_axes([0.72, 0.7, 0.2, 0.2])
+ax2.tick_params(labelsize=6, pad=2)
 
 
 peakrms = rmsbins2centres[np.argmax(summedcounts2)]
-print('Peak value found at {:.2F} RMS'.format(peakrms))
+print('Peak RMS value found at {:.2F}'.format(peakrms))
 
 lin = ax.axvline(0.005, linestyle='dotted', alpha=0.5, linewidth=0.7, color='black')
 lin = ax.axvline(peakrms, linestyle='dashed', alpha=0.5, linewidth=0.7, color='black')
@@ -480,6 +486,7 @@ lin = ax.axvline(peakrms, linestyle='dashed', alpha=0.5, linewidth=0.7, color='b
 ax2.plot(rmsbins2centres, summedcounts2, color='black')
 ax2.set_xscale('log')
 ax2.minorticks_off()
+ax2.set_xticks([1e-2, 1e0])
 fig.tight_layout()
 fig.savefig('coadds-noise-histogram.pdf', bbox_inches='tight', pad_inches=0.01, dpi=200)
 
@@ -512,7 +519,7 @@ def formataxes(ax):
     deccoord.set_ticks(spacing=10*(1/60.)*u.deg)
     deccoord.set_minor_frequency(4)
     deccoord.display_minor_ticks(True)
-    
+
 
 def add_colorbar(ax):
     divider = make_axes_locatable(ax)
@@ -943,8 +950,8 @@ fig.savefig('27258-zoomin.pdf', bbox_inches='tight', pad_inches=0.05)
 
 # Uranus map.
 uranusdeep = 'uranus_allfiles_nearest.sdf'
-crl618deep =  'crl618/pastedfiles/crl618_all_rough.sdf'
-crl2688deep = 'crl2688/pastedfiles/crl2688_all_rough.sdf'
+crl618deep =  'crl618_all_rough.sdf'
+crl2688deep = 'crl2688_all_rough.sdf'
 
 
 beamfit_uranus = kappa.beamfit(ndf=uranusdeep, beams=2, mode='interface', polar=False, circular=True,
