@@ -22,7 +22,10 @@ matplotlib.rcParams['xtick.major.width']=0.5
 matplotlib.rcParams['xtick.minor.width']=0.5
 matplotlib.rcParams['ytick.major.width']=0.5
 matplotlib.rcParams['ytick.minor.width']=0.5
-
+matplotlib.rcParams['font.family'] = 'serif'
+#oldserif = matplotlib.rcParams['font.serif']
+#matplotlib.rcParams['font.serif'] = ['Times New Roman, Times']
+matplotlib.rcParams['font.weight'] = 'medium'
 
 cogtable = 'deep_coadds_flux_by_radius.csv'
 
@@ -30,6 +33,7 @@ cogtable = 'deep_coadds_flux_by_radius.csv'
 fcftable = 'calanalysis-2017-customphotom-105-120-multiplesourceradii.csv'
 fcfbkgrnd = (105,120) * u.arcsec
 sourceradius = 60.0 * u.arcsec
+asttable_filename = 'astmask_area_vs_fluxscale_simulation.csv'
 
 simulatedfcfs = 'simfcfs.csv'
 astmaskareatable = 'astmaskarea.csv'
@@ -90,7 +94,7 @@ ax.axvspan(xmin=fcfbkgrnd[0].value, xmax=fcfbkgrnd[1].value, facecolor='black', 
              label='AP background')
 ax.axvline(x=sourceradius.value, color='black', linestyle='dashed', zorder=0,
            linewidth=0.5, label='AP source')
-ax.legend()
+ax.legend(frameon=False)
 
 ax.tick_params(labelbottom=False)
 ax.set_ylabel('Relative cumulative flux')
@@ -105,7 +109,10 @@ ax2.set_xlabel('Radius (")')
 ax2.set_ylabel('Relative average flux')
 ax2.axhline(0.0, color='black', linewidth=0.5)
 ax.set_xlim(0,300)
-
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax2.spines['top'].set_visible(False)
+ax2.spines['right'].set_visible(False)
 fig.savefig('cog-relative60arcs.pdf',
             bbox_inches='tight', pad_inches=0.01)
 
@@ -163,11 +170,26 @@ for g in fcfgroups.groups:
     # Clipped FCF values.
     clippedb, lowb, highb = stats.sigmaclip(fcfbeam, low=5.0, high=5.0)
     meanb = clippedb.mean()
+    medianb = np.median(clippedb)
+    medianb_all = np.median(fcfbeam)
     stdb = clippedb.std()
 
     clippeda, lowa, higha = stats.sigmaclip(fcfasec, low=5.0, high=5.0)
     meana = clippeda.mean()
+    mediana = np.median(clippeda)
+    mediana_all = np.median(fcfasec)
     stda = clippeda.std()
+
+    print('{}: {} observations.'.format(source, len(g)))
+    print('{}: Aperture median FCF: {:.2F}'.format(source, mediana_all))
+    print('{}: Aperture clipped mean fCF: {:.2f} +/- {:.2f} (from {:.2F} to {:.2f})'.format(source,
+                                                                                            meana, stda,
+                                                                                            lowa, higha))
+    print('{}: Beam median FCF: {:.2F}'.format(source, medianb_all))
+    print('{}: Beam clipped mean fCF: {:.2f} +/- {:.2f} (from {:.2F} to {:.2f})'.format(source,meanb,
+                                                                                            stdb, lowb, highb))
+
+
 
     # Histograms of all 3.
 
@@ -183,10 +205,14 @@ for g in fcfgroups.groups:
 
 
     axbeam.axvline(meanb, color=color, alpha=1.0)
+    axbeam.axvline(medianb_all, color=color, linestyle='dashed')
+
     axbeam.hlines(valsb.max(), xmin=meanb - stdb, xmax=meanb + stdb, color=color, alpha=1.0)
     axbeam.axvspan(xmin=meanb - stdb, xmax=meanb + stdb, facecolor=color, alpha=0.1)
 
     axasec.axvline(meana, color=color, alpha=1.0)
+
+    axasec.axvline(mediana_all, color=color, linestyle='dashed')
     axasec.hlines(valsa.max(), xmin=meana - stda, xmax=meana + stda, color=color, alpha=1.0)
     axasec.axvspan(xmin=meana - stda, xmax=meana + stda, facecolor=color, alpha=0.1)
     axbeam.text(450, 100.0, source, ha='left')
@@ -210,7 +236,7 @@ for g in fcfgroups.groups:
 [i.set_rotation_mode('anchor') for i in axtime.get_xticklabels()]
 axweather.set_ylim(1.8,4.0)
 axtime.set_ylim(1.8,4.0)
-axweather.legend()
+axweather.legend(frameon=False)
 # make legend entries not have alpha level.
 [i.set_alpha(1.0) for i in axweather.legend_.legendHandles]
 axweather.set_xlabel('850 $\mu$m transmission')
@@ -218,19 +244,33 @@ axtime.set_ylabel('FCF aperture')
 axtime.set_xlabel('Date Obs')
 fig2.subplots_adjust(hspace=0.5)
 #Draw  a horizontal line at the FCF value.
-axweather.axhline(fcf_asec_final, color='black', label='FCF$_{\mathrm{asec}}' + '={:.2F}'.format(fcf_asec_final))
+axweather.axhline(fcf_asec_final, color='black', label=r'FCF$_{\mathrm{asec}}$' + '={:.2F}'.format(fcf_asec_final))
 axweather.axhspan(ymin = fcf_asec_final - clippeda.std(), ymax = fcf_asec_final + clippeda.std(),
                   facecolor='black', alpha=0.2, zorder=0, edgecolor='none')
-axtime.axhline(fcf_asec_final, color='black', label='FCF$_{\mathrm{asec}}' + '={:.2F}'.format(fcf_asec_final))
+axtime.axhline(fcf_asec_final, color='black', label=r'FCF$_{\mathrm{asec}}$' + '={:.2F}'.format(fcf_asec_final))
 axtime.axhspan(ymin = fcf_asec_final - clippeda.std(), ymax = fcf_asec_final + clippeda.std(),
                facecolor='black', alpha=0.2, zorder=0, edgecolor='none')
-
+axtime.spines['top'].set_visible(False)
+axweather.spines['top'].set_visible(False)
+axtime.spines['right'].set_visible(False)
+axweather.spines['right'].set_visible(False)
 fig2.savefig('fcf-extra.pdf', bbox_inches='tight', pad_inches=0.01)
 fig.axes[0].set_title('Beam FCF')
 fig.axes[1].set_title('Aperture FCF')
 fig.subplots_adjust(wspace=0.2)
-fig.axes[4].set_xlabel('FCF_${\textrm{beam}}$ Jy pW$^{-1}$ beam$^{-1}$')
-fig.axes[5].set_xlabel('FCF_${\textrm{aperture}}$) Jy pW$^{-1}$ arcsec$^{-2}$')
+fig.axes[4].set_xlabel(r'FCF$_{\mathrm{beam}}$ Jy pW$^{-1}$ beam$^{-1}$')
+fig.axes[5].set_xlabel(r'FCF$_{\mathrm{aperture}}$ Jy pW$^{-1}$ arcsec$^{-2}$')
+for i in fig.axes:
+    i.spines['top'].set_visible(False)
+
+fig.axes[0].spines['right'].set_visible(False)
+fig.axes[2].spines['right'].set_visible(False)
+fig.axes[4].spines['right'].set_visible(False)
+
+fig.axes[1].spines['left'].set_visible(False)
+fig.axes[3].spines['left'].set_visible(False)
+fig.axes[5].spines['left'].set_visible(False)
+
 fig.savefig('fcf-histogram.pdf', bbox_inches='tight', pad_inches=0.01)
 
 
@@ -253,7 +293,7 @@ simmeasures = simtable[simtable['source']!='URANUS']
 inputmeasures = simtable[simtable['source']=='URANUS']
 
 #Now plot for each souraceradius.
-fig = plt.figure(figsize=(3.5,3.5))
+fig = plt.figure(figsize=(2.5,3))
 ax = fig.add_subplot(111)
 
 
@@ -293,13 +333,13 @@ for p in pathtypes:
 #     output += [[peakvalue, total - not_in_astmask_count, total - not_in_fltmask_count]]
 
 
-# asttable_filename = 'astmask_area_vs_fluxscale_simulation.csv'
+
 # asttable = Table(np.array(output), names=('fluxscale', 'astcount', 'fltcount'))
 # asttable.sort('fluxscale')
-asttable.write(asttable_filename)
+# asttable.write(asttable_filename)
 
 asttable = Table.read(asttable_filename)
-fig3 = plt.figure(figsize=(3,3))
+fig3 = plt.figure(figsize=(3,2.5))
 ax3 = fig3.add_subplot(111)
 ax3.plot(asttable['fluxscale'], 3.22**2 * asttable['astcount'], marker='x', color='black')
 ax3.set_xlabel('Simulated peak brightness (pW)')
@@ -350,7 +390,7 @@ for sr in sourceradii:
 #ax2.set_title('simualted_FCF_asec')
 
 
-leg1=ax.legend(title='Source radius (")', frameon=False, loc=9)
+leg1=ax.legend(title='Aperture radius (")', frameon=False, loc=9)
 ax.set_ylabel('Relative arcsec FCF')
 ax.set_xlabel('Simulated source brightness (pW)')
 
@@ -363,6 +403,8 @@ for src in ['CRL618', 'CRL2688', 'URANUS']:
 
 leg2 = ax.legend(handles=lines, loc=10, title='Average source peaks', frameon=False)
 ax.add_artist(leg1)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
 fig.savefig('simulated-fcfs.pdf', bbox_inches='tight', pad_inches=0.01)
 
 
@@ -378,12 +420,12 @@ pointtab.replace_column('date-obs',dateobs)
 
 # Do all pointings and calibrators.
 
-fig = plt.figure(figsize=(3,3))
+fig = plt.figure(figsize=(2.5, 2.5))
 ax = fig.add_subplot(111)
 ax.hist(pointtab['radial_offset'], bins=30, range=(0,10), color='black', label=None, histtype='step')
 median = np.median(pointtab['radial_offset'])
 print('median radial pointing offset is: {}'.format(median))
-ax.axvline(median, color='black', linestyle='dotted', label='Median: {:.2F}"'.format(median))
+ax.axvline(median, color='black', linestyle='solid', label='Median: {:.2F}"'.format(median))
 
 # for s in ['CRL2688', 'CRL618', 'Arp220']:
 
@@ -396,10 +438,12 @@ ax.axvline(median, color='black', linestyle='dotted', label='Median: {:.2F}"'.fo
 #                                fill=True,
 #                                histtype='step')
 
-ax.legend()
+#ax.legend()
 ax.set_xlabel('Radial offset (")')
 ax.set_ylabel('Count')
 ax.set_xlim(0,10)
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
 fig.savefig('pointing-offset.pdf', bbox_inches='tight', pad_inches=0.01)
 
 
@@ -488,6 +532,10 @@ ax2.set_xscale('log')
 ax2.minorticks_off()
 ax2.set_xticks([1e-2, 1e0])
 fig.tight_layout()
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax2.spines['top'].set_visible(False)
+ax2.spines['right'].set_visible(False)
 fig.savefig('coadds-noise-histogram.pdf', bbox_inches='tight', pad_inches=0.01, dpi=200)
 
 # Images of maps.
@@ -811,6 +859,7 @@ cax.axhline(+0.02, color='0.7')
 
 cax.set_ylabel(r'mJy arcsec$^{-2}$')
 cax.yaxis.set_label_position('right')
+cax.tick_params(right=True, left=True)
 cax.set_xlabel('Pixels (offset from peak)')
 fig.tight_layout()
 fig.savefig('crl618-sourceonly.pdf', bbox_inches='tight', pad_inches=0.05)
@@ -988,7 +1037,7 @@ convert.ndf2fits('uranus_beamfit_residuals.sdf', 'uranus_beamfit_residuals.fits'
 hdu_deep = fits.open('uranus_deep.fits')[0]
 datauranus = hdu_deep.data[0,:,:]
 
-fig = plt.figure(figsize=(6,3.5))
+fig = plt.figure(figsize=(6.5,2.5))
 ax = fig.add_subplot(121)
 smax = 2.32894e-05
 smin=-4.86899e-07
@@ -1038,9 +1087,71 @@ fit_primarybeam = Gauss(posvals1, primaryamp, (beamfit_uranus.majfwhm[0]*u.radia
 
 ax2.plot(posvals1, fit/np.nanmax(fit), label='Beam fit')
 
-ax2.legend()
+ax2.legend(frameon=False)
 ax2.set_xlabel('$\delta$ (")')
 ax2.set_ylim(-0.001, 0.03)
 ax2.set_xlim(-150,150)
-fig.tight_layout()
+ax2.spines['right'].set_visible(False)
+ax2.spines['top'].set_visible(False)
+fig.subplots_adjust(wspace=0.6)
 fig.savefig('beamfit-uranus.pdf', bbox_inches='tight', pad_inches=0.01)
+
+
+uranuspeak = 0.11
+uranus_center = 50
+crl618peak = 0.009
+crl618_center = 150
+x = np.arange(0, 200)
+noise = np.random.normal(np.zeros(x.shape), scale=0.1 * crl618peak)
+fwhm = 14
+rms =np.sqrt(np.mean(noise**2))
+
+
+
+def Gaussian(x, fwhm, peak, center):
+    exponent = (-1.0 * 4 * np.log(2) * (x - center)**2)/ (fwhm**2)
+    return peak * np.e **(exponent)
+
+
+gauss_uranus = Gaussian(x, fwhm, uranuspeak, uranus_center)
+gauss_crl618 = Gaussian(x, fwhm, crl618peak, crl618_center)
+
+fig = plt.figure(figsize=(2.5,2))
+ax = fig.add_subplot(111)
+
+ax.plot(x, gauss_uranus + gauss_crl618, color='black')
+ax.plot(x, noise + gauss_uranus + gauss_crl618, color='red')
+
+colluranus = matplotlib.collections.BrokenBarHCollection.span_where(x,
+                                                                    ymin=3*rms,
+                                                                    ymax=max(gauss_uranus + noise),
+                                                                    where=gauss_uranus  > 3*rms,
+                                                                    label='AST masked',
+                                                                    facecolor='black', edgecolor='None',
+                                                                    alpha=0.2)
+
+collcrl618 = matplotlib.collections.BrokenBarHCollection.span_where(x,
+                                                                    ymin=3*rms,
+                                                                    ymax=max(gauss_crl618 + noise),
+                                                                    where=gauss_crl618  > 3*rms,
+                                                                    label='AST masked',
+                                                                    facecolor='black', edgecolor='None',
+                                                                    alpha=0.2)
+ax.add_collection(colluranus)
+ax.add_collection(collcrl618)
+
+
+crl618_percentinside = 100* (gauss_crl618[gauss_crl618 > 3*rms].sum())/(gauss_crl618.sum())
+uranus_percentinside = 100* (gauss_uranus[gauss_uranus > 3*rms].sum())/(gauss_uranus.sum())
+
+t1 = ax.text(uranus_center, 0.04, '{:.1F}%\n inside AST mask'.format(uranus_percentinside), va='bottom', ha='center')
+t2 = ax.text(crl618_center, crl618peak+0.001, '{:.1F}%\n inside AST mask'.format(crl618_percentinside), va='bottom', ha='center')
+
+ax.spines['bottom'].set_position(('data', 0.0))
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.set_xlabel('Offset (arcseconds)')
+ax.set_ylabel('Intensity (pW)')
+ax.set_ylim(top=0.055)
+fig.set_tight_layout(True)
+fig.savefig('toymodel-astmasking.pdf', bbox_inches='tight', pad_inches=0.01)
