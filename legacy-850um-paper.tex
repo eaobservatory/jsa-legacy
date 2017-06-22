@@ -19,7 +19,7 @@
 \newcommand{\jyas}{Jy\,arcsec\textsuperscript{$-$2}}
 \newcommand{\jybm}{Jy\,beam\textsuperscript{$-$1}}
 
-\hypersetup{bookmarks=true}
+%\hypersetup{bookmarks=true}
 
 \shorttitle{JCMT LR: SCUBA-2 850\micron}
 \shortauthors{SF Graves et al.}
@@ -73,15 +73,15 @@
 
 \begin{abstract}
   We present the JCMT 850\,\micron{} Legacy Release, containing
-  uniformly reduced coadds and catalogs of detected emission for the
+  uniformly reduced coadded tiles, and catalogs of detected emission, for the
   850\,\um\ data from all SCUBA-2 observations taken between 2011
   February 2 and 2015 March 1.  This release provides the fastest and
-  easiest way to identify uniformly determined 850\,\micron\ detections
-  and calibrated fluxes for any position observed by the
+  easiest way to identify uniformly determined 850\,\micron\
+  detections and calibrated fluxes for any position observed by the
   JCMT. The coadded observations cover 1356 square degrees of the sky,
   with detections of contiguous areas of emission at better than
   5-$\sigma$ covering 1.4 square degrees of area. 13477 individual
-  local maxima were detected within these regions. Sixteen tils
+  local maxima were detected within these regions. Sixteen tiles
   contain regions with a noise better than 1\,m\jybm.
 
   The data are gridded onto HEALPix tiles of $\approx$1 degree a side,
@@ -89,15 +89,15 @@
   arcseconds. The coadded tiles include 5828 hours of observing time,
   covering 1356 square degrees of the sky. The coadds have been
   calibrated into units of m\jyas\ using a single, self-derived flux
-  conversion factor of 2.46.
+  conversion factor of 2.46. We discuss in detail the derivation of
+  our FCF and the limitations of our calibration.
 
-  The coadds and catalogues can be search at CADC at:
+  The coadds and catalogues can be searched at CADC at:
   \url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR}.
   Combined catalogs of all detected regions and of all local maxima
-  can be downloaded from \url{INSERT\ URL\ HERE}. Masks of the full
-  area included in this release, and the full area of detected
-  emission are also available there.
-
+  can be downloaded from \url{INSERT\ URL\ HERE}, along with masks
+  showing the full area observecd in this release and the full area of
+  detected emission.
 \end{abstract}
 
 \keywords{astronomical databases:miscellaneous, catalogs; submillimeter:general}
@@ -122,9 +122,6 @@
   \label{fig:noise-mollweide}
 \end{figure*}
 \twocolumngrid
-
-
-
 
 
 % JCMT & SCUBA-2 & JSA
@@ -158,13 +155,13 @@ very widely used.
 The first product of the legacy release project, the JCMT legacy
 release (LR1) was made public in September 2015, and included
 850\micron\ SCUBA-2 data from 2011 February 2 to 2013 August 1. This
-paper presents the expanded and updated second legacy release, including SCUBA-2
-850\micron\ data from 2011 February 2 to 2015 March 1st. This covers
-all observations taken before the handover of the JCMT from JAC to
-EAO. For simplicity, we will refer to the current release as the LR.
-It is expected that the 850\,\micron\ legacy release will be regularly updated
-with new versions in the future, as more SCUBA-2 data is taken and
-becomes public.
+paper presents the expanded and updated second legacy release,
+including SCUBA-2 850\micron\ data from 2011 February 2 to 2015 March
+1st. This covers all observations taken before the handover of the
+JCMT from JAC to EAO. For simplicity, we will refer to the current
+release as the LR.  It is expected that the 850\,\micron\ legacy
+release will be regularly updated with new versions in the future, as
+more SCUBA-2 data is taken and becomes public.
 
 Planned future releases are the 450\,\um\ SCUBA-2 observations and
 HARP spectral cubes, as well as regular updates to the 850\,\um\
@@ -178,21 +175,9 @@ hosted at the Canadian Astronomy Data Centre (CADC). This archive also
 hosts our proprietary (with authentication) and public raw
 observations and our standard pipeline reduced products. Unlike the
 LR, the normal reductions do not include full coadds of data taken on
-different nights. In addition, these observations from different projects
-may have been reduced with different configurations and can not be
-naively coadded.
-
-
-
-% % Release of block 1 and these data
-% This release includes data taken from 2011 February 2 to 2015 March
-% 1st, when the JCMT was began to be operated by East Asian Observatory.
-% The first block of these data, from 2011 to 2013 August 1 was already
-% reduced and publicly released in September 2015. This release includes
-% these same reduced individual observations, reductions of the newer
-% data taken up until March 2015, and new co-adds and catalogs produced
-% from all the data (and using a slightly different calibration
-% constant).
+different nights. In addition, these observations from different
+projects may have been reduced with different configurations and can
+not be naively coadded.
 
 
 \subsection{Outline of paper}
@@ -204,8 +189,8 @@ and some details on the noise properties of the release. Section
 example regions (chosen to cover a range of different astronomical
 objects). Section \ref{sec:healpix} describes the HEALPix grid used in
 this release, and then Section \ref{sec:dr} describes our data
-reduction procedures. We describe the calibration of these maps
-in Section \ref{sec:calib}, including a discussion of some of the more
+reduction procedures. We describe the calibration of these maps in
+Section \ref{sec:calib}, including a discussion of some of the more
 subtle effects of the data reduction method used. Section
 \ref{sec:cat} then describes the emission catalogs. We finish by
 summarizing the pointing offsets found in Section \ref{sec:pointing},
@@ -213,24 +198,24 @@ and the beam shape in Section \ref{sec:beam}.
 
 \section{Overview of Release}
 \label{sec:overview}
-This release includes publicly released 850\,\um\ science observations
-observed between 2011 February 2 and 2015 March 1, including
-observations from calibration projects, PI projects, and the JCMT
-Legacy Surveys (JLS). See \citealt{ChrysostomouJLS} for an overview of
-the JCMT Legacy Survey program, which included SCUBA-2 observations
-for: the Gould Belt Survey \citep{GBS}, the SCUBA-2 ambitious Sky
-Survey \citep{SASSy}, the Cosmology Legacy Survey \citep{Geach2013},
-the JCMT Galactic Plane Survey \citep{JPS}, the Nearby Galaxy Survey
-\citep{NGLS}, and the Debris Disk Survey \citep{SONS}.  Observations from
-earlier than 2011 February 2 were not included, as these were taken in
-\emph{shared risk} mode while instrument commissioning was still being
-conducted, and the data from that era are more problematic
-\citep{SC19,Dempsey2010}. The first block of the released data, from
-2011 to 2013 August 1 (but not including the Cosmology Legacy Survey
-(CLS) observations) was previously reduced and publicly released in
-September 2015, using the same configuration and coadd criteria as
-described in this paper, but calibrated using a slightly different
-flux conversion factor (FCF).
+This release includes publicly available 850\,\um\ science
+observations observed between 2011 February 2 and 2015 March 1,
+including observations from calibration projects, PI projects, and the
+JCMT Legacy Surveys (JLS). See \citealt{ChrysostomouJLS} for an
+overview of the JCMT Legacy Survey program, which included SCUBA-2
+observations for: the Gould Belt Survey \citep{GBS}, the SCUBA-2
+ambitious Sky Survey \citep{SASSy}, the Cosmology Legacy Survey
+\citep{Geach2013}, the JCMT Galactic Plane Survey \citep{JPS}, the
+Nearby Galaxy Survey \citep{NGLS}, and the Debris Disk Survey
+\citep{SONS}.  Observations from earlier than 2011 February 2 were not
+included, as these were taken in \emph{shared risk} mode while
+instrument commissioning was still being conducted, and the data from
+that era are more problematic \citep{SC19,Dempsey2010}. The first
+block of the released data, from 2011 to 2013 August 1 (but not
+including the Cosmology Legacy Survey (CLS) observations) was
+previously reduced and publicly released in September 2015, using the
+same configuration and coadd criteria as described in this paper, but
+calibrated using a slightly different flux conversion factor (FCF).
 
 
 For these observations, we have produced individual reduced
@@ -280,8 +265,81 @@ coadds.
 
 
 \subsection{Anticipated uses}
+The primary aims of this release were: to allow users to see where we
+have observed; to identify the detected emission; and to get
+consistently calibrated fluxes from the detected emission. In
+particular, we wanted to make these task extremely \emph{easy} to carry out,
+especially for astronomers who are not experts in submillimeter
+observations.
 
+Simplifying common tasks, such as extracting fluxes and identifying
+detections for a large catalog of objects, is necessary to enable many
+large-scale or multi-wavelength analyses, where there is no scope for
+the researchers to reduce data from every project, instrument and telescope
+themselves. Easy access to detected calibrated fluxes and maps is also
+invaluable as pathfinders for follow-up observations (for example,
+identifying sources for high resolution follow up with ALMA).
+
+
+
+% An easy way to identify what has been observed by the JCMT and find
+% its noise level (by searching for coadded tiles by position and
+% downloading them).
+
+% Easy access to find robust detections of 850um emission by the JCMT for an arbitrary list of observations:
+% i.e. if you have a list of sources and need to identify ones with
+% 850um detections.
+
+% Easy extraction of calibrated fluxes towards a list of positions for
+% SED modelling.
+
+% pathfinder/finder chart for follow up high res observations with e.g. ALMA.
+
+% Multiwavelength analysis inputs: easy access to 850um calibrated
+% detections/limtis of detections for large source lists, especially
+% for users who are not experts in sub-millimeter observations.
+
+% Pathfinders for future work; particulary when preparing/planning
+% future observations or large scale analysis, easy access to
 \subsection{Accessing the release}
+
+The data products forming this JCMT Legacy Release are fully included
+in the CADC's multi-observatory archive (which includes the JSA), and
+will return as appropriate in searches based on spatial, temporal and
+spectral limits. This is hosted at
+\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search}.
+
+Our uncalibrated reductions of single observations can be found by all
+the same criteria which would identify the raw and normal reductions
+of that observation -- including telescope, proposal code, PI name,
+target name, as well as the spatial, temporal and spectral
+constraints.
+
+In addition, users can search specifically within the coadded tiles
+and the catalogs by searching for proposal ID \texttt{JCMT-LR} along
+with any other desired constraints, or to see the all coadds and
+catalogs at once they can go directly to
+\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR&Observation.Collection=JCMT}
+%Please note that you will find there are extent-850um results shown
+%for all tiles, even those where no emission was detected.
+
+All of these searches can also be done either through the web
+interface or through the VO-standard TAP protocol (which enables more
+complex queries). The CADC TAP service can be easily queried from
+within TOPCAT.
+
+Appendix \ref{sec:filetypes} summarises the scientific content
+included in each file type produced for this release, along with the
+productID under which they are listed within the JSA, the naming
+scheme for the file and the software that created the file.
+
+
+For convenience, we have also provided a single-file download
+combining all of the extent and peak catalogs on the EAO/JCMT website
+at: \url{INSERT\ URL\ HERE}. That page also contains spatial masks
+outlining the full area observed in this release, as well as the full
+area of the detected emission.
+
 
 \subsection{Overall statistics of the release}
 
@@ -372,21 +430,9 @@ a noise value less than or equal to a given limit. We have given the
 noise in \jyas\ and Jy\,beam$^{-1}$, calibrated using our derived FCF
 of 2.46\,mJy\,arcsec$^{-2}$pW$^{-2}$ (see Section \ref{sec:calib} for
 details).
-
-
-
 \subsection{The deepest maps}
-Twenty of our coadded tiles contain pixels with a noise better
-0.0043\,m\jyas{}, corresponding to 1\,m\jybm. These include our three
-most common standard SCUBA-2 calibrators (CRL\,618, CRL\,2688 and
-Arp\,220), and several deep cosmology fields that were observed
-separately by both the JCMT Cosmology Legacy Survey and by various PI
-projects. For reference, these twenty tiles, along with some
-statistics of their deep regions are listed in
-Table\,\ref{tab:deepmaps}.
-
-\floattable
 \begin{deluxetable*}{r c r c c c c r}
+  \tabletypesize{\footnotesize}
    \tablecaption{The sixteen coadded tiles that contain regions with
      a noise equal to or less than 1\,m\jybm. \label{tab:deepmaps}}
    \tablehead{%
@@ -424,15 +470,24 @@ Table\,\ref{tab:deepmaps}.
 28448 & 0.0024 & 2970 & 3.64 & 3.99E-03 & 9.27E-01 & MACSJ1149.5+2223& 43 \\
 35935 & 0.0100 & 12495 & 5.86 & 3.79E-03 & 8.80E-01 & CDF-S& 115\\
 \enddata
-\tablecomments{This table lists the tile numbers and the representative
-  source names (based on the names chosen by the projects whose data
-  are included). It also lists some statistics calculated on the set of
-  pixels in each tile which have an RMS $\leq$1\jybm: the area, the
-  number of pixels, the average exposure time per pixel, and the mean
-  noise across these pixels. The deepest tile in this list, 27258, is
-  also shown in Figure~\ref{fig:t27258}.}
+\tablecomments{This table lists the tile numbers and the
+  representative source names. It also lists some statistics
+  calculated on the set of pixels in each tile which have an RMS
+  $\leq$1\jybm: the area, the number of pixels, the average exposure
+  time per pixel, and the mean noise across these pixels. The deepest
+  tile in this list, 27258, is also shown in Figure~\ref{fig:t27258}.}
 \end{deluxetable*}
 
+
+
+Twenty of our coadded tiles contain pixels with a noise better
+0.0043\,m\jyas{}, corresponding to 1\,m\jybm. These include our three
+most common standard SCUBA-2 calibrators (CRL\,618, CRL\,2688 and
+Arp\,220), and several deep cosmology fields that were observed
+separately by both the JCMT Cosmology Legacy Survey and by various PI
+projects. For reference, these twenty tiles, along with some
+statistics of their deep regions are listed in
+Table\,\ref{tab:deepmaps}.
 
 
 
@@ -477,7 +532,7 @@ detected in our extent catalogs, as they have a signal-to-noise ratio
 % deep submm galaxies when co-added.
 
 
-\begin{figure*}
+\begin{figure*}[htb!]
   \centering
   \includegraphics{tile30318-g34-coadd-noise.pdf}
   \\[3mm]
@@ -512,7 +567,7 @@ cataloging procedure due to the negative bowling around the very
 bright source. Horizontal and vertical cut throughs are shown to help
 visualise this bowling.
 
-\begin{figure*}
+\begin{figure*}[htb!]
   \centering
   \includegraphics{crl618-whole-map.pdf}
   \\[3mm]
@@ -562,7 +617,7 @@ first data release \citep{Geach2016} and those of
 \citet{Casey2013}. Although these three methods do not detect exactly the
 same objects, there are many correspondences between them.
 
-\begin{figure*}
+\begin{figure*}[htb!]
   \includegraphics{27258-whole-map.pdf}
   \\[3mm]
   \includegraphics{27258-zoomin.pdf}
@@ -839,14 +894,6 @@ ringing structure detected in the deep coadds).
 \end{figure}
 
 
-\hl{It should be emphasized that the data reduction configuration used
-  in {Dempsey2013} was tuned for bright, isolated point sources
-  and forces a flattening of the map at radii larger than 60\arcsec,
-  which is not done in this more-general-purpose
-  configuration.}
-
-
-
 
 Using these apertures, the maps were masked with the appropriate
 circles/annulus and the source and background statistics were
@@ -879,18 +926,17 @@ amplitude of the BEAMFIT Gaussian fit to the map, and $A$ is the area
 of a pixel in the map ($3.22^2\,\textrm{arcsec}^{2}$).
 
 The histograms of the derived FCFs are shown in Figure
-\ref{fig:fcfhist}. It can be seen that there is a much wider range of
-values found for CRL\,618; its not known why this is the case.
+\ref{fig:fcfhist}.% It can be seen that there is a much wider range of
+%values found for CRL\,618; its not known why this is the case.
 
 \begin{deluxetable}{r r@{$\pm$}l r@{$\pm$}l }
   \tablecaption{Fluxes used to calculate the FCFs. \label{tab:fluxes}}
-\tablewidth{5in}
   \tablecolumns{3}
-  \tablehead{ \colhead{} & \twocolhead{$S_{\mathrm{integ}}$}
-    & \twocolhead{$S_{\mathrm{peak}}$}\\
-    \colhead{}
-    & \twocolhead{(Jy)}
-    & \twocolhead{(Jy\,beam$^{-1}$)}}
+  \tablehead{ \colhead{} & \twocolhead{$S_{\mathrm{integ}}$ (Jy)}
+    & \twocolhead{$S_{\mathrm{peak}}$ (Jy\,beam$^{-1}$)}}
+%    \colhead{}
+%    & \twocolhead{(Jy)}
+%    & \twocolhead{(Jy\,beam$^{-1}$)}}
   \startdata
   CRL\,618 & 5.0\phantom{0} & 0.2 & 4.89 & 0.24\\
   CRL\,2688& 6.13 & 0.21 & 5.64 & 0.27\\
@@ -934,13 +980,15 @@ values found for CRL\,618; its not known why this is the case.
 
 
 % basic premise.
-Our calibration scheme is based on the premise that from various
-bright point sources of known flux we can derive a single FCF value
-and that this will convert all other maps from instrumental pW into
-flux densities, with the accuracy found from the uncertainty in our
-FCF. However, our use of an auto-generated AST mask will alter the
-relative flux recovery in our different calibrator sources, and we
-here explore how this affects our calibration accuracy.
+To convert from instrumental pW into flux densities (Jy),
+\citet{Dempsey2013} used an average FCF derived from observations of
+multiple bright calibrator sources.  They found the same FCF
+distribution regardless of which calibrator source was
+examined. However, our use of an auto-generated AST mask alters the
+relative flux recovery in our different calibrator sources, causing
+different FCF distributions to be found for different calibrator
+sources. In this section, we look at how this affects our calibration
+accuracy.
 
 
 % As mentioned previously, \citet{Mairs2015} identified the differential
@@ -960,8 +1008,8 @@ Our auto-generated AST mask follows sources down to a 3-SNR level;
 therefore a point source will have the central part of its beam
 included in the AST mask, and the outer areas not included. This
 effect is illustrated in 1-D in Figure \ref{fig:toymodel}.  As shown
-by \citet{Mairs2015}, the fluxes of sources outside an AST mask are
-suppressed compared to sources inside the AST mask; this means that
+by \citet{Mairs2015}, the fluxes outside an AST mask are
+suppressed compared to fluxes inside the AST mask; this means that
 the emission in the outer regions of the beam will be suppressed
 compared with the central region. As  Figure
 \ref{fig:toymodel} shows, an extremely bright source (such as Uranus, with a
@@ -1151,7 +1199,7 @@ the last iteration.
 
 \begin{figure}
   \centering
-  \includegraphics[scale=0.8]{simulated-fcfs.pdf}
+  \includegraphics{simulated-fcfs.pdf}
   \caption{Simulated FCFs derived for 50 simulated point sources with
     peak brightnesses from 0.002--0.1\,pW, and using various aperture
     radii. The average peak brightness of our three calibration
@@ -1179,14 +1227,14 @@ variation in derived FCF with both weather and elevation. Figure
 the 850\,\um\ transmission.
 
 A spearman rank-order correlation test across all of our derived FCFs
-finds a correlation of $-0.44\ p=4E-122$ between the aperture FCF and
-the 850\,\micron\ transmission; for comparison, the beam FCF (not
-expected to be strongly affected by the AST masking) has a weaker
-correlation of $-0.32\ p=6E-59$. Part of this correlation is probably
-due to systematic errors in the transmission measurement, which affect
-the extinction correction in \texttt{makemap}. The difference between
-the beam and aperture FCF correlations may be due to the AST masking
-effects.
+found a correlation of $-0.44$ (pvalue=4$\times 10^{-122}$) between
+the aperture FCF and the 850\,\micron\ transmission; for comparison,
+the beam FCF (not expected to be strongly affected by the AST masking)
+has a weaker correlation of $-0.32$ (pvalue=6$\times 10^{-59}$). Part
+of this correlation is probably due to systematic errors in the
+transmission measurement, which affect the extinction correction in
+\texttt{makemap}. The difference between the beam and aperture FCF
+correlations may be due to the AST masking effects.
 
 For comparison, we also show the variation in derived aperture FCFs
 with time. No correction to the applied FCF for sky opacity or date
@@ -1245,7 +1293,7 @@ minimum uncertainty in this calibration. In addition, the uncertainty
 in the sub-mm flux of Uranus (used to bootstrap \citet{Dempsey2013}'s
 measurements, and quoted as $\pm$ 5 percent therein), and the
 uncertainty in the known fluxes of CRL\,618 and CRL\,2688 (see Table
-\ref{tab:flux}. Taken together in quadrature, this gives an overall
+\ref{tab:fluxes}. Taken together in quadrature, this gives an overall
 estimated uncertainty in calibrated fluxes of $\pm$11 percent
 (aperture) and $\pm$12 percent (beam) due only to the variation of
 these derived FCFs.
@@ -1437,7 +1485,7 @@ for beam smearing may need to be included.
 \label{fig:beam}
 \end{figure*}
 
-Using the same deep coadded maps of Uranus as we examined in Section
+Using the same deep coadded maps of Uranus used in Section
 \ref{sec:calib}, we fitted a two-component beam model to the JCMT
 beamshape, and found the same shape and size as found in
 \citet{Dempsey2013}. We use the KAPPA command \texttt{beamfit} to do
@@ -1450,40 +1498,57 @@ the fitted beam shape.
 
 
 
-\section{Accessing the Release}
-The data products forming the JCMT Legacy Release are fully included
-in the CADC's multi-observatory archive (which includes the JSA), and
-will return as appropriate in searches based on spatial, temporal and
-spectral limits. This is hosted at
-\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search}
-
-Our uncalibrated reductions of single observations can be found by all
-the same criteria which would identify the raw and normal reductions
-of that observation -- including telescope, proposal code, PI name,
-target name, as well as the spatial, temporal and spectral
-constraints.
-
-In addition, user's can search specifically within the tiles and the
-catalogs by searching for proposal ID \texttt{JCMT-LR} along with any
-other desired constraints, or to see the all coadds and catalogs at
-once they can go to
-\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR&Observation.Collection=JCMT}
-Please note that you will find there are extent-850um results shown
-for all tiles, even those where no emission was detected.
-
-
-Appendix \ref{sec:filetypes} summarises what scientific content is
-included in the files produced in this release, along with the
-productID under which they are listed within the JSA, the naming
-scheme for the file and the software that created the file.
-
-
-For convenience, we have also provided a single-file download
-combining all of the extent and peak catalogs on the EAO/JCMT website
-at: \url{INSERT\ URL\ HERE}.
-
 \section{Summary}
-\hl{Summarise the release and why it is amazingly awesome and useful.}
+
+We have presented here the JCMT legacy release of the SCUBA-2
+850\,\micron\ observations taken from 2012 to 2015, including coadded
+tiles and catalogs of detected emission. This release provides an easy
+means of identifying robust detections across all regions observed by
+the SCUBA-2, of finding calibrated 850\,\micron\ fluxes, and for
+producing finder charts and fluxes for follow up high resolution
+observations.
+
+The coadded tiles and catalogs of this release are fully searchable in
+the JCMT Science Archive via CADC's multi-observatory search page at
+\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR&Observation.Collection=JCMT},
+or via their TAP service (e.g. from within TOPCAT). In addition, we
+have provided single-file download of the combined catalogs, as well
+as single-file masks (in MOC format) of the full area included in the
+release, and of all detected emission in the release. These can be
+found at \url{INSERT\_URL\_HERE}.
+
+The coadded tiles include 5828 hours of observing time over 4151
+HEALPix tiles, covering 1356 square degrees of the sky. Robust
+detections of emission was found in 1.37 square degrees of that
+area. Sixteen of the tiles contain extremely deep regions with a noise
+better than 1\,m\jybm. A data reduction configuration was developed
+for this release, which can be successfully used with both SCUBA-2
+scanning modes and over a wide range of astronomical objects. We
+examined every observation included in the coadds by eye, and removed
+the small number that did not appear to be of sufficient quality.
+
+We followed the method of \citet{Dempsey2013} and derived a single
+Flux-Calibration-Factor (FCF) to convert all of our coadded tiles from
+instrumental pW to m\jyas\, based on observations of the bright
+sources CRL\,618 and CRL\,2688 and their known fluxes. We then
+discussed in detail some of the limitations of this approach, caused
+by the details of the data reduction configuration we used. This
+configuration was required to allow disparate observations of
+e.g. blank fields or bright filamentary clouds to be reduced with the
+same setup.
+
+From our calibrated, coadded tiles, we then used FellWalker on the SNR
+map to robustly identify regions of emission for an 'extents'
+catalog. Within those extents, we then ran FellWalker again on the
+flux density map to extract local maxima and create our 'peak'
+catalog.
+
+We analysed a deep map of all the Uranus observations taken
+during the time range of this release to (and reduced with the same
+configuration as our release) to determine the beam shape of these
+observations. We also examined the positions of our known calibrator
+and pointing sources to determine the pointing offsets we expect to
+see in our coadded tiles.
 
 
 \acknowledgments
