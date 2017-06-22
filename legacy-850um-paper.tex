@@ -31,13 +31,13 @@
 \author[0000-0001-9361-5781]{Sarah F. Graves}
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
-\author{Graham S. Bell}
+\author[0000-0003-0438-8228]{Graham S. Bell}
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \author{David S. Berry}
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
-\author{Iain M. Coulson}
+\author[0000-0002-7316-4626]{Iain M. Coulson}
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \author{Malcolm J. Currie}
@@ -50,8 +50,8 @@
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \author[0000-0001-5982-167X]{Tim Jenness}
-\affiliation{To be assigned}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
+\affiliation{Large Synoptic Survey Telescope, 950 N. Cherry Ave, Tucson, 85719, USA}
 \author{Doug Johnstone}
 \affiliation{NRC Herzberg Institute of Astrophysics, 5071 West Saanich Rd, Victoria, BC, V9E 2E7, Canada}
 \affiliation{Department of Physics and Astronomy, University of Victoria, Victoria, BC, V8P 1A1, Canada}
@@ -63,8 +63,8 @@
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \author{Holly S. Thomas}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
-\affiliation{SMA/Harvard}
-\author{Jan G. A. Wouterloot}
+\affiliation{Harvard-Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA 02138, USA}
+\author[0000-0002-4694-6905]{Jan G. A. Wouterloot}
 \affiliation{East Asian Observatory, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 \affiliation{Joint Astronomy Centre, 660 N.\ A`oh\=ok\=u Place, Hilo, HI 96720, USA}
 
@@ -96,7 +96,7 @@
   \url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR}.
   Combined catalogs of all detected regions and of all local maxima
   can be downloaded from \url{INSERT\ URL\ HERE}, along with masks
-  showing the full area observecd in this release and the full area of
+  showing the full area observed in this release and the full area of
   detected emission.
 \end{abstract}
 
@@ -206,8 +206,8 @@ overview of the JCMT Legacy Survey program, which included SCUBA-2
 observations for: the Gould Belt Survey \citep{GBS}, the SCUBA-2
 ambitious Sky Survey \citep{SASSy}, the Cosmology Legacy Survey
 \citep{Geach2013}, the JCMT Galactic Plane Survey \citep{JPS}, the
-Nearby Galaxy Survey \citep{NGLS}, and the Debris Disk Survey
-\citep{SONS}.  Observations from earlier than 2011 February 2 were not
+Nearby Galaxy Survey \citep{NGLS}, and the SONS Debris Disk Survey
+\citep{Holland0217}.  Observations from earlier than 2011 February 2 were not
 included, as these were taken in \emph{shared risk} mode while
 instrument commissioning was still being conducted, and the data from
 that era are more problematic \citep{SC19,Dempsey2010}. The first
@@ -225,9 +225,9 @@ detected at $>5\sigma$. Fig.\,\ref{fig:noise-mollweide} shows the
 all-sky noise map of the coadds in this release, showing the average
 RMS across all valid pixels in a tile as a single square.
 
-All pointing and science observations from our time range, excluding
-Solar System objects/moving targets, were reduced using the ORAC-DR
-\citet{2015oracdr} recipe
+All pointing and science observations from our time range, (except
+Solar System objects/moving targets, which are not included in this
+release), were reduced using the ORAC-DR \citep{2015oracdr} recipe
 \texttt{REDUCE\_SCAN\_JSA\_PUBLIC}\footnote{ORAC-DR is the data
   reduction pipeline used at the JCMT} onto our tiles, using the HPX
 projection (see Section \ref{sec:healpix}). These reduced maps are in
@@ -235,8 +235,8 @@ the instrumental units of pW (see Section \ref{sec:dr}). The
 individual-observation maps are available to download through the JSA,
 where they are listed under their original project code and
 metadata. Pointing observations were not used or analysed further in
-this release. We also excluded solar system objects/moving targets
-from this release.
+this release.
+
 
 
 All the reduced science observations were individually examined to
@@ -253,7 +253,7 @@ The observations included in this release were each taken in one of
 the two different SCUBA-2 standard scan patterns: CV\_DAISY (hereafter
 DAISY), a fixed-size scan pattern used for covering small areas, and
 CURVY\_PONG (hereafter PONG) scan patterns at various user-chosen
-sizes, used for covering larger areas \citep{Holland2013}.  The
+sizes, used for covering larger areas \citep{Bintley2014}.  The
 scanning speed is not the same between these scan patterns; this will
 cause some inconsistency in the scales of emission detected in the
 reduced maps, as SCUBA-2 observations are sensitive to different size
@@ -324,9 +324,9 @@ catalogs at once they can go directly to
 %for all tiles, even those where no emission was detected.
 
 All of these searches can also be done either through the web
-interface or through the VO-standard TAP protocol (which enables more
-complex queries). The CADC TAP service can be easily queried from
-within TOPCAT.
+interface or through the VO-standard TAP protocol \citep[which enables
+more complex queries]{2010ivoa.spec.0327D}. The CADC TAP service can
+be easily queried from within TOPCAT \citep{2005ASPC..347...29T}.
 
 Appendix \ref{sec:filetypes} summarises the scientific content
 included in each file type produced for this release, along with the
@@ -699,9 +699,9 @@ SCUBA-2 observations are reduced using the Starlink SMURF program
 \citep{2015oracdr}. In brief, \texttt{makemap} uses an iterative process
 that divides the raw data into models of various instrumental and
 astronomical signals.  For full details on the SCUBA-2 map maker and
-its modelled, see \citet{Chapin2013}, or for practical information on
+its models, see \citet{Chapin2013}, or for practical information on
 using the software and the effect of different configurations in
-practice, see Starlink Cookbook 21 \citet{SC21}. A detailed comparison
+practice, see Starlink Cookbook 21 \citep{SC21}. A detailed comparison
 between the configuration used here and the Gould Belt Survey
 reduction (tuned to recover larger scale emission) was shown in
 \citet{Mairs2015}.
@@ -782,7 +782,7 @@ All non-pointing observations for a given tile that passed QA were
 coadded and calibrated using the PICARD recipe
 \texttt{COADD\_JSA\_TILES}. PICARD is part of ORAC-DR, and performs
 pipeline tasks on reduced data products. This recipe uses the
-\texttt{makemos} routine from Starlink's \texttt{ccdpack} package
+\texttt{makemos} routine from Starlink's CCDPACK package
 \citep[][\ascl{1403.021}]{SUN139}. This coadding was carried out as a
 variance-weighted mean. No despiking was performed, and no clipping of
 the noisy edges of observations was done; no evidence was seen that
@@ -901,7 +901,7 @@ calculated using the ATOOLS and KAPPA Starlink packages. For the beam
 FCF, the KAPPA command \texttt{beamfit} was used to fit a Gaussian
 beam to the source and identify the amplitude.
 
-The FLUXES package \citet{2014ascl.soft05010J} was used to derived the
+The FLUXES package \citep{2014ascl.soft05010J} was used to derive the
 expected flux of Uranus at the time of each observation. For CRL\,618
 and CRL\,2688, the integrated and peak fluxes measured in
 \citet{Dempsey2013} were used as the known values (see
@@ -922,8 +922,8 @@ Where $S_{integ}$ is the known integrated flux in the source and
 $S_{peak}$, $I_{0}$ is the summed flux in the aperture of the map
 (minus the average flux per pixel in the background annulus multiplied
 by the number of pixels in the aperture), $I_{peak}$ is the peak
-amplitude of the BEAMFIT Gaussian fit to the map, and $A$ is the area
-of a pixel in the map ($3.22^2\,\textrm{arcsec}^{2}$).
+amplitude of the \texttt{beamfit} Gaussian fit to the map, and $A$ is
+the area of a pixel in the map ($3.22^2\,\textrm{arcsec}^{2}$).
 
 The histograms of the derived FCFs are shown in Figure
 \ref{fig:fcfhist}.% It can be seen that there is a much wider range of
@@ -1560,7 +1560,7 @@ Research. This work was funded by the Science and Technology
 Facilities Council.  Additional funds for the construction of SCUBA-2
 were provided by the Canada Foundation for Innovation.
 
-The work presented here was initially started by the Joint Astronomy
+The work presented here was begun by the Joint Astronomy
 Centre, and latterly has been supported by East Asian Observatory (EAO).
 EAO has operated the JCMT since 2015 March 1, on behalf of the
 National Astronomical Observatory of Japan, Academia Sinica Institute
