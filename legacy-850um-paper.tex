@@ -91,7 +91,7 @@
   Jy\,pW$^{-1}$arcsec$^{-2}$. We discuss in detail the derivation of
   our FCF and the limitations of our calibration.
 
-  The coadds and catalogues can be searched at CADC at:
+  The coadds and catalogs can be searched at CADC at:
   \url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR}.
   Combined catalogs of all detected regions and of all local maxima
   can be downloaded from \url{doi:INSERT\ URL\ HERE}, along with masks
@@ -143,7 +143,7 @@ JCMT. These legacy reductions are envisioned as providing a uniform,
 standardized reduction, coadds, and emission detection of all publicly
 available observations, regularly updated as more observations become
 public. The aim has been to produce uniformly reduced high-quality
-coadds maps that required as little checking as possible by eye, and
+coadded maps that required as little checking as possible by eye, and
 which would allow astronomers to easily discover which regions have
 been observed, the noise levels in existing regions, and where there
 are clear detections. Previously, the SCUBA Legacy Catalog
@@ -228,7 +228,7 @@ All pointing and science observations from our time range, (except
 Solar System objects/moving targets, which are not included in this
 release), were reduced using the ORAC-DR \citep{2015oracdr} recipe
 \texttt{REDUCE\_SCAN\_JSA\_PUBLIC}\footnote{ORAC-DR is the data
-  reduction pipeline used at the JCMT} onto our tiles, using the HPX
+  reduction pipeline used at the JCMT.} onto our tiles, using the HPX
 projection (see Section \ref{sec:healpix}). These reduced maps are in
 the instrumental units of pW (see Section \ref{sec:dr}). The
 individual-observation maps are available to download through the JSA,
@@ -267,7 +267,7 @@ coadds.
 The primary aims of this release were: to allow users to see where we
 have observed; to identify the detected emission; and to get
 consistently calibrated fluxes from the detected emission. In
-particular, we wanted to make these task extremely \emph{easy} to carry out,
+particular, we wanted to make these tasks extremely \emph{easy} to carry out,
 especially for astronomers who are not experts in submillimeter
 observations.
 
@@ -304,7 +304,7 @@ identifying sources for high resolution follow up with ALMA).
 
 The data products forming this JCMT Legacy Release are fully included
 in the CADC's multi-observatory archive (which includes the JSA), and
-will return as appropriate in searches based on spatial, temporal and
+will  be returned as appropriate in searches based on spatial, temporal and
 spectral limits. This is hosted at
 \url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search}.
 
@@ -543,7 +543,7 @@ detected in our extent catalogs, as they have a signal-to-noise ratio
     DAISY observations in the centre, and the larger PONG observations
     around them. Lower left: the detected extents of emission,
     outlined on the coadded emission map. Lower right: the detected
-    peaks within the detected extents. The extent and peak catalogues
+    peaks within the detected extents. The extent and peak catalogs
     are described fully in Section \ref{sec:cat}. }
   \label{fig:g34-3}
 \end{figure*}
@@ -707,7 +707,7 @@ reduction (tuned to recover larger scale emission) was shown in
 
 There are an extremely large number of user-adjustable parameters that
 can affect the final map, depending on the science goals of the users
-and the structure of the astronomical emission observed.%  For example,
+and the structure of the astronomical emission observed. %  For example,
 % a cosmologist interested in detecting only faint point sources in a
 % primarily blank map would use a distinctly different set of parameters
 % from a galactic astronomer looking at bright, extended and
@@ -768,10 +768,10 @@ the 25 iterations; these were still included in the coadds.
 %\subsection{Quality Assurance}
 %label{sec:QA}
 Every reduced observation suitable for inclusion in the coadds was
-assessed by eye, and not included in the coadds if was considered low
+assessed by eye, and not included in the coadds if it was considered low
 quality.  All of the legacy-reduced observations are publicly
 available through the JSA, regardless of our QA analysis of them, so
-interested users can individual evaluate each observations towards a
+interested users can individually evaluate each observation towards a
 tile if they are dissatisfied with the coadd in the release.
 
 
@@ -842,7 +842,7 @@ convert from the instrumental units of pW into astronomical flux
 density units. Measuring the flux within a fixed-radius aperture
 around the source allows conversion into mJy\,arcsec$^{-2}$ (an
 aperture FCF), and a fit to the peak flux in the source allows
-converting into mJy\,beam (a beam FCF). For this work, we derive both
+converting into mJy\,beam$^{-1}$ (a beam FCF). For this work, we derive both
 an aperture and a beam FCF. However, we have calibrated all of our
 maps (and all fluxes in our catalogs) only using the aperture FCF as
 this is more appropriate for the extraction of flux in our catalogs of
@@ -1384,7 +1384,7 @@ emission with this simpler approach. %The main source of false detections in
 We used the FellWalker algorithm as implemented in \texttt{cupid} on a
 signal-to-noise (SNR) map to produce contiguous regions of emission
 and to identify the position of the peak pixel within each map, and
-these outlines are available both as a FITS format mask file, as a
+these outlines are available both as a FITS format mask file, and as a
 HEALPix Multi-Order Coverage file \citep{2013ASPC..475..135F}. The
 catalog for each tile indicates the ID of the clump, the RA and Dec of
 the peak pixel's centre, the total flux contained within the entire
@@ -1537,13 +1537,13 @@ e.g. blank fields or bright filamentary clouds to be reduced with the
 same setup.
 
 From our calibrated, coadded tiles, we then used FellWalker on the SNR
-map to robustly identify regions of emission for an 'extents'
+map to robustly identify regions of emission for an `extents'
 catalog. Within those extents, we then ran FellWalker again on the
-flux density map to extract local maxima and create our 'peak'
+flux density map to extract local maxima and create our `peak'
 catalog.
 
 We analysed a deep map of all the Uranus observations taken
-during the time range of this release to (and reduced with the same
+during the time range of this release (and reduced with the same
 configuration as our release) to determine the beam shape of these
 observations. We also examined the positions of our known calibrator
 and pointing sources to determine the pointing offsets we expect to
