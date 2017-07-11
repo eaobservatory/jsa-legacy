@@ -80,7 +80,7 @@
   detections and calibrated fluxes for any position observed by the
   JCMT. The coadded observations include 5828 hours of observing time
   and cover 1356 square degrees of the sky, with detections of
-  contiguous areas of emission at better than 5-$\sigma$ covering 1.4
+  contiguous areas of emission at better than 5~$\sigma$ covering 1.4
   square degrees of area. 13477 individual local maxima were detected
   within these regions. Sixteen tiles contain regions with a noise
   better than 1\,m\jybm.
@@ -283,26 +283,6 @@ example, identifying sources for high-resolution follow up with the
 Atacama Large Millimeter Array).
 
 
-
-% An easy way to identify what has been observed by the JCMT and find
-% its noise level (by searching for coadded tiles by position and
-% downloading them).
-
-% Easy access to find robust detections of 850um emission by the JCMT for an arbitrary list of observations:
-% i.e. if you have a list of sources and need to identify ones with
-% 850um detections.
-
-% Easy extraction of calibrated fluxes towards a list of positions for
-% SED modelling.
-
-% pathfinder/finder chart for follow up high res observations with e.g. ALMA.
-
-% Multiwavelength analysis inputs: easy access to 850um calibrated
-% detections/limtis of detections for large source lists, especially
-% for users who are not experts in sub-millimeter observations.
-
-% Pathfinders for future work; particulary when preparing/planning
-% future observations or large scale analysis, easy access to
 \subsection{Accessing the release}
 
 The data products forming this JCMT Legacy Release are fully included
@@ -320,8 +300,8 @@ constraints.
 In addition, users can search specifically within the coadded tiles
 and the catalogs by searching for proposal ID \texttt{JCMT-LR} along
 with any other desired constraints, or to see the all coadds and
-catalogs at once they can go directly to
-\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR&Observation.Collection=JCMT}
+catalogs at once they can search for everything with a proposal ID of
+`JCMT-LR'\footnote{\url{http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/search/?Observation.proposal.id=JCMT-LR&Observation.Collection=JCMT}}.
 %Please note that you will find there are extent-850um results shown
 %for all tiles, even those where no emission was detected.
 
@@ -353,7 +333,7 @@ up of 136 hours of science calibration observations, 3575 hours of
 data taken for the JCMT Legacy Surveys and 2117 hours of data taken
 for PI projects. This information is summarized in Table
 \ref{tab:typesobs}. The coadds include 1.69 gigapixels of valid data,
-corresponding to $\approx$ 1356 square degres. For comparison, the
+corresponding to $\approx$ 1356 square degrees. For comparison, the
 SCUBA Legacy Catalog \citep{DiFrancesco2008} at 850\micron\ covered 19.6 square
 degrees in their `Fundamental Map Data Set, and 29.3 square degrees in
 their fuller `Extended Map Data Set'.
@@ -575,7 +555,7 @@ visualise this bowling.
   \\[3mm]
   \includegraphics{crl618-sourceonly.pdf}
   \caption{The coadd, noise map, and extents towards the
-    standard calibration source CRL\,618, consisting of tiles\,1238
+    standard calibration source CRL\,618, consisting of tiles 1238
     and 1244. This coadd contains data from 923 observations (51\,hrs
     elapsed observing time). Top left: the intensity map. Top right:
     the noise map, where the contours indicate the 0.005, 0.006, and
@@ -836,7 +816,7 @@ Within the coadded maps of this release, negative bowling can be seen
 around bright sources. Figure~\ref{fig:crl618} shows this around the
 bright calibrator CRL\,618. The cuts in the vertical and horizontal
 direction through the source show the bowling at
-$\approx$0.02\,m\jyas{}, compared to a peak source brightness of
+$\approx$0.02\,m\jyas{}, compared with a peak source brightness of
 4.89\,\jybm{}. As the size scales of the negative bowling are
 comparatively large compared with small compact/point sources, this
 could in theory be corrected for on a per-field basis. For this
@@ -983,7 +963,7 @@ The histograms of the derived FCFs are shown in Figure
     fraction of flux within and without an auto-generated AST mask
     (extending down to a limit of 3 times the noise). Two one dimensional Gaussian
     sources are shown, at the (rough) intensities of Uranus (left) and
-    CRL 618 (right). A noise level equivalent to a 10-$\sigma$
+    CRL 618 (right). A noise level equivalent to a 10~$\sigma$
     detection of CRL 618 is shown in red. The shaded areas indicate
     the flux that would be found within the AST masked region, and the
     text indicates what percentage of the total flux in the source
@@ -1038,101 +1018,6 @@ our Uranus observations. We also believe this variation in the AST
 mask causes the very different curves of growth for Uranus as opposed
 to CRL\,618 and CRL\,2688 (see Figure \ref{fig:cog}).
 
-%\citet{Mairs2015} looked
-%in some detail at a comparison between the recovery in flux of sources
-%inside and outside the AST mask, for the LR \texttt{makemap}
-%configuration. They found from simulations that the flux in sources
-%outside the mask is suppressed compared with the 'true' value, and
-%compared with sources inside the mask.
-
-
-%In this reduction we use an
-%auto-generated AST mask that finds sources with a 5-$\sigma$ detection
-%at each iteration (and follows them down to a 3-$\sigma$ limit); this
-%means that our AST mask, and hence flux recovery, is dependent on the
-%brightness of the sources and the noise in the observation.
-
-
-
-%However, we must also consider how the AST masking will change the the
-%recovered flux in the \emph{calibration} source, as this alters our
-%derived FCF. Generally, exploration of the AST mask to date has
-%considered sources as entirely inside or entirely outside the AST
-%mask, whereas in fact our auto-generated AST mask will cover the
-%central (down to an SNR of 3) part of Gaussian point sources,
-%and not the outer regions of the Gaussian.
-
-%Fundamentally, the proportion of the flux found in the aperture around
-%the source will be higher for a bright source, as the 3 SNR AST mask
-%limit limit will include a larger percentage of the beam. In a dimmer
-%source, a higher proportion of the flux will be found in the non-AST
-%masked region, and will more of the flux will be suppressed in the
-%final map. This is illustrated in 1-D in Figure \ref{fig:toymodel}.
-
-%Therefore, for an observation reaching a similar noise level in the
-%map, the auto-generated AST mask will have a different size for each
-%source (based on their brightness -- see Figure
-%\ref{fig:astmask}). This will then cause different proportions of the
-%flux in the source to be recovered in the final map, due to the
-%differing recovery in \texttt{makemap} reductions of flux within and
-%without the beam.
-
-
-% This has an important, but often ignored, effect on the flux recovery
-% and derived FCFs from our calibration observations: very bright
-% sources, such as Uranus, will have a larger area included in the AST
-% mask due to a higher signal-to-noise at a given RMS, when compared
-% with dimmer sources such as CRL\,618 and CRL\,2688.
-
- % Uranus has (from FLUXES) an
-% integrated flux between 57.2 and 70.3 Jy for the observations used
-% here, whereas CRL\,618 and CRL\,2688 have 5.0 and 6.13\,Jy
-% respectively \citep[both from][]{Dempsey2013}.
-
-
-%As a result, when performing aperture photometry at a specific source
-%aperture, different proportions of the `true' total source flux will
-%be found for sources of different brightnesses. This will cause a
-%measurable difference in the measured FCF for the sources when using a
-%constant aperture. In particular, Uranus observations have a much
-%larger AST mask, and thus will have a higher proportion of their total
-%integrated flux found at a specific aperture. This leads to a
-%derivation of a smaller FCF for Uranus than for the dimmer calibration
-%sources.
-
-%For our analysis, this means that the derived FCF from the brightest
-%point sources (i.e. Uranus) will be lower than that of the derived FCF
-%from a dimmer point source (i.e. CRL 618 and CRL 2688), for an
-%observation with the same noise level.
-
-
-
-% bAsic Idea: we will calculate a different FCF from each source of a
-% different brightness (or at different transmission), due to
-% differing proportions of the source flux being found inside and
-% outside the AST mask. This causes problems for the basic idea of
-% calibrating a single FCF from a variety of sources of known flux --
-% you won't get one value.
-
-
-
-
-
-
-% The issue occurs due to the effect of the automatic AST masking used
-% in the data reduction, combined with the extreme variation in the
-% source brightnesses. In our configuration, an AST mask is produced
-% each iteration around every source with an SNR peak greater than 5,
-% and followed down to include all connecting pixels with an SNR greater
-% than 3. If we compare the three calibration sources Uranus, CRL 618,
-% and CRL 2688, these sources have significantly different
-% brightnesses. CRL\,618 has an integrated flux of 5.0 Jy, CRL\,2688 is
-% 6.13 Jy, whereas Uranus varies between 57.2 and 70.3 Jy for the
-% observations in this analysis.
-
-
-
-
 
 To test our understanding of the effect of source brightness, we
 simulated 50 point sources at various peak brightnesses (in pW) from
@@ -1163,28 +1048,6 @@ imagine applying different FCFs to areas inside and outside the AST
 masks, based on detailed simulations and modeling. However, this would
 be significantly beyond the scope of this work.
 
-% These effects will, of course, also
-%affect the science sources in this release. Normally we consider the
-%concept of the flux suppression outside the AST mask as outside of the
-%These concepts imply that for the data reduction method used here, we
-%are reaching a limitation in our conception of a single FCF that
-%calibrates a range of sources.
-% Moves into concept of 'missing flux', not usually considered calibration.
-
-%Pragmatic appraoch
-
-
-
-% The work flow we followed from \citet{Dempsey2013} assumes that there
-% is a single FCF value which will convert pW into a flux density for
-% all emission, regardless of the source. However, because we have used
-% an autogenerated AST mask in our data reduction, we have introduced an
-% effect whereby our recovered flux in a calibrator is dependent on the
-% brightness of the calibrator. Although slightly hidden by the natural
-% variation across the observations, the aperture FCF histograms in
-% Figure \ref{fig:fcfhist} do show that Uranus (which is far brighter)
-% peaks at noticeably different
-
 
 
 The AST masking issues would not be seen in the canonical SCUBA-2
@@ -1194,19 +1057,6 @@ sets a fixed central AST aperture with a radius of 60\arcsec\ for all
 observations, constraining all pixels beyond this radius to zero until
 the last iteration.
 
-% For reference,
-%Figure~\ref{fig:astmask} shows the relationship between the area of
-%the AST mask with the brightness of the simulated source.
-
-% \begin{figure}
-%   \centering
-%   \includegraphics{astmask-peakbrightness.pdf}
-%   \caption{The relationship between the area of the AST mask and the
-%     brightness of the simulated source. The AST mask area is found
-%     by counting the number of pixels included in the final AST mask,
-%     and multiplying by the area of one pixel.}
-%   \label{fig:astmask}
-% \end{figure}
 
 
 \begin{figure}
@@ -1222,11 +1072,6 @@ the last iteration.
   \label{fig:simulation}
 \end{figure}
 
-% plot of relative FCF for simulated bright source at various apertures and brightnesses
-
-% plot of area included in AST mask at different brightnesses
-
-% plot of relative FCF vs area in AST mask.
 \subsubsection{Effect of transmission}
 Due to the signal-to-noise limits in the AST masking, there will also
 be a similar systematic effect in the measured FCF of a calibration
@@ -1279,7 +1124,7 @@ is far brighter than anything in our released observations, we have
 chosen to only use CRL\,618 and CRL\,2688 to derive our FCF value. We
 used the derived FCF from each calibration observation described
 above, then applied an iterative clipping which excludes FCF values
-5-$\sigma$ away from the mean (as extreme outliers will often be due
+5~$\sigma$ away from the mean (as extreme outliers will often be due
 to poor instrumental performance, bad weather, daytime observing or
 other affects that are not present in the bulk of the released data.)
 No explicit cut was made for the atmospheric transmission during the
@@ -1349,7 +1194,7 @@ investigating the total flux recovery for a given AST mask, or to
 re-reduce the data with a different reduction configuration
 appropriate for emission structure.  We would also recommend users of
 this release interested in this to investigate the AST mask found for
-the individual observations that went into each mosaiced tile.
+the individual observations that went into each mosaicked tile.
 
 
 \section{Catalogs}
@@ -1381,23 +1226,13 @@ easy-to-understand.
 We have identified the regions of contiguous extended emission within
 each tile by looking at the signal-to-noise maps of the coadded
 tiles. We chose to consider all regions of contiguous emission
-containing a pixel brighter than 5-$\sigma$, followed down to a limit
-of 3-$\sigma$, to be a single `extent' for the purposes of our catalogs,
+containing a pixel brighter than 5~$\sigma$, followed down to a limit
+of 3~$\sigma$, to be a single `extent' for the purposes of our catalogs,
 if the region is larger in area than a beam.  Here, a very simple
 approximation of the beam was used: all sources comprising more than
 nine pixels were kept. More complex approaches were considered,
 but noise spikes did not appear to be commonly falsely detected as
-emission with this simpler approach. %The main source of false detections in
-%our reductions \emph{would} have been the previously discussed problem of
-%`false blooms', if we had not used a by-eye approach for flagging the
-%handful of problematic reductions and removing them from the coadds.
-
-%The reduced observations, produced by SMURF's \texttt{makemap} routine, all
-%contain a variance array giving a noise estimate for each pixel, based on
-%the scatter of input data values to that pixel. Pixels with too few
-%inputs to calculate a variance point are not included in
-%the individual maps. Our coadding procedure uses this variance to
-%weight the input observations.
+emission with this simpler approach.
 
 We used the FellWalker algorithm as implemented in \texttt{cupid} on a
 signal-to-noise (SNR) map to produce contiguous regions of emission
@@ -1433,8 +1268,8 @@ the entire detected extent (from the variance array produced by
 \texttt{makemos}) as a representative noise. We then ran the
 FellWalker algorithm, using that representative noise as the RMS
 value, and identified as individual local maxima all peaks with a
-value of at least 5-$\sigma$, followed down to a noise level of
-3-$\sigma$, and with at least a 5-$\sigma$ dip between them and their
+value of at least 5~$\sigma$, followed down to a noise level of
+3~$\sigma$, and with at least a 5~$\sigma$ dip between them and their
 neighboring peaks. Our output catalog contains the ID of the peak, the
 RA and Dec of the peak pixel, the flux in the peak pixel, and the ID
 of the extent the peak was found within. An excerpt from the peak
