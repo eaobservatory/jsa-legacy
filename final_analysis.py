@@ -516,7 +516,7 @@ ax.set_yscale('symlog')
 ax.set_xlabel(r'RMS noise on a pixel (mJy$\,$arcsec$^{-2}$)')
 ax.set_xscale('log')
 
-ax2 = fig.add_axes([0.72, 0.7, 0.2, 0.2])
+ax2 = fig.add_axes([0.5, 0.3, 0.2, 0.2])
 ax2.tick_params(labelsize=6, pad=2)
 
 
@@ -534,8 +534,8 @@ ax2.set_xticks([1e-2, 1e0])
 fig.tight_layout()
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
-ax2.spines['top'].set_visible(False)
-ax2.spines['right'].set_visible(False)
+#ax2.spines['top'].set_visible(False)
+#ax2.spines['right'].set_visible(False)
 fig.savefig('coadds-noise-histogram.pdf', bbox_inches='tight', pad_inches=0.01, dpi=200)
 
 # Images of maps.
