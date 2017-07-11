@@ -172,7 +172,7 @@ This data release is publicly accessible and fully queryable by sky
 position through the JCMT Science Archive \citep[JSA]{2015Economou},
 hosted at the Canadian Astronomy Data Centre (CADC). This archive also
 hosts our proprietary (with authentication) and public raw
-observations and our standard pipeline reduced products. Unlike the
+observations,  as well as our standard pipeline reduced products. Unlike the
 LR, the normal reductions do not include full coadds of data taken on
 different nights. In addition, these observations from different
 projects may have been reduced with different configurations and can
@@ -181,7 +181,7 @@ not be naively coadded.
 
 \subsection{Outline of paper}
 
-This paper presents first in section \ref{sec:overview} a summary of
+This paper presents in Section \ref{sec:overview} a summary of
 the release and the included observations, various overall statistics
 and some details on the noise properties of the release. Section
 \ref{sec:examples} shows the scientific products created towards three
@@ -192,7 +192,7 @@ reduction procedures. We describe the calibration of these maps in
 Section \ref{sec:calib}, including a discussion of some of the more
 subtle effects of the data reduction method used. Section
 \ref{sec:cat} then describes the emission catalogs. We finish by
-summarizing the pointing offsets found in Section \ref{sec:pointing},
+summarizing the pointing offsets in Section \ref{sec:pointing},
 and the beam shape in Section \ref{sec:beam}.
 
 \section{Overview of Release}
@@ -277,7 +277,7 @@ large-scale or multi-wavelength analyses, where there is no scope for
 the researchers to reduce data from every project, instrument and telescope
 themselves. Easy access to detected calibrated fluxes and maps is also
 invaluable as pathfinders for follow-up observations (for example,
-identifying sources for high resolution follow up with ALMA).
+identifying sources for high-resolution follow up with ALMA).
 
 
 
@@ -344,7 +344,7 @@ area of the detected emission.
 
 In total, 21464 observations were reduced representing 6420 hours of
 observing time, towards 4403 distinct tiles. The coadded observations
-include 12404 science and calibration observations which passed QA
+include 12404 science and calibration observations which passed our quality testing
 (5828 hours or 242.8 days) towards 4151 tiles. These coadds were made
 up of 136 hours of science calibration observations, 3575 hours of
 data taken for the JCMT Legacy Surveys and 2117 hours of data taken
@@ -421,7 +421,7 @@ aiming for a variety of noise levels, our noise maps are extremely
 heterogeneous. Figure~\ref{fig:noise-mollweide} shows the all-sky
 distribution of the noise maps of our
 coadds. Figure~\ref{fig:histonoise} shows a histogram of the noise in
-each pixel of the coadded tiles. It can be seen that the most common
+each pixel of the coadded tiles. It can be seen that the most-common
 noise is 0.35\,m\jyas\ (81\,m\jybm). Table~\ref{tab:noises} shows the
 area of our coadds which has a noise level below various common
 values. This is calculated by finding the number of pixels which have
@@ -479,12 +479,12 @@ details).
 
 
 
-Twenty of our coadded tiles contain pixels with a noise better
-0.0043\,m\jyas{}, corresponding to 1\,m\jybm. These include our three
-most common standard SCUBA-2 calibrators (CRL\,618, CRL\,2688 and
-Arp\,220), and several deep cosmology fields that were observed
+Sixteen of our coadded tiles contain pixels with a noise better
+0.0043\,m\jyas{}, corresponding to 1\,m\jybm. These include our two
+most common standard SCUBA-2 calibrators (CRL\,618 and CRL\,2688)
+ and several deep cosmology fields that were observed
 separately by both the JCMT Cosmology Legacy Survey and by various PI
-projects. For reference, these twenty tiles, along with some
+projects. For reference, these sixteen tiles, along with some
 statistics of their deep regions are listed in
 Table\,\ref{tab:deepmaps}.
 
@@ -508,7 +508,7 @@ shows our coadded tile, noise map, extent catalog, and peak catalog
 towards this source. This coadd includes data primarily from JCMT
 calibration projects of this source, but also two observations from a
 University of Hawai`i (UH) PI project (M13AH07B). The noise maps
-(Figure~\ref{fig:g34-3}, 2nd figure) for this coadd shows the
+(Figure~\ref{fig:g34-3}, upper right) for this coadd shows the
 characteristic DAISY scan pattern towards the central source, with two
 overlapping small PONG observations covering a wider extent. This
 field also illustrates the higher noise we see towards extremely
@@ -601,7 +601,7 @@ noise map, and also a close in view of the deepest region. In the noise map
 it is possible to see an imprint of the original observations scan
 patterns (both PONG and DAISY observations are included in this
 tile); no attempt to correct for this was made. In this deep field
-it can also be seen that there is no artifical structure appearing at
+it can also be seen that there is no artificial structure appearing at
 the edges of the different observations; this indicates that our
 variance arrays (used to weight the input data at the coadding stage)
 are accurate even in these high-noise areas.
@@ -661,7 +661,7 @@ label our tiles.% this scheme allows for simple conversions to and from
 
 Pixels within the individual tiles use the HPX projection
 \citep{Calabretta2007}, which allows us to use a (higher resolution)
-HEALPix grid within our standard 2-D arrays in a FITS files. This
+HEALPix grid with our standard two-dimensional image array in FITS format. This
 ensure that the pixelization is continous between each tile and the
 adjacent tiles, and hence neighbouring tiles can be joined simply by
 abutting them.  The details of the HEALPix parameters used are listed
@@ -673,9 +673,12 @@ vary in width and length while maintaining the constant area.  There
 are also discontinuities in the angle of the grid lines at some facet
 boundaries.  This is largely a display problem, as although image
 viewers with a modern WCS implementation can handle files in the HPX
-projection, the sources will appear distorted (or non-circular) due
-the non-square pixels, and grid lines will appear bent at
-discontinuities.
+projection, the sources will appear distorted (or non-circular), and
+grid lines will appear bent at discontinuities. This is due to
+non-square pixels being represented as squres by the image rendering
+software.
+
+
 
 \begin{table}
 \centering
@@ -765,7 +768,7 @@ between iterations of only 1\% of the noise level, whichever occurs
 first. Only 4\% of the science observations did not converge within
 the 25 iterations; these were still included in the coadds.
 
-%\subsection{Quality Assurance}
+\subsection{Quality Assurance (QA)}
 %label{sec:QA}
 Every reduced observation suitable for inclusion in the coadds was
 assessed by eye, and not included in the coadds if it was considered low
@@ -788,7 +791,7 @@ the noisy edges of observations was done; no evidence was seen that
 these procedures were required. The variance map for the coadded tile
 was also produced by \texttt{makemos}, based on the variance of each
 input observation. The calibration from pW into m\jyas\ was done by
-multiplying by a Flux Conversion Factor of
+multiplying by a flux conversion factor of
 2.46$\times$10\textsuperscript{3}\,m\jyas\,pW\textsuperscript{$-$1},
 derived from our own data set -- see Section \ref{sec:calib}.
 
@@ -836,7 +839,7 @@ and there will therefore be some loss of detected emission.
 \label{sec:calib}
 The calibration of these data follows the basic approach used in the
 standard SCUBA-2 calibration paper \citep{Dempsey2013}. In brief, a
-Flux Conversion Factor (FCF) is derived from observations of standard
+flux conversion factor (FCF) is derived from observations of standard
 point-source calibrators of known brightnesses, which is then used to
 convert from the instrumental units of pW into astronomical flux
 density units. Measuring the flux within a fixed-radius aperture
@@ -861,11 +864,12 @@ detected emission.
 Three commonly used SCUBA-2 calibrators were analysed when deriving an
 FCF for this data set: Uranus, CRL\,618, and CRL\,2688.\footnote{CRL
   618 and CRL 2688 observations that had been marked as poor quality
-  during QA were not included in this analysis.} The Uranus
-calibration observations are not part of the standard legacy release
-themselves, as observations of moving targets were not included in
-this release. They were reduced onto the same area pixels using the
-same DR configuration as our release.
+  during QA (Quality Assurance) were not included in this analysis.}
+The Uranus calibration observations are not part of the standard
+legacy release themselves, as observations of moving targets were not
+included in this release. They were reduced onto the pixels of the
+same area as used in our HEALPix tiles, and using the same DR
+configuration.
 
 For the aperture FCF, \citet{Dempsey2013} used a source aperture
 radius of 30\arcsec{} and a background annulus of radii 45--60\arcsec,
@@ -917,12 +921,13 @@ The FCF for each observation was then calculated using:
   \mathrm{FCF_{beam}} = \frac{S_{\mathrm{peak}}}{I_{\mathrm{peak}}}\ \mathrm{Jy\,pW^{-1}\,beam^{-1}}
 \end{equation}
 
-Where $S_{integ}$ is the known integrated flux in the source and
-$S_{peak}$, $I_{0}$ is the summed flux in the aperture of the map
-(minus the average flux per pixel in the background annulus multiplied
-by the number of pixels in the aperture), $I_{peak}$ is the peak
-amplitude of the \texttt{beamfit} Gaussian fit to the map, and $A$ is
-the area of a pixel in the map ($3.22^2\,\textrm{arcsec}^{2}$).
+where $S_{\mathrm{integ}}$ is the known integrated flux in the source and
+$S_{\mathrm{peak}}$ is the known peak flux of the source. $I_{0}$ is the summed
+flux in the aperture of the map (minus the average flux per pixel in
+the background annulus multiplied by the number of pixels in the
+aperture), $I_{\mathrm{peak}}$ is the peak amplitude of the \texttt{beamfit}
+Gaussian fit to the map, and $A$ is the area of a pixel in the map
+($3.22^2\,\textrm{arcsec}^{2}$).
 
 The histograms of the derived FCFs are shown in Figure
 \ref{fig:fcfhist}.% It can be seen that there is a much wider range of
@@ -950,12 +955,12 @@ The histograms of the derived FCFs are shown in Figure
   \centering
   \includegraphics{fcf-histogram.pdf}
   \caption{Histograms of the derived beam and aperture FCFs
-    separately for CRL618, CRL2688 and Uranus. The combined histogram
-    for CRL 618 and CRL2688 (i.e. the sources used to derive the
+    separately for CRL 618, CRL 2688 and Uranus. The combined histogram
+    for CRL 618 and CRL 2688 (i.e. the sources used to derive the
     calibration of the coadds) is shown as a grey background. The
-    sigma-clipped mean for each source is shown as the vertical line,
+    sigma-clipped mean for each source is shown as the solid vertical line,
     and the horizontal cross bar indicates the $\pm$ one standard
-    deviation. The dashed line indicates the median value.}
+    deviation. The dashed vertical line indicates the median value.}
   \label{fig:fcfhist}
 \end{figure*}
 
@@ -967,7 +972,7 @@ The histograms of the derived FCFs are shown in Figure
   \includegraphics{toymodel-astmasking.pdf}
   \caption{A toy model illustrating the effect of source brightness on
     fraction of flux within and without an auto-generated AST mask
-    (extending down to a limit of 3 times the noise). Two 1-D Gaussian
+    (extending down to a limit of 3 times the noise). Two one dimensional Gaussian
     sources are shown, at the (rough) intensities of Uranus (left) and
     CRL 618 (right). A noise level equivalent to a 10-$\sigma$
     detection of CRL 618 is shown in red. The shaded areas indicate
@@ -1003,27 +1008,26 @@ accuracy.
 %The recovery of source emission in SCUBA-2 observations reduced with
 %\texttt{makemap} is strongly dependent on the exact details of the AST
 %mask, unless the reduction configuration does not use one.
-Our auto-generated AST mask follows sources down to a 3-SNR level;
+Our auto-generated AST mask follows sources down to an SNR of 3;
 therefore a point source will have the central part of its beam
 included in the AST mask, and the outer areas not included. This
-effect is illustrated in 1-D in Figure \ref{fig:toymodel}.  As shown
-by \citet{Mairs2015}, the fluxes outside an AST mask are
-suppressed compared to fluxes inside the AST mask; this means that
-the emission in the outer regions of the beam will be suppressed
-compared with the central region. As  Figure
-\ref{fig:toymodel} shows, an extremely bright source (such as Uranus, with a
-flux 57.2--70.3\,Jy for these observations) will have a higher
-percentage of its emission found within the AST mask; a dimmer source
-(such as CRL 618 at 5.0\,Jy or CRL 2688 at 6.13\,Jy) will have more of
-its emission in the non-AST masked region where emission is
-suppressed. This will lead to a systematic trend where, when comparing
-two observations with the same noise, we will recover more of the flux
-for brighter sources -- and hence derive a lower FCF. It can be seen
-in Figure \ref{fig:fcfhist} that we do see a systematically lower FCF
-distribution for our Uranus observations. We also believe this
-variation in the AST mask causes the very different curves of growth
-for Uranus as opposed to CRL\,618 and CRL\,2688 (see Figure
-\ref{fig:cog}).
+effect is illustrated in one dimension in Figure~\ref{fig:toymodel}.  As shown
+by \citet{Mairs2015}, the fluxes outside an AST mask are suppressed
+compared with fluxes inside the AST mask; this means that the emission
+in the outer regions of the beam will be suppressed compared with the
+central region. As Figure \ref{fig:toymodel} shows, an extremely
+bright source (such as Uranus, with a flux 57.2--70.3\,Jy for these
+observations) will have a higher percentage of its emission found
+within the AST mask; a dimmer source (such as CRL 618 at 5.0\,Jy or
+CRL 2688 at 6.13\,Jy) will have more of its emission in the non-AST
+masked region where emission is suppressed. This will lead to a
+systematic trend where, when comparing two observations with the same
+noise, we will recover more of the flux for brighter sources -- and
+hence derive a lower FCF. It can be seen in Figure \ref{fig:fcfhist}
+that we do see a systematically lower aperture FCF distribution for
+our Uranus observations. We also believe this variation in the AST
+mask causes the very different curves of growth for Uranus as opposed
+to CRL\,618 and CRL\,2688 (see Figure \ref{fig:cog}).
 
 %\citet{Mairs2015} looked
 %in some detail at a comparison between the recovery in flux of sources
@@ -1129,7 +1133,7 @@ intensity of CRL\,618 (which has an average peak brightness of 0.009
 pW in these observations) to roughly the brightness of Uranus (an
 average peak of 0.11 pW). These maps were created using the
 \texttt{fakemap} and \texttt{fakescale} options to \texttt{makemap},
-with a source model taken from the central 200$\times$200 pixel square
+with a source model taken from the central 200$\times$200-pixel square
 found in a deep coadd of 800 Uranus observations, and using a single
 blank DAISY observation for the SCUBA-2
 data. Figure~\ref{fig:simulation} shows that we see a strong variation
@@ -1225,11 +1229,11 @@ variation in derived FCF with both weather and elevation. Figure
 \ref{fig:fcfairmass} shows the derived aperture FCFs plotted against
 the 850\,\um\ transmission.
 
-A spearman rank-order correlation test across all of our derived FCFs
-found a correlation of $-0.44$ (pvalue=4$\times 10^{-122}$) between
+A Spearman rank-order correlation test across all of our derived FCFs
+found a correlation of $-0.44$ (p-value=4$\times 10^{-122}$) between
 the aperture FCF and the 850\,\micron\ transmission; for comparison,
 the beam FCF (not expected to be strongly affected by the AST masking)
-has a weaker correlation of $-0.32$ (pvalue=6$\times 10^{-59}$). Part
+has a weaker correlation of $-0.32$ (p-value=6$\times 10^{-59}$). Part
 of this correlation is probably due to systematic errors in the
 transmission measurement, which affect the extinction correction in
 \texttt{makemap}. The difference between the beam and aperture FCF
@@ -1289,7 +1293,7 @@ their chosen FCF.
 
 The standard deviation of the sample of derived FCFs represents the
 minimum uncertainty in this calibration. In addition, the uncertainty
-in the sub-mm flux of Uranus (used to bootstrap \citet{Dempsey2013}'s
+in the known sub-mm flux of Uranus (used to bootstrap \citet{Dempsey2013}'s
 measurements, and quoted as $\pm$ 5 percent therein), and the
 uncertainty in the known fluxes of CRL\,618 and CRL\,2688 (see Table
 \ref{tab:fluxes}. Taken together in quadrature, this gives an overall
@@ -1302,17 +1306,17 @@ in the JCMT's nightly reductions is $2.34 \pm 0.08 \mathrm{Jy}\
 \mathrm{pW}^{-1}\ \mathrm{arcsec}^{-2}$ \citep{Dempsey2013}. This is
 approximately 3 percent lower than the value used here, and was
 derived using the `bright compact' \texttt{makemap} configuration on 1
-arcsecond pixels (in comparison with the 3.22$\times$3.22 arcsecond
+arcsecond pixels (in comparison with the 3.22$\times$3.22-arcsecond
 pixels in this release), using observations taken from 2011 May to
 2012 May.
 
 \subsection{Additional considerations in using the coadded fluxes}
 
 \citet{Dempsey2013} derived appropriate FCFs for either point sources
-or for circular aperture photometry, and we have followed their
+or for circular-aperture photometry, and we have followed their
 approach here. However, it is clear that for the arbitrary shaped
 regions of emission found in the catalogs of this release, it would
-not be appropriate to perform circular aperture photometry. As
+not be appropriate to perform circular-aperture photometry. As
 discussed above, this would also not be sufficient to correct for the
 different proportions of flux included inside the AST mask.
 
@@ -1338,8 +1342,8 @@ the individual observations that went into each mosaiced tile.
 \label{sec:cat}
 The JCMT Legacy Release includes emission catalogs generated from each
 of the coadded maps. As we have an extremely diverse set of
-astronomical regions (including blank fields, point sources, and
-large, complex extended structures), we did not feel that it would be
+astronomical regions (including blank fields, point sources and
+complex extended structures), we did not feel that it would be
 possible to perform specific astronomical source finding and
 classification within the scope of this release. Instead, we first of
 all identified the \emph{regions of contiguous emission}, discussed
@@ -1351,7 +1355,7 @@ Figure \ref{fig:g34-3}.
 
 
 We have chosen to use the FellWalker algorithm \citep{Berry2015}, as
-implemented in the Starlink \texttt{cupid} \citep{cupid} package for
+implemented in the Starlink CUPID \citep{cupid} package for
 this analysis. Unlike the more commonly used ClumpFind, which simply
 lays discrete contour levels on the map and uses those to identify
 regions, FellWalker follows lines of ascent within the map to identify
@@ -1384,7 +1388,7 @@ emission with this simpler approach. %The main source of false detections in
 We used the FellWalker algorithm as implemented in \texttt{cupid} on a
 signal-to-noise (SNR) map to produce contiguous regions of emission
 and to identify the position of the peak pixel within each map, and
-these outlines are available both as a FITS format mask file, and as a
+these outlines are available both as a FITS-format mask file, and as a
 HEALPix Multi-Order Coverage file \citep{2013ASPC..475..135F}. The
 catalog for each tile indicates the ID of the clump, the RA and Dec of
 the peak pixel's centre, the total flux contained within the entire
@@ -1469,7 +1473,7 @@ the beam area is required to a high accuracy than a correction factor
 for beam smearing may need to be included.
 
 
-\section{Beamshape}
+\section{Beam shape}
 \label{sec:beam}
 \begin{figure*}[htb!]
   \centering
@@ -1478,7 +1482,7 @@ for beam smearing may need to be included.
     of Uranus observations. On the left is shown an image of the
     central source. The bright ring at ~160" radius is due to
     misaligned panels on the telescope. On the right: profiles in RA
-    and Dec of the beam are shown with the fitted two-Gaussian beam
+    and Dec of the beam are shown with the fitted two-Gaussian-beam
     model overlaid for contrast. The $y$-axis shows the value relative
     to the full amplitude of the beam.}
 \label{fig:beam}
@@ -1486,7 +1490,7 @@ for beam smearing may need to be included.
 
 Using the same deep coadded maps of Uranus used in Section
 \ref{sec:calib}, we fitted a two-component beam model to the JCMT
-beamshape, and found the same shape and size as found in
+beam shape, and found the same shape and size as found in
 \citet{Dempsey2013}. We use the KAPPA command \texttt{beamfit} to do
 this, fitting two circular Gaussians with a fixed background level of
 0. We found FWHM of 12.6\arcsec\ and 44.0\arcsec\, with a relative
@@ -1609,10 +1613,10 @@ have the opportunity to conduct observations from this mountain.
 \appendix
 
 
-\section{Mapmaker configuration}
+\section{Map maker configuration}
 \label{app:config}
-The mapmaker configuration used for this release (known as a
-\texttt{dimmconfig} file) is shown here. Like most SCUBA-2 mapmaker
+The map maker configuration used for this release (known as a
+\texttt{dimmconfig} file) is shown here. Like most SCUBA-2 map maker
 configuration files, it first includes the \emph{base}
 \texttt{dimmconfig} file that sets up the basic values for a range of
 options and then tweaks a subset of parameters for its
@@ -1658,12 +1662,12 @@ flt.zero_snrlo=3
 
 \subsection{Details of the legacy DR configuration}
 In this particular reduction, after the initial pre-processing stage,
-the SCUBA-2 mapmaker recipe performs five iterations in which the
+the SCUBA-2 map maker recipe performs five iterations in which the
 astronomical model (AST) is retained at the end rather than being
 removed as in a normal iteration. (This is specified using
 \texttt{ast.skip=5}). These initial iterations allow the reduction
 process to focus on creating a mask for the FLT model (which is used
-to filter the low frequency noise) by identifying any unusually bright
+to filter the low frequency noise, see \citealt{Chapin2013}) by identifying any unusually bright
 region; these regions may cause ringing in subsequent estimates of the
 low-frequency noise in each bolometer. During these iterations
 ``bright'' pixels are taken to be those with a signal-to-noise ratio
@@ -1677,8 +1681,8 @@ and the data are filtered to remove any features on scales larger than
 produced for each subarray (specified with
 \texttt{com.perarray=1}). Having a separate common-mode estimate per
 subarray prevents artificial flux (also known as ``fake blooms'')
-being introduced into the map where the common modes vary
-significantly and are not well represented by a single common
+being introduced into the map; this can occur where the common modes vary
+significantly, and are thus not well represented by a single common
 mode. The disadvantage with having a separate common mode for each
 subarray is that the reduction is limited to recovering emission
 structures that are on the same scale or less than the subarray size
@@ -1733,7 +1737,7 @@ Coadded tile &  COADD\_JSA\_TILES  & \texttt{jcmts850um\_healpix<TILE>\_pub\_002
  & One file per tile & healpix-850um\\
 %
 Extent catalog & JSA\_CATALOGUE&\texttt{jcmts850um\_extent-cat<TILE>\_pub\_002.fits}
-&\textbullet{} Catalog for extents (see Sect.\,\ref{sec:extents})
+&\textbullet{} Catalog of extents (see Sec.\,\ref{sec:extents})
 & Only created if  emission detected at $>5\sigma$. & extent-850um\\
 %
 Extent mask & JSA\_CATALOGUE & \texttt{jcmts850um_extent-mask<TILE>\_pub\_002.fits} &
